@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="espe.png">
+	<!-- Created with Adobe Animate version 19.0.0.326 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="espe down0000" x="0" y="0" width="528" height="356" frameX="0" frameY="-3" frameWidth="534" frameHeight="359"/>
+	<SubTexture name="espe down0001" x="0" y="0" width="528" height="356" frameX="0" frameY="-3" frameWidth="534" frameHeight="359"/>
+	<SubTexture name="espe down0002" x="528" y="0" width="532" height="349" frameX="-2" frameY="0" frameWidth="534" frameHeight="359"/>
+	<SubTexture name="espe down0003" x="528" y="0" width="532" height="349" frameX="-2" frameY="0" frameWidth="534" frameHeight="359"/>
+	<SubTexture name="espe down0004" x="528" y="0" width="532" height="349" frameX="-2" frameY="0" frameWidth="534" frameHeight="359"/>
+	<SubTexture name="espe down0005" x="528" y="0" width="532" height="349" frameX="-2" frameY="0" frameWidth="534" frameHeight="359"/>
+	<SubTexture name="espe down0006" x="528" y="0" width="532" height="349" frameX="-2" frameY="0" frameWidth="534" frameHeight="359"/>
+	<SubTexture name="espe down0007" x="528" y="0" width="532" height="349" frameX="-2" frameY="0" frameWidth="534" frameHeight="359"/>
+	<SubTexture name="espe down0008" x="528" y="0" width="532" height="349" frameX="-2" frameY="0" frameWidth="534" frameHeight="359"/>
+	<SubTexture name="espe down0009" x="528" y="0" width="532" height="349" frameX="-2" frameY="0" frameWidth="534" frameHeight="359"/>
+	<SubTexture name="espe down0010" x="528" y="0" width="532" height="349" frameX="-2" frameY="0" frameWidth="534" frameHeight="359"/>
+	<SubTexture name="espe down0011" x="528" y="0" width="532" height="349" frameX="-2" frameY="0" frameWidth="534" frameHeight="359"/>
+	<SubTexture name="espe down0012" x="528" y="0" width="532" height="349" frameX="-2" frameY="0" frameWidth="534" frameHeight="359"/>
+	<SubTexture name="espe down0013" x="528" y="0" width="532" height="349" frameX="-2" frameY="0" frameWidth="534" frameHeight="359"/>
+	<SubTexture name="espe idle0000" x="1060" y="0" width="581" height="386" frameX="0" frameY="0" frameWidth="585" frameHeight="386"/>
+	<SubTexture name="espe idle0001" x="1060" y="0" width="581" height="386" frameX="0" frameY="0" frameWidth="585" frameHeight="386"/>
+	<SubTexture name="espe idle0002" x="0" y="386" width="583" height="382" frameX="0" frameY="0" frameWidth="585" frameHeight="386"/>
+	<SubTexture name="espe idle0003" x="0" y="386" width="583" height="382" frameX="0" frameY="0" frameWidth="585" frameHeight="386"/>
+	<SubTexture name="espe idle0004" x="583" y="386" width="585" height="372" frameX="0" frameY="0" frameWidth="585" frameHeight="386"/>
+	<SubTexture name="espe idle0005" x="583" y="386" width="585" height="372" frameX="0" frameY="0" frameWidth="585" frameHeight="386"/>
+	<SubTexture name="espe idle0006" x="1168" y="386" width="585" height="351" frameX="0" frameY="0" frameWidth="585" frameHeight="386"/>
+	<SubTexture name="espe idle0007" x="1168" y="386" width="585" height="351" frameX="0" frameY="0" frameWidth="585" frameHeight="386"/>
+	<SubTexture name="espe idle0008" x="0" y="768" width="582" height="350" frameX="0" frameY="0" frameWidth="585" frameHeight="386"/>
+	<SubTexture name="espe idle0009" x="0" y="768" width="582" height="350" frameX="0" frameY="0" frameWidth="585" frameHeight="386"/>
+	<SubTexture name="espe idle0010" x="582" y="768" width="581" height="351" frameX="0" frameY="0" frameWidth="585" frameHeight="386"/>
+	<SubTexture name="espe idle0011" x="582" y="768" width="581" height="351" frameX="0" frameY="0" frameWidth="585" frameHeight="386"/>
+	<SubTexture name="espe idle0012" x="1163" y="768" width="581" height="351" frameX="0" frameY="0" frameWidth="585" frameHeight="386"/>
+	<SubTexture name="espe idle0013" x="1163" y="768" width="581" height="351" frameX="0" frameY="0" frameWidth="585" frameHeight="386"/>
+	<SubTexture name="espe left0000" x="0" y="1119" width="577" height="338" frameX="0" frameY="-2" frameWidth="594" frameHeight="342"/>
+	<SubTexture name="espe left0001" x="0" y="1119" width="577" height="338" frameX="0" frameY="-2" frameWidth="594" frameHeight="342"/>
+	<SubTexture name="espe left0002" x="577" y="1119" width="572" height="342" frameX="-22" frameY="0" frameWidth="594" frameHeight="342"/>
+	<SubTexture name="espe left0003" x="577" y="1119" width="572" height="342" frameX="-22" frameY="0" frameWidth="594" frameHeight="342"/>
+	<SubTexture name="espe left0004" x="577" y="1119" width="572" height="342" frameX="-22" frameY="0" frameWidth="594" frameHeight="342"/>
+	<SubTexture name="espe left0005" x="577" y="1119" width="572" height="342" frameX="-22" frameY="0" frameWidth="594" frameHeight="342"/>
+	<SubTexture name="espe left0006" x="577" y="1119" width="572" height="342" frameX="-22" frameY="0" frameWidth="594" frameHeight="342"/>
+	<SubTexture name="espe left0007" x="577" y="1119" width="572" height="342" frameX="-22" frameY="0" frameWidth="594" frameHeight="342"/>
+	<SubTexture name="espe left0008" x="577" y="1119" width="572" height="342" frameX="-22" frameY="0" frameWidth="594" frameHeight="342"/>
+	<SubTexture name="espe left0009" x="577" y="1119" width="572" height="342" frameX="-22" frameY="0" frameWidth="594" frameHeight="342"/>
+	<SubTexture name="espe left0010" x="577" y="1119" width="572" height="342" frameX="-22" frameY="0" frameWidth="594" frameHeight="342"/>
+	<SubTexture name="espe left0011" x="577" y="1119" width="572" height="342" frameX="-22" frameY="0" frameWidth="594" frameHeight="342"/>
+	<SubTexture name="espe left0012" x="577" y="1119" width="572" height="342" frameX="-22" frameY="0" frameWidth="594" frameHeight="342"/>
+	<SubTexture name="espe left0013" x="577" y="1119" width="572" height="342" frameX="-22" frameY="0" frameWidth="594" frameHeight="342"/>
+	<SubTexture name="espe o3o0000" x="1149" y="1119" width="581" height="351" frameX="-3" frameY="0" frameWidth="584" frameHeight="351"/>
+	<SubTexture name="espe o3o0001" x="1149" y="1119" width="581" height="351" frameX="-3" frameY="0" frameWidth="584" frameHeight="351"/>
+	<SubTexture name="espe o3o0002" x="0" y="1470" width="582" height="351" frameX="-2" frameY="0" frameWidth="584" frameHeight="351"/>
+	<SubTexture name="espe o3o0003" x="582" y="1470" width="582" height="351" frameX="-2" frameY="0" frameWidth="584" frameHeight="351"/>
+	<SubTexture name="espe o3o0004" x="1164" y="1470" width="583" height="351" frameX="-1" frameY="0" frameWidth="584" frameHeight="351"/>
+	<SubTexture name="espe o3o0005" x="1164" y="1470" width="583" height="351" frameX="-1" frameY="0" frameWidth="584" frameHeight="351"/>
+	<SubTexture name="espe o3o0006" x="0" y="1821" width="584" height="351"/>
+	<SubTexture name="espe o3o0007" x="0" y="1821" width="584" height="351"/>
+	<SubTexture name="espe o3o0008" x="584" y="1821" width="584" height="351"/>
+	<SubTexture name="espe o3o0009" x="584" y="1821" width="584" height="351"/>
+	<SubTexture name="espe o3o0010" x="584" y="1821" width="584" height="351"/>
+	<SubTexture name="espe o3o0011" x="584" y="1821" width="584" height="351"/>
+	<SubTexture name="espe o3o0012" x="584" y="1821" width="584" height="351"/>
+	<SubTexture name="espe o3o0013" x="584" y="1821" width="584" height="351"/>
+	<SubTexture name="espe right0000" x="1168" y="1821" width="532" height="356" frameX="-13" frameY="0" frameWidth="545" frameHeight="357"/>
+	<SubTexture name="espe right0001" x="1168" y="1821" width="532" height="356" frameX="-13" frameY="0" frameWidth="545" frameHeight="357"/>
+	<SubTexture name="espe right0002" x="0" y="2177" width="526" height="357" frameX="0" frameY="0" frameWidth="545" frameHeight="357"/>
+	<SubTexture name="espe right0003" x="0" y="2177" width="526" height="357" frameX="0" frameY="0" frameWidth="545" frameHeight="357"/>
+	<SubTexture name="espe right0004" x="0" y="2177" width="526" height="357" frameX="0" frameY="0" frameWidth="545" frameHeight="357"/>
+	<SubTexture name="espe right0005" x="0" y="2177" width="526" height="357" frameX="0" frameY="0" frameWidth="545" frameHeight="357"/>
+	<SubTexture name="espe right0006" x="0" y="2177" width="526" height="357" frameX="0" frameY="0" frameWidth="545" frameHeight="357"/>
+	<SubTexture name="espe right0007" x="0" y="2177" width="526" height="357" frameX="0" frameY="0" frameWidth="545" frameHeight="357"/>
+	<SubTexture name="espe right0008" x="0" y="2177" width="526" height="357" frameX="0" frameY="0" frameWidth="545" frameHeight="357"/>
+	<SubTexture name="espe right0009" x="0" y="2177" width="526" height="357" frameX="0" frameY="0" frameWidth="545" frameHeight="357"/>
+	<SubTexture name="espe right0010" x="0" y="2177" width="526" height="357" frameX="0" frameY="0" frameWidth="545" frameHeight="357"/>
+	<SubTexture name="espe right0011" x="0" y="2177" width="526" height="357" frameX="0" frameY="0" frameWidth="545" frameHeight="357"/>
+	<SubTexture name="espe right0012" x="0" y="2177" width="526" height="357" frameX="0" frameY="0" frameWidth="545" frameHeight="357"/>
+	<SubTexture name="espe right0013" x="0" y="2177" width="526" height="357" frameX="0" frameY="0" frameWidth="545" frameHeight="357"/>
+	<SubTexture name="espe up0000" x="526" y="2177" width="522" height="351" frameX="0" frameY="0" frameWidth="537" frameHeight="378"/>
+	<SubTexture name="espe up0001" x="526" y="2177" width="522" height="351" frameX="0" frameY="0" frameWidth="537" frameHeight="378"/>
+	<SubTexture name="espe up0002" x="1048" y="2177" width="535" height="366" frameX="-2" frameY="-12" frameWidth="537" frameHeight="378"/>
+	<SubTexture name="espe up0003" x="1048" y="2177" width="535" height="366" frameX="-2" frameY="-12" frameWidth="537" frameHeight="378"/>
+	<SubTexture name="espe up0004" x="1048" y="2177" width="535" height="366" frameX="-2" frameY="-12" frameWidth="537" frameHeight="378"/>
+	<SubTexture name="espe up0005" x="1048" y="2177" width="535" height="366" frameX="-2" frameY="-12" frameWidth="537" frameHeight="378"/>
+	<SubTexture name="espe up0006" x="1048" y="2177" width="535" height="366" frameX="-2" frameY="-12" frameWidth="537" frameHeight="378"/>
+	<SubTexture name="espe up0007" x="1048" y="2177" width="535" height="366" frameX="-2" frameY="-12" frameWidth="537" frameHeight="378"/>
+	<SubTexture name="espe up0008" x="1048" y="2177" width="535" height="366" frameX="-2" frameY="-12" frameWidth="537" frameHeight="378"/>
+	<SubTexture name="espe up0009" x="1048" y="2177" width="535" height="366" frameX="-2" frameY="-12" frameWidth="537" frameHeight="378"/>
+	<SubTexture name="espe up0010" x="1048" y="2177" width="535" height="366" frameX="-2" frameY="-12" frameWidth="537" frameHeight="378"/>
+	<SubTexture name="espe up0011" x="1048" y="2177" width="535" height="366" frameX="-2" frameY="-12" frameWidth="537" frameHeight="378"/>
+	<SubTexture name="espe up0012" x="1048" y="2177" width="535" height="366" frameX="-2" frameY="-12" frameWidth="537" frameHeight="378"/>
+	<SubTexture name="espe up0013" x="1048" y="2177" width="535" height="366" frameX="-2" frameY="-12" frameWidth="537" frameHeight="378"/>
+</TextureAtlas>

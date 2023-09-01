@@ -1,0 +1,34 @@
+{
+    "ANIMATION": {
+        "name": "Sem título-1",
+        "SYMBOL_name": "missingFilePacker",
+        "TIMELINE": {
+            "LAYERS": [
+                {
+                    "Layer_name": "Camada_1",
+                    "Frames": [
+                        {
+                            "name": "Missing Files",
+                            "index": 0,
+                            "duration": 1,
+                            "elements": [
+                                {
+                                    "ATLAS_SPRITE_instance": {
+                                        "name": "0000",
+                                        "Position": {
+                                            "x": -116,
+                                            "y": -157
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "metadata": {
+        "framerate": 24
+    }
+}

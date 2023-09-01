@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="espeDj.png">
+	<!-- Created with Adobe Animate version 19.0.0.326 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="espe dj0000" x="0" y="0" width="944" height="535" frameX="0" frameY="-5" frameWidth="948" frameHeight="540"/>
+	<SubTexture name="espe dj0001" x="0" y="0" width="944" height="535" frameX="0" frameY="-5" frameWidth="948" frameHeight="540"/>
+	<SubTexture name="espe dj0002" x="0" y="535" width="944" height="537" frameX="-3" frameY="-2" frameWidth="948" frameHeight="540"/>
+	<SubTexture name="espe dj0003" x="0" y="535" width="944" height="537" frameX="-3" frameY="-2" frameWidth="948" frameHeight="540"/>
+	<SubTexture name="espe dj0004" x="0" y="1072" width="944" height="539" frameX="-4" frameY="0" frameWidth="948" frameHeight="540"/>
+	<SubTexture name="espe dj0005" x="0" y="1072" width="944" height="539" frameX="-4" frameY="0" frameWidth="948" frameHeight="540"/>
+	<SubTexture name="espe dj0006" x="0" y="1072" width="944" height="539" frameX="-4" frameY="0" frameWidth="948" frameHeight="540"/>
+	<SubTexture name="espe dj0007" x="0" y="1072" width="944" height="539" frameX="-4" frameY="0" frameWidth="948" frameHeight="540"/>
+	<SubTexture name="espe dj0008" x="0" y="1072" width="944" height="539" frameX="-4" frameY="0" frameWidth="948" frameHeight="540"/>
+	<SubTexture name="espe dj0009" x="0" y="1072" width="944" height="539" frameX="-4" frameY="0" frameWidth="948" frameHeight="540"/>
+	<SubTexture name="espe dj0010" x="0" y="1072" width="944" height="539" frameX="-4" frameY="0" frameWidth="948" frameHeight="540"/>
+	<SubTexture name="espe dj0011" x="0" y="1072" width="944" height="539" frameX="-4" frameY="0" frameWidth="948" frameHeight="540"/>
+	<SubTexture name="espe dj0012" x="0" y="1072" width="944" height="539" frameX="-4" frameY="0" frameWidth="948" frameHeight="540"/>
+	<SubTexture name="espe dj0013" x="0" y="1072" width="944" height="539" frameX="-4" frameY="0" frameWidth="948" frameHeight="540"/>
+	<SubTexture name="espe dj0014" x="0" y="1072" width="944" height="539" frameX="-4" frameY="0" frameWidth="948" frameHeight="540"/>
+</TextureAtlas>

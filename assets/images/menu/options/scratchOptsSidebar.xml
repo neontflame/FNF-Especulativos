@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="scratchOptsSidebar.png">
+	<!-- Created with Adobe Animate version 19.0.0.326 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="input idle0000" x="0" y="0" width="328" height="51"/>
+	<SubTexture name="input selected0000" x="0" y="51" width="328" height="51"/>
+	<SubTexture name="misc idle0000" x="0" y="102" width="328" height="51"/>
+	<SubTexture name="misc selected0000" x="0" y="153" width="328" height="51"/>
+	<SubTexture name="video idle0000" x="0" y="204" width="328" height="51"/>
+	<SubTexture name="video selected0000" x="0" y="255" width="328" height="51"/>
+</TextureAtlas>
