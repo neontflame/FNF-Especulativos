@@ -299,6 +299,26 @@ class Character extends FlxSprite
 				iconName = "yotsuba";
 				charOffsetArray = [0, 300];
 
+			case 'narigao':
+				// nariz man
+				frames = Paths.getSparrowAtlas("qen/narigao");
+				animation.addByPrefix('idle', 'narigao idle', 24, false);
+				animation.addByPrefix('singUP', 'narigao up', 24, false);
+				animation.addByPrefix('singRIGHT', 'narigao right', 24, false);
+				animation.addByPrefix('singDOWN', 'narigao down', 24, false);
+				animation.addByPrefix('singLEFT', 'narigao left', 24, false);
+				
+				addOffset('idle');
+				addOffset("singDOWN", 23, -102);
+				addOffset("singRIGHT", -41, -38);
+				addOffset("singUP", -60, 196);
+				addOffset("singLEFT", 379, 5);
+				
+				playAnim('idle');
+
+				iconName = "narigao";
+				charOffsetArray = [-24, 290];
+				
 			case 'spooky':
 				frames = Paths.getSparrowAtlas("week2/spooky_kids_assets");
 				animation.addByPrefix('singUP', 'spooky UP NOTE', 24, false);

@@ -47,8 +47,9 @@ class FreeplayState extends MusicBeatState
 		curSelected = 0;
 		curLimit = 0;
 		
-		addWeek(['Tutorial'], 1, ['gf-menu']);
-		addWeek(['Bopeebo', 'Fresh', 'Dadbattle'], 1, ['dad']);
+		if (CoolUtil.exists("assets/images/week1"))
+			addWeek(['Tutorial'], 1, ['gf-menu']);
+			addWeek(['Bopeebo', 'Fresh', 'Dadbattle'], 1, ['dad']);
 
 		if (CoolUtil.exists("assets/images/week2"))
 			addWeek(['Spookeez', 'South', 'Monster'], 2, ['spooky', 'spooky', "monster"]);
@@ -70,7 +71,7 @@ class FreeplayState extends MusicBeatState
 
 		// eu quero ver quem q vai ser o louco q vai deixar o mod absolutamente vazio sem Nada
 		if (CoolUtil.exists("assets/images/especula"))
-			addWeek(['Hihi'], 8, ['espe']);
+			addWeek(['Hihi', 'Tres-Bofetadas'], 8, ['espe']);
 			
 		if (CoolUtil.exists("assets/images/scdm"))
 			addWeek(['Do-Mal'], 9, ['scdm']);

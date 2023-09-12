@@ -68,7 +68,17 @@ class CoolUtil
 		return Assets.exists(path);
 		#end
 	}
-
+	
+	// Same as above but for getting text from a file.
+	public static function getText(path:String):String
+	{
+		#if desktop
+		return File.getContent(path);
+		#else
+		return Assets.getText(path);
+		#end
+	}
+	
 	public static function chartExists(songName:String, curDifficulty:Int):Bool
 	{
 		var difString:String = '';
@@ -200,13 +210,23 @@ class CoolUtil
 		trace(everyoneIsHere);
 	}
 
-	// Same as above but for getting text from a file.
-	public static function getText(path:String):String
+	public static function weekExists(weekNum:Int):Bool
 	{
-		#if desktop
-		return File.getContent(path);
-		#else
-		return Assets.getText(path);
-		#end
+		// isso aqui e uma gambiarra um pouco menor mas ainda assim bolamos
+		var weekCheck:String = "week1";
+		
+		switch (weekNum)
+		{
+			case 0: 
+				weekCheck = "week1";
+			case 8: // ESPE
+				weekCheck = "especula";
+			case 9: // SCDM
+				weekCheck = "scdm";
+			default:
+				weekCheck = "week" + weekNum;
+		}
+
+		return exists('assets/images/' + weekCheck + '/');
 	}
 }

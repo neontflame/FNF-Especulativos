@@ -13,6 +13,7 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.net.curl.CURLCode;
 import usefulshits.ProjectSprite;
+import CoolUtil;
 
 using StringTools;
 
@@ -58,7 +59,8 @@ class StoryMenuState extends MusicBeatState
 			['satin-panties', "high", "milf"],
 			['cocoa', 'eggnog', 'winter-horrorland'],
 			['senpai', 'roses', 'thorns'],
-			['ugh', 'guns', 'stress']
+			['ugh', 'guns', 'stress'],
+			['hihi', 'tres-bofetadas', 'dragons']
 		];
 
 		weekCharacters = [
@@ -69,11 +71,25 @@ class StoryMenuState extends MusicBeatState
 			['mom', 'bf', 'gf'],
 			['parents-christmas', 'bf', 'gf'],
 			['senpai', 'bf', 'gf'],
-			['tankman', 'bf', 'gf']
+			['tankman', 'bf', 'gf'],
+			['espe', 'bf', 'gf']
 		];
 
 		weekNames = CoolUtil.coolTextFile(Paths.text("weekNames"));
 
+		// eliminate all the weeks that dont exist in files lel
+		for (i in new ReverseIterator(weekData.length - 1, 0)) {
+			// trace('does week ' + i + ' exist');
+			if (!CoolUtil.weekExists(i)) {
+				// trace('it doesnt :(');
+				weekData.splice(i, 1);
+				weekCharacters.splice(i, 1);
+				weekNames.splice(i, 1);
+			} else {
+				// trace('it does :)');
+			}
+		}
+		
 		if (FlxG.sound.music == null)
 		{
 			FlxG.sound.playMusic(Paths.music("coolMenu"), 1);
@@ -81,6 +97,14 @@ class StoryMenuState extends MusicBeatState
 
 		persistentUpdate = persistentDraw = true;
 
+		var bg:FlxSprite = new FlxSprite(0).loadGraphic(Paths.image('menu/scratchBG'));
+		bg.scrollFactor.x = 0;
+		bg.scrollFactor.y = 0;
+		bg.updateHitbox();
+		bg.screenCenter();
+		bg.antialiasing = true;
+		add(bg);
+		
 		scoreText = new FlxText(994, 165, 0, "SCORE: 49324858", 12);
 		scoreText.setFormat(Paths.font("arialbd"), 12, 0xFF333333);
 
@@ -150,10 +174,8 @@ class StoryMenuState extends MusicBeatState
 
 		trace("Line 199");
 
-		txtTracklist = new FlxText(FlxG.width * 0.05, storyMenuThing.x + storyMenuThing.height + 100, 0, "Tracks", 32);
-		txtTracklist.alignment = CENTER;
-		txtTracklist.font = rankText.font;
-		txtTracklist.color = 0xFFe55777;
+		txtTracklist = new FlxText(474, 161, 0, "Músicas (?)", 15);
+		txtTracklist.setFormat(Paths.font("arialbd"), 15, 0xFF333333);
 		add(txtTracklist);
 		// add(rankText);
 		add(scoreText);
@@ -164,6 +186,7 @@ class StoryMenuState extends MusicBeatState
 		trace("Line 215");
 		
 		changeWeek();
+		
 		super.create();
 	}
 
@@ -330,29 +353,32 @@ class StoryMenuState extends MusicBeatState
 
 	function updateText()
 	{
-
-		txtTracklist.text = "Tracks\n";
-
 		var stringThing:Array<String> = weekData[curWeek];
+		txtTracklist.text = "Músicas (" + stringThing.length + ")";
+		
 		grpProjectShits.clear();
 		
 		for (i in stringThing)
 		{
-			txtTracklist.text += "\n" + i;
-			
 			var bosta:ProjectSprite = new ProjectSprite(438 + (216 * stringThing.indexOf(i)), 204, "menu/freeplay/songs/" + i);
 			grpProjectShits.add(bosta);
 		}
-
-		txtTracklist.text += "\n";
-
-		txtTracklist.text = txtTracklist.text.toUpperCase();
-
-		txtTracklist.screenCenter(X);
-		txtTracklist.x -= FlxG.width * 0.35;
 
 		#if !switch
 		intendedScore = Highscore.getWeekScore(curWeek, curDifficulty);
 		#end
 	}
+}
+
+class ReverseIterator {
+  var end:Int;
+  var i:Int;
+
+  public inline function new(start:Int, end:Int) {
+    this.i = start;
+    this.end = end;
+  }
+
+  public inline function hasNext() return i >= end;
+  public inline function next() return i--;
 }

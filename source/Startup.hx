@@ -162,6 +162,10 @@ class Startup extends FlxState
 		if (FlxG.random.int(0, 85) == 85) 
 			lmfaoTrolled = true;
 			
+		var bg:FlxSprite = new FlxSprite();
+		bg.makeGraphic(FlxG.width, FlxG.height, 0xFF959595);
+		add(bg);
+
 		var scratchThing = new FlxSprite(330 - 10, 221 - 10);
 		scratchThing.loadGraphic(Paths.image('fpsPlus/loading/modCarregando'));
 		add(scratchThing);

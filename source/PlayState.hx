@@ -102,6 +102,8 @@ class PlayState extends MusicBeatState
 	public static final evilSchoolSongs = ["thorns"];
 	public static final pixelSongs = ["senpai", "roses", "thorns"];
 	public static final tankSongs = ["ugh", "guns", "stress"];
+	
+	public static final scratchSongs = ["hihi", "tres-bofetadas", "dragons", "do-mal"];
 
 	private var camFocus:String = "";
 	private var camTween:FlxTween;
@@ -206,9 +208,28 @@ class PlayState extends MusicBeatState
 
 	var talking:Bool = true;
 	var songScore:Int = 0;
+	
+	//UIs
+	//default UI
 	var scoreTxt:FlxText;
 	var kadeEngineWatermark:FlxText;
 	var autoplayText:FlxText;
+	
+	//scratch UI
+	/* de agora em diante eu peço minhas 
+	mais sinceras desculpas por qualquer 
+	ocasiao de codigo bosta que rolar aqui 
+					- neon
+	*/
+	var scoreScratchTxt:FlxText;
+	var missesScratchTxt:FlxText;
+	var ratingScratchTxt:FlxText;
+	
+	var scoreScratchBG:FlxSprite;
+	var missesScratchBG:FlxSprite;
+	var ratingScratchBG:FlxSprite;
+	
+	//end UIs
 	
 	public static var campaignScore:Int = 0;
 
@@ -644,7 +665,9 @@ class PlayState extends MusicBeatState
 		healthBar.createFilledBar(dad.characterColor, boyfriend.characterColor);
 		healthBar.antialiasing = true;
 		// healthBar
-
+		
+		//////// CUSTOM UIs
+		//// DEFAULT UI
 		// Add Kade Engine watermark
 		kadeEngineWatermark = new FlxText(4,healthBarBG.y + 50,0, curSong + " " + (storyDifficulty == 2 ? "Hard" : storyDifficulty == 1 ? "Normal" : "Easy") + " - FPS+ 4.1.0", 16);
 		kadeEngineWatermark.setFormat(Paths.font("vcr"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
@@ -653,13 +676,7 @@ class PlayState extends MusicBeatState
 		scoreTxt = new FlxText(healthBarBG.x - 105, healthBarBG.y + 50, 800, "", 16);
 		scoreTxt.setFormat(Paths.font("vcr"), 16, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
-
-		iconP1 = new HealthIcon(boyfriend.iconName, true);
-		iconP1.y = healthBar.y - (iconP1.height / 2);
-
-		iconP2 = new HealthIcon(dad.iconName, false);
-		iconP2.y = healthBar.y - (iconP2.height / 2);
-
+		
 		// botplay text
 		autoplayText = new FlxText(healthBarBG.x, healthBarBG.y - 50,0, "AUTOPLAY", 32);
 		autoplayText.setFormat(Paths.font("vcr"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
@@ -667,12 +684,63 @@ class PlayState extends MusicBeatState
 		autoplayText.visible = false;
 		autoplayText.screenCenter(X);
 		
+		
+		//// SCRATCH UI
+		scoreScratchBG = new FlxSprite(400, healthBarBG.y + 35).loadGraphic(Paths.image("ui/scratchUI/scoreCount"));
+		scoreScratchBG.scrollFactor.set();
+		scoreScratchBG.antialiasing = true;
+		
+		ratingScratchBG = new FlxSprite(400, healthBarBG.y + 39).loadGraphic(Paths.image("ui/scratchUI/standaloneVariable"));
+		ratingScratchBG.scrollFactor.set();
+		ratingScratchBG.antialiasing = true;
+		ratingScratchBG.screenCenter(X);
+		
+		missesScratchBG = new FlxSprite(721, healthBarBG.y + 35).loadGraphic(Paths.image("ui/scratchUI/missesCount"));
+		missesScratchBG.scrollFactor.set();
+		missesScratchBG.antialiasing = true;
+		
+		scoreScratchTxt = new FlxText(scoreScratchBG.x + 70, scoreScratchBG.y + 7, 79, "0000000", 20);
+		scoreScratchTxt.setFormat(Paths.font("arialbd"), 20, FlxColor.WHITE, FlxTextAlign.CENTER);
+		scoreScratchTxt.scrollFactor.set();
+		scoreScratchTxt.antialiasing = true;
+
+		ratingScratchTxt = new FlxText(ratingScratchBG.x, ratingScratchBG.y, 0, "teeeeeest", 26);
+		ratingScratchTxt.setFormat(Paths.font("arialbd"), 26, FlxColor.WHITE, FlxTextAlign.CENTER);
+		ratingScratchTxt.scrollFactor.set();
+		ratingScratchTxt.screenCenter(X);
+		ratingScratchTxt.antialiasing = true;
+		
+		missesScratchTxt = new FlxText(missesScratchBG.x + 88, missesScratchBG.y + 7, 79, "0000000", 20);
+		missesScratchTxt.setFormat(Paths.font("arialbd"), 20, FlxColor.WHITE, FlxTextAlign.CENTER);
+		missesScratchTxt.scrollFactor.set();
+		missesScratchTxt.antialiasing = true;
+		
+		//////// END CUSTOM UIs
+		
+		iconP1 = new HealthIcon(boyfriend.iconName, true);
+		iconP1.y = healthBar.y - (iconP1.height / 2);
+
+		iconP2 = new HealthIcon(dad.iconName, false);
+		iconP2.y = healthBar.y - (iconP2.height / 2);
+		
 		add(healthBar);
 		add(iconP2);
 		add(iconP1);
-		add(scoreTxt);
-		add(kadeEngineWatermark);
+		
+		if (!scratchSongs.contains(SONG.song.toLowerCase())) {
+			add(scoreTxt);
+			add(kadeEngineWatermark);
+		}
 		add(autoplayText);
+		
+		if (scratchSongs.contains(SONG.song.toLowerCase())) {
+			add(scoreScratchBG);
+			add(ratingScratchBG);
+			add(missesScratchBG);
+			add(scoreScratchTxt);
+			add(ratingScratchTxt);
+			add(missesScratchTxt);
+		}
 		
 		strumLineNotes.cameras = [camHUD];
 		notes.cameras = [camHUD];
@@ -681,9 +749,23 @@ class PlayState extends MusicBeatState
 		healthBarBG.cameras = [camHUD];
 		iconP1.cameras = [camHUD];
 		iconP2.cameras = [camHUD];
-		scoreTxt.cameras = [camHUD];
-		kadeEngineWatermark.cameras = [camHUD];
+		
+		if (!scratchSongs.contains(SONG.song.toLowerCase())) {
+			scoreTxt.cameras = [camHUD];
+			kadeEngineWatermark.cameras = [camHUD];
+		}
+		
 		autoplayText.cameras = [camHUD];
+		
+		if (scratchSongs.contains(SONG.song.toLowerCase())) {
+			scoreScratchBG.cameras = [camHUD];
+			ratingScratchBG.cameras = [camHUD];
+			missesScratchBG.cameras = [camHUD];
+			
+			scoreScratchTxt.cameras = [camHUD];
+			ratingScratchTxt.cameras = [camHUD];
+			missesScratchTxt.cameras = [camHUD];
+		}
 		
 		doof.cameras = [camHUD];
 		
@@ -691,8 +773,20 @@ class PlayState extends MusicBeatState
 		healthBarBG.visible = false;
 		iconP1.visible = false;
 		iconP2.visible = false;
-		scoreTxt.visible = false;
-		kadeEngineWatermark.visible = false;
+		
+		if (!scratchSongs.contains(SONG.song.toLowerCase())) {
+			scoreTxt.visible = false;
+			kadeEngineWatermark.visible = false;
+		}
+		
+		if (scratchSongs.contains(SONG.song.toLowerCase())) {
+			scoreScratchBG.visible = false;
+			ratingScratchBG.visible = false;
+			missesScratchBG.visible = false;
+			scoreScratchTxt.visible = false;
+			ratingScratchTxt.visible = false;
+			missesScratchTxt.visible = false;
+		}
 		
 		// if (SONG.song == 'South')
 		// FlxG.camera.alpha = 0.7;
@@ -1099,8 +1193,21 @@ class PlayState extends MusicBeatState
 		healthBarBG.visible = true;
 		iconP1.visible = true;
 		iconP2.visible = true;
-		scoreTxt.visible = true;
-		kadeEngineWatermark.visible = true;
+		
+		if (!scratchSongs.contains(SONG.song.toLowerCase())) {
+			scoreTxt.visible = true;
+			kadeEngineWatermark.visible = true;
+		}
+		
+		if (scratchSongs.contains(SONG.song.toLowerCase())) {
+			scoreScratchBG.visible = true;
+			ratingScratchBG.visible = true;
+			missesScratchBG.visible = true;
+			
+			scoreScratchTxt.visible = true;
+			ratingScratchTxt.visible = true;
+			missesScratchTxt.visible = true;
+		}
 		
 		generateStaticArrows(0);
 		generateStaticArrows(1);
@@ -1636,7 +1743,16 @@ class PlayState extends MusicBeatState
 		{
 			autoplay = !autoplay;
 			usedAutoplay = true;
+			
 			scoreTxt.visible = !autoplay;
+			
+			scoreScratchBG.visible = !autoplay;
+			ratingScratchBG.visible = !autoplay;
+			missesScratchBG.visible = !autoplay;
+			scoreScratchTxt.visible = !autoplay;
+			ratingScratchTxt.visible = !autoplay;
+			missesScratchTxt.visible = !autoplay;
+			
 			autoplayText.visible = autoplay;
 		}
 
@@ -1668,19 +1784,49 @@ class PlayState extends MusicBeatState
 
 		super.update(elapsed);
 
+		scoreScratchTxt.text = Std.string(songScore);
+		
 		switch (Config.accuracy)
 		{
 			case "none":
 				scoreTxt.text = "Score:" + songScore + " | " + textRating;
+				ratingScratchTxt.text = textRating;
+				if (Config.showComboBreaks)
+				{
+					missesScratchTxt.text = Std.string(comboBreaks);
+				}
+				else
+				{
+					missesScratchTxt.text = Std.string(misses);
+				}
 			default:
+				if (curBeat % 4 < 2) {
+				ratingScratchTxt.text = truncateFloat(accuracy, 2) + "%";
+				} else {
+				ratingScratchTxt.text = textRating;
+				}
+				
 				if (Config.showComboBreaks)
 				{
 					scoreTxt.text = "Score:" + songScore + " | Combo Breaks:" + comboBreaks + " | Accuracy:" + truncateFloat(accuracy, 2) + "% | " + textRating;
+					missesScratchTxt.text = Std.string(comboBreaks);
 				}
 				else
 				{
 					scoreTxt.text = "Score:" + songScore + " | Misses:" + misses + " | Accuracy:" + truncateFloat(accuracy, 2) + "% | " + textRating;
+					missesScratchTxt.text = Std.string(misses);
 				}
+		}
+		
+		if (ratingScratchTxt.width > 119)
+		{
+			ratingScratchTxt.scale.x = 119 / ratingScratchTxt.width;
+			ratingScratchTxt.x = 579 - ((ratingScratchTxt.width - 119) / 2);
+		}
+		else
+		{
+			ratingScratchTxt.scale.x = 1;
+			ratingScratchTxt.screenCenter(X);
 		}
 
 		if (controls.PAUSE && startedCountdown && canPause)

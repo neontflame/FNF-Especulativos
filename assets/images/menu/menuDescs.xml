@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="menuDescs.png">
+	<!-- Created with Adobe Animate version 19.0.0.326 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="desc story mode" x="0" y="0" width="607" height="257" frameX="0" frameY="0" frameWidth="631" frameHeight="257"/>
+	<SubTexture name="desc freeplay" x="0" y="257" width="618" height="257" frameX="0" frameY="0" frameWidth="631" frameHeight="257"/>
+	<SubTexture name="desc options" x="0" y="514" width="631" height="222" frameX="0" frameY="0" frameWidth="631" frameHeight="257"/>
+	<SubTexture name="desc secrets" x="0" y="736" width="602" height="221" frameX="0" frameY="0" frameWidth="631" frameHeight="257"/>
+</TextureAtlas>

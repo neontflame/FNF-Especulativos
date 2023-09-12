@@ -29,6 +29,8 @@ class MainMenuState extends MusicBeatState
 	var versionText:FlxText;
 	var keyWarning:FlxText;
 	var tabDisplay:FlxText;
+	var menuDesc:FlxSprite;
+	var menuAwesomes:FlxSprite;
 	
 	override function create()
 	{
@@ -55,7 +57,38 @@ class MainMenuState extends MusicBeatState
 
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
+	
+		// start menu art and desc
+		// menu description
+		menuDesc = new FlxSprite(59, 131);
+		menuDesc.frames = Paths.getSparrowAtlas('menu/menuDescs');
 
+		for (i in 0...optionShit.length) {
+			menuDesc.animation.addByPrefix(optionShit[i], "desc " + optionShit[i], 24);
+		}
+		menuDesc.animation.addByPrefix('secrets', "desc secrets", 24);
+		
+		menuDesc.animation.play(optionShit[0]);
+		add(menuDesc);
+		menuDesc.scrollFactor.set();
+		menuDesc.antialiasing = true;
+		
+		// menu art
+		menuAwesomes = new FlxSprite(699, 131);
+		menuAwesomes.frames = Paths.getSparrowAtlas('menu/menuAwesomes');
+
+		for (i in 0...optionShit.length) {
+			menuAwesomes.animation.addByPrefix(optionShit[i], "menu " + optionShit[i], 24);
+		}
+		menuAwesomes.animation.addByPrefix('secrets', "menu secrets", 24);
+		
+		menuAwesomes.animation.play(optionShit[0]);
+		add(menuAwesomes);
+		menuAwesomes.scrollFactor.set();
+		menuAwesomes.antialiasing = true;
+		
+		// end menu art and desc
+		
 		var tex = Paths.getSparrowAtlas('menu/headerStuffs');
 
 		for (i in 0...optionShit.length)
@@ -124,19 +157,35 @@ class MainMenuState extends MusicBeatState
 		{
 			if (FlxG.keys.pressed.TAB)
 			{
+				menuDesc.animation.play('secrets');
+				menuAwesomes.animation.play('secrets');
+				
 				tabDisplay.visible = true;
 				
 				if (FlxG.keys.justPressed.ANY)
 				{
 					if (FlxG.keys.getIsDown()[0].ID.toString() != "TAB")
 					{
-						tabKeys.push(FlxG.keys.getIsDown()[0].ID.toString());
+						var numberShits:Array<String> = ["ZERO", "ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN", "EIGHT", "NINE"];
+						var numpadShits:Array<String> = ["NUMPADZERO", "NUMPADONE", "NUMPADTWO", "NUMPADTHREE", "NUMPADFOUR", "NUMPADFIVE", "NUMPADSIX", "NUMPADSEVEN", "NUMPADEIGHT", "NUMPADNINE"];
+						
+						// mtos parenteses
+						if (numpadShits.contains(FlxG.keys.getIsDown()[0].ID.toString())) {
+							tabKeys.push(Std.string(numpadShits.indexOf(FlxG.keys.getIsDown()[0].ID.toString())));
+						} else if (numberShits.contains(FlxG.keys.getIsDown()[0].ID.toString())) {
+							tabKeys.push(Std.string(numberShits.indexOf(FlxG.keys.getIsDown()[0].ID.toString())));
+						} else {
+							tabKeys.push(FlxG.keys.getIsDown()[0].ID.toString());
+						}
 						tabDisplay.text = Std.string(tabKeys);
 					}
 				}
 			}
 			else
 			{	
+				menuDesc.animation.play(optionShit[curSelected]);
+				menuAwesomes.animation.play(optionShit[curSelected]);
+				
 				tabDisplay.visible = false;
 				
 				if (controls.LEFT_P)
@@ -182,7 +231,7 @@ class MainMenuState extends MusicBeatState
 					if (!FlxG.keys.pressed.TAB)
 					{
 						var daChoice:String = optionShit[curSelected];
-
+						
 						switch (daChoice)
 						{
 							case 'freeplay':
@@ -263,10 +312,14 @@ class MainMenuState extends MusicBeatState
 				openAlert('yotsubaAlert');
 				selectedSomethin = false;
 			case "JOLITAAS":
-				// pra quem tiver lendo esse comentario leia yotsuba&! 
-				// assinado, neon
+				// queixones e narigoles
 				trace('fnfolas e real');
 				openAlert('qenAlert');
+				selectedSomethin = false;
+			case "595313131313131":
+				// lmfao
+				trace('ufs referencia detected');
+				openAlert('ultUnlock');
 				selectedSomethin = false;
 			default:
 				trace('cade');
@@ -288,7 +341,7 @@ class MainMenuState extends MusicBeatState
 	}
 	
 	function changeItem(huh:Int = 0)
-	{
+	{	
 		curSelected += huh;
 
 		if (curSelected >= menuItems.length)
