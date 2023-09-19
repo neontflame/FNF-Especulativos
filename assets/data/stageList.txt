@@ -1,4 +1,6 @@
 Stage
+CoisasBar
+AdicioneVoce
 Spooky
 Philly
 Limo
@@ -7,4 +9,3 @@ MallEvil
 School
 SchoolEvil
 Tank
-AdicioneVoce

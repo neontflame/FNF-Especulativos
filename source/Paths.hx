@@ -56,7 +56,31 @@ class Paths
 	{
 		return file(key, location, "txt");
 	}
+	
+	#if EXPERIMENTAL_LUA
+	// lua stuff
+	inline static public function lua(key:String, ?location:String = "data")
+	{
+		return file(key, location, "lua");
+	}
 
+	inline static public function luaImage(key:String, ?location:String = "data", forceLoadFromDisk:Bool = false):Dynamic
+	{
+		var data:String = file(key, location, "png");
+
+		if (ImageCache.exists(data) && !forceLoadFromDisk)
+		{
+			// trace(key + " is in the cache");
+			return ImageCache.get(data);
+		}
+		else
+		{
+			// trace(key + " loading from file");
+			return data;
+		}
+	}
+	#end
+	
 	inline static public function json(key:String, ?location:String = "data")
 	{
 		return file(key, location, "json");

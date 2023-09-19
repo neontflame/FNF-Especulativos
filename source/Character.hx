@@ -86,6 +86,23 @@ class Character extends FlxSprite
 
 				iconName = "gf";
 
+			case 'gf-bar':
+				// GIRLFRIEND (bar) CODE
+				frames = Paths.getSparrowAtlas("especula/girlfriendBar");
+				animation.addByPrefix('cheer', 'GF Cheer', 24, false);
+				animation.addByIndices('sad', 'gf sad', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "", 24, false);
+				animation.addByIndices('danceLeft', 'GF Dancing Beat', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
+				animation.addByIndices('danceRight', 'GF Dancing Beat', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+
+				addOffset('cheer', -74, 0);
+				addOffset('sad', -76, -22);
+				addOffset('danceLeft', 0, -9);
+				addOffset('danceRight', 0, -9);
+				
+				playAnim('danceRight');
+
+				iconName = "gf";
+				
 			case 'gf-christmas':
 				frames = Paths.getSparrowAtlas("week5/gfChristmas");
 				animation.addByPrefix('cheer', 'GF Cheer', 24, false);
@@ -253,8 +270,8 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 				iconName = "espe";
-				charOffsetArray = [0, 100];
-
+				charOffsetArray = [0, 110];
+				cameraOffsetArray = [250, 25];
 			case 'scdm':
 				// tambem conhecido como esc na gringa
 				frames = Paths.getSparrowAtlas("scdm/scdm");
@@ -1017,7 +1034,7 @@ class Character extends FlxSprite
 
 			switch (curCharacter)
 			{
-				case 'gf' | 'gf-car' | 'gf-christmas' | 'gf-pixel' | "gf-tankmen":
+				case 'gf' | 'gf-bar' | 'gf-car' | 'gf-christmas' | 'gf-pixel' | "gf-tankmen":
 					if (!animation.curAnim.name.startsWith('hair'))
 					{
 						danced = !danced;
@@ -1051,7 +1068,7 @@ class Character extends FlxSprite
 		{
 			switch (curCharacter)
 			{
-				case 'gf' | 'gf-car' | 'gf-christmas' | 'gf-pixel' | "spooky" | "gf-tankmen":
+				case 'gf' | 'gf-bar' | 'gf-car' | 'gf-christmas' | 'gf-pixel' | "spooky" | "gf-tankmen":
 					playAnim('danceRight', true, false, animation.getByName('danceRight').numFrames - 1);
 				case "pico-speaker":
 					playAnim(animation.curAnim.name, true, false, animation.getByName(animation.curAnim.name).numFrames - 1);

@@ -26,7 +26,7 @@ using StringTools;
 class Startup extends FlxState
 {
 
-    var nextState:FlxState = new TitleIntroText();
+    var nextState:FlxState = new TitleHaxeSplash();
 
     var loadingBar:FlxBar;
     var loadingText:FlxText;

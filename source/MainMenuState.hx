@@ -113,7 +113,7 @@ class MainMenuState extends MusicBeatState
 		footer.updateHitbox();
 		add(footer);
 
-		versionText = new FlxText(5, FlxG.height - 21, 0, "Vs. Espe indev / FPS Plus: v4.1.0", 16);
+		versionText = new FlxText(5, FlxG.height - 21, 0, "Vs. Espe: v1.0 (Inicial) / FPS Plus: v4.1.0-custom", 16);
 		versionText.scrollFactor.set();
 		versionText.setFormat("Arial", 16, 0xFF343434, LEFT);
 		add(versionText);
@@ -305,10 +305,14 @@ class MainMenuState extends MusicBeatState
 				trace('epico deu certo');
 				openAlert();
 				selectedSomethin = false;
+			case "FINALBUILD":
+				trace('PARA de tentar OLHAR leaks do FNF: The Full Ass Game');
+				openAlert('deskinned');
+				selectedSomethin = false;
 			case "ENJOYEVERYTHING":
 				// pra quem tiver lendo esse comentario leia yotsuba&! 
 				// assinado, neon
-				trace('yotsu');
+				trace('leia yotsubato');
 				openAlert('yotsubaAlert');
 				selectedSomethin = false;
 			case "JOLITAAS":

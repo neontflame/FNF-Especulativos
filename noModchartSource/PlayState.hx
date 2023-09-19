@@ -3,25 +3,6 @@ package;
 #if sys
 import sys.FileSystem;
 #end
-
-#if EXPERIMENTAL_LUA
-import openfl.geom.Matrix;
-import openfl.display.BitmapData;
-// import openfl.utils.AssetType;
-import lime.graphics.Image;
-import flixel.graphics.FlxGraphic;
-import openfl.utils.AssetManifest;
-import openfl.utils.AssetLibrary;
-import flixel.system.FlxAssets;
-import llua.Convert;
-import llua.Lua;
-import llua.State;
-import llua.LuaL;
-import lime.app.Application;
-import lime.media.AudioContext;
-import lime.media.AudioManager;
-#end
-
 import config.*;
 import title.*;
 import transition.data.*;
@@ -268,196 +249,6 @@ class PlayState extends MusicBeatState
 
 	private var meta:SongMetaTags;
 
-	private var executeModchart = false;
-
-	#if EXPERIMENTAL_LUA
-	//////// LUA SHIT
-	public static var lua:State = null;
-	function callLua(func_name : String, args : Array<Dynamic>, ?type : String) : Dynamic
-	{
-		var result : Any = null;
-
-		Lua.getglobal(lua, func_name);
-
-		for( arg in args ) {
-		   Convert.toLua(lua, arg);
-		}
-		result = Lua.pcall(lua, args.length, 1, 0);
-
-		if( result == null) {
-			return null;
-		  } else {
-			return convert(result, type);
-		  }
-	}
-
-	function getType(l, type):Any
-	{
-		return switch Lua.type(l,type) {
-			case t if (t == Lua.LUA_TNIL): null;
-			case t if (t == Lua.LUA_TNUMBER): Lua.tonumber(l, type);
-			case t if (t == Lua.LUA_TSTRING): (Lua.tostring(l, type):String);
-			case t if (t == Lua.LUA_TBOOLEAN): Lua.toboolean(l, type);
-			case t: throw 'you don goofed up. lua type error ($t)';
-		}
-	}
-
-	function getReturnValues(l) {
-		var lua_v:Int;
-		var v:Any = null;
-		while((lua_v = Lua.gettop(l)) != 0) {
-			var type:String = getType(l,lua_v);
-			v = convert(lua_v, type);
-			Lua.pop(l, 1);
-		}
-		return v;
-	}
-
-
-	private function convert(v : Any, type : String) : Dynamic { // I didn't write this lol
-		if( Std.is(v, String) && type != null ) {
-		  var v : String = v;
-		  if( type.substr(0, 4) == 'array' ) {
-			if( type.substr(4) == 'float' ) {
-			  var array : Array<String> = v.split(',');
-			  var array2 : Array<Float> = new Array();
-
-			  for( vars in array ) {
-				array2.push(Std.parseFloat(vars));
-			  }
-
-			  return array2;
-			} else if( type.substr(4) == 'int' ) {
-			  var array : Array<String> = v.split(',');
-			  var array2 : Array<Int> = new Array();
-
-			  for( vars in array ) {
-				array2.push(Std.parseInt(vars));
-			  }
-			  return array2;
-			} else {
-			  var array : Array<String> = v.split(',');
-			  return array;
-			}
-		  } else if( type == 'float' ) {
-			return Std.parseFloat(v);
-		  } else if( type == 'int' ) {
-			return Std.parseInt(v);
-		  } else if( type == 'bool' ) {
-			if( v == 'true' ) {
-			  return true;
-			} else {
-			  return false;
-			}
-		  } else {
-			return v;
-		  }
-		} else {
-		  return v;
-		}
-	  }
-
-	function getLuaErrorMessage(l) {
-		var v:String = Lua.tostring(l, -1);
-		Lua.pop(l, 1);
-		return v;
-	}
-
-	public function setVar(var_name : String, object : Dynamic){
-		// trace('setting variable ' + var_name + ' to ' + object);
-
-		Lua.pushnumber(lua,object);
-		Lua.setglobal(lua, var_name);
-	  }
-
-	public function getVar(var_name : String, type : String) : Dynamic {
-		var result : Any = null;
-
-		// trace('getting variable ' + var_name + ' with a type of ' + type);
-
-		Lua.getglobal(lua, var_name);
-		result = Convert.fromLua(lua,-1);
-		Lua.pop(lua,1);
-
-		if( result == null ) {
-		  return null;
-		} else {
-		  var result = convert(result, type);
-		  //trace(var_name + ' result: ' + result);
-		  return result;
-		}
-	  }
-
-	  function getActorByName(id:String):Dynamic
-	  {
-		  // pre defined names
-		  switch(id)
-		  {
-			case 'boyfriend':
-				return boyfriend;
-			case 'girlfriend':
-				return gf;
-			case 'dad':
-				return dad;
-		  }
-		  // lua objects or what ever
-		  if (luaSprites.get(id) == null)
-			return strumLineNotes.members[Std.parseInt(id)];
-		return luaSprites.get(id);
-	  }
-
-	public static var luaSprites:Map<String,FlxSprite> = [];
-
-
-
-	function makeLuaSprite(spritePath:String,toBeCalled:String, drawBehind:Bool)
-	{
-		#if sys
-		var data:BitmapData = BitmapData.fromFile(Sys.getCwd() + "assets/data/" + PlayState.SONG.song.toLowerCase() + '/' + spritePath + ".png");
-
-		var sprite:FlxSprite = new FlxSprite(0,0);
-		var imgWidth:Float = FlxG.width / data.width;
-		var imgHeight:Float = FlxG.height / data.height;
-		var scale:Float = imgWidth <= imgHeight ? imgWidth : imgHeight;
-
-		// Cap the scale at x1
-		if (scale > 1)
-		{
-			scale = 1;
-		}
-
-		sprite.makeGraphic(Std.int(data.width * scale),Std.int(data.width * scale),FlxColor.TRANSPARENT);
-
-		var data2:BitmapData = sprite.pixels.clone();
-		var matrix:Matrix = new Matrix();
-		matrix.identity();
-		matrix.scale(scale, scale);
-		data2.fillRect(data2.rect, FlxColor.TRANSPARENT);
-		data2.draw(data, matrix, null, null, null, true);
-		sprite.pixels = data2;
-
-		luaSprites.set(toBeCalled,sprite);
-		// and I quote:
-		// shitty layering but it works!
-		if (drawBehind)
-		{
-			remove(gf);
-			remove(boyfriend);
-			remove(dad);
-		}
-		add(sprite);
-		if (drawBehind)
-		{
-			add(gf);
-			add(boyfriend);
-			add(dad);
-		}
-		#end
-		return toBeCalled;
-	}
-	//////// END LUA SHIT
-	#end
-	
 	override public function create()
 	{
 		instance = this;
@@ -467,15 +258,6 @@ class PlayState extends MusicBeatState
 		customTransIn = new ScreenWipeIn(1.2);
 		customTransOut = new ScreenWipeOut(0.6);
 
-		#if sys
-		executeModchart = FileSystem.exists(Paths.lua(PlayState.SONG.song.toLowerCase()  + "/modchart"));
-		#end
-		#if !cpp
-		executeModchart = false; // FORCE disable for non cpp targets
-		#end
-
-		trace('Mod chart: ' + executeModchart + " - " + Paths.lua(PlayState.SONG.song.toLowerCase() + "/modchart"));
-		
 		if (loadEvents)
 		{
 			if (CoolUtil.exists("assets/data/" + SONG.song.toLowerCase() + "/events.json"))
@@ -1013,7 +795,6 @@ class PlayState extends MusicBeatState
 		// UI_camera.zoom = 1;
 
 		// cameras = [FlxG.cameras.list[1]];
-		
 		startingSong = true;
 
 		if (isStoryMode)
@@ -1433,262 +1214,6 @@ class PlayState extends MusicBeatState
 		generateStaticArrows(0);
 		generateStaticArrows(1);
 
-		#if EXPERIMENTAL_LUA
-		//////// MORE LUA SHIT
-		// gerson me ve 5 indurgencia q hoje eu vo peca brabo
-		if (executeModchart) // dude I hate lua (jkjkjkjk)
-		{
-			trace('opening a lua state (because we are cool :))');
-			lua = LuaL.newstate();
-			LuaL.openlibs(lua);
-			trace("Lua version: " + Lua.version());
-        	trace("LuaJIT version: " + Lua.versionJIT());
-			Lua.init_callbacks(lua);
-
-			var result = LuaL.dofile(lua, Paths.lua(PlayState.SONG.song.toLowerCase() + "/modchart")); // execute le file
-
-			if (result != 0)
-				trace('COMPILE ERROR\n' + getLuaErrorMessage(lua));
-
-			// get some fukin globals up in here bois
-
-			setVar("bpm", Conductor.bpm);
-			setVar("fpsCap", (Config.noFpsCap ? 999 : 144));
-			setVar("downscroll", Config.downscroll);
-			setVar("centeredNotes", Config.centeredNotes);
-			
-			setVar("curStep", 0);
-			setVar("curBeat", 0);
-
-			setVar("hudZoom", camHUD.zoom);
-			setVar("cameraZoom", FlxG.camera.zoom);
-
-			setVar("cameraAngle", FlxG.camera.angle);
-			setVar("camHudAngle", camHUD.angle);
-
-			setVar("followXOffset",0);
-			setVar("followYOffset",0);
-
-			setVar("showOnlyStrums", false);
-			setVar("strumLine1Visible", true);
-			setVar("strumLine2Visible", true);
-
-			setVar("screenWidth",FlxG.width);
-			setVar("screenHeight",FlxG.height);
-			setVar("hudWidth", camHUD.width);
-			setVar("hudHeight", camHUD.height);
-
-			// callbacks
-
-			Lua_helper.add_callback(lua,"executeEvent", function(tag:String) {
-				executeEvent(tag);
-			});
-			
-			// sprites
-
-			trace(Lua_helper.add_callback(lua,"makeSprite", makeLuaSprite));
-
-			Lua_helper.add_callback(lua,"destroySprite", function(id:String) {
-				var sprite = luaSprites.get(id);
-				if (sprite == null)
-					return false;
-				remove(sprite);
-				return true;
-			});
-
-			// hud/camera
-
-			trace(Lua_helper.add_callback(lua,"setHudPosition", function (x:Int, y:Int) {
-				camHUD.x = x;
-				camHUD.y = y;
-			}));
-
-			trace(Lua_helper.add_callback(lua,"getHudX", function () {
-				return camHUD.x;
-			}));
-
-			trace(Lua_helper.add_callback(lua,"getHudY", function () {
-				return camHUD.y;
-			}));
-
-			trace(Lua_helper.add_callback(lua,"setCamPosition", function (x:Int, y:Int) {
-				FlxG.camera.x = x;
-				FlxG.camera.y = y;
-			}));
-
-			trace(Lua_helper.add_callback(lua,"getCameraX", function () {
-				return FlxG.camera.x;
-			}));
-
-			trace(Lua_helper.add_callback(lua,"getCameraY", function () {
-				return FlxG.camera.y;
-			}));
-
-			trace(Lua_helper.add_callback(lua,"setCamZoom", function(zoomAmount:Int) {
-				FlxG.camera.zoom = zoomAmount;
-			}));
-
-			trace(Lua_helper.add_callback(lua,"setHudZoom", function(zoomAmount:Int) {
-				camHUD.zoom = zoomAmount;
-			}));
-
-			// actors
-
-			trace(Lua_helper.add_callback(lua,"getRenderedNotes", function() {
-				return notes.length;
-			}));
-
-			trace(Lua_helper.add_callback(lua,"getRenderedNoteX", function(id:Int) {
-				return notes.members[id].x;
-			}));
-
-			trace(Lua_helper.add_callback(lua,"getRenderedNoteY", function(id:Int) {
-				return notes.members[id].y;
-			}));
-
-			trace(Lua_helper.add_callback(lua,"getRenderedNoteScaleX", function(id:Int) {
-				return notes.members[id].scale.x;
-			}));
-
-			trace(Lua_helper.add_callback(lua,"getRenderedNoteScaleY", function(id:Int) {
-				return notes.members[id].scale.y;
-			}));
-
-			trace(Lua_helper.add_callback(lua,"getRenderedNoteAlpha", function(id:Int) {
-				return notes.members[id].alpha;
-			}));
-
-			trace(Lua_helper.add_callback(lua,"setRenderedNotePos", function(x:Int,y:Int, id:Int) {
-				notes.members[id].modifiedByLua = true;
-				notes.members[id].x = x;
-				notes.members[id].y = y;
-			}));
-
-			trace(Lua_helper.add_callback(lua,"setRenderedNoteAlpha", function(alpha:Float, id:Int) {
-				notes.members[id].modifiedByLua = true;
-				notes.members[id].alpha = alpha;
-			}));
-
-			trace(Lua_helper.add_callback(lua,"setRenderedNoteScale", function(scale:Float, id:Int) {
-				notes.members[id].modifiedByLua = true;
-				notes.members[id].setGraphicSize(Std.int(notes.members[id].width * scale));
-			}));
-
-			trace(Lua_helper.add_callback(lua,"setRenderedNoteScaleX", function(scale:Float, id:Int) {
-				notes.members[id].modifiedByLua = true;
-				notes.members[id].scale.x = scale;
-			}));
-
-			trace(Lua_helper.add_callback(lua,"setRenderedNoteScaleY", function(scale:Float, id:Int) {
-				notes.members[id].modifiedByLua = true;
-				notes.members[id].scale.y = scale;
-			}));
-
-			trace(Lua_helper.add_callback(lua,"setActorX", function(x:Int,id:String) {
-				getActorByName(id).x = x;
-			}));
-
-			trace(Lua_helper.add_callback(lua,"setActorAlpha", function(alpha:Int,id:String) {
-				getActorByName(id).alpha = alpha;
-			}));
-
-			trace(Lua_helper.add_callback(lua,"setActorY", function(y:Int,id:String) {
-				getActorByName(id).y = y;
-			}));
-
-			trace(Lua_helper.add_callback(lua,"setActorAngle", function(angle:Int,id:String) {
-				getActorByName(id).angle = angle;
-			}));
-
-			trace(Lua_helper.add_callback(lua,"setActorScale", function(scale:Float,id:String) {
-				getActorByName(id).setGraphicSize(Std.int(getActorByName(id).width * scale));
-			}));
-
-			trace(Lua_helper.add_callback(lua,"setActorScaleX", function(scale:Float,id:String) {
-				getActorByName(id).scale.x = scale;
-			}));
-
-			trace(Lua_helper.add_callback(lua,"setActorScaleY", function(scale:Float,id:String) {
-				getActorByName(id).scale.y = scale;
-			}));
-
-			trace(Lua_helper.add_callback(lua,"getActorWidth", function (id:String) {
-				return getActorByName(id).width;
-			}));
-
-			trace(Lua_helper.add_callback(lua,"getActorHeight", function (id:String) {
-				return getActorByName(id).height;
-			}));
-
-			trace(Lua_helper.add_callback(lua,"getActorAlpha", function(id:String) {
-				return getActorByName(id).alpha;
-			}));
-
-			trace(Lua_helper.add_callback(lua,"getActorAngle", function(id:String) {
-				return getActorByName(id).angle;
-			}));
-
-			trace(Lua_helper.add_callback(lua,"getActorX", function (id:String) {
-				return getActorByName(id).x;
-			}));
-
-			trace(Lua_helper.add_callback(lua,"getActorY", function (id:String) {
-				return getActorByName(id).y;
-			}));
-
-			trace(Lua_helper.add_callback(lua,"getActorScaleX", function (id:String) {
-				return getActorByName(id).scale.x;
-			}));
-
-			trace(Lua_helper.add_callback(lua,"getActorScaleY", function (id:String) {
-				return getActorByName(id).scale.y;
-			}));
-
-			// tweens
-
-			Lua_helper.add_callback(lua,"tweenPos", function(id:String, toX:Int, toY:Int, time:Float, onComplete:String) {
-				FlxTween.tween(getActorByName(id), {x: toX, y: toY}, time, {ease: FlxEase.cubeIn, onComplete: function(flxTween:FlxTween) { if (onComplete != '' && onComplete != null) {callLua(onComplete,[id]);}}});
-			});
-
-			Lua_helper.add_callback(lua,"tweenPosXAngle", function(id:String, toX:Int, toAngle:Float, time:Float, onComplete:String) {
-				FlxTween.tween(getActorByName(id), {x: toX, angle: toAngle}, time, {ease: FlxEase.cubeIn, onComplete: function(flxTween:FlxTween) { if (onComplete != '' && onComplete != null) {callLua(onComplete,[id]);}}});
-			});
-
-			Lua_helper.add_callback(lua,"tweenPosYAngle", function(id:String, toY:Int, toAngle:Float, time:Float, onComplete:String) {
-				FlxTween.tween(getActorByName(id), {y: toY, angle: toAngle}, time, {ease: FlxEase.cubeIn, onComplete: function(flxTween:FlxTween) { if (onComplete != '' && onComplete != null) {callLua(onComplete,[id]);}}});
-			});
-
-			Lua_helper.add_callback(lua,"tweenAngle", function(id:String, toAngle:Int, time:Float, onComplete:String) {
-				FlxTween.tween(getActorByName(id), {angle: toAngle}, time, {ease: FlxEase.cubeIn, onComplete: function(flxTween:FlxTween) { if (onComplete != '' && onComplete != null) {callLua(onComplete,[id]);}}});
-			});
-
-			Lua_helper.add_callback(lua,"tweenFadeIn", function(id:String, toAlpha:Float, time:Float, onComplete:String) {
-				FlxTween.tween(getActorByName(id), {alpha: toAlpha}, time, {ease: FlxEase.circIn, onComplete: function(flxTween:FlxTween) { if (onComplete != '' && onComplete != null) {callLua(onComplete,[id]);}}});
-			});
-
-			Lua_helper.add_callback(lua,"tweenFadeOut", function(id:String, toAlpha:Float, time:Float, onComplete:String) {
-				FlxTween.tween(getActorByName(id), {alpha: toAlpha}, time, {ease: FlxEase.circOut, onComplete: function(flxTween:FlxTween) { if (onComplete != '' && onComplete != null) {callLua(onComplete,[id]);}}});
-			});
-
-			for (i in 0...strumLineNotes.length) {
-				var member = strumLineNotes.members[i];
-				trace(strumLineNotes.members[i].x + " " + strumLineNotes.members[i].y + " " + strumLineNotes.members[i].angle + " | strum" + i);
-				//setVar("strum" + i + "X", Math.floor(member.x));
-				setVar("defaultStrum" + i + "X", Math.floor(member.x));
-				//setVar("strum" + i + "Y", Math.floor(member.y));
-				setVar("defaultStrum" + i + "Y", Math.floor(member.y));
-				//setVar("strum" + i + "Angle", Math.floor(member.angle));
-				setVar("defaultStrum" + i + "Angle", Math.floor(member.angle));
-				trace("Adding strum" + i);
-			}
-
-			trace('calling start function');
-
-			trace('return: ' + Lua.tostring(lua,callLua('start', [PlayState.SONG.song])));
-		}
-		//////// END MORE LUA SHIT
-		#end
-		
 		talking = false;
 		startedCountdown = true;
 		Conductor.songPosition = 0;
@@ -1820,21 +1345,17 @@ class PlayState extends MusicBeatState
 	var previousFrameTime:Int = 0;
 	var lastReportedPlayheadPosition:Int = 0;
 	var songTime:Float = 0;
-	
-	var songStarted = false;
-	
+
 	function startSong():Void
 	{
 		startingSong = false;
 
-		songStarted = true;
 		previousFrameTime = FlxG.game.ticks;
 		lastReportedPlayheadPosition = 0;
 
-		if (!paused) {
+		if (!paused)
 			FlxG.sound.playMusic(Paths.inst(SONG.song), 1, false);
-		}
-	
+
 		FlxG.sound.music.onComplete = endSong;
 		vocals.play();
 
@@ -2177,83 +1698,6 @@ class PlayState extends MusicBeatState
 
 	override public function update(elapsed:Float)
 	{
-		#if EXPERIMENTAL_LUA
-		//////// YET EVEN MORE LUA SHIT
-		if (executeModchart && lua != null && songStarted)
-		{
-			setVar('songPos',Conductor.songPosition);
-			setVar('hudZoom', camHUD.zoom);
-			setVar('cameraZoom',FlxG.camera.zoom);
-			callLua('update', [elapsed]);
-
-			/*for (i in 0...strumLineNotes.length) {
-				var member = strumLineNotes.members[i];
-				member.x = getVar("strum" + i + "X", "float");
-				member.y = getVar("strum" + i + "Y", "float");
-				member.angle = getVar("strum" + i + "Angle", "float");
-			}*/
-
-			FlxG.camera.angle = getVar('cameraAngle', 'float');
-			camHUD.angle = getVar('camHudAngle','float');
-
-			if (getVar("showOnlyStrums",'bool'))
-			{
-				healthBarBG.visible = false;
-				healthBar.visible = false;
-				iconP1.visible = false;
-				iconP2.visible = false;
-				
-				// normal hud
-				if (!scratchSongs.contains(SONG.song.toLowerCase())) {
-					scoreTxt.visible = false;
-				}
-				
-				//scratch hud
-				if (scratchSongs.contains(SONG.song.toLowerCase())) {
-					scoreScratchBG.visible = false;
-					ratingScratchBG.visible = false;
-					missesScratchBG.visible = false;
-					scoreScratchTxt.visible = false;
-					ratingScratchTxt.visible = false;
-					missesScratchTxt.visible = false;
-				}
-			}
-			else
-			{
-				healthBarBG.visible = true;
-				healthBar.visible = true;
-				iconP1.visible = true;
-				iconP2.visible = true;
-				// normal hud
-				if (!scratchSongs.contains(SONG.song.toLowerCase())) {
-					scoreTxt.visible = true;
-				}
-				
-				//scratch hud
-				if (scratchSongs.contains(SONG.song.toLowerCase())) {
-					scoreScratchBG.visible = true;
-					ratingScratchBG.visible = true;
-					missesScratchBG.visible = true;
-					scoreScratchTxt.visible = true;
-					ratingScratchTxt.visible = true;
-					missesScratchTxt.visible = true;
-				}
-			}
-
-			var p1 = getVar("strumLine1Visible",'bool');
-			var p2 = getVar("strumLine2Visible",'bool');
-
-			for (i in 0...4)
-			{
-				if (i <= enemyStrums.length)
-					enemyStrums.members[i].visible = p1;
-				if (i <= playerStrums.length)
-					playerStrums.members[i].visible = p2;
-			}
-		}
-		//////// CEASE LUA SHIT YET AGAIN
-		#end
-		
 		if (invulnTime > 0)
 		{
 			invulnTime -= elapsed;
@@ -2402,14 +1846,6 @@ class PlayState extends MusicBeatState
 		{
 			PlayerSettings.menuControls();
 			switchState(new ChartingState());
-			
-			#if EXPERIMENTAL_LUA
-			if (lua != null)
-			{
-				Lua.close(lua);
-				lua = null;
-			}
-			#end
 			sectionStart = false;
 		}
 
@@ -2631,7 +2067,7 @@ class PlayState extends MusicBeatState
 
 			if (Config.downscroll)
 			{
-				daNote.y = (targetY + (Conductor.songPosition - daNote.strumTime) * (0.45 * scrollSpeed));
+				daNote.y = (strumLine.y + (Conductor.songPosition - daNote.strumTime) * (0.45 * scrollSpeed));
 				if (daNote.isSustainNote)
 				{
 					daNote.y -= daNote.height;
@@ -2651,7 +2087,7 @@ class PlayState extends MusicBeatState
 			}
 			else
 			{
-				daNote.y = (targetY - (Conductor.songPosition - daNote.strumTime) * (0.45 * scrollSpeed));
+				daNote.y = (strumLine.y - (Conductor.songPosition - daNote.strumTime) * (0.45 * scrollSpeed));
 				if (daNote.isSustainNote)
 				{
 					if ((!daNote.mustPress || daNote.wasGoodHit || daNote.prevNote.wasGoodHit && !daNote.canBeHit)
@@ -2667,9 +2103,8 @@ class PlayState extends MusicBeatState
 				}
 			}
 
-			if (!daNote.modifiedByLua)
-				daNote.x = targetX + daNote.xOffset;
-				
+			daNote.x = targetX + daNote.xOffset;
+
 			// MOVE NOTE TRANSPARENCY CODE BECAUSE REASONS
 			if (daNote.tooLate)
 			{
@@ -2688,7 +2123,7 @@ class PlayState extends MusicBeatState
 				}
 			}
 
-			if (Config.downscroll ? (daNote.y > targetY + daNote.height + 50) : (daNote.y < targetY - daNote.height - 50))
+			if (Config.downscroll ? (daNote.y > strumLine.y + daNote.height + 50) : (daNote.y < strumLine.y - daNote.height - 50))
 			{
 				if (daNote.tooLate || daNote.wasGoodHit)
 				{
@@ -2764,14 +2199,6 @@ class PlayState extends MusicBeatState
 
 	public function endSong():Void
 	{
-		#if EXPERIMENTAL_LUA
-		if (executeModchart)
-		{
-			Lua.close(lua);
-			lua = null;
-		}
-		#end
-		
 		canPause = false;
 		FlxG.sound.music.volume = 0;
 		vocals.volume = 0;
@@ -2793,15 +2220,7 @@ class PlayState extends MusicBeatState
 				FlxG.sound.playMusic(Paths.music("coolMenu"), 1);
 
 				PlayerSettings.menuControls();
-				
-				#if EXPERIMENTAL_LUA
-				if (executeModchart)
-				{
-					Lua.close(lua);
-					lua = null;
-				}
-				#end
-		
+
 				switchState(new StoryMenuState());
 				sectionStart = false;
 
@@ -3534,14 +2953,6 @@ class PlayState extends MusicBeatState
 			resyncVocals();
 		}
 
-		#if EXPERIMENTAL_LUA
-		if (executeModchart && lua != null)
-		{
-			setVar('curStep',curStep);
-			callLua('stepHit',[curStep]);
-		}
-		#end
-		
 		/*if (dad.curCharacter == 'spooky' && totalSteps % 4 == 2)
 			{
 				// dad.dance();
@@ -3557,14 +2968,6 @@ class PlayState extends MusicBeatState
 		// wiggleShit.update(Conductor.crochet);
 		super.beatHit();
 
-		#if EXPERIMENTAL_LUA
-		if (executeModchart && lua != null)
-		{
-			setVar('curBeat',curBeat);
-			callLua('beatHit',[curBeat]);
-		}
-		#end
-		
 		if (curBeat % 4 == 0)
 		{
 			var sec = Math.floor(curBeat / 4);
@@ -3807,16 +3210,8 @@ class PlayState extends MusicBeatState
 
 	function camFocusOpponent()
 	{
-		var followX = dad.getMidpoint().x + dad.cameraOffsetArray[0] 
-		#if EXPERIMENTAL_LUA 
-		+ (lua != null ? getVar("followXOffset", "float") : 0)
-		#end
-		;
-		var followY = dad.getMidpoint().y + dad.cameraOffsetArray[1]
-		#if EXPERIMENTAL_LUA 
-		+ (lua != null ? getVar("followYOffset", "float") : 0)
-		#end
-		;
+		var followX = dad.getMidpoint().x + dad.cameraOffsetArray[0];
+		var followY = dad.getMidpoint().y + dad.cameraOffsetArray[1];
 		// camFollow.setPosition(lucky.getMidpoint().x - 120, lucky.getMidpoint().y + 210);
 
 		/* switch (dad.curCharacter)
@@ -3850,16 +3245,8 @@ class PlayState extends MusicBeatState
 
 	function camFocusBF()
 	{
-		var followX = boyfriend.getMidpoint().x - 100 
-		#if EXPERIMENTAL_LUA 
-		+ (lua != null ? getVar("followXOffset", "float") : 0)
-		#end
-		;
-		var followY = boyfriend.getMidpoint().y - 100
-		#if EXPERIMENTAL_LUA
-		+ (lua != null ? getVar("followYOffset", "float") : 0)
-		#end
-		;
+		var followX = boyfriend.getMidpoint().x - 100;
+		var followY = boyfriend.getMidpoint().y - 100;
 		
 		if (SONG.player1 == 'bf-qen') {
 			followX = boyfriend.getMidpoint().x - 400;

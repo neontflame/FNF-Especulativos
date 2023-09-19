@@ -1,12 +1,17 @@
 package;
 
+#if EXPERIMENTAL_LUA
+import llua.Lua;
+#end
 import flixel.tweens.FlxTween;
 import config.*;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.text.FlxText;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.sound.FlxSound;
 import flixel.util.FlxColor;
+import flixel.tweens.FlxEase;
 
 class PauseSubState extends MusicBeatSubstate
 {
@@ -24,7 +29,9 @@ class PauseSubState extends MusicBeatSubstate
 		openfl.Lib.current.stage.frameRate = 144;
 
 		FlxTween.globalManager.active = false;
-
+		
+		var diffsArray:Array<String> = ["EASY", "NORMAL", "HARD"];
+		
 		if (PlayState.storyPlaylist.length > 1 && PlayState.isStoryMode)
 		{
 			menuItems.insert(2, "Skip Song");
@@ -41,11 +48,13 @@ class PauseSubState extends MusicBeatSubstate
 		}
 
 		var pauseSongName = "especulapause";
+		var artist = "Dex Dousky";
 
 		switch (PlayState.SONG.song.toLowerCase())
 		{
 			case "ugh" | "guns" | "stress":
 				pauseSongName = "distorto";
+				artist = "Kawai Sprite";
 		}
 
 		pauseMusic = new FlxSound().loadEmbedded(Paths.music(pauseSongName), true, true);
@@ -60,6 +69,32 @@ class PauseSubState extends MusicBeatSubstate
 		bg.scrollFactor.set();
 		add(bg);
 
+		// song info definers
+		var levelInfo:FlxText = new FlxText(20, 15, 0, '', 32);
+		levelInfo.text += PlayState.SONG.song;
+		levelInfo.scrollFactor.set();
+		levelInfo.setFormat(Paths.font("vcr"), 32);
+		levelInfo.updateHitbox();
+		add(levelInfo);
+
+		var levelDifficulty:FlxText = new FlxText(20, 15 + 32, 0, '', 24);
+		levelDifficulty.text += diffsArray[PlayState.storyDifficulty];
+		levelDifficulty.scrollFactor.set();
+		levelDifficulty.setFormat(Paths.font("vcr"), 24);
+		levelDifficulty.updateHitbox();
+		add(levelDifficulty);
+
+		levelInfo.x = FlxG.width - (levelInfo.width + 20);
+		levelDifficulty.x = FlxG.width - (levelDifficulty.width + 20);
+		
+		// end song info definers
+		
+		var musicCredit:FlxText = new FlxText(54, 12, 0, "Música do menu de pausa feita por " + artist, 18);
+		musicCredit.setFormat(Paths.font("vcr"), 18, FlxColor.WHITE, CENTER);
+		musicCredit.scrollFactor.set();
+		musicCredit.screenCenter(X);
+		add(musicCredit);
+		
 		grpMenuShit = new FlxTypedGroup<Alphabet>();
 		add(grpMenuShit);
 
@@ -135,6 +170,13 @@ class PauseSubState extends MusicBeatSubstate
 
 					PlayState.sectionStart = false;
 
+					#if EXPERIMENTAL_LUA
+					if (PlayState.lua != null)
+					{
+						Lua.close(PlayState.lua);
+						PlayState.lua = null;
+					}
+					#end
 					switch (PlayState.returnLocation)
 					{
 						case "freeplay":

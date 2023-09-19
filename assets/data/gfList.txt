@@ -1,4 +1,5 @@
 gf
+gf-bar
 gf-christmas
 gf-car
 gf-pixel

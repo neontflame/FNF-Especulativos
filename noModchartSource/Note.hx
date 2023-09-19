@@ -39,8 +39,6 @@ class Note extends FlxSprite
 	public static final BLUE_NOTE:Int = 1;
 	public static final RED_NOTE:Int = 3;
 
-	public var modifiedByLua:Bool = false;
-
 	public function new(_strumTime:Float, _noteData:Int, _type:String, ?_editor = false, ?_prevNote:Note, ?_sustainNote:Bool = false)
 	{
 		super();
