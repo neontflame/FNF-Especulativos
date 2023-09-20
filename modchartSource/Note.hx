@@ -2,12 +2,11 @@ package;
 
 import config.*;
 import flixel.FlxSprite;
-import flixel.addons.effects.FlxSkewedSprite;
 
 // import polymod.format.ParseRules.TargetSignatureElement;
 using StringTools;
 
-class Note extends FlxSkewedSprite
+class Note extends FlxSprite
 {
 	public var strumTime:Float = 0;
 

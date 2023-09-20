@@ -171,12 +171,13 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.sectionStart = false;
 
 					#if EXPERIMENTAL_LUA
-					if (PlayState.lua != null)
+					if (PlayState.luaModchart != null)
 					{
-						Lua.close(PlayState.lua);
-						PlayState.lua = null;
+						PlayState.luaModchart.die();
+						PlayState.luaModchart = null;
 					}
 					#end
+					
 					switch (PlayState.returnLocation)
 					{
 						case "freeplay":
