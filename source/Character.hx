@@ -86,6 +86,23 @@ class Character extends FlxSprite
 
 				iconName = "gf";
 
+			case 'gf-qen':
+				// GIRLFRIEND CODE
+				frames = Paths.getSparrowAtlas("qen/gf");
+				animation.addByPrefix('cheer', 'GF Cheer', 24, false);
+				animation.addByIndices('sad', 'gf sad', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "", 24, false);
+				animation.addByIndices('danceLeft', 'GF Dancing Beat', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
+				animation.addByIndices('danceRight', 'GF Dancing Beat', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+
+				addOffset('cheer');
+				addOffset('sad', -2, -21);
+				addOffset('danceLeft', 0, -9);
+				addOffset('danceRight', 0, -9);
+
+				playAnim('danceRight');
+
+				iconName = "gf";
+				
 			case 'gf-bar':
 				// GIRLFRIEND (bar) CODE
 				frames = Paths.getSparrowAtlas("especula/girlfriendBar");
@@ -315,7 +332,8 @@ class Character extends FlxSprite
 
 				iconName = "yotsuba";
 				charOffsetArray = [0, 300];
-
+				cameraOffsetArray = [150, -16];
+				
 			case 'narigao':
 				// nariz man
 				frames = Paths.getSparrowAtlas("qen/narigao");
@@ -1034,7 +1052,7 @@ class Character extends FlxSprite
 
 			switch (curCharacter)
 			{
-				case 'gf' | 'gf-bar' | 'gf-car' | 'gf-christmas' | 'gf-pixel' | "gf-tankmen":
+				case 'gf' | 'gf-bar' | 'gf-qen' | 'gf-car' | 'gf-christmas' | 'gf-pixel' | "gf-tankmen":
 					if (!animation.curAnim.name.startsWith('hair'))
 					{
 						danced = !danced;

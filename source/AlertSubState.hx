@@ -27,6 +27,25 @@ class AlertSubState extends MusicBeatSubstate
 		var alertWindow:FlxSprite = new FlxSprite(382, 192).loadGraphic(Paths.image('menu/alerts/' + alert));
 		alertWindow.updateHitbox();
 		add(alertWindow);
+		
+		if (alert == "yotsubaAlert" && !FlxG.save.data.yotsubaUnlock) {
+			FlxG.save.bind('data');
+			FlxG.save.data.yotsubaUnlock = true;
+			FlxG.save.flush();
+		}
+		
+		if (alert == "qenAlert" && !FlxG.save.data.qenUnlock) {
+			FlxG.save.bind('data');
+			FlxG.save.data.qenUnlock = true;
+			FlxG.save.flush();
+		}
+		
+		if (alert == "ultUnlock") {
+			FlxG.save.bind('data');
+			FlxG.save.data.qenUnlock = true;
+			FlxG.save.data.yotsubaUnlock = true;
+			FlxG.save.flush();
+		}
 	}
 
 	override function update(elapsed:Float)

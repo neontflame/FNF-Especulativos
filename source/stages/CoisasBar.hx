@@ -20,7 +20,7 @@ class CoisasBar extends BasicStage
 		
 		var bg:FlxSprite = new FlxSprite(-784, -41).loadGraphic(Paths.image(mainPath + "bgTijolos"));
 		bg.antialiasing = true;
-		bg.scrollFactor.set(0.5, 0.5);
+		bg.scrollFactor.set(0.85, 0.975);
 		bg.active = false;
 
 		var cadeiras:FlxSprite = new FlxSprite(489, 667).loadGraphic(Paths.image(mainPath + "cadeiras"));

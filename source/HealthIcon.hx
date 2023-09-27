@@ -10,7 +10,7 @@ class HealthIcon extends FlxSprite
 	public var sprTracker:FlxSprite;
 	public var id:Int;
 
-	public var defualtIconScale:Float = 1;
+	public var defaultIconScale:Float = 1;
 	public var iconScale:Float = 1;
 	public var iconSize:Float;
 	public var isPlayer:Bool = false;
@@ -61,7 +61,7 @@ class HealthIcon extends FlxSprite
 	public function tweenToDefaultScale(_time:Float, _ease:Null<flixel.tweens.EaseFunction>)
 	{
 		tween.cancel();
-		tween = FlxTween.tween(this, {iconScale: this.defualtIconScale}, _time, {ease: _ease});
+		tween = FlxTween.tween(this, {iconScale: this.defaultIconScale}, _time, {ease: _ease});
 	}
 
 	public function setIconCharacter(character:String)

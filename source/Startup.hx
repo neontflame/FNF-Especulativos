@@ -44,18 +44,19 @@ class Startup extends FlxState
                                 "Cocoa", "Eggnog", "Winter-Horrorland", 
                                 "Senpai", "Roses", "Thorns",
                                 "Ugh", "Guns", "Stress",
-								"Hihi",
+								"Hihi", "Tres-Bofetadas",
 								"Do-Mal",
                                 "Lil-Buddies",
-                                "klaskiiLoop", "freakyMenu"]; //Start of the non-gameplay songs.
+                                "klaskiiLoop", "especulaintro", "coolMenu"]; //Start of the non-gameplay songs.
                                 
     //List of character graphics and some other stuff.
     //Just in case it want to do something with it later.
     var charactersCached:Bool;
     var startCachingCharacters:Bool = false;
     var charI:Int = 0;
-    public static final characters:Array<String> =   ["BOYFRIEND", "week4/bfCar", "week5/bfChristmas", "week6/bfPixel", "week6/bfPixelsDEAD", "week7/bfAndGF", "week7/bfHoldingGF-DEAD",
-                                    "GF_assets", "week4/gfCar", "week5/gfChristmas", "week6/gfPixel", "week7/gfTankmen",
+	
+    public static final characters:Array<String> =   ["BOYFRIEND", "week4/bfCar", "week5/bfChristmas", "week6/bfPixel", "week6/bfPixelsDEAD", "week7/bfAndGF", "week7/bfHoldingGF-DEAD", "qen/bf", 
+                                    "GF_assets", "week4/gfCar", "week5/gfChristmas", "week6/gfPixel", "week7/gfTankmen", "especula/girlfriendBar",
                                     "week1/DADDY_DEAREST", 
                                     "week2/spooky_kids_assets", "week2/Monster_Assets",
                                     "week3/Pico_FNF_assetss", "week7/picoSpeaker",
@@ -65,14 +66,17 @@ class Startup extends FlxState
                                     "week7/tankmanCaptain",
 									"especula/espe",
 									"scdm/scdm",
-									"yotsu/yotuba"
+									"yotsu/yotuba",
+									"qen/narigao"
 									];
 
     var graphicsCached:Bool;
     var startCachingGraphics:Bool = false;
     var gfxI:Int = 0;
     public static final graphics:Array<String> =    [
-									"logoBumpin", "logoBumpin2", "gfDanceTitle2", "titleEnter", "fpsPlus/title/backgroundBf", "fpsPlus/title/barBottom", "fpsPlus/title/barTop", "fpsPlus/title/gf", "fpsPlus/title/glow", 
+									"alphabet", "ui/NOTE_assets", "ui/noteSplashes",
+									"titleEnter", "fpsPlus/title/espeDj", "fpsPlus/title/logoBump",
+									"menu/headerStuffs", "menu/footer", "menu/scratchBG", "menu/fnfScratch", "menu/freeplay/longerMenuThing", 
                                     "week1/stageback", "week1/stagefront", "week1/stagecurtains",
                                     "week2/halloween_bg",
                                     "week3/philly/sky", "week3/philly/city", "week3/philly/behindTrain", "week3/philly/train", "week3/philly/street", "week3/philly/win0", "week3/philly/win1", "week3/philly/win2", "week3/philly/win3", "week3/philly/win4",
@@ -83,6 +87,7 @@ class Startup extends FlxState
                                     "week6/weeb/animatedEvilSchool", "week6/weeb/senpaiCrazy",
                                     "week7/stage/tank0", "week7/stage/tank1", "week7/stage/tank2", "week7/stage/tank3", "week7/stage/tank4", "week7/stage/tank5", "week7/stage/tankmanKilled1", 
                                     "week7/stage/smokeLeft", "week7/stage/smokeRight", "week7/stage/tankBuildings", "week7/stage/tankClouds", "week7/stage/tankGround", "week7/stage/tankMountains", "week7/stage/tankRolling", "week7/stage/tankRuins", "week7/stage/tankSky", "week7/stage/tankWatchtower",
+									"especula/stage/adegaFunny", "especula/stage/barMesa", "especula/stage/bgTijolos", "especula/stage/cadeiras", "especula/stage/chao", "especula/stage/coisas", "especula/stage/escarradeira", "especula/stage/sushiCaidoTodoFodido",
 									"scdm/stage/ceuBrabo", "scdm/stage/fundoBrabo", "scdm/stage/ruaBraba"
 									];
 
@@ -253,14 +258,14 @@ class Startup extends FlxState
 
         if(startCachingCharacters){
             if(charI >= characters.length){
-                loadingText.text = charI + " of " + characters.length + " characters cached";
-				loadingText.screenCenter(X);
+                loadingText.text = "Characters cached...";
                 startCachingCharacters = false;
                 charactersCached = true;
             }
             else{
                 if(CoolUtil.exists(Paths.file(characters[charI], "images", "png"))){
                     ImageCache.add(Paths.file(characters[charI], "images", "png"));
+					trace("Character: " + characters[charI] + " added.");
                 }
                 else{
                     trace("Character: File at " + characters[charI] + " not found, skipping cache.");
@@ -272,17 +277,16 @@ class Startup extends FlxState
 
         if(startCachingGraphics){
             if(gfxI >= graphics.length){
-                loadingText.text = gfxI + " of " + graphics.length + " graphics cached";
-				loadingText.screenCenter(X);
                 startCachingGraphics = false;
                 graphicsCached = true;
             }
             else{
                 if(CoolUtil.exists(Paths.file(graphics[gfxI], "images", "png"))){
                     ImageCache.add(Paths.file(graphics[gfxI], "images", "png"));
+					trace("Graphics: " + graphics[gfxI] + " added.");
                 }
                 else{
-                    trace("Character: File at " + graphics[gfxI] + " not found, skipping cache.");
+                    trace("Graphics: File at " + graphics[gfxI] + " not found, skipping cache.");
                 }
                 gfxI++;
                 currentLoaded++;
@@ -355,7 +359,6 @@ class Startup extends FlxState
             ImageCache.add(Paths.file(x, "images", "png"));
             //trace("Chached " + x);
         }
-        //loadingText.text = "Characters cached";
 		loadingText.text = currentLoaded + " of " + loadTotal + " assets loaded";
 		loadingText.screenCenter(X);
         charactersCached = true;
@@ -366,7 +369,6 @@ class Startup extends FlxState
             ImageCache.add(Paths.file(x, "images", "png"));
             //trace("Chached " + x);
         }
-        //loadingText.text = "Graphics cached";
 		loadingText.text = currentLoaded + " of " + loadTotal + " assets loaded";
 		loadingText.screenCenter(X);
         graphicsCached = true;

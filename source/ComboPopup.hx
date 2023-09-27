@@ -5,6 +5,9 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.group.FlxSpriteGroup;
 
+import flixel.text.FlxText;
+import flixel.util.FlxColor;
+
 using StringTools;
 
 class ComboPopup extends FlxSpriteGroup
@@ -16,7 +19,7 @@ class ComboPopup extends FlxSpriteGroup
 	public var ratingScale:Float = 0.7;
 	public var numberScale:Float = 0.5;
 	public var breakScale:Float = 0.6;
-
+	
 	public var accelScale:Float = 1;
 	public var velocityScale:Float = 1;
 
@@ -116,7 +119,7 @@ class ComboPopup extends FlxSpriteGroup
 	/**
 		Causes a note rating to pop up with the specified rating. Returns without effect if the rating isn't in `ratingList`.
 	**/
-	public function ratingPopup(_rating:String):Void
+	public function ratingPopup(_rating:String, _msTiming:Float):Void
 	{
 		var rating = ratingList.indexOf(_rating);
 		if (rating == -1)
@@ -127,7 +130,7 @@ class ComboPopup extends FlxSpriteGroup
 		var ratingSprite = new FlxSprite(ratingPosition[X], ratingPosition[Y]).loadGraphic(ratingInfo[GRAPHIC], true, ratingInfo[WIDTH], ratingInfo[HEIGHT]);
 		ratingSprite.setGraphicSize(Std.int(ratingSprite.width * ratingScale));
 		ratingSprite.antialiasing = ratingInfo[AA];
-
+		
 		ratingSprite.animation.add("rating", [rating], 0, false);
 		ratingSprite.animation.play("rating");
 
@@ -137,6 +140,25 @@ class ComboPopup extends FlxSpriteGroup
 
 		add(ratingSprite);
 
+		var currentTimingShown:FlxText = new FlxText(numberPosition[X] + (392 * numberScale), numberPosition[Y] - (10 * numberScale), 0, "0ms");
+		currentTimingShown.borderStyle = OUTLINE;
+		currentTimingShown.borderSize = 1;
+		currentTimingShown.borderColor = FlxColor.BLACK;
+		currentTimingShown.text = truncateFloat(_msTiming, 4) + "ms";
+		currentTimingShown.size = 20;
+		
+		switch(_rating)
+			{
+				case 'shit' | 'bad':
+					currentTimingShown.color = FlxColor.GRAY;
+				case 'good':
+					currentTimingShown.color = FlxColor.LIME;
+				case 'sick':
+					currentTimingShown.color = FlxColor.CYAN;
+			}
+			
+		add(currentTimingShown);
+		
 		FlxTween.tween(ratingSprite, {alpha: 0}, 0.2, {
 			onComplete: function(tween:FlxTween)
 			{
@@ -145,6 +167,14 @@ class ComboPopup extends FlxSpriteGroup
 			startDelay: Conductor.crochet * 0.00075
 		});
 
+		FlxTween.tween(currentTimingShown, {alpha: 0}, 0.2, {
+			onComplete: function(tween:FlxTween)
+			{
+				currentTimingShown.destroy();
+			},
+			startDelay: 0.1
+		});
+		
 		return;
 	}
 
@@ -173,4 +203,13 @@ class ComboPopup extends FlxSpriteGroup
 
 		return;
 	}
+	
+	function truncateFloat(number:Float, precision:Int):Float
+	{
+		var num = number;
+		num = num * Math.pow(10, precision);
+		num = Math.round(num) / Math.pow(10, precision);
+		return num;
+	}
+
 }

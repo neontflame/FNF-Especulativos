@@ -175,8 +175,12 @@ class MainMenuState extends MusicBeatState
 						} else if (numberShits.contains(FlxG.keys.getIsDown()[0].ID.toString())) {
 							tabKeys.push(Std.string(numberShits.indexOf(FlxG.keys.getIsDown()[0].ID.toString())));
 						} else {
-							tabKeys.push(FlxG.keys.getIsDown()[0].ID.toString());
+							if (FlxG.keys.getIsDown()[0].ID.toString() == "BACKSPACE")
+								tabKeys.pop();
+							else
+								tabKeys.push(FlxG.keys.getIsDown()[0].ID.toString());
 						}
+							
 						tabDisplay.text = Std.string(tabKeys);
 					}
 				}

@@ -8,12 +8,15 @@ versão inicial (VAI TER!!!!):
 	SECRET:
 		fnfolas (Queixão e Narigão)
 		enjoyment (Yotsuba)
+	REAL POREM DESABILITADO NO CODIGO FONTE:
 		so-um-cara (Hawnt Salsicha) >> hawnt salsicha
 
 atualizações-cool:
 	um-dois-tres (Velhote) 
 	porte-de-armas (Marcoball)
 	especularumble (Espe, SCDM, QeN, Yotsuba)
+
+--- AS VERSÕES ABAIXO TALVEZ NÃO ACONTEÇAM DEVIDO A MT MT BLOAT AGH ---
 
 a la mofo (scratch 2.0 muito foda!):
 	nao-acesse (Fupi vs. Leo || O mundo de leo: Scratchventura)

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="sofa.png">
+	<!-- Created with Adobe Animate version 19.0.0.326 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="sofaQueixao0000" x="0" y="0" width="566" height="484" frameX="0" frameY="-21" frameWidth="566" frameHeight="505"/>
+	<SubTexture name="sofaQueixao0001" x="0" y="0" width="566" height="484" frameX="0" frameY="-21" frameWidth="566" frameHeight="505"/>
+	<SubTexture name="sofaQueixao0002" x="566" y="0" width="565" height="489" frameX="0" frameY="-16" frameWidth="566" frameHeight="505"/>
+	<SubTexture name="sofaQueixao0003" x="566" y="0" width="565" height="489" frameX="0" frameY="-16" frameWidth="566" frameHeight="505"/>
+	<SubTexture name="sofaQueixao0004" x="1131" y="0" width="559" height="503" frameX="0" frameY="-2" frameWidth="566" frameHeight="505"/>
+	<SubTexture name="sofaQueixao0005" x="1131" y="0" width="559" height="503" frameX="0" frameY="-2" frameWidth="566" frameHeight="505"/>
+	<SubTexture name="sofaQueixao0006" x="0" y="503" width="559" height="505" frameX="0" frameY="0" frameWidth="566" frameHeight="505"/>
+	<SubTexture name="sofaQueixao0007" x="0" y="503" width="559" height="505" frameX="0" frameY="0" frameWidth="566" frameHeight="505"/>
+	<SubTexture name="sofaQueixao0008" x="0" y="503" width="559" height="505" frameX="0" frameY="0" frameWidth="566" frameHeight="505"/>
+	<SubTexture name="sofaQueixao0009" x="0" y="503" width="559" height="505" frameX="0" frameY="0" frameWidth="566" frameHeight="505"/>
+	<SubTexture name="sofaQueixao0010" x="0" y="503" width="559" height="505" frameX="0" frameY="0" frameWidth="566" frameHeight="505"/>
+	<SubTexture name="sofaQueixao0011" x="0" y="503" width="559" height="505" frameX="0" frameY="0" frameWidth="566" frameHeight="505"/>
+	<SubTexture name="sofaQueixao0012" x="0" y="503" width="559" height="505" frameX="0" frameY="0" frameWidth="566" frameHeight="505"/>
+	<SubTexture name="sofaQueixao0013" x="0" y="503" width="559" height="505" frameX="0" frameY="0" frameWidth="566" frameHeight="505"/>
+	<SubTexture name="sofaVazio0000" x="559" y="503" width="554" height="447"/>
+</TextureAtlas>
