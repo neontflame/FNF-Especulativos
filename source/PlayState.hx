@@ -944,6 +944,9 @@ class PlayState extends MusicBeatState
 						FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, ((Conductor.crochet / 1000) * 5) - 0.1, {ease: FlxEase.quadOut});
 					});
 				
+				case "hihi":
+					scratchStart();
+					
 				default:
 					startCountdown();
 			}
@@ -1211,6 +1214,34 @@ class PlayState extends MusicBeatState
 		}
 	}
 
+	function scratchStart(?cutsceneThing:String):Void
+	{
+		var startProj:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('ui/scratchUI/startProj'));
+		startProj.scrollFactor.set();
+		add(startProj);
+		startProj.cameras = [camHUD];
+
+		new FlxTimer().start(0.001, function(tmr:FlxTimer)
+		{
+			var mousePressed = FlxG.mouse.justPressed;
+			
+			if (!mousePressed)
+				tmr.reset(0.001);
+				
+			if (mousePressed)
+			{
+				remove(startProj);
+				
+				if (cutsceneThing != null)
+				{
+					videoCutscene(Paths.video(cutsceneThing));
+				}
+				else
+					startCountdown();
+			}
+		});
+	}
+	
 	function lilBuddiesStart():Void
 	{
 		inCutscene = false;
