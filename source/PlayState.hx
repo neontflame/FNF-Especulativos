@@ -61,6 +61,8 @@ import flixel.util.FlxSort;
 // import flixel.util.FlxStringUtil;
 import flixel.util.FlxTimer;
 
+import usefulshits.SwagStrum;
+
 // import haxe.Json;
 // import lime.utils.Assets;
 // import openfl.display.BlendMode;
@@ -110,7 +112,11 @@ class PlayState extends MusicBeatState
 	public static final tankSongs = ["ugh", "guns", "stress"];
 
 	public static final scratchSongs = ["hihi", "tres-bofetadas", "dragons", "do-mal"];
-
+	
+	// gimmicky shit
+	public static final marcoballGimmickSongs = ["marcoball-gimmick-test"];
+	private var marcoHealth:Float = 0;
+	
 	private var camFocus:String = "";
 	private var camTween:FlxTween;
 	private var camZoomTween:FlxTween;
@@ -168,9 +174,9 @@ class PlayState extends MusicBeatState
 
 	private static var prevCamFollow:FlxObject;
 
-	public static var strumLineNotes:FlxTypedGroup<FlxSprite> = null;
-	public static var playerStrums:FlxTypedGroup<FlxSprite> = null;
-	public static var enemyStrums:FlxTypedGroup<FlxSprite> = null;
+	public static var strumLineNotes:FlxTypedGroup<SwagStrum> = null;
+	public static var playerStrums:FlxTypedGroup<SwagStrum> = null;
+	public static var enemyStrums:FlxTypedGroup<SwagStrum> = null;
 
 	private var camZooming:Bool = true;
 	private var curSong:String = "";
@@ -385,7 +391,7 @@ class PlayState extends MusicBeatState
 		if (SONG.song.toLowerCase() == "fnfolas")
 			hudFont = "calibrib";
 			
-		if (SONG.song.toLowerCase() == "enjoyment") {
+		if (SONG.song.toLowerCase() == "street-musician") {
 			hudFont = "augie";
 			hudSize = 18;
 		}
@@ -656,11 +662,11 @@ class PlayState extends MusicBeatState
 		}
 		strumLine.scrollFactor.set();
 
-		strumLineNotes = new FlxTypedGroup<FlxSprite>();
+		strumLineNotes = new FlxTypedGroup<SwagStrum>();
 		add(strumLineNotes);
 
-		playerStrums = new FlxTypedGroup<FlxSprite>();
-		enemyStrums = new FlxTypedGroup<FlxSprite>();
+		playerStrums = new FlxTypedGroup<SwagStrum>();
+		enemyStrums = new FlxTypedGroup<SwagStrum>();
 
 		// startCountdown();
 
@@ -994,6 +1000,10 @@ class PlayState extends MusicBeatState
 
 		fromChartEditor = false;
 
+		if (marcoballGimmickSongs.contains(SONG.song.toLowerCase())){
+			health = 2;
+		}
+		
 		super.create();
 	}
 
@@ -1602,7 +1612,7 @@ class PlayState extends MusicBeatState
 		for (i in 0...4)
 		{
 			// FlxG.log.add(i);
-			var babyArrow:FlxSprite = new FlxSprite(50, strumLine.y);
+			var babyArrow:SwagStrum = new SwagStrum(50, strumLine.y);
 
 			switch (stage.uiType)
 			{
@@ -2085,6 +2095,23 @@ class PlayState extends MusicBeatState
 			iconP2.animation.curAnim.curFrame = 0;
 		}
 
+		// marco bosta
+		var marcoBar:Bool = true;
+		
+		if (marcoballGimmickSongs.contains(SONG.song.toLowerCase())) {
+		if (marcoHealth > 0)
+		{
+			healthBar.createFilledBar(dad.characterColor, 0xFFFFFF00);
+			marcoHealth -= 0.05;
+			health -= 0.00125;
+		} else {
+			if (marcoBar){
+				healthBar.createFilledBar(dad.characterColor, boyfriend.characterColor);
+				marcoBar = false;
+			}
+		}
+		healthBar.percent = (healthLerp * 50);
+		}
 		/* if (FlxG.keys.justPressed.NINE)
 			switchState(new Charting()); */
 
@@ -2242,20 +2269,28 @@ class PlayState extends MusicBeatState
 			var targetY:Float;
 			var targetX:Float;
 			var targetAngle:Float;
+			var targetModAngle:Float;
+			var targetStrumY:Float;
 			
 			var scrollSpeed:Float;
-
+			
+			var hypotheticalY:Float;
+			
 			if (daNote.mustPress)
 			{
 				targetY = playerStrums.members[Math.floor(Math.abs(daNote.noteData))].y;
 				targetX = playerStrums.members[Math.floor(Math.abs(daNote.noteData))].x;
 				targetAngle = playerStrums.members[Math.floor(Math.abs(daNote.noteData))].angle;
+				targetModAngle = playerStrums.members[Math.floor(Math.abs(daNote.noteData))].modAngle;
+				targetStrumY = playerStrums.members[Math.floor(Math.abs(daNote.noteData))].strumY;
 			}
 			else
 			{
 				targetY = enemyStrums.members[Math.floor(Math.abs(daNote.noteData))].y;
 				targetX = enemyStrums.members[Math.floor(Math.abs(daNote.noteData))].x;
 				targetAngle = enemyStrums.members[Math.floor(Math.abs(daNote.noteData))].angle;
+				targetModAngle = enemyStrums.members[Math.floor(Math.abs(daNote.noteData))].modAngle;
+				targetStrumY = enemyStrums.members[Math.floor(Math.abs(daNote.noteData))].strumY;
 			}
 
 			if (Config.scrollSpeedOverride > 0)
@@ -2266,41 +2301,49 @@ class PlayState extends MusicBeatState
 			{
 				scrollSpeed = FlxMath.roundDecimal(PlayState.SONG.speed, 2);
 			}
-
+			
+			var sinShit:Float =  Math.sin((targetModAngle) * FlxAngle.TO_RAD);
+			var cosShit:Float =  Math.cos((targetModAngle) * FlxAngle.TO_RAD);
+			
 			if (Config.downscroll)
 			{
-				daNote.y = (targetY + (Conductor.songPosition - daNote.strumTime) * (0.45 * scrollSpeed));
+				hypotheticalY = ((Conductor.songPosition - daNote.strumTime) * (0.45 * scrollSpeed));
+				daNote.y = targetY + (hypotheticalY * cosShit);
 				
 				if (daNote.isSustainNote)
 				{
-					daNote.y -= daNote.height;
-					daNote.y += 125;
+					daNote.x -= daNote.height * sinShit;
+					daNote.x += 125 * sinShit;
+					daNote.y -= daNote.height * cosShit;
+					daNote.y += 125 * cosShit;
 
 					if ((!daNote.mustPress || daNote.wasGoodHit || daNote.prevNote.wasGoodHit && !daNote.canBeHit)
-						&& daNote.y - daNote.offset.y * daNote.scale.y + daNote.height >= (strumLine.y + Note.swagWidth / 2))
+						&& (targetStrumY + hypotheticalY) - daNote.offset.y * daNote.scale.y + daNote.height >= (targetStrumY + Note.swagWidth / 2))
 					{
 						// Clip to strumline
 						var swagRect = new FlxRect(0, 0, daNote.frameWidth * 2, daNote.frameHeight * 2);
 						swagRect.height = (targetY + Note.swagWidth / 2 - daNote.y) / daNote.scale.y;
 						swagRect.y = daNote.frameHeight - swagRect.height;
-
+						
 						daNote.clipRect = swagRect;
 					}
 				}
 			}
 			else
 			{
-				daNote.y = (targetY - (Conductor.songPosition - daNote.strumTime) * (0.45 * scrollSpeed));
+				hypotheticalY = ((Conductor.songPosition - daNote.strumTime) * (0.45 * scrollSpeed));
+				daNote.y = targetY - (hypotheticalY * cosShit);
+				
 				if (daNote.isSustainNote)
 				{
 					if ((!daNote.mustPress || daNote.wasGoodHit || daNote.prevNote.wasGoodHit && !daNote.canBeHit)
-						&& daNote.y + daNote.offset.y * daNote.scale.y <= (strumLine.y + Note.swagWidth / 2))
+						&& (targetStrumY - hypotheticalY) + daNote.offset.y * daNote.scale.y <= (targetStrumY + Note.swagWidth / 2))
 					{
 						// Clip to strumline
 						var swagRect = new FlxRect(0, 0, daNote.width / daNote.scale.x, daNote.height / daNote.scale.y);
 						swagRect.y = (targetY + Note.swagWidth / 2 - daNote.y) / daNote.scale.y;
 						swagRect.height -= swagRect.y;
-
+						
 						daNote.clipRect = swagRect;
 					}
 				}
@@ -2309,8 +2352,13 @@ class PlayState extends MusicBeatState
 			if (!daNote.isSustainNote)
 				daNote.angle = targetAngle;
 				
-			if (!daNote.modifiedByLua)
+			if (daNote.isSustainNote)
+				daNote.angle = 0 - targetModAngle;
+				
+			if (!daNote.modifiedByLua) {
 				daNote.x = targetX + daNote.xOffset;
+				daNote.x += hypotheticalY * sinShit;
+				}
 
 			// MOVE NOTE TRANSPARENCY CODE BECAUSE REASONS
 			if (daNote.tooLate)
@@ -2324,14 +2372,18 @@ class PlayState extends MusicBeatState
 							noteMiss(daNote.noteData, daNote.type, 0.055, false, true);
 						case "BULLET":
 							vocals.volume = 0;
-							noteMiss(daNote.noteData, daNote.type, 0.45, false, true);
+							marcoHealth = 10;
+							noteMiss(daNote.noteData, daNote.type, 0.35, false, true);
 					}
 
 					daNote.alpha = 0.3;
 				}
 			}
 
-			if (Config.downscroll ? (daNote.y > targetY + daNote.height + 50) : (daNote.y < targetY - daNote.height - 50))
+			if (
+			(Config.downscroll ? (daNote.y > targetY + (daNote.height + (50 * cosShit))) : (daNote.y < targetY - (daNote.height - (50 * cosShit))) ||
+			((daNote.x < targetX - (daNote.height - (50 * sinShit))))
+			))
 			{
 				if (daNote.tooLate || daNote.wasGoodHit)
 				{
@@ -2383,7 +2435,7 @@ class PlayState extends MusicBeatState
 					luaModchart.executeState('playerTwoSing', [Math.abs(daNote.noteData), Conductor.songPosition]);
 				#end
 
-				enemyStrums.forEach(function(spr:FlxSprite)
+				enemyStrums.forEach(function(spr:SwagStrum)
 				{
 					if (Math.abs(daNote.noteData) == spr.ID)
 					{
@@ -2600,8 +2652,8 @@ class PlayState extends MusicBeatState
 
 		comboUI.ratingPopup(daRating, noteDiff);
 
-		if (combo >= minCombo)
-			comboUI.comboPopup(combo);
+		// if (combo >= minCombo)
+		comboUI.comboPopup(combo);
 	}
 
 	private function createNoteSplash(note:Int)
@@ -2872,7 +2924,7 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		playerStrums.forEach(function(spr:FlxSprite)
+		playerStrums.forEach(function(spr:SwagStrum)
 		{
 			switch (spr.ID)
 			{
@@ -2929,7 +2981,7 @@ class PlayState extends MusicBeatState
 		{
 			if (daNote.mustPress
 				&& daNote.strumTime < Conductor.songPosition +
-					Conductor.timings[3] * (!daNote.isSustainNote ? 0.125 : (daNote.prevNote.wasGoodHit ? 1 : 0)))
+					Conductor.timings[2] * (!daNote.isSustainNote ? 0.125 : (daNote.prevNote.wasGoodHit ? 1 : 0)))
 			{
 				if (daNote.type != "JOLA")
 				{
@@ -2964,7 +3016,7 @@ class PlayState extends MusicBeatState
 
 			goodNoteHit(x);
 
-			playerStrums.forEach(function(spr:FlxSprite)
+			playerStrums.forEach(function(spr:SwagStrum)
 			{
 				if (Math.abs(x.noteData) == spr.ID)
 				{
@@ -3131,15 +3183,17 @@ class PlayState extends MusicBeatState
 					health -= 0.03 * Config.healthMultiplier;
 
 				default:
-					if (!note.isSustainNote)
-					{
+					if (!marcoballGimmickSongs.contains(SONG.song.toLowerCase())){
+						if (!note.isSustainNote)
+						{
+							health += 0.015 * Config.healthMultiplier;
+						}
+						else
+						{
+							health += 0.0075 * Config.healthMultiplier;
+						}
 						health += 0.015 * Config.healthMultiplier;
 					}
-					else
-					{
-						health += 0.0075 * Config.healthMultiplier;
-					}
-					health += 0.015 * Config.healthMultiplier;
 			}
 
 			if (boyfriend.canAutoAnim
@@ -3177,7 +3231,7 @@ class PlayState extends MusicBeatState
 				setBoyfriendInvuln(2.5 / 60);
 			}
 
-			playerStrums.forEach(function(spr:FlxSprite)
+			playerStrums.forEach(function(spr:SwagStrum)
 			{
 				for (i in 0...note.noteWidth)
 				{

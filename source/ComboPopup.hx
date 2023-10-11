@@ -81,12 +81,17 @@ class ComboPopup extends FlxSpriteGroup
 	**/
 	public function comboPopup(_combo:Int):Void
 	{
-		if (_combo < 0)
+		var leadingZeroes:String = (_combo < 10 ? '00' : // if combo is less than 10
+							_combo >= 10 && _combo < 100 ? '0' :  // if combo is more or equal to 10 but less than 100
+							'');
+							// i couldve very well just used a formatting library for this
+		
+		/* if (_combo < 0)
 		{
 			return;
-		}
+		} */
 
-		var combo:String = Std.string(_combo);
+		var combo:String = leadingZeroes + Std.string(_combo);
 
 		for (i in 0...combo.length)
 		{

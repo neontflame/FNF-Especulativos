@@ -609,6 +609,24 @@ class ModchartState
 			}
 		});
 
+		Lua_helper.add_callback(lua, "setRenderedNoteX", function(x:Float, id:Int)
+		{
+			if (PlayState.instance.notes.members[id] != null)
+			{
+				PlayState.instance.notes.members[id].modifiedByLua = true;
+				PlayState.instance.notes.members[id].x = x;
+			}
+		});
+
+		Lua_helper.add_callback(lua, "setRenderedNoteY", function(y:Float, id:Int)
+		{
+			if (PlayState.instance.notes.members[id] != null)
+			{
+				PlayState.instance.notes.members[id].modifiedByLua = true;
+				PlayState.instance.notes.members[id].y = y;
+			}
+		});
+		
 		Lua_helper.add_callback(lua, "setRenderedNoteAlpha", function(alpha:Float, id:Int)
 		{
 			PlayState.instance.notes.members[id].modifiedByLua = true;
@@ -670,6 +688,10 @@ class ModchartState
 
 		Lua_helper.add_callback(lua, "setActorY", function(y:Int, id:String)
 		{
+			if (Std.isOfType(getActorByName(id), usefulshits.SwagStrum)) {
+				getActorByName(id).strumY = y;
+			}
+			
 			getActorByName(id).y = y;
 		});
 
@@ -743,6 +765,11 @@ class ModchartState
 			return getActorByName(id).y;
 		});
 
+		Lua_helper.add_callback(lua, "setStrumAngle", function(angle:Float, id:String)
+		{
+			getActorByName(id).modAngle = angle;
+		});
+		
 		Lua_helper.add_callback(lua, "setWindowPos", function(x:Int, y:Int)
 		{
 			Application.current.window.x = x;

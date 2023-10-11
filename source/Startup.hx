@@ -161,7 +161,7 @@ class Startup extends FlxState
 
         hasEe2 = CoolUtil.exists(Paths.inst("Lil-Buddies"));
 		
-        hasYotsu = CoolUtil.exists(Paths.inst("Enjoyment"));
+        hasYotsu = CoolUtil.exists(Paths.inst("Street-Musician"));
         hasQeN = CoolUtil.exists(Paths.inst("fnfolas"));
 		
 		if (FlxG.random.int(0, 85) == 85) 

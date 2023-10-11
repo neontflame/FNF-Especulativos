@@ -73,6 +73,7 @@ class ChartingState extends MusicBeatState
 	var bfClick:FlxUICheckBox;
 	var opClick:FlxUICheckBox;
 	var gotoSectionStepper:FlxUINumericStepper;
+	var adaptFromBPMStepper:FlxUINumericStepper;
 	var lilBuddiesBox:FlxUICheckBox;
 
 	// var halfSpeedCheck:FlxUICheckBox;
@@ -500,6 +501,17 @@ class ChartingState extends MusicBeatState
 			gotoSectionStepper.value = 0;
 		});
 
+		adaptFromBPMStepper = new FlxUINumericStepper(140, 400, 1, 0, 0, 999, 0);
+		adaptFromBPMStepper.name = 'adaptFromBPM';
+		
+		var adaptFromBPM:FlxButton = new FlxButton(adaptFromBPMStepper.x, adaptFromBPMStepper.y + 20, "Adapt from BPM", function()
+		{
+			adaptFromBPMShit(adaptFromBPMStepper.value, _song.bpm);
+
+			updateGrid();
+			adaptFromBPMStepper.value = _song.bpm;
+		});
+		
 		var check_mute_inst = new FlxUICheckBox(10, 10, null, null, "Mute Instrumental (in editor)", 100);
 		check_mute_inst.checked = false;
 		check_mute_inst.callback = function()
@@ -547,6 +559,8 @@ class ChartingState extends MusicBeatState
 
 		tab_group_tools.add(gotoSectionStepper);
 		tab_group_tools.add(gotoSectionButton);
+		tab_group_tools.add(adaptFromBPMStepper);
+		tab_group_tools.add(adaptFromBPM);
 		tab_group_tools.add(check_mute_inst);
 		tab_group_tools.add(check_mute_vox);
 		tab_group_tools.add(bfClick);
@@ -1932,7 +1946,7 @@ class ChartingState extends MusicBeatState
 			"song": _song
 		};
 
-		var data:String = Json.stringify(json);
+		var data:String = Json.stringify(json, "\t");
 
 		if ((data != null) && (data.length > 0))
 		{
@@ -1961,7 +1975,7 @@ class ChartingState extends MusicBeatState
 			"song": genericSong
 		};
 
-		var data:String = Json.stringify(json);
+		var data:String = Json.stringify(json, "\t");
 
 		if ((data != null) && (data.length > 0))
 		{
@@ -1979,7 +1993,7 @@ class ChartingState extends MusicBeatState
 			"events": _events
 		};
 
-		var data:String = Json.stringify(json);
+		var data:String = Json.stringify(json, "\t");
 
 		if ((data != null) && (data.length > 0))
 		{
@@ -2034,6 +2048,26 @@ class ChartingState extends MusicBeatState
 		}
 	}
 
+	function adaptFromBPMShit(oldbpm:Float, newbpm:Float)
+	{
+		for (x in 0..._song.notes.length)
+		{
+			for (i in 0..._song.notes[x].sectionNotes.length)
+			{
+				var noteTime = _song.notes[x].sectionNotes[i][0];
+				_song.notes[x].sectionNotes[i][0] = noteTime * (oldbpm / newbpm);
+				// updateGrid();
+			}
+		}
+		
+		for (i in 0..._events.events.length)
+		{
+			var eventTime = _events.events[i][1];
+			_events.events[i][1] = eventTime * (oldbpm / newbpm);
+			// updateGrid();
+		}
+	}
+	
 	function sectionHasBfNotes(section:Int):Bool
 	{
 		var notes = _song.notes[section].sectionNotes;

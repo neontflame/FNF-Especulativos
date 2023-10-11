@@ -32,13 +32,13 @@ class Note extends FlxSprite
 
 	public var xOffset:Float = 0;
 	public var yOffset:Float = 0;
-
+	
 	public static var swagWidth:Float = 160 * 0.7;
 	public static final PURP_NOTE:Int = 0;
 	public static final GREEN_NOTE:Int = 2;
 	public static final BLUE_NOTE:Int = 1;
 	public static final RED_NOTE:Int = 3;
-
+	
 	public var modifiedByLua:Bool = false;
 
 	public function new(_strumTime:Float, _noteData:Int, _type:String, ?_editor = false, ?_prevNote:Note, ?_sustainNote:Bool = false)

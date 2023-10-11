@@ -22,7 +22,8 @@ class ConfigMenu extends UIStateExt
 
 	var state:String = "topLevelMenu";
 	var titles:Array<FlxSprite> = [];
-
+	var checkboxGroup:FlxSpriteGroup = new FlxSpriteGroup();
+	
 	var bg:FlxSprite;
 
 	var subMenuGroup:FlxSpriteGroup = new FlxSpriteGroup();
@@ -113,6 +114,7 @@ class ConfigMenu extends UIStateExt
 		add(yetAnotherMenuThing);
 		
 		add(subMenuGroup);
+		subMenuGroup.add(checkboxGroup);
 		
 		configText = new FlxText(433, 170, 718, "", 60);
 		configText.scrollFactor.set(0, 0);
@@ -123,7 +125,7 @@ class ConfigMenu extends UIStateExt
 		descText.scrollFactor.set(0, 0);
 		descText.setFormat(Paths.font("arial"), 16, FlxColor.GRAY, FlxTextAlign.CENTER);
 		subMenuGroup.add(descText);
-
+		
 		setupOptions();
 		if (startInSubMenu > -1)
 		{
@@ -273,11 +275,39 @@ class ConfigMenu extends UIStateExt
 	{
 		configText.clearFormats();
 		configText.text = "";
-
+		
+		checkboxGroup.clear();
+		
 		for (i in 0...configOptions[curSelected].length)
 		{
+			var checkboxShit:FlxSprite = new FlxSprite();
+			checkboxShit.frames = Paths.getSparrowAtlas('menu/options/checkbox');
+			checkboxShit.animation.addByPrefix('checkbox', 'checkbox', 0);
+			checkboxShit.animation.play("checkbox");
+			checkboxShit.antialiasing = true;
+			checkboxShit.x = configText.x;
+			checkboxShit.y = 176 + (36.5 * i);
+			checkboxGroup.add(checkboxShit);
+			
+			var selectedSetting = configOptions[curSelected][i].setting;
 			var sectionStart = configText.text.length;
-			configText.text += configOptions[curSelected][i].name + configOptions[curSelected][i].setting + "\n";
+			
+			if (selectedSetting == ': on' || selectedSetting == ': off' || selectedSetting == ': disabled') {
+				configText.text += '    ' + configOptions[curSelected][i].name + "\n";
+				checkboxShit.visible = true;
+				
+				switch selectedSetting {
+					case ': on':
+						checkboxShit.animation.curAnim.curFrame = 1;
+					case ': off':
+						checkboxShit.animation.curAnim.curFrame = 0;
+					case ': disabled':
+						checkboxShit.animation.curAnim.curFrame = 2;
+				}
+			} else {
+				configText.text += configOptions[curSelected][i].name + configOptions[curSelected][i].setting + "\n";
+				checkboxShit.visible = false;
+			}
 			var sectionEnd = configText.text.length - 1;
 
 			if (i == curSelectedSub)
@@ -290,7 +320,7 @@ class ConfigMenu extends UIStateExt
 		configText.text += "\n";
 
 		descText.text = configOptions[curSelected][curSelectedSub].description;
-
+		
 		// tabDisplay.text = Std.string(tabKeys);
 	}
 

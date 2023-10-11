@@ -313,26 +313,24 @@ class Character extends FlxSprite
 				// enfim a mais recente mascote do servidor
 				frames = Paths.getSparrowAtlas("yotsu/yotuba");
 				animation.addByPrefix('idle', 'yotsu idle', 24, false);
+				animation.addByPrefix('singLEFT', 'yotsu left', 24, false);
+				animation.addByPrefix('singDOWN', 'yotsu down', 24, false);
 				animation.addByPrefix('singUP', 'yotsu up', 24, false);
 				animation.addByPrefix('singRIGHT', 'yotsu right', 24, false);
-				animation.addByPrefix('singDOWN', 'yotsu down', 24, false);
-				animation.addByPrefix('singLEFT', 'yotsu left', 24, false);
-
 				animation.addByPrefix('hey', 'yotsu hey', 24, false);
 				
 				addOffset('idle');
-				addOffset("singDOWN", -29, -54);
-				addOffset("singRIGHT", -52, -15);
-				addOffset("singUP", -20, 38);
-				addOffset("singLEFT", 69, -2);
-				
-				addOffset("hey", -44, -1);
+				addOffset('singLEFT', 58, -8);
+				addOffset('singDOWN', -30, -61);
+				addOffset('singUP', -22, 38);
+				addOffset('singRIGHT', -36, -21);
+				addOffset('hey', -36, 4);
 				
 				playAnim('idle');
-
+				
 				iconName = "yotsuba";
-				charOffsetArray = [0, 300];
-				cameraOffsetArray = [150, -16];
+				charOffsetArray = [0, 315];
+				cameraOffsetArray = [150, -110];
 				
 			case 'narigao':
 				// nariz man

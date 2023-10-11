@@ -83,7 +83,7 @@ class FreeplayState extends MusicBeatState
 		*/
 		
 		if (FlxG.save.data.yotsubaUnlock && Startup.hasYotsu)
-			addWeek(['Enjoyment'], 10, ['yotsuba']);
+			addWeek(['Street-Musician'], 10, ['yotsuba']);
 			
 		if (FlxG.save.data.qenUnlock && Startup.hasQeN)
 			addWeek(['fnfolas'], 11, ['qen']);
