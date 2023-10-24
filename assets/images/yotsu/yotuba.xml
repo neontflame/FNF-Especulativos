@@ -2,106 +2,217 @@
 <TextureAtlas imagePath="yotuba.png">
 	<!-- Created with Adobe Animate version 19.0.0.326 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="yotsu boppin0000" x="0" y="0" width="280" height="434" frameX="0" frameY="0" frameWidth="305" frameHeight="434"/>
-	<SubTexture name="yotsu boppin0001" x="0" y="0" width="280" height="434" frameX="0" frameY="0" frameWidth="305" frameHeight="434"/>
-	<SubTexture name="yotsu boppin0002" x="280" y="0" width="273" height="434" frameX="-3" frameY="0" frameWidth="305" frameHeight="434"/>
-	<SubTexture name="yotsu boppin0003" x="280" y="0" width="273" height="434" frameX="-3" frameY="0" frameWidth="305" frameHeight="434"/>
-	<SubTexture name="yotsu boppin0004" x="280" y="0" width="273" height="434" frameX="-3" frameY="0" frameWidth="305" frameHeight="434"/>
-	<SubTexture name="yotsu boppin0005" x="280" y="0" width="273" height="434" frameX="-3" frameY="0" frameWidth="305" frameHeight="434"/>
-	<SubTexture name="yotsu boppin0006" x="553" y="0" width="256" height="432" frameX="-13" frameY="-2" frameWidth="305" frameHeight="434"/>
-	<SubTexture name="yotsu boppin0007" x="553" y="0" width="256" height="432" frameX="-13" frameY="-2" frameWidth="305" frameHeight="434"/>
-	<SubTexture name="yotsu boppin0008" x="809" y="0" width="255" height="429" frameX="-24" frameY="-5" frameWidth="305" frameHeight="434"/>
-	<SubTexture name="yotsu boppin0009" x="1064" y="0" width="256" height="421" frameX="-48" frameY="-13" frameWidth="305" frameHeight="434"/>
-	<SubTexture name="yotsu boppin0010" x="1064" y="0" width="256" height="421" frameX="-48" frameY="-13" frameWidth="305" frameHeight="434"/>
-	<SubTexture name="yotsu boppin0011" x="1320" y="0" width="256" height="419" frameX="-49" frameY="-15" frameWidth="305" frameHeight="434"/>
-	<SubTexture name="yotsu boppin0012" x="1320" y="0" width="256" height="419" frameX="-49" frameY="-15" frameWidth="305" frameHeight="434"/>
-	<SubTexture name="yotsu boppin0013" x="1320" y="0" width="256" height="419" frameX="-49" frameY="-15" frameWidth="305" frameHeight="434"/>
-	<SubTexture name="yotsu boppin0014" x="1320" y="0" width="256" height="419" frameX="-49" frameY="-15" frameWidth="305" frameHeight="434"/>
-	<SubTexture name="yotsu boppin0015" x="1576" y="0" width="256" height="423" frameX="-41" frameY="-11" frameWidth="305" frameHeight="434"/>
-	<SubTexture name="yotsu boppin0016" x="1576" y="0" width="256" height="423" frameX="-41" frameY="-11" frameWidth="305" frameHeight="434"/>
-	<SubTexture name="yotsu boppin0017" x="0" y="434" width="256" height="427" frameX="-29" frameY="-7" frameWidth="305" frameHeight="434"/>
-	<SubTexture name="yotsu down0000" x="256" y="434" width="267" height="367" frameX="0" frameY="-4" frameWidth="267" frameHeight="372"/>
-	<SubTexture name="yotsu down0001" x="256" y="434" width="267" height="367" frameX="0" frameY="-4" frameWidth="267" frameHeight="372"/>
-	<SubTexture name="yotsu down0002" x="523" y="434" width="263" height="372" frameX="-3" frameY="0" frameWidth="267" frameHeight="372"/>
-	<SubTexture name="yotsu down0003" x="523" y="434" width="263" height="372" frameX="-3" frameY="0" frameWidth="267" frameHeight="372"/>
-	<SubTexture name="yotsu down0004" x="523" y="434" width="263" height="372" frameX="-3" frameY="0" frameWidth="267" frameHeight="372"/>
-	<SubTexture name="yotsu down0005" x="523" y="434" width="263" height="372" frameX="-3" frameY="0" frameWidth="267" frameHeight="372"/>
-	<SubTexture name="yotsu down0006" x="523" y="434" width="263" height="372" frameX="-3" frameY="0" frameWidth="267" frameHeight="372"/>
-	<SubTexture name="yotsu down0007" x="523" y="434" width="263" height="372" frameX="-3" frameY="0" frameWidth="267" frameHeight="372"/>
-	<SubTexture name="yotsu down0008" x="523" y="434" width="263" height="372" frameX="-3" frameY="0" frameWidth="267" frameHeight="372"/>
-	<SubTexture name="yotsu down0009" x="523" y="434" width="263" height="372" frameX="-3" frameY="0" frameWidth="267" frameHeight="372"/>
-	<SubTexture name="yotsu down0010" x="523" y="434" width="263" height="372" frameX="-3" frameY="0" frameWidth="267" frameHeight="372"/>
-	<SubTexture name="yotsu down0011" x="523" y="434" width="263" height="372" frameX="-3" frameY="0" frameWidth="267" frameHeight="372"/>
-	<SubTexture name="yotsu down0012" x="523" y="434" width="263" height="372" frameX="-3" frameY="0" frameWidth="267" frameHeight="372"/>
-	<SubTexture name="yotsu down0013" x="523" y="434" width="263" height="372" frameX="-3" frameY="0" frameWidth="267" frameHeight="372"/>
-	<SubTexture name="yotsu hey0000" x="786" y="434" width="261" height="437" frameX="-17" frameY="0" frameWidth="278" frameHeight="437"/>
-	<SubTexture name="yotsu hey0001" x="786" y="434" width="261" height="437" frameX="-17" frameY="0" frameWidth="278" frameHeight="437"/>
-	<SubTexture name="yotsu hey0002" x="1047" y="434" width="267" height="430" frameX="-5" frameY="-7" frameWidth="278" frameHeight="437"/>
-	<SubTexture name="yotsu hey0003" x="1047" y="434" width="267" height="430" frameX="-5" frameY="-7" frameWidth="278" frameHeight="437"/>
-	<SubTexture name="yotsu hey0004" x="1314" y="434" width="270" height="427" frameX="0" frameY="-9" frameWidth="278" frameHeight="437"/>
-	<SubTexture name="yotsu hey0005" x="1314" y="434" width="270" height="427" frameX="0" frameY="-9" frameWidth="278" frameHeight="437"/>
-	<SubTexture name="yotsu hey0006" x="1314" y="434" width="270" height="427" frameX="0" frameY="-9" frameWidth="278" frameHeight="437"/>
-	<SubTexture name="yotsu hey0007" x="1314" y="434" width="270" height="427" frameX="0" frameY="-9" frameWidth="278" frameHeight="437"/>
-	<SubTexture name="yotsu hey0008" x="1314" y="434" width="270" height="427" frameX="0" frameY="-9" frameWidth="278" frameHeight="437"/>
-	<SubTexture name="yotsu hey0009" x="1314" y="434" width="270" height="427" frameX="0" frameY="-9" frameWidth="278" frameHeight="437"/>
-	<SubTexture name="yotsu hey0010" x="1314" y="434" width="270" height="427" frameX="0" frameY="-9" frameWidth="278" frameHeight="437"/>
-	<SubTexture name="yotsu hey0011" x="1314" y="434" width="270" height="427" frameX="0" frameY="-9" frameWidth="278" frameHeight="437"/>
-	<SubTexture name="yotsu hey0012" x="1314" y="434" width="270" height="427" frameX="0" frameY="-9" frameWidth="278" frameHeight="437"/>
-	<SubTexture name="yotsu hey0013" x="1314" y="434" width="270" height="427" frameX="0" frameY="-9" frameWidth="278" frameHeight="437"/>
-	<SubTexture name="yotsu idle0000" x="1584" y="434" width="256" height="418" frameX="-9" frameY="-14" frameWidth="265" frameHeight="432"/>
-	<SubTexture name="yotsu idle0001" x="1584" y="434" width="256" height="418" frameX="-9" frameY="-14" frameWidth="265" frameHeight="432"/>
-	<SubTexture name="yotsu idle0002" x="0" y="871" width="256" height="422" frameX="-6" frameY="-10" frameWidth="265" frameHeight="432"/>
-	<SubTexture name="yotsu idle0003" x="0" y="871" width="256" height="422" frameX="-6" frameY="-10" frameWidth="265" frameHeight="432"/>
-	<SubTexture name="yotsu idle0004" x="256" y="871" width="262" height="431" frameX="-1" frameY="-1" frameWidth="265" frameHeight="432"/>
-	<SubTexture name="yotsu idle0005" x="256" y="871" width="262" height="431" frameX="-1" frameY="-1" frameWidth="265" frameHeight="432"/>
-	<SubTexture name="yotsu idle0006" x="518" y="871" width="263" height="432" frameX="0" frameY="0" frameWidth="265" frameHeight="432"/>
-	<SubTexture name="yotsu idle0007" x="518" y="871" width="263" height="432" frameX="0" frameY="0" frameWidth="265" frameHeight="432"/>
-	<SubTexture name="yotsu idle0008" x="781" y="871" width="263" height="432" frameX="0" frameY="0" frameWidth="265" frameHeight="432"/>
-	<SubTexture name="yotsu idle0009" x="781" y="871" width="263" height="432" frameX="0" frameY="0" frameWidth="265" frameHeight="432"/>
-	<SubTexture name="yotsu idle0010" x="781" y="871" width="263" height="432" frameX="0" frameY="0" frameWidth="265" frameHeight="432"/>
-	<SubTexture name="yotsu idle0011" x="781" y="871" width="263" height="432" frameX="0" frameY="0" frameWidth="265" frameHeight="432"/>
-	<SubTexture name="yotsu idle0012" x="781" y="871" width="263" height="432" frameX="0" frameY="0" frameWidth="265" frameHeight="432"/>
-	<SubTexture name="yotsu idle0013" x="781" y="871" width="263" height="432" frameX="0" frameY="0" frameWidth="265" frameHeight="432"/>
-	<SubTexture name="yotsu left0000" x="1044" y="871" width="322" height="425" frameX="0" frameY="0" frameWidth="331" frameHeight="425"/>
-	<SubTexture name="yotsu left0001" x="1044" y="871" width="322" height="425" frameX="0" frameY="0" frameWidth="331" frameHeight="425"/>
-	<SubTexture name="yotsu left0002" x="1366" y="871" width="326" height="422" frameX="-5" frameY="-3" frameWidth="331" frameHeight="425"/>
-	<SubTexture name="yotsu left0003" x="1366" y="871" width="326" height="422" frameX="-5" frameY="-3" frameWidth="331" frameHeight="425"/>
-	<SubTexture name="yotsu left0004" x="1366" y="871" width="326" height="422" frameX="-5" frameY="-3" frameWidth="331" frameHeight="425"/>
-	<SubTexture name="yotsu left0005" x="1366" y="871" width="326" height="422" frameX="-5" frameY="-3" frameWidth="331" frameHeight="425"/>
-	<SubTexture name="yotsu left0006" x="1366" y="871" width="326" height="422" frameX="-5" frameY="-3" frameWidth="331" frameHeight="425"/>
-	<SubTexture name="yotsu left0007" x="1366" y="871" width="326" height="422" frameX="-5" frameY="-3" frameWidth="331" frameHeight="425"/>
-	<SubTexture name="yotsu left0008" x="1366" y="871" width="326" height="422" frameX="-5" frameY="-3" frameWidth="331" frameHeight="425"/>
-	<SubTexture name="yotsu left0009" x="1366" y="871" width="326" height="422" frameX="-5" frameY="-3" frameWidth="331" frameHeight="425"/>
-	<SubTexture name="yotsu left0010" x="1366" y="871" width="326" height="422" frameX="-5" frameY="-3" frameWidth="331" frameHeight="425"/>
-	<SubTexture name="yotsu left0011" x="1366" y="871" width="326" height="422" frameX="-5" frameY="-3" frameWidth="331" frameHeight="425"/>
-	<SubTexture name="yotsu left0012" x="1366" y="871" width="326" height="422" frameX="-5" frameY="-3" frameWidth="331" frameHeight="425"/>
-	<SubTexture name="yotsu left0013" x="1366" y="871" width="326" height="422" frameX="-5" frameY="-3" frameWidth="331" frameHeight="425"/>
-	<SubTexture name="yotsu right0000" x="1692" y="871" width="321" height="410" frameX="-10" frameY="0" frameWidth="331" frameHeight="410"/>
-	<SubTexture name="yotsu right0001" x="1692" y="871" width="321" height="410" frameX="-10" frameY="0" frameWidth="331" frameHeight="410"/>
-	<SubTexture name="yotsu right0002" x="0" y="1303" width="318" height="408" frameX="0" frameY="-2" frameWidth="331" frameHeight="410"/>
-	<SubTexture name="yotsu right0003" x="0" y="1303" width="318" height="408" frameX="0" frameY="-2" frameWidth="331" frameHeight="410"/>
-	<SubTexture name="yotsu right0004" x="0" y="1303" width="318" height="408" frameX="0" frameY="-2" frameWidth="331" frameHeight="410"/>
-	<SubTexture name="yotsu right0005" x="0" y="1303" width="318" height="408" frameX="0" frameY="-2" frameWidth="331" frameHeight="410"/>
-	<SubTexture name="yotsu right0006" x="0" y="1303" width="318" height="408" frameX="0" frameY="-2" frameWidth="331" frameHeight="410"/>
-	<SubTexture name="yotsu right0007" x="0" y="1303" width="318" height="408" frameX="0" frameY="-2" frameWidth="331" frameHeight="410"/>
-	<SubTexture name="yotsu right0008" x="0" y="1303" width="318" height="408" frameX="0" frameY="-2" frameWidth="331" frameHeight="410"/>
-	<SubTexture name="yotsu right0009" x="0" y="1303" width="318" height="408" frameX="0" frameY="-2" frameWidth="331" frameHeight="410"/>
-	<SubTexture name="yotsu right0010" x="0" y="1303" width="318" height="408" frameX="0" frameY="-2" frameWidth="331" frameHeight="410"/>
-	<SubTexture name="yotsu right0011" x="0" y="1303" width="318" height="408" frameX="0" frameY="-2" frameWidth="331" frameHeight="410"/>
-	<SubTexture name="yotsu right0012" x="0" y="1303" width="318" height="408" frameX="0" frameY="-2" frameWidth="331" frameHeight="410"/>
-	<SubTexture name="yotsu right0013" x="0" y="1303" width="318" height="408" frameX="0" frameY="-2" frameWidth="331" frameHeight="410"/>
-	<SubTexture name="yotsu up0000" x="318" y="1303" width="256" height="471" frameX="-5" frameY="0" frameWidth="261" frameHeight="471"/>
-	<SubTexture name="yotsu up0001" x="318" y="1303" width="256" height="471" frameX="-5" frameY="0" frameWidth="261" frameHeight="471"/>
-	<SubTexture name="yotsu up0002" x="574" y="1303" width="256" height="453" frameX="0" frameY="-18" frameWidth="261" frameHeight="471"/>
-	<SubTexture name="yotsu up0003" x="574" y="1303" width="256" height="453" frameX="0" frameY="-18" frameWidth="261" frameHeight="471"/>
-	<SubTexture name="yotsu up0004" x="574" y="1303" width="256" height="453" frameX="0" frameY="-18" frameWidth="261" frameHeight="471"/>
-	<SubTexture name="yotsu up0005" x="574" y="1303" width="256" height="453" frameX="0" frameY="-18" frameWidth="261" frameHeight="471"/>
-	<SubTexture name="yotsu up0006" x="574" y="1303" width="256" height="453" frameX="0" frameY="-18" frameWidth="261" frameHeight="471"/>
-	<SubTexture name="yotsu up0007" x="574" y="1303" width="256" height="453" frameX="0" frameY="-18" frameWidth="261" frameHeight="471"/>
-	<SubTexture name="yotsu up0008" x="574" y="1303" width="256" height="453" frameX="0" frameY="-18" frameWidth="261" frameHeight="471"/>
-	<SubTexture name="yotsu up0009" x="574" y="1303" width="256" height="453" frameX="0" frameY="-18" frameWidth="261" frameHeight="471"/>
-	<SubTexture name="yotsu up0010" x="574" y="1303" width="256" height="453" frameX="0" frameY="-18" frameWidth="261" frameHeight="471"/>
-	<SubTexture name="yotsu up0011" x="574" y="1303" width="256" height="453" frameX="0" frameY="-18" frameWidth="261" frameHeight="471"/>
-	<SubTexture name="yotsu up0012" x="574" y="1303" width="256" height="453" frameX="0" frameY="-18" frameWidth="261" frameHeight="471"/>
-	<SubTexture name="yotsu up0013" x="574" y="1303" width="256" height="453" frameX="0" frameY="-18" frameWidth="261" frameHeight="471"/>
+	<SubTexture name="yotsu down0000" x="1169" y="1942" width="267" height="367" frameX="0" frameY="-4" frameWidth="267" frameHeight="372"/>
+	<SubTexture name="yotsu down0001" x="1169" y="1942" width="267" height="367" frameX="0" frameY="-4" frameWidth="267" frameHeight="372"/>
+	<SubTexture name="yotsu down0002" x="1436" y="1942" width="263" height="372" frameX="-3" frameY="0" frameWidth="267" frameHeight="372"/>
+	<SubTexture name="yotsu down0003" x="1436" y="1942" width="263" height="372" frameX="-3" frameY="0" frameWidth="267" frameHeight="372"/>
+	<SubTexture name="yotsu down0004" x="1436" y="1942" width="263" height="372" frameX="-3" frameY="0" frameWidth="267" frameHeight="372"/>
+	<SubTexture name="yotsu down0005" x="1436" y="1942" width="263" height="372" frameX="-3" frameY="0" frameWidth="267" frameHeight="372"/>
+	<SubTexture name="yotsu down0006" x="1436" y="1942" width="263" height="372" frameX="-3" frameY="0" frameWidth="267" frameHeight="372"/>
+	<SubTexture name="yotsu down0007" x="1436" y="1942" width="263" height="372" frameX="-3" frameY="0" frameWidth="267" frameHeight="372"/>
+	<SubTexture name="yotsu down0008" x="1436" y="1942" width="263" height="372" frameX="-3" frameY="0" frameWidth="267" frameHeight="372"/>
+	<SubTexture name="yotsu down0009" x="1436" y="1942" width="263" height="372" frameX="-3" frameY="0" frameWidth="267" frameHeight="372"/>
+	<SubTexture name="yotsu down0010" x="1436" y="1942" width="263" height="372" frameX="-3" frameY="0" frameWidth="267" frameHeight="372"/>
+	<SubTexture name="yotsu down0011" x="1436" y="1942" width="263" height="372" frameX="-3" frameY="0" frameWidth="267" frameHeight="372"/>
+	<SubTexture name="yotsu down0012" x="1436" y="1942" width="263" height="372" frameX="-3" frameY="0" frameWidth="267" frameHeight="372"/>
+	<SubTexture name="yotsu down0013" x="1436" y="1942" width="263" height="372" frameX="-3" frameY="0" frameWidth="267" frameHeight="372"/>
+	<SubTexture name="yotsu grab stick0000" x="0" y="0" width="256" height="428" frameX="-88" frameY="-8" frameWidth="362" frameHeight="436"/>
+	<SubTexture name="yotsu grab stick0001" x="0" y="0" width="256" height="428" frameX="-88" frameY="-8" frameWidth="362" frameHeight="436"/>
+	<SubTexture name="yotsu grab stick0002" x="256" y="0" width="242" height="424" frameX="-120" frameY="-12" frameWidth="362" frameHeight="436"/>
+	<SubTexture name="yotsu grab stick0003" x="256" y="0" width="242" height="424" frameX="-120" frameY="-12" frameWidth="362" frameHeight="436"/>
+	<SubTexture name="yotsu grab stick0004" x="498" y="0" width="243" height="422" frameX="-116" frameY="-14" frameWidth="362" frameHeight="436"/>
+	<SubTexture name="yotsu grab stick0005" x="498" y="0" width="243" height="422" frameX="-116" frameY="-14" frameWidth="362" frameHeight="436"/>
+	<SubTexture name="yotsu grab stick0006" x="741" y="0" width="243" height="422" frameX="-116" frameY="-14" frameWidth="362" frameHeight="436"/>
+	<SubTexture name="yotsu grab stick0007" x="741" y="0" width="243" height="422" frameX="-116" frameY="-14" frameWidth="362" frameHeight="436"/>
+	<SubTexture name="yotsu grab stick0008" x="498" y="0" width="243" height="422" frameX="-116" frameY="-14" frameWidth="362" frameHeight="436"/>
+	<SubTexture name="yotsu grab stick0009" x="498" y="0" width="243" height="422" frameX="-116" frameY="-14" frameWidth="362" frameHeight="436"/>
+	<SubTexture name="yotsu grab stick0010" x="741" y="0" width="243" height="422" frameX="-116" frameY="-14" frameWidth="362" frameHeight="436"/>
+	<SubTexture name="yotsu grab stick0011" x="984" y="0" width="324" height="424" frameX="-18" frameY="-12" frameWidth="362" frameHeight="436"/>
+	<SubTexture name="yotsu grab stick0012" x="1308" y="0" width="320" height="436" frameX="0" frameY="0" frameWidth="362" frameHeight="436"/>
+	<SubTexture name="yotsu grab stick0013" x="1308" y="0" width="320" height="436" frameX="0" frameY="0" frameWidth="362" frameHeight="436"/>
+	<SubTexture name="yotsu grab stick0014" x="1628" y="0" width="309" height="433" frameX="-11" frameY="-3" frameWidth="362" frameHeight="436"/>
+	<SubTexture name="yotsu grab stick0015" x="1628" y="0" width="309" height="433" frameX="-11" frameY="-3" frameWidth="362" frameHeight="436"/>
+	<SubTexture name="yotsu grab stick0016" x="1628" y="0" width="309" height="433" frameX="-11" frameY="-3" frameWidth="362" frameHeight="436"/>
+	<SubTexture name="yotsu hey0000" x="1699" y="1942" width="261" height="437" frameX="-17" frameY="0" frameWidth="278" frameHeight="437"/>
+	<SubTexture name="yotsu hey0001" x="1699" y="1942" width="261" height="437" frameX="-17" frameY="0" frameWidth="278" frameHeight="437"/>
+	<SubTexture name="yotsu hey0002" x="0" y="2413" width="267" height="430" frameX="-5" frameY="-7" frameWidth="278" frameHeight="437"/>
+	<SubTexture name="yotsu hey0003" x="0" y="2413" width="267" height="430" frameX="-5" frameY="-7" frameWidth="278" frameHeight="437"/>
+	<SubTexture name="yotsu hey0004" x="267" y="2413" width="270" height="427" frameX="0" frameY="-9" frameWidth="278" frameHeight="437"/>
+	<SubTexture name="yotsu hey0005" x="267" y="2413" width="270" height="427" frameX="0" frameY="-9" frameWidth="278" frameHeight="437"/>
+	<SubTexture name="yotsu hey0006" x="267" y="2413" width="270" height="427" frameX="0" frameY="-9" frameWidth="278" frameHeight="437"/>
+	<SubTexture name="yotsu hey0007" x="267" y="2413" width="270" height="427" frameX="0" frameY="-9" frameWidth="278" frameHeight="437"/>
+	<SubTexture name="yotsu hey0008" x="267" y="2413" width="270" height="427" frameX="0" frameY="-9" frameWidth="278" frameHeight="437"/>
+	<SubTexture name="yotsu hey0009" x="267" y="2413" width="270" height="427" frameX="0" frameY="-9" frameWidth="278" frameHeight="437"/>
+	<SubTexture name="yotsu hey0010" x="267" y="2413" width="270" height="427" frameX="0" frameY="-9" frameWidth="278" frameHeight="437"/>
+	<SubTexture name="yotsu hey0011" x="267" y="2413" width="270" height="427" frameX="0" frameY="-9" frameWidth="278" frameHeight="437"/>
+	<SubTexture name="yotsu hey0012" x="267" y="2413" width="270" height="427" frameX="0" frameY="-9" frameWidth="278" frameHeight="437"/>
+	<SubTexture name="yotsu hey0013" x="267" y="2413" width="270" height="427" frameX="0" frameY="-9" frameWidth="278" frameHeight="437"/>
+	<SubTexture name="yotsu idle0000" x="537" y="2413" width="256" height="418" frameX="-9" frameY="-14" frameWidth="265" frameHeight="432"/>
+	<SubTexture name="yotsu idle0001" x="537" y="2413" width="256" height="418" frameX="-9" frameY="-14" frameWidth="265" frameHeight="432"/>
+	<SubTexture name="yotsu idle0002" x="793" y="2413" width="256" height="422" frameX="-6" frameY="-10" frameWidth="265" frameHeight="432"/>
+	<SubTexture name="yotsu idle0003" x="793" y="2413" width="256" height="422" frameX="-6" frameY="-10" frameWidth="265" frameHeight="432"/>
+	<SubTexture name="yotsu idle0004" x="1049" y="2413" width="262" height="431" frameX="-1" frameY="-1" frameWidth="265" frameHeight="432"/>
+	<SubTexture name="yotsu idle0005" x="1049" y="2413" width="262" height="431" frameX="-1" frameY="-1" frameWidth="265" frameHeight="432"/>
+	<SubTexture name="yotsu idle0006" x="1311" y="2413" width="263" height="432" frameX="0" frameY="0" frameWidth="265" frameHeight="432"/>
+	<SubTexture name="yotsu idle0007" x="1311" y="2413" width="263" height="432" frameX="0" frameY="0" frameWidth="265" frameHeight="432"/>
+	<SubTexture name="yotsu idle0008" x="1574" y="2413" width="263" height="432" frameX="0" frameY="0" frameWidth="265" frameHeight="432"/>
+	<SubTexture name="yotsu idle0009" x="1574" y="2413" width="263" height="432" frameX="0" frameY="0" frameWidth="265" frameHeight="432"/>
+	<SubTexture name="yotsu idle0010" x="1574" y="2413" width="263" height="432" frameX="0" frameY="0" frameWidth="265" frameHeight="432"/>
+	<SubTexture name="yotsu idle0011" x="1574" y="2413" width="263" height="432" frameX="0" frameY="0" frameWidth="265" frameHeight="432"/>
+	<SubTexture name="yotsu idle0012" x="1574" y="2413" width="263" height="432" frameX="0" frameY="0" frameWidth="265" frameHeight="432"/>
+	<SubTexture name="yotsu idle0013" x="1574" y="2413" width="263" height="432" frameX="0" frameY="0" frameWidth="265" frameHeight="432"/>
+	<SubTexture name="yotsu left0000" x="0" y="2845" width="322" height="425" frameX="0" frameY="0" frameWidth="331" frameHeight="425"/>
+	<SubTexture name="yotsu left0001" x="0" y="2845" width="322" height="425" frameX="0" frameY="0" frameWidth="331" frameHeight="425"/>
+	<SubTexture name="yotsu left0002" x="322" y="2845" width="326" height="422" frameX="-5" frameY="-3" frameWidth="331" frameHeight="425"/>
+	<SubTexture name="yotsu left0003" x="322" y="2845" width="326" height="422" frameX="-5" frameY="-3" frameWidth="331" frameHeight="425"/>
+	<SubTexture name="yotsu left0004" x="322" y="2845" width="326" height="422" frameX="-5" frameY="-3" frameWidth="331" frameHeight="425"/>
+	<SubTexture name="yotsu left0005" x="322" y="2845" width="326" height="422" frameX="-5" frameY="-3" frameWidth="331" frameHeight="425"/>
+	<SubTexture name="yotsu left0006" x="322" y="2845" width="326" height="422" frameX="-5" frameY="-3" frameWidth="331" frameHeight="425"/>
+	<SubTexture name="yotsu left0007" x="322" y="2845" width="326" height="422" frameX="-5" frameY="-3" frameWidth="331" frameHeight="425"/>
+	<SubTexture name="yotsu left0008" x="322" y="2845" width="326" height="422" frameX="-5" frameY="-3" frameWidth="331" frameHeight="425"/>
+	<SubTexture name="yotsu left0009" x="322" y="2845" width="326" height="422" frameX="-5" frameY="-3" frameWidth="331" frameHeight="425"/>
+	<SubTexture name="yotsu left0010" x="322" y="2845" width="326" height="422" frameX="-5" frameY="-3" frameWidth="331" frameHeight="425"/>
+	<SubTexture name="yotsu left0011" x="322" y="2845" width="326" height="422" frameX="-5" frameY="-3" frameWidth="331" frameHeight="425"/>
+	<SubTexture name="yotsu left0012" x="322" y="2845" width="326" height="422" frameX="-5" frameY="-3" frameWidth="331" frameHeight="425"/>
+	<SubTexture name="yotsu left0013" x="322" y="2845" width="326" height="422" frameX="-5" frameY="-3" frameWidth="331" frameHeight="425"/>
+	<SubTexture name="yotsu right0000" x="648" y="2845" width="321" height="410" frameX="-10" frameY="0" frameWidth="331" frameHeight="410"/>
+	<SubTexture name="yotsu right0001" x="648" y="2845" width="321" height="410" frameX="-10" frameY="0" frameWidth="331" frameHeight="410"/>
+	<SubTexture name="yotsu right0002" x="969" y="2845" width="318" height="408" frameX="0" frameY="-2" frameWidth="331" frameHeight="410"/>
+	<SubTexture name="yotsu right0003" x="969" y="2845" width="318" height="408" frameX="0" frameY="-2" frameWidth="331" frameHeight="410"/>
+	<SubTexture name="yotsu right0004" x="969" y="2845" width="318" height="408" frameX="0" frameY="-2" frameWidth="331" frameHeight="410"/>
+	<SubTexture name="yotsu right0005" x="969" y="2845" width="318" height="408" frameX="0" frameY="-2" frameWidth="331" frameHeight="410"/>
+	<SubTexture name="yotsu right0006" x="969" y="2845" width="318" height="408" frameX="0" frameY="-2" frameWidth="331" frameHeight="410"/>
+	<SubTexture name="yotsu right0007" x="969" y="2845" width="318" height="408" frameX="0" frameY="-2" frameWidth="331" frameHeight="410"/>
+	<SubTexture name="yotsu right0008" x="969" y="2845" width="318" height="408" frameX="0" frameY="-2" frameWidth="331" frameHeight="410"/>
+	<SubTexture name="yotsu right0009" x="969" y="2845" width="318" height="408" frameX="0" frameY="-2" frameWidth="331" frameHeight="410"/>
+	<SubTexture name="yotsu right0010" x="969" y="2845" width="318" height="408" frameX="0" frameY="-2" frameWidth="331" frameHeight="410"/>
+	<SubTexture name="yotsu right0011" x="969" y="2845" width="318" height="408" frameX="0" frameY="-2" frameWidth="331" frameHeight="410"/>
+	<SubTexture name="yotsu right0012" x="969" y="2845" width="318" height="408" frameX="0" frameY="-2" frameWidth="331" frameHeight="410"/>
+	<SubTexture name="yotsu right0013" x="969" y="2845" width="318" height="408" frameX="0" frameY="-2" frameWidth="331" frameHeight="410"/>
+	<SubTexture name="yotsu stick a0000" x="0" y="436" width="385" height="497" frameX="-12" frameY="0" frameWidth="403" frameHeight="497"/>
+	<SubTexture name="yotsu stick a0001" x="0" y="436" width="385" height="497" frameX="-12" frameY="0" frameWidth="403" frameHeight="497"/>
+	<SubTexture name="yotsu stick a0002" x="385" y="436" width="403" height="486" frameX="0" frameY="-11" frameWidth="403" frameHeight="497"/>
+	<SubTexture name="yotsu stick a0003" x="385" y="436" width="403" height="486" frameX="0" frameY="-11" frameWidth="403" frameHeight="497"/>
+	<SubTexture name="yotsu stick a0004" x="385" y="436" width="403" height="486" frameX="0" frameY="-11" frameWidth="403" frameHeight="497"/>
+	<SubTexture name="yotsu stick a0005" x="385" y="436" width="403" height="486" frameX="0" frameY="-11" frameWidth="403" frameHeight="497"/>
+	<SubTexture name="yotsu stick a0006" x="385" y="436" width="403" height="486" frameX="0" frameY="-11" frameWidth="403" frameHeight="497"/>
+	<SubTexture name="yotsu stick a0007" x="385" y="436" width="403" height="486" frameX="0" frameY="-11" frameWidth="403" frameHeight="497"/>
+	<SubTexture name="yotsu stick a0008" x="385" y="436" width="403" height="486" frameX="0" frameY="-11" frameWidth="403" frameHeight="497"/>
+	<SubTexture name="yotsu stick a0009" x="385" y="436" width="403" height="486" frameX="0" frameY="-11" frameWidth="403" frameHeight="497"/>
+	<SubTexture name="yotsu stick a0010" x="385" y="436" width="403" height="486" frameX="0" frameY="-11" frameWidth="403" frameHeight="497"/>
+	<SubTexture name="yotsu stick a0011" x="385" y="436" width="403" height="486" frameX="0" frameY="-11" frameWidth="403" frameHeight="497"/>
+	<SubTexture name="yotsu stick a0012" x="385" y="436" width="403" height="486" frameX="0" frameY="-11" frameWidth="403" frameHeight="497"/>
+	<SubTexture name="yotsu stick a0013" x="385" y="436" width="403" height="486" frameX="0" frameY="-11" frameWidth="403" frameHeight="497"/>
+	<SubTexture name="yotsu stick b0000" x="788" y="436" width="303" height="581" frameX="-3" frameY="0" frameWidth="313" frameHeight="581"/>
+	<SubTexture name="yotsu stick b0001" x="788" y="436" width="303" height="581" frameX="-3" frameY="0" frameWidth="313" frameHeight="581"/>
+	<SubTexture name="yotsu stick b0002" x="1091" y="436" width="313" height="570" frameX="0" frameY="-10" frameWidth="313" frameHeight="581"/>
+	<SubTexture name="yotsu stick b0003" x="1091" y="436" width="313" height="570" frameX="0" frameY="-10" frameWidth="313" frameHeight="581"/>
+	<SubTexture name="yotsu stick b0004" x="1091" y="436" width="313" height="570" frameX="0" frameY="-10" frameWidth="313" frameHeight="581"/>
+	<SubTexture name="yotsu stick b0005" x="1091" y="436" width="313" height="570" frameX="0" frameY="-10" frameWidth="313" frameHeight="581"/>
+	<SubTexture name="yotsu stick b0006" x="1091" y="436" width="313" height="570" frameX="0" frameY="-10" frameWidth="313" frameHeight="581"/>
+	<SubTexture name="yotsu stick b0007" x="1091" y="436" width="313" height="570" frameX="0" frameY="-10" frameWidth="313" frameHeight="581"/>
+	<SubTexture name="yotsu stick b0008" x="1091" y="436" width="313" height="570" frameX="0" frameY="-10" frameWidth="313" frameHeight="581"/>
+	<SubTexture name="yotsu stick b0009" x="1091" y="436" width="313" height="570" frameX="0" frameY="-10" frameWidth="313" frameHeight="581"/>
+	<SubTexture name="yotsu stick b0010" x="1091" y="436" width="313" height="570" frameX="0" frameY="-10" frameWidth="313" frameHeight="581"/>
+	<SubTexture name="yotsu stick b0011" x="1091" y="436" width="313" height="570" frameX="0" frameY="-10" frameWidth="313" frameHeight="581"/>
+	<SubTexture name="yotsu stick b0012" x="1091" y="436" width="313" height="570" frameX="0" frameY="-10" frameWidth="313" frameHeight="581"/>
+	<SubTexture name="yotsu stick b0013" x="1091" y="436" width="313" height="570" frameX="0" frameY="-10" frameWidth="313" frameHeight="581"/>
+	<SubTexture name="yotsu stick c0000" x="1404" y="436" width="345" height="492" frameX="-8" frameY="0" frameWidth="353" frameHeight="492"/>
+	<SubTexture name="yotsu stick c0001" x="1404" y="436" width="345" height="492" frameX="-8" frameY="0" frameWidth="353" frameHeight="492"/>
+	<SubTexture name="yotsu stick c0002" x="0" y="1017" width="345" height="491" frameX="0" frameY="-1" frameWidth="353" frameHeight="492"/>
+	<SubTexture name="yotsu stick c0003" x="0" y="1017" width="345" height="491" frameX="0" frameY="-1" frameWidth="353" frameHeight="492"/>
+	<SubTexture name="yotsu stick c0004" x="0" y="1017" width="345" height="491" frameX="0" frameY="-1" frameWidth="353" frameHeight="492"/>
+	<SubTexture name="yotsu stick c0005" x="0" y="1017" width="345" height="491" frameX="0" frameY="-1" frameWidth="353" frameHeight="492"/>
+	<SubTexture name="yotsu stick c0006" x="0" y="1017" width="345" height="491" frameX="0" frameY="-1" frameWidth="353" frameHeight="492"/>
+	<SubTexture name="yotsu stick c0007" x="0" y="1017" width="345" height="491" frameX="0" frameY="-1" frameWidth="353" frameHeight="492"/>
+	<SubTexture name="yotsu stick c0008" x="0" y="1017" width="345" height="491" frameX="0" frameY="-1" frameWidth="353" frameHeight="492"/>
+	<SubTexture name="yotsu stick c0009" x="0" y="1017" width="345" height="491" frameX="0" frameY="-1" frameWidth="353" frameHeight="492"/>
+	<SubTexture name="yotsu stick c0010" x="0" y="1017" width="345" height="491" frameX="0" frameY="-1" frameWidth="353" frameHeight="492"/>
+	<SubTexture name="yotsu stick c0011" x="0" y="1017" width="345" height="491" frameX="0" frameY="-1" frameWidth="353" frameHeight="492"/>
+	<SubTexture name="yotsu stick c0012" x="0" y="1017" width="345" height="491" frameX="0" frameY="-1" frameWidth="353" frameHeight="492"/>
+	<SubTexture name="yotsu stick c0013" x="0" y="1017" width="345" height="491" frameX="0" frameY="-1" frameWidth="353" frameHeight="492"/>
+	<SubTexture name="yotsu stick down0000" x="345" y="1017" width="345" height="367" frameX="-4" frameY="-4" frameWidth="349" frameHeight="372"/>
+	<SubTexture name="yotsu stick down0001" x="345" y="1017" width="345" height="367" frameX="-4" frameY="-4" frameWidth="349" frameHeight="372"/>
+	<SubTexture name="yotsu stick down0002" x="690" y="1017" width="348" height="372" frameX="0" frameY="0" frameWidth="349" frameHeight="372"/>
+	<SubTexture name="yotsu stick down0003" x="690" y="1017" width="348" height="372" frameX="0" frameY="0" frameWidth="349" frameHeight="372"/>
+	<SubTexture name="yotsu stick down0004" x="690" y="1017" width="348" height="372" frameX="0" frameY="0" frameWidth="349" frameHeight="372"/>
+	<SubTexture name="yotsu stick down0005" x="690" y="1017" width="348" height="372" frameX="0" frameY="0" frameWidth="349" frameHeight="372"/>
+	<SubTexture name="yotsu stick down0006" x="690" y="1017" width="348" height="372" frameX="0" frameY="0" frameWidth="349" frameHeight="372"/>
+	<SubTexture name="yotsu stick down0007" x="690" y="1017" width="348" height="372" frameX="0" frameY="0" frameWidth="349" frameHeight="372"/>
+	<SubTexture name="yotsu stick down0008" x="690" y="1017" width="348" height="372" frameX="0" frameY="0" frameWidth="349" frameHeight="372"/>
+	<SubTexture name="yotsu stick down0009" x="690" y="1017" width="348" height="372" frameX="0" frameY="0" frameWidth="349" frameHeight="372"/>
+	<SubTexture name="yotsu stick down0010" x="690" y="1017" width="348" height="372" frameX="0" frameY="0" frameWidth="349" frameHeight="372"/>
+	<SubTexture name="yotsu stick down0011" x="690" y="1017" width="348" height="372" frameX="0" frameY="0" frameWidth="349" frameHeight="372"/>
+	<SubTexture name="yotsu stick down0012" x="690" y="1017" width="348" height="372" frameX="0" frameY="0" frameWidth="349" frameHeight="372"/>
+	<SubTexture name="yotsu stick down0013" x="690" y="1017" width="348" height="372" frameX="0" frameY="0" frameWidth="349" frameHeight="372"/>
+	<SubTexture name="yotsu stick idle0000" x="1038" y="1017" width="343" height="421" frameX="0" frameY="-13" frameWidth="346" frameHeight="434"/>
+	<SubTexture name="yotsu stick idle0001" x="1038" y="1017" width="343" height="421" frameX="0" frameY="-13" frameWidth="346" frameHeight="434"/>
+	<SubTexture name="yotsu stick idle0002" x="1381" y="1017" width="340" height="425" frameX="-2" frameY="-9" frameWidth="346" frameHeight="434"/>
+	<SubTexture name="yotsu stick idle0003" x="1381" y="1017" width="340" height="425" frameX="-2" frameY="-9" frameWidth="346" frameHeight="434"/>
+	<SubTexture name="yotsu stick idle0004" x="0" y="1508" width="333" height="433" frameX="-13" frameY="-1" frameWidth="346" frameHeight="434"/>
+	<SubTexture name="yotsu stick idle0005" x="0" y="1508" width="333" height="433" frameX="-13" frameY="-1" frameWidth="346" frameHeight="434"/>
+	<SubTexture name="yotsu stick idle0006" x="333" y="1508" width="330" height="434" frameX="-16" frameY="0" frameWidth="346" frameHeight="434"/>
+	<SubTexture name="yotsu stick idle0007" x="333" y="1508" width="330" height="434" frameX="-16" frameY="0" frameWidth="346" frameHeight="434"/>
+	<SubTexture name="yotsu stick idle0008" x="663" y="1508" width="330" height="434" frameX="-16" frameY="0" frameWidth="346" frameHeight="434"/>
+	<SubTexture name="yotsu stick idle0009" x="663" y="1508" width="330" height="434" frameX="-16" frameY="0" frameWidth="346" frameHeight="434"/>
+	<SubTexture name="yotsu stick idle0010" x="663" y="1508" width="330" height="434" frameX="-16" frameY="0" frameWidth="346" frameHeight="434"/>
+	<SubTexture name="yotsu stick idle0011" x="663" y="1508" width="330" height="434" frameX="-16" frameY="0" frameWidth="346" frameHeight="434"/>
+	<SubTexture name="yotsu stick idle0012" x="663" y="1508" width="330" height="434" frameX="-16" frameY="0" frameWidth="346" frameHeight="434"/>
+	<SubTexture name="yotsu stick idle0013" x="663" y="1508" width="330" height="434" frameX="-16" frameY="0" frameWidth="346" frameHeight="434"/>
+	<SubTexture name="yotsu stick left0000" x="993" y="1508" width="455" height="425" frameX="0" frameY="0" frameWidth="464" frameHeight="425"/>
+	<SubTexture name="yotsu stick left0001" x="993" y="1508" width="455" height="425" frameX="0" frameY="0" frameWidth="464" frameHeight="425"/>
+	<SubTexture name="yotsu stick left0002" x="1448" y="1508" width="445" height="422" frameX="-19" frameY="-3" frameWidth="464" frameHeight="425"/>
+	<SubTexture name="yotsu stick left0003" x="1448" y="1508" width="445" height="422" frameX="-19" frameY="-3" frameWidth="464" frameHeight="425"/>
+	<SubTexture name="yotsu stick left0004" x="1448" y="1508" width="445" height="422" frameX="-19" frameY="-3" frameWidth="464" frameHeight="425"/>
+	<SubTexture name="yotsu stick left0005" x="1448" y="1508" width="445" height="422" frameX="-19" frameY="-3" frameWidth="464" frameHeight="425"/>
+	<SubTexture name="yotsu stick left0006" x="1448" y="1508" width="445" height="422" frameX="-19" frameY="-3" frameWidth="464" frameHeight="425"/>
+	<SubTexture name="yotsu stick left0007" x="1448" y="1508" width="445" height="422" frameX="-19" frameY="-3" frameWidth="464" frameHeight="425"/>
+	<SubTexture name="yotsu stick left0008" x="1448" y="1508" width="445" height="422" frameX="-19" frameY="-3" frameWidth="464" frameHeight="425"/>
+	<SubTexture name="yotsu stick left0009" x="1448" y="1508" width="445" height="422" frameX="-19" frameY="-3" frameWidth="464" frameHeight="425"/>
+	<SubTexture name="yotsu stick left0010" x="1448" y="1508" width="445" height="422" frameX="-19" frameY="-3" frameWidth="464" frameHeight="425"/>
+	<SubTexture name="yotsu stick left0011" x="1448" y="1508" width="445" height="422" frameX="-19" frameY="-3" frameWidth="464" frameHeight="425"/>
+	<SubTexture name="yotsu stick left0012" x="1448" y="1508" width="445" height="422" frameX="-19" frameY="-3" frameWidth="464" frameHeight="425"/>
+	<SubTexture name="yotsu stick left0013" x="1448" y="1508" width="445" height="422" frameX="-19" frameY="-3" frameWidth="464" frameHeight="425"/>
+	<SubTexture name="yotsu stick right0000" x="0" y="1942" width="302" height="410" frameX="-23" frameY="0" frameWidth="325" frameHeight="410"/>
+	<SubTexture name="yotsu stick right0001" x="0" y="1942" width="302" height="410" frameX="-23" frameY="0" frameWidth="325" frameHeight="410"/>
+	<SubTexture name="yotsu stick right0002" x="302" y="1942" width="312" height="408" frameX="0" frameY="-2" frameWidth="325" frameHeight="410"/>
+	<SubTexture name="yotsu stick right0003" x="302" y="1942" width="312" height="408" frameX="0" frameY="-2" frameWidth="325" frameHeight="410"/>
+	<SubTexture name="yotsu stick right0004" x="302" y="1942" width="312" height="408" frameX="0" frameY="-2" frameWidth="325" frameHeight="410"/>
+	<SubTexture name="yotsu stick right0005" x="302" y="1942" width="312" height="408" frameX="0" frameY="-2" frameWidth="325" frameHeight="410"/>
+	<SubTexture name="yotsu stick right0006" x="302" y="1942" width="312" height="408" frameX="0" frameY="-2" frameWidth="325" frameHeight="410"/>
+	<SubTexture name="yotsu stick right0007" x="302" y="1942" width="312" height="408" frameX="0" frameY="-2" frameWidth="325" frameHeight="410"/>
+	<SubTexture name="yotsu stick right0008" x="302" y="1942" width="312" height="408" frameX="0" frameY="-2" frameWidth="325" frameHeight="410"/>
+	<SubTexture name="yotsu stick right0009" x="302" y="1942" width="312" height="408" frameX="0" frameY="-2" frameWidth="325" frameHeight="410"/>
+	<SubTexture name="yotsu stick right0010" x="302" y="1942" width="312" height="408" frameX="0" frameY="-2" frameWidth="325" frameHeight="410"/>
+	<SubTexture name="yotsu stick right0011" x="302" y="1942" width="312" height="408" frameX="0" frameY="-2" frameWidth="325" frameHeight="410"/>
+	<SubTexture name="yotsu stick right0012" x="302" y="1942" width="312" height="408" frameX="0" frameY="-2" frameWidth="325" frameHeight="410"/>
+	<SubTexture name="yotsu stick right0013" x="302" y="1942" width="312" height="408" frameX="0" frameY="-2" frameWidth="325" frameHeight="410"/>
+	<SubTexture name="yotsu stick up0000" x="614" y="1942" width="275" height="471" frameX="-10" frameY="0" frameWidth="285" frameHeight="471"/>
+	<SubTexture name="yotsu stick up0001" x="614" y="1942" width="275" height="471" frameX="-10" frameY="0" frameWidth="285" frameHeight="471"/>
+	<SubTexture name="yotsu stick up0002" x="889" y="1942" width="280" height="453" frameX="0" frameY="-18" frameWidth="285" frameHeight="471"/>
+	<SubTexture name="yotsu stick up0003" x="889" y="1942" width="280" height="453" frameX="0" frameY="-18" frameWidth="285" frameHeight="471"/>
+	<SubTexture name="yotsu stick up0004" x="889" y="1942" width="280" height="453" frameX="0" frameY="-18" frameWidth="285" frameHeight="471"/>
+	<SubTexture name="yotsu stick up0005" x="889" y="1942" width="280" height="453" frameX="0" frameY="-18" frameWidth="285" frameHeight="471"/>
+	<SubTexture name="yotsu stick up0006" x="889" y="1942" width="280" height="453" frameX="0" frameY="-18" frameWidth="285" frameHeight="471"/>
+	<SubTexture name="yotsu stick up0007" x="889" y="1942" width="280" height="453" frameX="0" frameY="-18" frameWidth="285" frameHeight="471"/>
+	<SubTexture name="yotsu stick up0008" x="889" y="1942" width="280" height="453" frameX="0" frameY="-18" frameWidth="285" frameHeight="471"/>
+	<SubTexture name="yotsu stick up0009" x="889" y="1942" width="280" height="453" frameX="0" frameY="-18" frameWidth="285" frameHeight="471"/>
+	<SubTexture name="yotsu stick up0010" x="889" y="1942" width="280" height="453" frameX="0" frameY="-18" frameWidth="285" frameHeight="471"/>
+	<SubTexture name="yotsu stick up0011" x="889" y="1942" width="280" height="453" frameX="0" frameY="-18" frameWidth="285" frameHeight="471"/>
+	<SubTexture name="yotsu stick up0012" x="889" y="1942" width="280" height="453" frameX="0" frameY="-18" frameWidth="285" frameHeight="471"/>
+	<SubTexture name="yotsu stick up0013" x="889" y="1942" width="280" height="453" frameX="0" frameY="-18" frameWidth="285" frameHeight="471"/>
+	<SubTexture name="yotsu up0000" x="1287" y="2845" width="256" height="471" frameX="-5" frameY="0" frameWidth="261" frameHeight="471"/>
+	<SubTexture name="yotsu up0001" x="1287" y="2845" width="256" height="471" frameX="-5" frameY="0" frameWidth="261" frameHeight="471"/>
+	<SubTexture name="yotsu up0002" x="1543" y="2845" width="256" height="453" frameX="0" frameY="-18" frameWidth="261" frameHeight="471"/>
+	<SubTexture name="yotsu up0003" x="1543" y="2845" width="256" height="453" frameX="0" frameY="-18" frameWidth="261" frameHeight="471"/>
+	<SubTexture name="yotsu up0004" x="1543" y="2845" width="256" height="453" frameX="0" frameY="-18" frameWidth="261" frameHeight="471"/>
+	<SubTexture name="yotsu up0005" x="1543" y="2845" width="256" height="453" frameX="0" frameY="-18" frameWidth="261" frameHeight="471"/>
+	<SubTexture name="yotsu up0006" x="1543" y="2845" width="256" height="453" frameX="0" frameY="-18" frameWidth="261" frameHeight="471"/>
+	<SubTexture name="yotsu up0007" x="1543" y="2845" width="256" height="453" frameX="0" frameY="-18" frameWidth="261" frameHeight="471"/>
+	<SubTexture name="yotsu up0008" x="1543" y="2845" width="256" height="453" frameX="0" frameY="-18" frameWidth="261" frameHeight="471"/>
+	<SubTexture name="yotsu up0009" x="1543" y="2845" width="256" height="453" frameX="0" frameY="-18" frameWidth="261" frameHeight="471"/>
+	<SubTexture name="yotsu up0010" x="1543" y="2845" width="256" height="453" frameX="0" frameY="-18" frameWidth="261" frameHeight="471"/>
+	<SubTexture name="yotsu up0011" x="1543" y="2845" width="256" height="453" frameX="0" frameY="-18" frameWidth="261" frameHeight="471"/>
+	<SubTexture name="yotsu up0012" x="1543" y="2845" width="256" height="453" frameX="0" frameY="-18" frameWidth="261" frameHeight="471"/>
+	<SubTexture name="yotsu up0013" x="1543" y="2845" width="256" height="453" frameX="0" frameY="-18" frameWidth="261" frameHeight="471"/>
 </TextureAtlas>

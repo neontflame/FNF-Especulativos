@@ -3,6 +3,7 @@ OS FLPS AQUI INCLUSOS SÓ PODERÃO SER ABERTOS USANDO O FL STUDIO 21.1.0 OU MAIS R
 VSTs usadas:
 - Modo Bass 2
 - Dexed
+- Serum
 
 Também tem essa soundfont que eu não consegui incluir por motivos de limitação de tamanho do GitHub:
 - SGM-V2.01

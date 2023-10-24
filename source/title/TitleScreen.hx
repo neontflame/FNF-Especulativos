@@ -6,16 +6,16 @@ import openfl.system.System;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
-import flixel.addons.display.FlxGridOverlay;
-import flixel.addons.transition.FlxTransitionSprite.GraphicTransTileDiamond;
-import flixel.addons.transition.FlxTransitionableState;
-import flixel.addons.transition.TransitionData;
+// import flixel.addons.display.FlxGridOverlay;
+// import flixel.addons.transition.FlxTransitionSprite.GraphicTransTileDiamond;
+// import flixel.addons.transition.FlxTransitionableState;
+// import flixel.addons.transition.TransitionData;
 import flixel.graphics.FlxGraphic;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup;
 import flixel.input.gamepad.FlxGamepad;
-import flixel.math.FlxPoint;
-import flixel.math.FlxRect;
+// import flixel.math.FlxPoint;
+// import flixel.math.FlxRect;
 import flixel.sound.FlxSound;
 import flixel.system.ui.FlxSoundTray;
 import flixel.text.FlxText;
@@ -32,7 +32,7 @@ using StringTools;
 
 class TitleScreen extends MusicBeatState
 {
-	public static var titleMusic:String = "klaskiiLoop";
+	public static var titleMusic:String = "especulaintro";
 
 	var camBackground:FlxCamera;
 	var camMain:FlxCamera;
@@ -66,8 +66,8 @@ class TitleScreen extends MusicBeatState
 		logoBl.antialiasing = true;
 		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24);
 		logoBl.animation.play('bump');
-		
-		gfDance = new FlxSprite(598, 311);
+
+		gfDance = new FlxSprite(563, 271);
 		gfDance.frames = Paths.getSparrowAtlas("fpsPlus/title/espeDj");
 		gfDance.animation.addByPrefix('dance', "espe dj", 24);
 		gfDance.animation.play("dance", true, false, 14);
@@ -101,6 +101,8 @@ class TitleScreen extends MusicBeatState
 				FlxG.sound.playMusic(Paths.music(titleMusic), 1);
 				switch (titleMusic)
 				{
+					case "especulaintro":
+						Conductor.changeBPM(130);
 					case "klaskiiLoop":
 						Conductor.changeBPM(158);
 					case "freakyMenu":

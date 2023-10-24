@@ -129,7 +129,7 @@ class Config
 			FlxG.save.data.ee1 = false;
 		if (FlxG.save.data.ee2 == null)
 			FlxG.save.data.ee2 = false;
-			
+
 		// musicas bonus
 		if (FlxG.save.data.yotsubaUnlock == null)
 			FlxG.save.data.yotsubaUnlock = false;

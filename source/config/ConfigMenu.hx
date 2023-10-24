@@ -23,7 +23,7 @@ class ConfigMenu extends UIStateExt
 	var state:String = "topLevelMenu";
 	var titles:Array<FlxSprite> = [];
 	var checkboxGroup:FlxSpriteGroup = new FlxSpriteGroup();
-	
+
 	var bg:FlxSprite;
 
 	var subMenuGroup:FlxSpriteGroup = new FlxSpriteGroup();
@@ -93,7 +93,7 @@ class ConfigMenu extends UIStateExt
 		bg.antialiasing = true;
 
 		add(bg);
-		
+
 		var textTexture = Paths.getSparrowAtlas("menu/options/scratchOptsSidebar");
 
 		for (i in 0...options.length)
@@ -110,12 +110,18 @@ class ConfigMenu extends UIStateExt
 			add(text);
 		}
 
-		var yetAnotherMenuThing:FlxSprite = new FlxSprite(409, 108).loadGraphic(Paths.image('menu/options/yetAnotherMenuThing'));
+		var yetAnotherMenuThing:FlxSprite = new FlxSprite(409, 108).loadGraphic(Paths.image('menu/options/moreMenuStuff'));
 		add(yetAnotherMenuThing);
+
+
+		var titleStuff:FlxText = new FlxText(yetAnotherMenuThing.x + 14, yetAnotherMenuThing.y + 9, 718, "Configurações do jogo", 24);
+		titleStuff.scrollFactor.set(0, 0);
+		titleStuff.setFormat(Paths.font("arialbd"), 24, 0xFF333333, FlxTextAlign.LEFT);
+		add(titleStuff);
 		
 		add(subMenuGroup);
 		subMenuGroup.add(checkboxGroup);
-		
+
 		configText = new FlxText(433, 170, 718, "", 60);
 		configText.scrollFactor.set(0, 0);
 		configText.setFormat(Paths.font("arial"), 32, FlxColor.GRAY, FlxTextAlign.LEFT);
@@ -125,7 +131,7 @@ class ConfigMenu extends UIStateExt
 		descText.scrollFactor.set(0, 0);
 		descText.setFormat(Paths.font("arial"), 16, FlxColor.GRAY, FlxTextAlign.CENTER);
 		subMenuGroup.add(descText);
-		
+
 		setupOptions();
 		if (startInSubMenu > -1)
 		{
@@ -275,9 +281,9 @@ class ConfigMenu extends UIStateExt
 	{
 		configText.clearFormats();
 		configText.text = "";
-		
+
 		checkboxGroup.clear();
-		
+
 		for (i in 0...configOptions[curSelected].length)
 		{
 			var checkboxShit:FlxSprite = new FlxSprite();
@@ -288,15 +294,17 @@ class ConfigMenu extends UIStateExt
 			checkboxShit.x = configText.x;
 			checkboxShit.y = 176 + (36.5 * i);
 			checkboxGroup.add(checkboxShit);
-			
+
 			var selectedSetting = configOptions[curSelected][i].setting;
 			var sectionStart = configText.text.length;
-			
-			if (selectedSetting == ': on' || selectedSetting == ': off' || selectedSetting == ': disabled') {
+
+			if (selectedSetting == ': on' || selectedSetting == ': off' || selectedSetting == ': disabled')
+			{
 				configText.text += '    ' + configOptions[curSelected][i].name + "\n";
 				checkboxShit.visible = true;
-				
-				switch selectedSetting {
+
+				switch selectedSetting
+				{
 					case ': on':
 						checkboxShit.animation.curAnim.curFrame = 1;
 					case ': off':
@@ -304,7 +312,9 @@ class ConfigMenu extends UIStateExt
 					case ': disabled':
 						checkboxShit.animation.curAnim.curFrame = 2;
 				}
-			} else {
+			}
+			else
+			{
 				configText.text += configOptions[curSelected][i].name + configOptions[curSelected][i].setting + "\n";
 				checkboxShit.visible = false;
 			}
@@ -320,7 +330,7 @@ class ConfigMenu extends UIStateExt
 		configText.text += "\n";
 
 		descText.text = configOptions[curSelected][curSelectedSub].description;
-		
+
 		// tabDisplay.text = Std.string(tabKeys);
 	}
 

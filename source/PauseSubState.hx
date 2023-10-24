@@ -29,9 +29,9 @@ class PauseSubState extends MusicBeatSubstate
 		openfl.Lib.current.stage.frameRate = 144;
 
 		FlxTween.globalManager.active = false;
-		
+
 		var diffsArray:Array<String> = ["EASY", "NORMAL", "HARD"];
-		
+
 		if (PlayState.storyPlaylist.length > 1 && PlayState.isStoryMode)
 		{
 			menuItems.insert(2, "Skip Song");
@@ -86,15 +86,15 @@ class PauseSubState extends MusicBeatSubstate
 
 		levelInfo.x = FlxG.width - (levelInfo.width + 20);
 		levelDifficulty.x = FlxG.width - (levelDifficulty.width + 20);
-		
+
 		// end song info definers
-		
+
 		var musicCredit:FlxText = new FlxText(54, 12, 0, "Música do menu de pausa feita por " + artist, 18);
 		musicCredit.setFormat(Paths.font("vcr"), 18, FlxColor.WHITE, CENTER);
 		musicCredit.scrollFactor.set();
 		musicCredit.screenCenter(X);
 		add(musicCredit);
-		
+
 		grpMenuShit = new FlxTypedGroup<Alphabet>();
 		add(grpMenuShit);
 
@@ -177,7 +177,7 @@ class PauseSubState extends MusicBeatSubstate
 						PlayState.luaModchart = null;
 					}
 					#end
-					
+
 					switch (PlayState.returnLocation)
 					{
 						case "freeplay":

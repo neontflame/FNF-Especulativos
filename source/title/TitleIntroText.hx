@@ -3,25 +3,25 @@ package title;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
-import flixel.addons.display.FlxGridOverlay;
-import flixel.addons.transition.FlxTransitionSprite.GraphicTransTileDiamond;
-import flixel.addons.transition.FlxTransitionableState;
-import flixel.addons.transition.TransitionData;
+// import flixel.addons.display.FlxGridOverlay;
+// import flixel.addons.transition.FlxTransitionSprite.GraphicTransTileDiamond;
+// import flixel.addons.transition.FlxTransitionableState;
+// import flixel.addons.transition.TransitionData;
 import flixel.graphics.FlxGraphic;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup;
 import flixel.input.gamepad.FlxGamepad;
-import flixel.math.FlxPoint;
-import flixel.math.FlxRect;
+// import flixel.math.FlxPoint;
+// import flixel.math.FlxRect;
 import flixel.math.FlxRandom;
 import flixel.sound.FlxSound;
 import flixel.system.ui.FlxSoundTray;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
-import flixel.tweens.FlxTween;
+// import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
-import io.newgrounds.NG;
+// import io.newgrounds.NG;
 import lime.app.Application;
 import openfl.Assets;
 
@@ -35,7 +35,7 @@ class TitleIntroText extends MusicBeatState
 	var ngSpr:FlxSprite;
 
 	var curWacky:Array<String> = [];
-	
+
 	var wackyImage:FlxSprite;
 
 	override public function create():Void
@@ -52,7 +52,7 @@ class TitleIntroText extends MusicBeatState
 		// blackScreen = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		// credGroup.add(blackScreen);
 
-		ngSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('wipinhosLogo/wipinhos000' + FlxG.random.int(1,4)));
+		ngSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('wipinhosLogo/wipinhos000' + FlxG.random.int(1, 4)));
 		add(ngSpr);
 		ngSpr.visible = false;
 		ngSpr.setGraphicSize(Std.int(ngSpr.width * 0.8));

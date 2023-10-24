@@ -73,7 +73,7 @@ class School extends BasicStage
 			bgGirls.getScared();
 		}
 
-		bgGirls.setGraphicSize(Std.int(bgGirls.width * PlayState.daPixelZoom));
+		bgGirls.setGraphicSize(Std.int(bgGirls.width * 6));
 		bgGirls.updateHitbox();
 		addToBackground(bgGirls);
 

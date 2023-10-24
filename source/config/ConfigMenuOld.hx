@@ -49,8 +49,8 @@ class ConfigMenuOld extends MusicBeatState
 	final genericOnOff:Array<String> = ["on", "off"];
 
 	final settingText:Array<String> = [
-		"NOTE OFFSET", "ACCURACY DISPLAY", "UNCAPPED FRAMERATE", "ALLOW GHOST TAPPING", "HP GAIN MULTIPLIER", "HP DRAIN MULTIPLIER", "DOWNSCROLL",
-		"NOTE GLOW", "COMBO DISPLAY", "NOTE SPLASH", "BACKGROUND DIM", "[CACHE SETTINGS]", "CONTROLLER SCHEME", "[EDIT KEY BINDS]"
+		"NOTE OFFSET", "ACCURACY DISPLAY", "UNCAPPED FRAMERATE", "ALLOW GHOST TAPPING", "HP GAIN MULTIPLIER", "HP DRAIN MULTIPLIER",     "DOWNSCROLL",
+		  "NOTE GLOW",    "COMBO DISPLAY",        "NOTE SPLASH",      "BACKGROUND DIM",   "[CACHE SETTINGS]",   "CONTROLLER SCHEME", "[EDIT KEY BINDS]"
 	];
 
 	// Any descriptions that say TEMP are replaced with a changing description based on the current config setting.

@@ -12,14 +12,14 @@ class Paths
 
 	inline static public function file(key:String, location:String, extension:String):String
 	{
-        var data:String = 'assets/$location/$key.$extension';
-        /*#if override
-        if(FileSystem.exists('override/$location/$key.$extension')){
-            data = 'override/$location/$key.$extension';
-            //trace("OVERRIDE FOR " + key + " FOUND!");
-        }
-        #end*/
-        return data;
+		var data:String = 'assets/$location/$key.$extension';
+		/*#if override
+			if(FileSystem.exists('override/$location/$key.$extension')){
+				data = 'override/$location/$key.$extension';
+				//trace("OVERRIDE FOR " + key + " FOUND!");
+			}
+			#end */
+		return data;
 	}
 
 	inline static public function image(key:String, ?forceLoadFromDisk:Bool = false):Dynamic
@@ -47,7 +47,7 @@ class Paths
 	{
 		return file(key, location, "txt");
 	}
-	
+
 	#if EXPERIMENTAL_LUA
 	// lua stuff
 	inline static public function lua(key:String, ?location:String = "data")
@@ -71,7 +71,7 @@ class Paths
 		}
 	}
 	#end
-	
+
 	inline static public function json(key:String, ?location:String = "data")
 	{
 		return file(key, location, "json");
@@ -100,7 +100,7 @@ class Paths
 	inline static public function getSparrowAtlas(key:String)
 	{
 		// if (CoolUtil.exists(image(key)) && CoolUtil.exists(xml(key)))
-			return FlxAtlasFrames.fromSparrow(image(key), xml(key));
+		return FlxAtlasFrames.fromSparrow(image(key), xml(key));
 		// else
 		// 	return FlxAtlasFrames.fromSparrow(image(file("missingFileSparrow", "placeholders", "png")), xml("missingFileSparrow", "placeholders"));
 	}
@@ -108,7 +108,7 @@ class Paths
 	inline static public function getPackerAtlas(key:String)
 	{
 		// if (CoolUtil.exists(image(key)) && CoolUtil.exists(text(key, "images")))
-			return FlxAtlasFrames.fromSpriteSheetPacker(image(key), text(key, "images"));
+		return FlxAtlasFrames.fromSpriteSheetPacker(image(key), text(key, "images"));
 		// else
 		//	return FlxAtlasFrames.fromSpriteSheetPacker(image(file("missingFilePacker/spritemap", "placeholders", "png")),
 		// 		text(file("missingFileSparrow/spritemap", "placeholders", "json")));

@@ -9,19 +9,22 @@ class ProjectSprite extends FlxSprite
 	// for menu shit
 	public var targetX:Float = 0;
 	public var isMenuItem:Bool = false;
-	
+
 	public function new(x:Float, y:Float, image:String = "")
 	{
 		super(x, y);
 		// trace(image + ' is a ' + CoolUtil.exists(Paths.image(image)));
-		
-		if (CoolUtil.exists(Paths.image(image))) {
+
+		if (CoolUtil.exists(Paths.image(image)))
+		{
 			loadGraphic(Paths.image(image));
-		} else {
+		}
+		else
+		{
 			loadGraphic(Paths.image('menu/freeplay/songs/placeholder'));
 		}
 	}
-	
+
 	override function update(elapsed:Float)
 	{
 		if (isMenuItem)

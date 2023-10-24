@@ -24,13 +24,13 @@ class FreeplayState extends MusicBeatState
 	var selector:FlxText;
 	var projCounter:FlxText;
 	var headerSelected:FlxSprite;
-	
+
 	public static var curSelected:Int = 0;
 	public static var curSelectedVertical:Int = 1;
 	static var curDifficulty:Int = 1;
-	
+
 	public static var curLimit:Int = 0;
-	
+
 	var missingShit:Bool = false;
 
 	var scoreText:FlxText;
@@ -45,11 +45,13 @@ class FreeplayState extends MusicBeatState
 		openfl.Lib.current.stage.frameRate = 144;
 
 		curSelected = 0;
-		curLimit = 0;
 		
+		if (curSelected == 0)
+			curLimit = 0;
+
 		if (CoolUtil.exists("assets/images/week1"))
 			addWeek(['Tutorial'], 1, ['gf-menu']);
-			addWeek(['Bopeebo', 'Fresh', 'Dadbattle'], 1, ['dad']);
+		addWeek(['Bopeebo', 'Fresh', 'Dadbattle'], 1, ['dad']);
 
 		if (CoolUtil.exists("assets/images/week2"))
 			addWeek(['Spookeez', 'South', 'Monster'], 2, ['spooky', 'spooky', "monster"]);
@@ -72,22 +74,22 @@ class FreeplayState extends MusicBeatState
 		// eu quero ver quem q vai ser o louco q vai deixar o mod absolutamente vazio sem Nada
 		if (CoolUtil.exists("assets/images/especula"))
 			addWeek(['Hihi', 'Tres-Bofetadas'], 8, ['espe']);
-			
+
 		if (CoolUtil.exists("assets/images/scdm"))
 			addWeek(['Do-Mal'], 9, ['scdm']);
-			
+
 		/* if (FlxG.save.data.ee2 && Startup.hasEe2)
-		{
-			addWeek(['Lil-Buddies'], 1, ['face-lil']);
-		} 
-		*/
-		
-		if (FlxG.save.data.yotsubaUnlock && Startup.hasYotsu)
+			{
+				addWeek(['Lil-Buddies'], 1, ['face-lil']);
+			} 
+		 */
+
+		if (FlxG.save.data.yotsubaUnlock && Startup.hasYotsu && CoolUtil.exists("assets/images/yotsu"))
 			addWeek(['Street-Musician'], 10, ['yotsuba']);
-			
-		if (FlxG.save.data.qenUnlock && Startup.hasQeN)
+
+		if (FlxG.save.data.qenUnlock && Startup.hasQeN && CoolUtil.exists("assets/images/qen"))
 			addWeek(['fnfolas'], 11, ['qen']);
-			
+
 		// LOAD CHARACTERS
 
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menu/scratchBG'));
@@ -99,7 +101,7 @@ class FreeplayState extends MusicBeatState
 		projCounter = new FlxText(54, 241, 0, "", 26);
 		projCounter.setFormat(Paths.font("arialbd"), 26, 0xFF333333, LEFT);
 		add(projCounter);
-		
+
 		grpSongs = new FlxTypedGroup<ProjectSprite>();
 		add(grpSongs);
 
@@ -123,7 +125,7 @@ class FreeplayState extends MusicBeatState
 		headerSelected = new FlxSprite(0, -1).makeGraphic(1280, 59, 0xFF0F668C);
 		headerSelected.updateHitbox();
 		add(headerSelected);
-		
+
 		add(scoreText);
 
 		changeSelection(startingSelection);
@@ -155,7 +157,8 @@ class FreeplayState extends MusicBeatState
 
 	public function addSong(songName:String, weekNum:Int, songCharacter:String)
 	{
-		if (CoolUtil.exists("assets/data/" + songName)){
+		if (CoolUtil.exists("assets/data/" + songName))
+		{
 			songs.push(new SongMetadata(songName, weekNum, songCharacter));
 		}
 	}
@@ -167,7 +170,7 @@ class FreeplayState extends MusicBeatState
 
 		var num:Int = 0;
 		for (song in songs)
-		{	
+		{
 			addSong(song, weekNum, songCharacters[num]);
 
 			if (songCharacters.length != 1)
@@ -184,17 +187,21 @@ class FreeplayState extends MusicBeatState
 		if (Math.abs(lerpScore - intendedScore) <= 10)
 			lerpScore = intendedScore;
 
-		scoreText.text = "MELHOR PONTUAÇÃO: " + lerpScore + "   //   Dificuldade: " + (curDifficulty == 0 ? 'Fácil' : curDifficulty == 2 ? 'Difícil' : 'Normal');
+		scoreText.text = "MELHOR PONTUAÇÃO: "
+			+ lerpScore
+			+ "   //   Dificuldade: "
+			+ (curDifficulty == 0 ? 'Fácil' : curDifficulty == 2 ? 'Difícil' : 'Normal');
 		scoreText.screenCenter(X);
-		
-		if (headerSelected.width != scoreText.width + 32) {
+
+		if (headerSelected.width != scoreText.width + 32)
+		{
 			headerSelected.makeGraphic(Math.floor(scoreText.width + 32), 59, 0xFF0F668C);
 			headerSelected.width = scoreText.width + 32;
-			}
-			
+		}
+
 		headerSelected.screenCenter(X);
-		
-		if (projCounter.text == "")	
+
+		if (projCounter.text == "")
 			projCounter.text = "Músicas compartilhadas (" + songs.length + ")";
 
 		var leftP = controls.LEFT_P;
@@ -205,10 +212,11 @@ class FreeplayState extends MusicBeatState
 			changeVerticalSelection(-1);
 		if (controls.DOWN_P)
 			changeVerticalSelection(1);
-		
-		if (curSelectedVertical == 1) {
+
+		if (curSelectedVertical == 1)
+		{
 			headerSelected.visible = false;
-			
+
 			if (leftP)
 			{
 				changeSelection(-1);
@@ -219,15 +227,17 @@ class FreeplayState extends MusicBeatState
 				changeSelection(1);
 				changeDiff(0);
 			}
-		} else {
+		}
+		else
+		{
 			headerSelected.visible = true;
-			
+
 			if (leftP)
 				changeDiff(-1);
 			if (rightP)
 				changeDiff(1);
 		}
-		
+
 		if (controls.BACK)
 		{
 			FlxG.sound.music.stop();
@@ -235,12 +245,15 @@ class FreeplayState extends MusicBeatState
 			switchState(new MainMenuState());
 		}
 
-		if (accepted) {
-			if (CoolUtil.weekGfxWork(songs[curSelected].week)) {
-				if (CoolUtil.chartExists(songs[curSelected].songName.toLowerCase(), curDifficulty))	{
+		if (accepted)
+		{
+			if (CoolUtil.weekGfxWork(songs[curSelected].week))
+			{
+				if (CoolUtil.chartExists(songs[curSelected].songName.toLowerCase(), curDifficulty))
+				{
 					// hell yeah lets song
 					var poop:String = Highscore.formatSong(songs[curSelected].songName.toLowerCase(), curDifficulty);
-					
+
 					PlayState.SONG = Song.loadFromJson(poop, songs[curSelected].songName.toLowerCase());
 					PlayState.isStoryMode = false;
 					PlayState.storyDifficulty = curDifficulty;
@@ -249,16 +262,20 @@ class FreeplayState extends MusicBeatState
 					PlayState.returnLocation = "freeplay";
 					PlayState.storyWeek = songs[curSelected].week;
 					trace('CUR WEEK' + PlayState.storyWeek);
-					
+
 					switchState(new PlayState());
-					
+
 					if (FlxG.sound.music != null)
 						FlxG.sound.music.stop();
-				} else {
+				}
+				else
+				{
 					// no song
 					openAlert("vaiNoNormalFdp");
 				}
-			} else {
+			}
+			else
+			{
 				openAlert();
 			}
 		}
@@ -289,7 +306,7 @@ class FreeplayState extends MusicBeatState
 			case 1:
 			//	diffText.text = 'NORMAL';
 			case 2:
-			//	diffText.text = "HARD";
+				//	diffText.text = "HARD";
 		}
 	}
 
@@ -299,21 +316,23 @@ class FreeplayState extends MusicBeatState
 
 		curSelected += change;
 		curLimit += change;
-		
+
 		if (curLimit > 4)
 			curLimit = 4;
 		if (curLimit < 0)
 			curLimit = 0;
-			
-		if (curSelected < 0) {
+
+		if (curSelected < 0)
+		{
 			curSelected = songs.length - 1;
 			curLimit = 4;
-			}
-			
-		if (curSelected >= songs.length) {
+		}
+
+		if (curSelected >= songs.length)
+		{
 			curSelected = 0;
 			curLimit = 0;
-			}
+		}
 
 		// selector.y = (70 * curSelected) + 30;
 
@@ -334,9 +353,12 @@ class FreeplayState extends MusicBeatState
 
 			// mais codigo quase ilegivel mas tudo bem nos bolamos
 			// nvm o codigo nao e mais ilegivel
-			if (item.targetX >= 5 || item.targetX <= -1) {
+			if (item.targetX >= 5 || item.targetX <= -1)
+			{
 				item.alpha = 0;
-			} else {
+			}
+			else
+			{
 				item.alpha = 0.6;
 			}
 			// item.setGraphicSize(Std.int(item.width * 0.8));
@@ -354,21 +376,26 @@ class FreeplayState extends MusicBeatState
 		FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
 
 		curSelectedVertical += change;
-			
-		if (curSelectedVertical < 0) {
+
+		if (curSelectedVertical < 0)
+		{
 			curSelectedVertical = 1;
-			}
-			
-		if (curSelectedVertical > 1) {
+		}
+
+		if (curSelectedVertical > 1)
+		{
 			curSelectedVertical = 0;
-			}
-			
+		}
+
 		// uhhhhhhhhhhhhhhhh
 		for (item in grpSongs.members)
 		{
-			if (item.targetX >= 5 || item.targetX <= -1) {
+			if (item.targetX >= 5 || item.targetX <= -1)
+			{
 				item.alpha = 0;
-			} else {
+			}
+			else
+			{
 				item.alpha = 0.4 + (curSelectedVertical * 0.2);
 			}
 			// item.setGraphicSize(Std.int(item.width * 0.8));
@@ -380,8 +407,9 @@ class FreeplayState extends MusicBeatState
 			}
 		}
 	}
-	
-	function openAlert(alert:String = 'missinShit'){
+
+	function openAlert(alert:String = 'missinShit')
+	{
 		// eu nao vou copiar esse codigo 500 vezes nao
 		FlxG.sound.play(Paths.sound('cancelMenu'));
 
@@ -391,7 +419,7 @@ class FreeplayState extends MusicBeatState
 			openSubState(new AlertSubState(0, 0, alert));
 		}
 	}
-	
+
 	override function closeSubState()
 	{
 		missingShit = false;

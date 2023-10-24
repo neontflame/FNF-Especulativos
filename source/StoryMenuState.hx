@@ -78,18 +78,22 @@ class StoryMenuState extends MusicBeatState
 		weekNames = CoolUtil.coolTextFile(Paths.text("weekNames"));
 
 		// eliminate all the weeks that dont exist in files lel
-		for (i in new ReverseIterator(weekData.length - 1, 0)) {
+		for (i in new ReverseIterator(weekData.length - 1, 0))
+		{
 			// trace('does week ' + i + ' exist');
-			if (!CoolUtil.weekExists(i)) {
+			if (!CoolUtil.weekExists(i))
+			{
 				// trace('it doesnt :(');
 				weekData.splice(i, 1);
 				weekCharacters.splice(i, 1);
 				weekNames.splice(i, 1);
-			} else {
+			}
+			else
+			{
 				// trace('it does :)');
 			}
 		}
-		
+
 		if (FlxG.sound.music == null)
 		{
 			FlxG.sound.playMusic(Paths.music("coolMenu"), 1);
@@ -104,7 +108,7 @@ class StoryMenuState extends MusicBeatState
 		bg.screenCenter();
 		bg.antialiasing = true;
 		add(bg);
-		
+
 		scoreText = new FlxText(994, 165, 0, "SCORE: 49324858", 12);
 		scoreText.setFormat(Paths.font("arialbd"), 12, 0xFF333333);
 
@@ -120,16 +124,16 @@ class StoryMenuState extends MusicBeatState
 		ui_tex = Paths.getSparrowAtlas('menu/story/campaign_menu_UI_assets');
 		var bgForStory:FlxSprite = new FlxSprite(126, 215).loadGraphic(Paths.image("menu/story/bgStory"));
 		var storyMenuThing:FlxSprite = new FlxSprite(409, 108).loadGraphic(Paths.image("menu/story/storyMenuThing"));
-		
+
 		add(bgForStory);
 		add(storyMenuThing);
-		
+
 		grpWeekText = new FlxTypedGroup<MenuItem>();
 		add(grpWeekText);
 
 		grpProjectShits = new FlxTypedGroup<ProjectSprite>();
 		add(grpProjectShits);
-		
+
 		grpLocks = new FlxTypedGroup<FlxSprite>();
 		add(grpLocks);
 
@@ -184,9 +188,9 @@ class StoryMenuState extends MusicBeatState
 		updateText();
 
 		trace("Line 215");
-		
+
 		changeWeek();
-		
+
 		super.create();
 	}
 
@@ -355,9 +359,9 @@ class StoryMenuState extends MusicBeatState
 	{
 		var stringThing:Array<String> = weekData[curWeek];
 		txtTracklist.text = "Músicas (" + stringThing.length + ")";
-		
+
 		grpProjectShits.clear();
-		
+
 		for (i in stringThing)
 		{
 			var bosta:ProjectSprite = new ProjectSprite(438 + (216 * stringThing.indexOf(i)), 204, "menu/freeplay/songs/" + i);
@@ -370,15 +374,20 @@ class StoryMenuState extends MusicBeatState
 	}
 }
 
-class ReverseIterator {
-  var end:Int;
-  var i:Int;
+class ReverseIterator
+{
+	var end:Int;
+	var i:Int;
 
-  public inline function new(start:Int, end:Int) {
-    this.i = start;
-    this.end = end;
-  }
+	public inline function new(start:Int, end:Int)
+	{
+		this.i = start;
+		this.end = end;
+	}
 
-  public inline function hasNext() return i >= end;
-  public inline function next() return i--;
+	public inline function hasNext()
+		return i >= end;
+
+	public inline function next()
+		return i--;
 }

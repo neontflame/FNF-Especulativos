@@ -24,15 +24,15 @@ class Conductor
 
 	// keeping this just because
 	public static var safeZoneOffset:Float = (safeFrames / 60) * 1000; // is calculated in create(), is safeFrames in milliseconds
-	
+
 	// timings funny! um pouco baseado no metodo usado na forever engine
 	// milissegundos maximos pra tudo
 	// 45ms sick 90ms good 135ms bad 180ms shit. se ceis quiserem fazer seus proprios timings ai podem muda
 	// btw 180ms e o limite maximo
-	public static var timings:Array<Float> = [45, 90, 135, 180]; 
-	public static var timingAccuracies:Array<Float> = [1, 0.75, 0.5, 0.25]; 
-	public static var timingScores:Array<Int> = [350, 200, 100, 50]; 
-	
+	public static var timings:Array<Float> = [45, 90, 135, 180];
+	public static var timingAccuracies:Array<Float> = [1, 0.75, 0.5, 0.25];
+	public static var timingScores:Array<Int> = [350, 200, 100, 50];
+
 	public static var bpmChangeMap:Array<BPMChangeEvent> = [];
 
 	public function new()

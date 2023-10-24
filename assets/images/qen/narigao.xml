@@ -72,4 +72,18 @@
 	<SubTexture name="narigao up0011" x="387" y="1378" width="411" height="625" frameX="0" frameY="-29" frameWidth="411" frameHeight="654"/>
 	<SubTexture name="narigao up0012" x="387" y="1378" width="411" height="625" frameX="0" frameY="-29" frameWidth="411" frameHeight="654"/>
 	<SubTexture name="narigao up0013" x="387" y="1378" width="411" height="625" frameX="0" frameY="-29" frameWidth="411" frameHeight="654"/>
+	<SubTexture name="narigao wtf0000" x="798" y="1378" width="494" height="469" frameX="-5" frameY="-8" frameWidth="501" frameHeight="478"/>
+	<SubTexture name="narigao wtf0001" x="798" y="1378" width="494" height="469" frameX="-5" frameY="-8" frameWidth="501" frameHeight="478"/>
+	<SubTexture name="narigao wtf0002" x="1292" y="1378" width="493" height="472" frameX="-8" frameY="-5" frameWidth="501" frameHeight="478"/>
+	<SubTexture name="narigao wtf0003" x="1292" y="1378" width="493" height="472" frameX="-8" frameY="-5" frameWidth="501" frameHeight="478"/>
+	<SubTexture name="narigao wtf0004" x="0" y="2032" width="500" height="476" frameX="-1" frameY="-2" frameWidth="501" frameHeight="478"/>
+	<SubTexture name="narigao wtf0005" x="0" y="2032" width="500" height="476" frameX="-1" frameY="-2" frameWidth="501" frameHeight="478"/>
+	<SubTexture name="narigao wtf0006" x="500" y="2032" width="500" height="478" frameX="0" frameY="0" frameWidth="501" frameHeight="478"/>
+	<SubTexture name="narigao wtf0007" x="500" y="2032" width="500" height="478" frameX="0" frameY="0" frameWidth="501" frameHeight="478"/>
+	<SubTexture name="narigao wtf0008" x="500" y="2032" width="500" height="478" frameX="0" frameY="0" frameWidth="501" frameHeight="478"/>
+	<SubTexture name="narigao wtf0009" x="500" y="2032" width="500" height="478" frameX="0" frameY="0" frameWidth="501" frameHeight="478"/>
+	<SubTexture name="narigao wtf0010" x="500" y="2032" width="500" height="478" frameX="0" frameY="0" frameWidth="501" frameHeight="478"/>
+	<SubTexture name="narigao wtf0011" x="500" y="2032" width="500" height="478" frameX="0" frameY="0" frameWidth="501" frameHeight="478"/>
+	<SubTexture name="narigao wtf0012" x="500" y="2032" width="500" height="478" frameX="0" frameY="0" frameWidth="501" frameHeight="478"/>
+	<SubTexture name="narigao wtf0013" x="500" y="2032" width="500" height="478" frameX="0" frameY="0" frameWidth="501" frameHeight="478"/>
 </TextureAtlas>

@@ -32,13 +32,13 @@ class Note extends FlxSprite
 
 	public var xOffset:Float = 0;
 	public var yOffset:Float = 0;
-	
+
 	public static var swagWidth:Float = 160 * 0.7;
 	public static final PURP_NOTE:Int = 0;
 	public static final GREEN_NOTE:Int = 2;
 	public static final BLUE_NOTE:Int = 1;
 	public static final RED_NOTE:Int = 3;
-	
+
 	public var modifiedByLua:Bool = false;
 
 	public function new(_strumTime:Float, _noteData:Int, _type:String, ?_editor = false, ?_prevNote:Note, ?_sustainNote:Bool = false)
@@ -47,7 +47,7 @@ class Note extends FlxSprite
 
 		if (_type != null)
 			type = _type;
-			
+
 		if (type == "BULLET")
 			noteWidth = 2;
 
@@ -79,9 +79,10 @@ class Note extends FlxSprite
 			noteData = 4 - noteWidth;
 		else
 			noteData = _noteData;
-			
-		var uiType:String = PlayState.curUiType;
 
+		var uiType:String = PlayState.curUiType;
+		var isQen:Bool = PlayState.qenSongs.contains(PlayState.SONG.song.toLowerCase());
+		
 		switch (uiType)
 		{
 			case 'pixel':
@@ -116,23 +117,31 @@ class Note extends FlxSprite
 				updateHitbox();
 
 			default:
-				if (_type != null) {
-					if (CoolUtil.exists('assets/images/ui/customNotes/' + type + '.png') || CoolUtil.exists('assets/images/ui/customNotes/' + type + '.xml')) {
+				if (_type != null)
+				{
+					if (CoolUtil.exists('assets/images/ui/customNotes/' + type + '.png')
+						|| CoolUtil.exists('assets/images/ui/customNotes/' + type + '.xml'))
+					{
 						frames = Paths.getSparrowAtlas('ui/customNotes/' + type);
 						// trace ('heres your note');
-					} else {
-						frames = Paths.getSparrowAtlas('ui/NOTE_assets');
-						/* trace('get defaulted lmao png is a ' 
-								+ CoolUtil.exists('assets/images/ui/customNotes/' + type + '.png') 
-								+ ' and the xml is a ' 
-								+ CoolUtil.exists('assets/images/ui/customNotes/' + type + '.xml')
-								); */
 					}
-				} else {
-					frames = Paths.getSparrowAtlas('ui/NOTE_assets');
+					else
+					{
+						frames = Paths.getSparrowAtlas('ui/' + (isQen ? 'qenUI/' : '' ) + 'NOTE_assets');
+						/* trace('get defaulted lmao png is a ' 
+							+ CoolUtil.exists('assets/images/ui/customNotes/' + type + '.png') 
+							+ ' and the xml is a ' 
+							+ CoolUtil.exists('assets/images/ui/customNotes/' + type + '.xml')
+							); */
+					}
 				}
-				
-				if (_type == 'BULLET') {
+				else
+				{
+					frames = Paths.getSparrowAtlas('ui/' + (isQen ? 'qenUI/' : '' ) + 'NOTE_assets');
+				}
+
+				if (_type == 'BULLET')
+				{
 					animation.addByPrefix('greenScroll', 'bulletnote');
 					animation.addByPrefix('redScroll', 'bulletnote');
 					animation.addByPrefix('blueScroll', 'bulletnote');
@@ -147,7 +156,9 @@ class Note extends FlxSprite
 					animation.addByPrefix('greenhold', 'bullet hold piece');
 					animation.addByPrefix('redhold', 'bullet hold piece');
 					animation.addByPrefix('bluehold', 'bullet hold piece');
-				} else {
+				}
+				else
+				{
 					animation.addByPrefix('greenScroll', 'green0');
 					animation.addByPrefix('redScroll', 'red0');
 					animation.addByPrefix('blueScroll', 'blue0');
@@ -163,8 +174,9 @@ class Note extends FlxSprite
 					animation.addByPrefix('redhold', 'red hold piece');
 					animation.addByPrefix('bluehold', 'blue hold piece');
 				}
-				
-				if (_type != null) {
+
+				if (_type != null)
+				{
 					animation.addByPrefix('purple glow', 'Purple Active');
 					animation.addByPrefix('green glow', 'Green Active');
 					animation.addByPrefix('red glow', 'Red Active');

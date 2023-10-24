@@ -4,7 +4,6 @@ import flixel.tweens.FlxTween;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.group.FlxSpriteGroup;
-
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 
@@ -19,7 +18,7 @@ class ComboPopup extends FlxSpriteGroup
 	public var ratingScale:Float = 0.7;
 	public var numberScale:Float = 0.5;
 	public var breakScale:Float = 0.6;
-	
+
 	public var accelScale:Float = 1;
 	public var velocityScale:Float = 1;
 
@@ -82,14 +81,14 @@ class ComboPopup extends FlxSpriteGroup
 	public function comboPopup(_combo:Int):Void
 	{
 		var leadingZeroes:String = (_combo < 10 ? '00' : // if combo is less than 10
-							_combo >= 10 && _combo < 100 ? '0' :  // if combo is more or equal to 10 but less than 100
-							'');
-							// i couldve very well just used a formatting library for this
-		
+			_combo >= 10 && _combo < 100 ? '0' : // if combo is more or equal to 10 but less than 100
+			'');
+		// i couldve very well just used a formatting library for this
+
 		/* if (_combo < 0)
-		{
-			return;
-		} */
+			{
+				return;
+		}*/
 
 		var combo:String = leadingZeroes + Std.string(_combo);
 
@@ -135,7 +134,7 @@ class ComboPopup extends FlxSpriteGroup
 		var ratingSprite = new FlxSprite(ratingPosition[X], ratingPosition[Y]).loadGraphic(ratingInfo[GRAPHIC], true, ratingInfo[WIDTH], ratingInfo[HEIGHT]);
 		ratingSprite.setGraphicSize(Std.int(ratingSprite.width * ratingScale));
 		ratingSprite.antialiasing = ratingInfo[AA];
-		
+
 		ratingSprite.animation.add("rating", [rating], 0, false);
 		ratingSprite.animation.play("rating");
 
@@ -151,19 +150,19 @@ class ComboPopup extends FlxSpriteGroup
 		currentTimingShown.borderColor = FlxColor.BLACK;
 		currentTimingShown.text = truncateFloat(_msTiming, 4) + "ms";
 		currentTimingShown.size = 20;
-		
-		switch(_rating)
-			{
-				case 'shit' | 'bad':
-					currentTimingShown.color = FlxColor.GRAY;
-				case 'good':
-					currentTimingShown.color = FlxColor.LIME;
-				case 'sick':
-					currentTimingShown.color = FlxColor.CYAN;
-			}
-			
+
+		switch (_rating)
+		{
+			case 'shit' | 'bad':
+				currentTimingShown.color = FlxColor.GRAY;
+			case 'good':
+				currentTimingShown.color = FlxColor.LIME;
+			case 'sick':
+				currentTimingShown.color = FlxColor.CYAN;
+		}
+
 		add(currentTimingShown);
-		
+
 		FlxTween.tween(ratingSprite, {alpha: 0}, 0.2, {
 			onComplete: function(tween:FlxTween)
 			{
@@ -179,7 +178,7 @@ class ComboPopup extends FlxSpriteGroup
 			},
 			startDelay: 0.1
 		});
-		
+
 		return;
 	}
 
@@ -208,7 +207,7 @@ class ComboPopup extends FlxSpriteGroup
 
 		return;
 	}
-	
+
 	function truncateFloat(number:Float, precision:Int):Float
 	{
 		var num = number;
@@ -216,5 +215,4 @@ class ComboPopup extends FlxSpriteGroup
 		num = Math.round(num) / Math.pow(10, precision);
 		return num;
 	}
-
 }

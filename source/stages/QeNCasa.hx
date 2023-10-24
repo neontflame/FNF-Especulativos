@@ -8,7 +8,7 @@ import stages.elements.*;
 class QeNCasa extends BasicStage
 {
 	var sofa:FlxSprite;
-	
+
 	public override function init()
 	{
 		name = 'qencasa';
@@ -33,16 +33,16 @@ class QeNCasa extends BasicStage
 		sofa.antialiasing = true;
 		sofa.scrollFactor.set(0.95, 0.95);
 		addToBackground(sofa);
-		
+
 		dad().y -= 50;
 		gf().y -= 50;
 		boyfriend().y -= 50;
-		
+
 		dad().x += 100;
 		gf().x += 200;
 		boyfriend().x += 200;
 	}
-	
+
 	public override function beat(curBeat:Int)
 	{
 		sofa.animation.play('idle', true);

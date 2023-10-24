@@ -87,6 +87,15 @@ class GameOverSubstate extends MusicBeatSubstate
 							FlxG.sound.music.fadeIn(2.5, 0.2, 1);
 					});
 
+				case "narigao":
+					bf.playAnim('deathLoop');
+					FlxG.sound.playMusic(Paths.music('qen/gameOver'), 0.2);
+					FlxG.sound.play(Paths.sound('qen/risadaDoBola'), 1, false, null, true, function()
+					{
+						if (!isEnding)
+							FlxG.sound.music.fadeIn(2.5, 0.2, 1);
+					});
+					
 				default:
 					bf.playAnim('deathLoop');
 					FlxG.sound.playMusic(Paths.music('gameOver' + stageSuffix));

@@ -30,46 +30,48 @@ class CacheSettings extends MusicBeatState
 
 	override function create()
 	{
-		var bgColor:FlxColor = 0xFF9766BE;
-		var font:String = Paths.font("Funkin-Bold", "otf");
+		var bgColor:FlxColor = 0xFFFFFFFF;
 
 		if (noFunMode)
 		{
-			bgColor = 0xFF303030;
-			font = "VCR OSD Mono";
+			bgColor = FlxColor.fromRGB(232, 232, 232);
 		}
 
-		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menu/menuDesat'));
+		var bg:FlxSprite = new FlxSprite(0).loadGraphic(Paths.image('menu/scratchBG'));
 		bg.scrollFactor.x = 0;
 		bg.scrollFactor.y = 0;
-		bg.setGraphicSize(Std.int(bg.width * 1.18));
 		bg.updateHitbox();
 		bg.screenCenter();
 		bg.antialiasing = true;
+
 		bg.color = bgColor;
 		add(bg);
 
-		keyTextDisplay = new FlxText(0, 0, 1280, "", 72);
+		var moreMenuShittery:FlxSprite = new FlxSprite(256, 108).loadGraphic(Paths.image('menu/options/moreMenuStuff'));
+		add(moreMenuShittery);
+
+		var titleStuff:FlxText = new FlxText(moreMenuShittery.x + 14, moreMenuShittery.y + 9, 718, "Configurações de cache", 24);
+		titleStuff.scrollFactor.set(0, 0);
+		titleStuff.setFormat(Paths.font("arialbd"), 24, 0xFF333333, FlxTextAlign.LEFT);
+		add(titleStuff);
+		
+		keyTextDisplay = new FlxText(moreMenuShittery.x + 24, 170, 718, "", 32);
 		keyTextDisplay.scrollFactor.set(0, 0);
-		keyTextDisplay.setFormat(font, 72, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		keyTextDisplay.borderSize = 3;
-		keyTextDisplay.borderQuality = 1;
+		keyTextDisplay.setFormat(Paths.font("arial"), 32, FlxColor.GRAY, FlxTextAlign.LEFT);
 		add(keyTextDisplay);
 
-		warning = new FlxText(0, 540, 1280,
+		warning = new FlxText(moreMenuShittery.x + 24, 545, 718,
 			"WARNING!\nEnabling this will load a large amount of graphics data to VRAM.\nIf you don't have a decent GPU it might be best to leave this disabled.",
 			32);
 		warning.scrollFactor.set(0, 0);
-		warning.setFormat(Paths.font("vcr"), 32, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		warning.borderSize = 3;
-		warning.borderQuality = 1;
+		warning.setFormat(Paths.font("arial"), 20, 0xFFCC3300, FlxTextAlign.CENTER);
 		warning.screenCenter(X);
 		warning.visible = false;
 		add(warning);
 
-		var backText = new FlxText(5, FlxG.height - 21, 0, "ESCAPE - Back to Menu", 16);
+		var backText = new FlxText(5, FlxG.height - 21, 0, "ESCAPE - back to menu", 16);
 		backText.scrollFactor.set();
-		backText.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		backText.setFormat("Arial", 16, 0xFF343434, LEFT);
 		add(backText);
 
 		if (FlxG.save.data.musicPreload2 == null || FlxG.save.data.charPreload2 == null || FlxG.save.data.graphicsPreload2 == null)
@@ -139,7 +141,7 @@ class CacheSettings extends MusicBeatState
 	function textUpdate()
 	{
 		keyTextDisplay.clearFormats();
-		keyTextDisplay.text = "CACHE SETTINGS\n\n";
+		keyTextDisplay.text = "";
 
 		for (i in 0...3)
 		{
@@ -149,11 +151,11 @@ class CacheSettings extends MusicBeatState
 
 			if (i == curSelected)
 			{
-				keyTextDisplay.addFormat(new FlxTextFormat(0xFFFFFF00), sectionStart, sectionEnd);
+				keyTextDisplay.addFormat(new FlxTextFormat(0xFF046792), sectionStart, sectionEnd);
 			}
 		}
 
-		keyTextDisplay.screenCenter();
+		// keyTextDisplay.screenCenter();
 	}
 
 	function save()

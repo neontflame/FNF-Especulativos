@@ -1,0 +1,30 @@
+{
+	"events": {
+		"events": [
+			[
+				27,
+				52741.935483871,
+				0,
+				"dadAnimLockToggle"
+			],
+			[
+				27,
+				52862.9032258065,
+				0,
+				"playAnim;dad;grabStick"
+			],
+			[
+				28,
+				54193.5483870968,
+				0,
+				"changeChar;dad;yotsuba-stick"
+			],
+			[
+				27,
+				54072.5806451613,
+				0,
+				"dadAnimLockToggle"
+			]
+		]
+	}
+}

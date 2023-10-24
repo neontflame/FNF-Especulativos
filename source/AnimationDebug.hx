@@ -51,7 +51,7 @@ class AnimationDebug extends FlxState
 
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camHUD, false);
-		
+
 		FlxG.cameras.setDefaultDrawTarget(camGame, true);
 
 		FlxG.sound.music.stop();

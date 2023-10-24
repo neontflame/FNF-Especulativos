@@ -23,6 +23,18 @@ function stepHit(step)
     if curStep == 540 then
 		downArrowFunny('remove')
     end
+
+    if curStep == 574 then
+		downArrowFunny('restore')
+    end
+
+    if curStep == 960 then
+		downArrowFunny('remove')
+    end
+	
+    if curStep == 1084 then
+		downArrowFunny('restore')
+    end
 end      
   
 function downArrowFunny(yeah)

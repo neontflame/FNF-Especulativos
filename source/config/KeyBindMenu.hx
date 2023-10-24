@@ -36,35 +36,39 @@ class KeyBindMenu extends MusicBeatState
 	{
 		persistentUpdate = persistentDraw = true;
 
-		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menu/menuDesat'));
+		var bg:FlxSprite = new FlxSprite(0).loadGraphic(Paths.image('menu/scratchBG'));
 		bg.scrollFactor.x = 0;
 		bg.scrollFactor.y = 0;
-		bg.setGraphicSize(Std.int(bg.width * 1.18));
 		bg.updateHitbox();
 		bg.screenCenter();
 		bg.antialiasing = true;
-		bg.color = 0xFF9766BE;
 		add(bg);
 
-		keyTextDisplay = new FlxText(0, 0, 1280, "", 72);
+		var moreMenuShittery:FlxSprite = new FlxSprite(256, 108).loadGraphic(Paths.image('menu/options/moreMenuStuff'));
+		add(moreMenuShittery);
+
+		var titleStuff:FlxText = new FlxText(moreMenuShittery.x + 14, moreMenuShittery.y + 9, 718, "Configurações de controle (teclado)", 24);
+		titleStuff.scrollFactor.set(0, 0);
+		titleStuff.setFormat(Paths.font("arialbd"), 24, 0xFF333333, FlxTextAlign.LEFT);
+		add(titleStuff);
+		
+		keyTextDisplay = new FlxText(moreMenuShittery.x + 24, 170, 718, "", 32);
 		keyTextDisplay.scrollFactor.set(0, 0);
-		keyTextDisplay.setFormat(Paths.font("Funkin-Bold", "otf"), 72, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		keyTextDisplay.borderSize = 3;
-		keyTextDisplay.borderQuality = 1;
+		keyTextDisplay.setFormat(Paths.font("arial"), 32, FlxColor.GRAY, FlxTextAlign.LEFT);
 		add(keyTextDisplay);
 
-		keyWarning = new FlxText(0, 580, 1280, "WARNING: BIND NOT SET, TRY ANOTHER KEY", 42);
+		keyWarning = new FlxText(moreMenuShittery.x + 24, 545, 718,
+			"WARNING: BIND NOT SET, TRY ANOTHER KEY",
+			32);
 		keyWarning.scrollFactor.set(0, 0);
-		keyWarning.setFormat(Paths.font("vcr"), 42, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		keyWarning.borderSize = 3;
-		keyWarning.borderQuality = 1;
+		keyWarning.setFormat(Paths.font("arial"), 20, 0xFFCC3300, FlxTextAlign.CENTER);
 		keyWarning.screenCenter(X);
 		keyWarning.alpha = 0;
 		add(keyWarning);
-
-		var backText = new FlxText(5, FlxG.height - 37, 0, "ESCAPE - Back to Menu\nBACKSPACE - Reset to Defaults\n", 16);
+		
+		var backText = new FlxText(5, FlxG.height - 37, 0, "ESCAPE - back to menu\nBACKSPACE - reset to defaults\n", 16);
 		backText.scrollFactor.set();
-		backText.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		backText.setFormat("Arial", 16, 0xFF343434, LEFT);
 		add(backText);
 
 		warningTween = FlxTween.tween(keyWarning, {alpha: 0}, 0);
@@ -164,11 +168,11 @@ class KeyBindMenu extends MusicBeatState
 
 			if (i == curSelected)
 			{
-				keyTextDisplay.addFormat(new FlxTextFormat(0xFFFFFF00), sectionStart, sectionEnd);
+				keyTextDisplay.addFormat(new FlxTextFormat(0xFF046792), sectionStart, sectionEnd);
 			}
 		}
 
-		keyTextDisplay.screenCenter();
+		// keyTextDisplay.screenCenter();
 	}
 
 	function save()

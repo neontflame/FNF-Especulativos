@@ -13,9 +13,9 @@ class Character extends FlxSprite
 {
 	// Global character properties.
 	public static var LOOP_ANIM_ON_HOLD:Bool = true; // Determines whether hold notes will loop the sing animation. Default is true.
-	public static var HOLD_LOOP_WAIT:Bool = false; 		//Determines whether hold notes will only loop the sing animation if 4 frames of animation have passed. Default is false.
+	public static var HOLD_LOOP_WAIT:Bool = false; // Determines whether hold notes will only loop the sing animation if 4 frames of animation have passed. Default is false.
 	public static var USE_IDLE_END:Bool = true; // Determines whether you will go back to the start of the idle or the end of the idle when letting go of a note. Default is true for FPS Plus, false for base game.
-	
+
 	public var animOffsets:Map<String, Array<Dynamic>>;
 	public var debugMode:Bool = false;
 
@@ -32,10 +32,10 @@ class Character extends FlxSprite
 	public var deathCharacter:String = "bf";
 	public var iconName:String = "face";
 	public var characterColor:Null<FlxColor> = null;
-	
-	public var charOffsetArray:Array<Float> = [0, 0]; 
-	public var cameraOffsetArray:Array<Float> = [150, -100]; 
-	
+
+	public var charOffsetArray:Array<Float> = [0, 0];
+	public var cameraOffsetArray:Array<Float> = [150, -100];
+
 	var facesLeft:Bool = false;
 
 	public function new(x:Float, y:Float, ?character:String = "bf", ?_isPlayer:Bool = false, ?_enableDebug:Bool = false)
@@ -102,7 +102,7 @@ class Character extends FlxSprite
 				playAnim('danceRight');
 
 				iconName = "gf";
-				
+
 			case 'gf-bar':
 				// GIRLFRIEND (bar) CODE
 				frames = Paths.getSparrowAtlas("especula/girlfriendBar");
@@ -115,11 +115,11 @@ class Character extends FlxSprite
 				addOffset('sad', -76, -22);
 				addOffset('danceLeft', 0, -9);
 				addOffset('danceRight', 0, -9);
-				
+
 				playAnim('danceRight');
 
 				iconName = "gf";
-				
+
 			case 'gf-christmas':
 				frames = Paths.getSparrowAtlas("week5/gfChristmas");
 				animation.addByPrefix('cheer', 'GF Cheer', 24, false);
@@ -229,7 +229,7 @@ class Character extends FlxSprite
 				deathCharacter = "bf-holding-gf-dead";
 				iconName = "bf";
 				charOffsetArray = [0, 350];
-				
+
 			case 'bf-holding-gf-dead':
 				frames = Paths.getSparrowAtlas('week7/bfHoldingGF-DEAD');
 				animation.addByPrefix('firstDeath', "BF Dies with GF", 24, false);
@@ -318,6 +318,7 @@ class Character extends FlxSprite
 				animation.addByPrefix('singUP', 'yotsu up', 24, false);
 				animation.addByPrefix('singRIGHT', 'yotsu right', 24, false);
 				animation.addByPrefix('hey', 'yotsu hey', 24, false);
+				animation.addByPrefix('grabStick', 'yotsu grab stick', 24, false);
 				
 				addOffset('idle');
 				addOffset('singLEFT', 58, -8);
@@ -325,12 +326,42 @@ class Character extends FlxSprite
 				addOffset('singUP', -22, 38);
 				addOffset('singRIGHT', -36, -21);
 				addOffset('hey', -36, 4);
+				addOffset('grabStick', 66, 3);
 				
 				playAnim('idle');
-				
+
 				iconName = "yotsuba";
 				charOffsetArray = [0, 315];
-				cameraOffsetArray = [150, -110];
+				cameraOffsetArray = [150, -90];
+
+			case 'yotsuba-stick':
+				// yotsuba so q dessa vez com uma vara
+				frames = Paths.getSparrowAtlas("yotsu/yotuba");
+				animation.addByPrefix('idle', 'yotsu stick idle', 24, false);
+				animation.addByPrefix('singLEFT', 'yotsu stick left', 24, false);
+				animation.addByPrefix('singDOWN', 'yotsu stick down', 24, false);
+				animation.addByPrefix('singUP', 'yotsu stick up', 24, false);
+				animation.addByPrefix('singRIGHT', 'yotsu stick right', 24, false);
+
+				animation.addByPrefix('singLEFT-alt', 'yotsu stick a', 24, false);
+				animation.addByPrefix('singUP-alt', 'yotsu stick b', 24, false);
+				animation.addByPrefix('singRIGHT-alt', 'yotsu stick c', 24, false);
+				
+				addOffset('idle', 83, 2);
+				addOffset('singLEFT', 191, -8);
+				addOffset('singDOWN', 52, -61);
+				addOffset('singUP', 2, 38);
+				addOffset('singRIGHT', -42, -21);
+
+				addOffset('singLEFT-alt', 126, 64);
+				addOffset('singUP-alt', 39, 150);
+				addOffset('singRIGHT-alt', -50, 64);
+				
+				playAnim('idle');
+
+				iconName = "yotsuba";
+				charOffsetArray = [0, 315];
+				cameraOffsetArray = [150, -90];
 				
 			case 'narigao':
 				// nariz man
@@ -340,18 +371,20 @@ class Character extends FlxSprite
 				animation.addByPrefix('singRIGHT', 'narigao right', 24, false);
 				animation.addByPrefix('singDOWN', 'narigao down', 24, false);
 				animation.addByPrefix('singLEFT', 'narigao left', 24, false);
+				animation.addByPrefix('wtf', 'narigao wtf', 24, false);
 				
 				addOffset('idle');
 				addOffset("singDOWN", 23, -102);
 				addOffset("singRIGHT", -41, -38);
 				addOffset("singUP", -60, 196);
 				addOffset("singLEFT", 379, 5);
+				addOffset('wtf', 1, 5);
 				
 				playAnim('idle');
 
 				iconName = "narigao";
 				charOffsetArray = [-24, 290];
-				
+
 			case 'spooky':
 				frames = Paths.getSparrowAtlas("week2/spooky_kids_assets");
 				animation.addByPrefix('singUP', 'spooky UP NOTE', 24, false);
@@ -490,7 +523,7 @@ class Character extends FlxSprite
 
 				iconName = "pico";
 				charOffsetArray = [-280, 300];
-				cameraOffsetArray = [430, -100]; 
+				cameraOffsetArray = [430, -100];
 
 			case 'bf':
 				frames = Paths.getSparrowAtlas("BOYFRIEND");
@@ -504,7 +537,7 @@ class Character extends FlxSprite
 				animation.addByPrefix('singRIGHTmiss', 'BF NOTE RIGHT MISS', 24, false);
 				animation.addByPrefix('singDOWNmiss', 'BF NOTE DOWN MISS', 24, false);
 				animation.addByPrefix('hey', 'BF HEY', 24, false);
-				
+
 				animation.addByPrefix('dodge', 'boyfriend dodge', 24, false);
 				animation.addByPrefix('damage', 'BF hit', 24, false);
 				// animation.addByPrefix('attack', 'boyfriend attack', 24, false);
@@ -525,14 +558,14 @@ class Character extends FlxSprite
 				addOffset("singLEFTmiss", 12, 24);
 				addOffset("singDOWNmiss", -11, -19);
 				addOffset("hey", 7, 4);
-				
+
 				addOffset('dodge', -1, -10);
 				addOffset('damage', 18, 20);
-				
+
 				addOffset('firstDeath', 37, 11);
 				addOffset('deathLoop', 37, 5);
 				addOffset('deathConfirm', 37, 69);
-				
+
 				addOffset('scared', -4);
 
 				playAnim('idle');
@@ -695,7 +728,7 @@ class Character extends FlxSprite
 
 				iconName = "bf-lil";
 				charOffsetArray = [0, 0];
-				
+
 			case 'bf-qen':
 				frames = Paths.getSparrowAtlas("qen/bf");
 				animation.addByPrefix('idle', 'BF idle dance', 24, false);
@@ -715,18 +748,18 @@ class Character extends FlxSprite
 				animation.addByPrefix('deathConfirm', "BF Dead confirm", 24, false);
 
 				addOffset('idle', -5);
-				
+
 				addOffset("singUP", -29, 38);
 				addOffset("singRIGHT", -18, -12);
 				addOffset("singLEFT", 42, 1);
 				addOffset("singDOWN", 20, -70);
 				addOffset("hey", -10, 3);
-				
+
 				addOffset("singUPmiss", -26, 181);
 				addOffset("singRIGHTmiss", 10, -19);
 				addOffset("singLEFTmiss", 125, 1);
 				addOffset("singDOWNmiss", 179, -59);
-				
+
 				addOffset('firstDeath', 320, 101);
 				addOffset('deathLoop', 321, -238);
 				addOffset('deathConfirm', 321, -238);
@@ -734,11 +767,11 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 				facesLeft = true;
-				
+
 				deathCharacter = "bf-qen";
 				iconName = "bf-qen";
 				charOffsetArray = [0, 350];
-				
+
 			case 'senpai':
 				frames = Paths.getSparrowAtlas("week6/senpai");
 				animation.addByPrefix('idle', 'Senpai Idle', 24, false);

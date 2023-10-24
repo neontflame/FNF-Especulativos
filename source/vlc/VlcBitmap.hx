@@ -31,7 +31,6 @@ import openfl.utils.ByteArray;
 import vlc.LibVLC;
 
 // import openfl.gl.GLTexture;
-
 /**
  * ...
  * @author Tommy S

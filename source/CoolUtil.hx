@@ -7,6 +7,13 @@ import sys.FileSystem;
 import flixel.math.FlxMath;
 import flixel.FlxG;
 import lime.utils.Assets;
+import openfl.utils.Assets as OpenFLAssets;
+import openfl.system.System;
+import flixel.sound.FlxSound;
+import flixel.system.FlxAssets.FlxSoundAsset;
+#if cpp
+import cpp.vm.Gc;
+#end
 
 using StringTools;
 
@@ -68,7 +75,7 @@ class CoolUtil
 		return Assets.exists(path);
 		#end
 	}
-	
+
 	// Same as above but for getting text from a file.
 	public static function getText(path:String):String
 	{
@@ -78,13 +85,14 @@ class CoolUtil
 		return Assets.getText(path);
 		#end
 	}
-	
+
 	public static function chartExists(songName:String, curDifficulty:Int):Bool
 	{
 		var difString:String = '';
 		var real:Bool = false;
-		
-		switch (curDifficulty) {
+
+		switch (curDifficulty)
+		{
 			case 0:
 				difString = "-easy";
 			case 2:
@@ -95,7 +103,7 @@ class CoolUtil
 		trace('assets/data/' + songName + '/' + songName + difString + '.json is a ' + real);
 		return real;
 	}
-	
+
 	public static function weekGfxWork(weekNum:Int):Bool
 	{
 		// isso aqui e uma gambiarra IMENSA vamo la
@@ -108,24 +116,23 @@ class CoolUtil
 			case 1:
 				weekCheck = [
 					"week1/DADDY_DEAREST",
-					"week1/stageback", "week1/stagefront", "week1/stagecurtains"
+					"week1/stageback",
+					"week1/stagefront",
+					"week1/stagecurtains"
 				];
 
 			case 2:
-				weekCheck = [
-				"week2/spooky_kids_assets", "week2/Monster_Assets", 
-				"week2/halloween_bg"
-				];
+				weekCheck = ["week2/spooky_kids_assets", "week2/Monster_Assets", "week2/halloween_bg"];
 			case 3:
 				weekCheck = [
-					"week3/Pico_FNF_assetss", 
-					"week3/philly/sky", "week3/philly/city", "week3/philly/behindTrain", "week3/philly/train",
-					"week3/philly/street", 
-					"week3/philly/win0", "week3/philly/win1", "week3/philly/win2", "week3/philly/win3", "week3/philly/win4"
+					"week3/Pico_FNF_assetss", "week3/philly/sky", "week3/philly/city", "week3/philly/behindTrain", "week3/philly/train",
+					"week3/philly/street", "week3/philly/win0", "week3/philly/win1", "week3/philly/win2", "week3/philly/win3", "week3/philly/win4"
 				];
 			case 4:
 				weekCheck = [
-					"week4/gfCar", "week4/bfCar", "week4/momCar",
+					"week4/gfCar",
+					"week4/bfCar",
+					"week4/momCar",
 					"week4/limo/bgLimo",
 					"week4/limo/fastCarLol",
 					"week4/limo/limoDancer",
@@ -134,7 +141,10 @@ class CoolUtil
 				];
 			case 5:
 				weekCheck = [
-					"week5/gfChristmas", "week5/bfChristmas", "week5/mom_dad_christmas_assets", "week5/monsterChristmas",
+					"week5/gfChristmas",
+					"week5/bfChristmas",
+					"week5/mom_dad_christmas_assets",
+					"week5/monsterChristmas",
 					"week5/christmas/bgWalls",
 					"week5/christmas/upperBop",
 					"week5/christmas/bgEscalator",
@@ -148,7 +158,11 @@ class CoolUtil
 				];
 			case 6:
 				weekCheck = [
-					"week6/gfPixel", "week6/bfPixel", "week6/bfPixelsDEAD", "week6/senpai", "week6/spirit",
+					"week6/gfPixel",
+					"week6/bfPixel",
+					"week6/bfPixelsDEAD",
+					"week6/senpai",
+					"week6/spirit",
 					"week6/weeb/weebSky",
 					"week6/weeb/weebSchool",
 					"week6/weeb/weebStreet",
@@ -161,16 +175,14 @@ class CoolUtil
 				];
 			case 7:
 				weekCheck = [
-					"week7/gfTankmen", "week7/bfAndGF", "week7/bfHoldingGF-DEAD", "week7/picoSpeaker", "week7/tankmanCaptain", 
-					"week7/stage/tank0", "week7/stage/tank1", "week7/stage/tank2", "week7/stage/tank3", "week7/stage/tank4", "week7/stage/tank5", "week7/stage/tankmanKilled1",
+					"week7/gfTankmen", "week7/bfAndGF", "week7/bfHoldingGF-DEAD", "week7/picoSpeaker", "week7/tankmanCaptain", "week7/stage/tank0",
+					"week7/stage/tank1", "week7/stage/tank2", "week7/stage/tank3", "week7/stage/tank4", "week7/stage/tank5", "week7/stage/tankmanKilled1",
 					"week7/stage/smokeLeft", "week7/stage/smokeRight", "week7/stage/tankBuildings", "week7/stage/tankClouds", "week7/stage/tankGround",
 					"week7/stage/tankMountains", "week7/stage/tankRolling", "week7/stage/tankRuins", "week7/stage/tankSky", "week7/stage/tankWatchtower"
 				];
-				
+
 			case 8: // ESPE
-				weekCheck = [
-					"especula/espe"
-				];
+				weekCheck = ["especula/espe"];
 			case 9: // SCDM
 				weekCheck = [
 					"scdm/scdm",
@@ -214,10 +226,10 @@ class CoolUtil
 	{
 		// isso aqui e uma gambiarra um pouco menor mas ainda assim bolamos
 		var weekCheck:String = "week1";
-		
+
 		switch (weekNum)
 		{
-			case 0: 
+			case 0:
 				weekCheck = "week1";
 			case 8: // ESPE
 				weekCheck = "especula";
@@ -228,5 +240,54 @@ class CoolUtil
 		}
 
 		return exists('assets/images/' + weekCheck + '/');
+	}
+
+	/**
+	 * Clears all images and sounds from the cache.
+	 * modified by neon a tad lil bit to fit my use case a bit more
+	 * @author swordcube
+	 */
+	public inline static function clearCache(assets:Bool = true, bitmaps:Bool = true, sounds:Bool = false, garbageCollector:Bool = true)
+	{
+		if (assets)
+		{
+			// Clear OpenFL & Lime Assets
+			OpenFLAssets.cache.clear();
+			Assets.cache.clear();
+			trace('asset cache cleared i think');
+		}
+
+		if (bitmaps)
+		{
+			// Clear all Flixel bitmaps
+			FlxG.bitmap.dumpCache();
+			FlxG.bitmap.clearCache();
+			trace('bitmap cache cleared too');
+		}
+
+		if (sounds)
+		{
+			// Clear all Flixel sounds
+			FlxG.sound.list.forEach((sound:FlxSound) ->
+			{
+				sound.stop();
+				sound.kill();
+				sound.destroy();
+				trace('fuck you sound');
+			});
+			FlxG.sound.list.clear();
+			FlxG.sound.destroy(false);
+			trace('sound cache cleared mhm');
+		}
+
+		if (garbageCollector)
+		{
+			// Run garbage collector just in case none of that worked
+			#if sys
+			System.gc();
+			Gc.run(false);
+			#end
+			trace('here comes the garbage truck woo');
+		}
 	}
 }

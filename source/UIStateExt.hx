@@ -30,6 +30,9 @@ class UIStateExt extends FlxUIState
 
 	override function create()
 	{
+		var someShits:Bool = !(Std.string(Type.getClass(FlxG.state)) == 'PlayState');
+		CoolUtil.clearCache(someShits, someShits, someShits, true);
+
 		if (customTransIn != null)
 		{
 			CustomTransition.transition(customTransIn, null);
@@ -52,7 +55,7 @@ class UIStateExt extends FlxUIState
 		}
 		else
 		{
-			#if sys System.gc(); #end
+			// #if sys System.gc(); #end
 			FlxG.switchState(_state);
 			return;
 		}

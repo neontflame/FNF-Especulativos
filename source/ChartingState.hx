@@ -503,7 +503,7 @@ class ChartingState extends MusicBeatState
 
 		adaptFromBPMStepper = new FlxUINumericStepper(140, 400, 1, 0, 0, 999, 0);
 		adaptFromBPMStepper.name = 'adaptFromBPM';
-		
+
 		var adaptFromBPM:FlxButton = new FlxButton(adaptFromBPMStepper.x, adaptFromBPMStepper.y + 20, "Adapt from BPM", function()
 		{
 			adaptFromBPMShit(adaptFromBPMStepper.value, _song.bpm);
@@ -511,7 +511,7 @@ class ChartingState extends MusicBeatState
 			updateGrid();
 			adaptFromBPMStepper.value = _song.bpm;
 		});
-		
+
 		var check_mute_inst = new FlxUICheckBox(10, 10, null, null, "Mute Instrumental (in editor)", 100);
 		check_mute_inst.checked = false;
 		check_mute_inst.callback = function()
@@ -2059,7 +2059,7 @@ class ChartingState extends MusicBeatState
 				// updateGrid();
 			}
 		}
-		
+
 		for (i in 0..._events.events.length)
 		{
 			var eventTime = _events.events[i][1];
@@ -2067,7 +2067,7 @@ class ChartingState extends MusicBeatState
 			// updateGrid();
 		}
 	}
-	
+
 	function sectionHasBfNotes(section:Int):Bool
 	{
 		var notes = _song.notes[section].sectionNotes;

@@ -51,10 +51,14 @@ class SongMetaTags extends FlxSpriteGroup
 			ease: FlxEase.quintOut,
 			onComplete: function(twn:FlxTween)
 			{
-				FlxTween.tween(this, {x: x - size}, 1, {ease: FlxEase.quintIn, startDelay: 2, onComplete: function(twn:FlxTween)
-				{
-					this.destroy();
-				}});
+				FlxTween.tween(this, {x: x - size}, 1, {
+					ease: FlxEase.quintIn,
+					startDelay: 2,
+					onComplete: function(twn:FlxTween)
+					{
+						this.destroy();
+					}
+				});
 			}
 		});
 	}

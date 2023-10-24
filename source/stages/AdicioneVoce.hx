@@ -23,17 +23,17 @@ class AdicioneVoce extends BasicStage
 		fundoBrabo.scrollFactor.set(0.8, 1);
 		fundoBrabo.active = false;
 		addToBackground(fundoBrabo);
-		
+
 		var ruaBraba:FlxSprite = new FlxSprite(-2016, 517).loadGraphic(Paths.image("scdm/stage/ruaBraba"));
 		ruaBraba.updateHitbox();
 		ruaBraba.antialiasing = true;
 		ruaBraba.scrollFactor.set(1, 1);
 		ruaBraba.active = false;
 		addToBackground(ruaBraba);
-		
+
 		boyfriend().x += 160;
 		gf().x += 150;
-		
+
 		boyfriend().y -= 160;
 		dad().y -= 160;
 		gf().y -= 160;

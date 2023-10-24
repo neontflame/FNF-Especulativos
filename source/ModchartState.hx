@@ -408,6 +408,7 @@ class ModchartState
 		setVar("bpm", Conductor.bpm);
 		setVar("scrollspeed", Config.scrollSpeedOverride > 0 ? Config.scrollSpeedOverride : PlayState.SONG.speed);
 		setVar("fpsCap", (Config.noFpsCap ? 999 : 144));
+		
 		setVar("downscroll", Config.downscroll);
 		setVar("centeredNotes", Config.centeredNotes);
 
@@ -626,7 +627,7 @@ class ModchartState
 				PlayState.instance.notes.members[id].y = y;
 			}
 		});
-		
+
 		Lua_helper.add_callback(lua, "setRenderedNoteAlpha", function(alpha:Float, id:Int)
 		{
 			PlayState.instance.notes.members[id].modifiedByLua = true;
@@ -688,10 +689,11 @@ class ModchartState
 
 		Lua_helper.add_callback(lua, "setActorY", function(y:Int, id:String)
 		{
-			if (Std.isOfType(getActorByName(id), usefulshits.SwagStrum)) {
+			if (Std.isOfType(getActorByName(id), usefulshits.SwagStrum))
+			{
 				getActorByName(id).strumY = y;
 			}
-			
+
 			getActorByName(id).y = y;
 		});
 
@@ -769,7 +771,7 @@ class ModchartState
 		{
 			getActorByName(id).modAngle = angle;
 		});
-		
+
 		Lua_helper.add_callback(lua, "setWindowPos", function(x:Int, y:Int)
 		{
 			Application.current.window.x = x;
@@ -815,354 +817,450 @@ class ModchartState
 
 		Lua_helper.add_callback(lua, "tweenCameraPos", function(toX:Int, toY:Int, time:Float, onComplete:String)
 		{
-			FlxTween.tween(FlxG.camera, {x: toX, y: toY}, time, {ease: FlxEase.linear, onComplete: function(flxTween:FlxTween)
-			{
-				if (onComplete != '' && onComplete != null)
+			FlxTween.tween(FlxG.camera, {x: toX, y: toY}, time, {
+				ease: FlxEase.linear,
+				onComplete: function(flxTween:FlxTween)
 				{
-					callLua(onComplete, ["camera"]);
+					if (onComplete != '' && onComplete != null)
+					{
+						callLua(onComplete, ["camera"]);
+					}
 				}
-			}});
+			});
 		});
 
 		Lua_helper.add_callback(lua, "tweenCameraAngle", function(toAngle:Float, time:Float, onComplete:String)
 		{
-			FlxTween.tween(FlxG.camera, {angle: toAngle}, time, {ease: FlxEase.linear, onComplete: function(flxTween:FlxTween)
-			{
-				if (onComplete != '' && onComplete != null)
+			FlxTween.tween(FlxG.camera, {angle: toAngle}, time, {
+				ease: FlxEase.linear,
+				onComplete: function(flxTween:FlxTween)
 				{
-					callLua(onComplete, ["camera"]);
+					if (onComplete != '' && onComplete != null)
+					{
+						callLua(onComplete, ["camera"]);
+					}
 				}
-			}});
+			});
 		});
 
 		Lua_helper.add_callback(lua, "tweenCameraZoom", function(toZoom:Float, time:Float, onComplete:String)
 		{
-			FlxTween.tween(FlxG.camera, {zoom: toZoom}, time, {ease: FlxEase.linear, onComplete: function(flxTween:FlxTween)
-			{
-				if (onComplete != '' && onComplete != null)
+			FlxTween.tween(FlxG.camera, {zoom: toZoom}, time, {
+				ease: FlxEase.linear,
+				onComplete: function(flxTween:FlxTween)
 				{
-					callLua(onComplete, ["camera"]);
+					if (onComplete != '' && onComplete != null)
+					{
+						callLua(onComplete, ["camera"]);
+					}
 				}
-			}});
+			});
 		});
 
 		Lua_helper.add_callback(lua, "tweenHudPos", function(toX:Int, toY:Int, time:Float, onComplete:String)
 		{
-			FlxTween.tween(PlayState.instance.camHUD, {x: toX, y: toY}, time, {ease: FlxEase.linear, onComplete: function(flxTween:FlxTween)
-			{
-				if (onComplete != '' && onComplete != null)
+			FlxTween.tween(PlayState.instance.camHUD, {x: toX, y: toY}, time, {
+				ease: FlxEase.linear,
+				onComplete: function(flxTween:FlxTween)
 				{
-					callLua(onComplete, ["camera"]);
+					if (onComplete != '' && onComplete != null)
+					{
+						callLua(onComplete, ["camera"]);
+					}
 				}
-			}});
+			});
 		});
 
 		Lua_helper.add_callback(lua, "tweenHudAngle", function(toAngle:Float, time:Float, onComplete:String)
 		{
-			FlxTween.tween(PlayState.instance.camHUD, {angle: toAngle}, time, {ease: FlxEase.linear, onComplete: function(flxTween:FlxTween)
-			{
-				if (onComplete != '' && onComplete != null)
+			FlxTween.tween(PlayState.instance.camHUD, {angle: toAngle}, time, {
+				ease: FlxEase.linear,
+				onComplete: function(flxTween:FlxTween)
 				{
-					callLua(onComplete, ["camera"]);
+					if (onComplete != '' && onComplete != null)
+					{
+						callLua(onComplete, ["camera"]);
+					}
 				}
-			}});
+			});
 		});
 
 		Lua_helper.add_callback(lua, "tweenHudZoom", function(toZoom:Float, time:Float, onComplete:String)
 		{
-			FlxTween.tween(PlayState.instance.camHUD, {zoom: toZoom}, time, {ease: FlxEase.linear, onComplete: function(flxTween:FlxTween)
-			{
-				if (onComplete != '' && onComplete != null)
+			FlxTween.tween(PlayState.instance.camHUD, {zoom: toZoom}, time, {
+				ease: FlxEase.linear,
+				onComplete: function(flxTween:FlxTween)
 				{
-					callLua(onComplete, ["camera"]);
+					if (onComplete != '' && onComplete != null)
+					{
+						callLua(onComplete, ["camera"]);
+					}
 				}
-			}});
+			});
 		});
 
 		Lua_helper.add_callback(lua, "tweenPos", function(id:String, toX:Int, toY:Int, time:Float, onComplete:String)
 		{
-			FlxTween.tween(getActorByName(id), {x: toX, y: toY}, time, {ease: FlxEase.linear, onComplete: function(flxTween:FlxTween)
-			{
-				if (onComplete != '' && onComplete != null)
+			FlxTween.tween(getActorByName(id), {x: toX, y: toY}, time, {
+				ease: FlxEase.linear,
+				onComplete: function(flxTween:FlxTween)
 				{
-					callLua(onComplete, [id]);
+					if (onComplete != '' && onComplete != null)
+					{
+						callLua(onComplete, [id]);
+					}
 				}
-			}});
+			});
 		});
 
 		Lua_helper.add_callback(lua, "tweenPosXAngle", function(id:String, toX:Int, toAngle:Float, time:Float, onComplete:String)
 		{
-			FlxTween.tween(getActorByName(id), {x: toX, angle: toAngle}, time, {ease: FlxEase.linear, onComplete: function(flxTween:FlxTween)
-			{
-				if (onComplete != '' && onComplete != null)
+			FlxTween.tween(getActorByName(id), {x: toX, angle: toAngle}, time, {
+				ease: FlxEase.linear,
+				onComplete: function(flxTween:FlxTween)
 				{
-					callLua(onComplete, [id]);
+					if (onComplete != '' && onComplete != null)
+					{
+						callLua(onComplete, [id]);
+					}
 				}
-			}});
+			});
 		});
 
 		Lua_helper.add_callback(lua, "tweenPosYAngle", function(id:String, toY:Int, toAngle:Float, time:Float, onComplete:String)
 		{
-			FlxTween.tween(getActorByName(id), {y: toY, angle: toAngle}, time, {ease: FlxEase.linear, onComplete: function(flxTween:FlxTween)
-			{
-				if (onComplete != '' && onComplete != null)
+			FlxTween.tween(getActorByName(id), {y: toY, angle: toAngle}, time, {
+				ease: FlxEase.linear,
+				onComplete: function(flxTween:FlxTween)
 				{
-					callLua(onComplete, [id]);
+					if (onComplete != '' && onComplete != null)
+					{
+						callLua(onComplete, [id]);
+					}
 				}
-			}});
+			});
 		});
 
 		Lua_helper.add_callback(lua, "tweenAngle", function(id:String, toAngle:Int, time:Float, onComplete:String)
 		{
-			FlxTween.tween(getActorByName(id), {angle: toAngle}, time, {ease: FlxEase.linear, onComplete: function(flxTween:FlxTween)
-			{
-				if (onComplete != '' && onComplete != null)
+			FlxTween.tween(getActorByName(id), {angle: toAngle}, time, {
+				ease: FlxEase.linear,
+				onComplete: function(flxTween:FlxTween)
 				{
-					callLua(onComplete, [id]);
+					if (onComplete != '' && onComplete != null)
+					{
+						callLua(onComplete, [id]);
+					}
 				}
-			}});
+			});
 		});
 
 		Lua_helper.add_callback(lua, "tweenCameraPosOut", function(toX:Int, toY:Int, time:Float, onComplete:String)
 		{
-			FlxTween.tween(FlxG.camera, {x: toX, y: toY}, time, {ease: FlxEase.cubeOut, onComplete: function(flxTween:FlxTween)
-			{
-				if (onComplete != '' && onComplete != null)
+			FlxTween.tween(FlxG.camera, {x: toX, y: toY}, time, {
+				ease: FlxEase.cubeOut,
+				onComplete: function(flxTween:FlxTween)
 				{
-					callLua(onComplete, ["camera"]);
+					if (onComplete != '' && onComplete != null)
+					{
+						callLua(onComplete, ["camera"]);
+					}
 				}
-			}});
+			});
 		});
 
 		Lua_helper.add_callback(lua, "tweenCameraAngleOut", function(toAngle:Float, time:Float, onComplete:String)
 		{
-			FlxTween.tween(FlxG.camera, {angle: toAngle}, time, {ease: FlxEase.cubeOut, onComplete: function(flxTween:FlxTween)
-			{
-				if (onComplete != '' && onComplete != null)
+			FlxTween.tween(FlxG.camera, {angle: toAngle}, time, {
+				ease: FlxEase.cubeOut,
+				onComplete: function(flxTween:FlxTween)
 				{
-					callLua(onComplete, ["camera"]);
+					if (onComplete != '' && onComplete != null)
+					{
+						callLua(onComplete, ["camera"]);
+					}
 				}
-			}});
+			});
 		});
 
 		Lua_helper.add_callback(lua, "tweenCameraZoomOut", function(toZoom:Float, time:Float, onComplete:String)
 		{
-			FlxTween.tween(FlxG.camera, {zoom: toZoom}, time, {ease: FlxEase.cubeOut, onComplete: function(flxTween:FlxTween)
-			{
-				if (onComplete != '' && onComplete != null)
+			FlxTween.tween(FlxG.camera, {zoom: toZoom}, time, {
+				ease: FlxEase.cubeOut,
+				onComplete: function(flxTween:FlxTween)
 				{
-					callLua(onComplete, ["camera"]);
+					if (onComplete != '' && onComplete != null)
+					{
+						callLua(onComplete, ["camera"]);
+					}
 				}
-			}});
+			});
 		});
 
 		Lua_helper.add_callback(lua, "tweenHudPosOut", function(toX:Int, toY:Int, time:Float, onComplete:String)
 		{
-			FlxTween.tween(PlayState.instance.camHUD, {x: toX, y: toY}, time, {ease: FlxEase.cubeOut, onComplete: function(flxTween:FlxTween)
-			{
-				if (onComplete != '' && onComplete != null)
+			FlxTween.tween(PlayState.instance.camHUD, {x: toX, y: toY}, time, {
+				ease: FlxEase.cubeOut,
+				onComplete: function(flxTween:FlxTween)
 				{
-					callLua(onComplete, ["camera"]);
+					if (onComplete != '' && onComplete != null)
+					{
+						callLua(onComplete, ["camera"]);
+					}
 				}
-			}});
+			});
 		});
 
 		Lua_helper.add_callback(lua, "tweenHudAngleOut", function(toAngle:Float, time:Float, onComplete:String)
 		{
-			FlxTween.tween(PlayState.instance.camHUD, {angle: toAngle}, time, {ease: FlxEase.cubeOut, onComplete: function(flxTween:FlxTween)
-			{
-				if (onComplete != '' && onComplete != null)
+			FlxTween.tween(PlayState.instance.camHUD, {angle: toAngle}, time, {
+				ease: FlxEase.cubeOut,
+				onComplete: function(flxTween:FlxTween)
 				{
-					callLua(onComplete, ["camera"]);
+					if (onComplete != '' && onComplete != null)
+					{
+						callLua(onComplete, ["camera"]);
+					}
 				}
-			}});
+			});
 		});
 
 		Lua_helper.add_callback(lua, "tweenHudZoomOut", function(toZoom:Float, time:Float, onComplete:String)
 		{
-			FlxTween.tween(PlayState.instance.camHUD, {zoom: toZoom}, time, {ease: FlxEase.cubeOut, onComplete: function(flxTween:FlxTween)
-			{
-				if (onComplete != '' && onComplete != null)
+			FlxTween.tween(PlayState.instance.camHUD, {zoom: toZoom}, time, {
+				ease: FlxEase.cubeOut,
+				onComplete: function(flxTween:FlxTween)
 				{
-					callLua(onComplete, ["camera"]);
+					if (onComplete != '' && onComplete != null)
+					{
+						callLua(onComplete, ["camera"]);
+					}
 				}
-			}});
+			});
 		});
 
 		Lua_helper.add_callback(lua, "tweenPosOut", function(id:String, toX:Int, toY:Int, time:Float, onComplete:String)
 		{
-			FlxTween.tween(getActorByName(id), {x: toX, y: toY}, time, {ease: FlxEase.cubeOut, onComplete: function(flxTween:FlxTween)
-			{
-				if (onComplete != '' && onComplete != null)
+			FlxTween.tween(getActorByName(id), {x: toX, y: toY}, time, {
+				ease: FlxEase.cubeOut,
+				onComplete: function(flxTween:FlxTween)
 				{
-					callLua(onComplete, [id]);
+					if (onComplete != '' && onComplete != null)
+					{
+						callLua(onComplete, [id]);
+					}
 				}
-			}});
+			});
 		});
 
 		Lua_helper.add_callback(lua, "tweenPosXAngleOut", function(id:String, toX:Int, toAngle:Float, time:Float, onComplete:String)
 		{
-			FlxTween.tween(getActorByName(id), {x: toX, angle: toAngle}, time, {ease: FlxEase.cubeOut, onComplete: function(flxTween:FlxTween)
-			{
-				if (onComplete != '' && onComplete != null)
+			FlxTween.tween(getActorByName(id), {x: toX, angle: toAngle}, time, {
+				ease: FlxEase.cubeOut,
+				onComplete: function(flxTween:FlxTween)
 				{
-					callLua(onComplete, [id]);
+					if (onComplete != '' && onComplete != null)
+					{
+						callLua(onComplete, [id]);
+					}
 				}
-			}});
+			});
 		});
 
 		Lua_helper.add_callback(lua, "tweenPosYAngleOut", function(id:String, toY:Int, toAngle:Float, time:Float, onComplete:String)
 		{
-			FlxTween.tween(getActorByName(id), {y: toY, angle: toAngle}, time, {ease: FlxEase.cubeOut, onComplete: function(flxTween:FlxTween)
-			{
-				if (onComplete != '' && onComplete != null)
+			FlxTween.tween(getActorByName(id), {y: toY, angle: toAngle}, time, {
+				ease: FlxEase.cubeOut,
+				onComplete: function(flxTween:FlxTween)
 				{
-					callLua(onComplete, [id]);
+					if (onComplete != '' && onComplete != null)
+					{
+						callLua(onComplete, [id]);
+					}
 				}
-			}});
+			});
 		});
 
 		Lua_helper.add_callback(lua, "tweenAngleOut", function(id:String, toAngle:Int, time:Float, onComplete:String)
 		{
-			FlxTween.tween(getActorByName(id), {angle: toAngle}, time, {ease: FlxEase.cubeOut, onComplete: function(flxTween:FlxTween)
-			{
-				if (onComplete != '' && onComplete != null)
+			FlxTween.tween(getActorByName(id), {angle: toAngle}, time, {
+				ease: FlxEase.cubeOut,
+				onComplete: function(flxTween:FlxTween)
 				{
-					callLua(onComplete, [id]);
+					if (onComplete != '' && onComplete != null)
+					{
+						callLua(onComplete, [id]);
+					}
 				}
-			}});
+			});
 		});
 
 		Lua_helper.add_callback(lua, "tweenCameraPosIn", function(toX:Int, toY:Int, time:Float, onComplete:String)
 		{
-			FlxTween.tween(FlxG.camera, {x: toX, y: toY}, time, {ease: FlxEase.cubeIn, onComplete: function(flxTween:FlxTween)
-			{
-				if (onComplete != '' && onComplete != null)
+			FlxTween.tween(FlxG.camera, {x: toX, y: toY}, time, {
+				ease: FlxEase.cubeIn,
+				onComplete: function(flxTween:FlxTween)
 				{
-					callLua(onComplete, ["camera"]);
+					if (onComplete != '' && onComplete != null)
+					{
+						callLua(onComplete, ["camera"]);
+					}
 				}
-			}});
+			});
 		});
 
 		Lua_helper.add_callback(lua, "tweenCameraAngleIn", function(toAngle:Float, time:Float, onComplete:String)
 		{
-			FlxTween.tween(FlxG.camera, {angle: toAngle}, time, {ease: FlxEase.cubeIn, onComplete: function(flxTween:FlxTween)
-			{
-				if (onComplete != '' && onComplete != null)
+			FlxTween.tween(FlxG.camera, {angle: toAngle}, time, {
+				ease: FlxEase.cubeIn,
+				onComplete: function(flxTween:FlxTween)
 				{
-					callLua(onComplete, ["camera"]);
+					if (onComplete != '' && onComplete != null)
+					{
+						callLua(onComplete, ["camera"]);
+					}
 				}
-			}});
+			});
 		});
 
 		Lua_helper.add_callback(lua, "tweenCameraZoomIn", function(toZoom:Float, time:Float, onComplete:String)
 		{
-			FlxTween.tween(FlxG.camera, {zoom: toZoom}, time, {ease: FlxEase.cubeIn, onComplete: function(flxTween:FlxTween)
-			{
-				if (onComplete != '' && onComplete != null)
+			FlxTween.tween(FlxG.camera, {zoom: toZoom}, time, {
+				ease: FlxEase.cubeIn,
+				onComplete: function(flxTween:FlxTween)
 				{
-					callLua(onComplete, ["camera"]);
+					if (onComplete != '' && onComplete != null)
+					{
+						callLua(onComplete, ["camera"]);
+					}
 				}
-			}});
+			});
 		});
 
 		Lua_helper.add_callback(lua, "tweenHudPosIn", function(toX:Int, toY:Int, time:Float, onComplete:String)
 		{
-			FlxTween.tween(PlayState.instance.camHUD, {x: toX, y: toY}, time, {ease: FlxEase.cubeIn, onComplete: function(flxTween:FlxTween)
-			{
-				if (onComplete != '' && onComplete != null)
+			FlxTween.tween(PlayState.instance.camHUD, {x: toX, y: toY}, time, {
+				ease: FlxEase.cubeIn,
+				onComplete: function(flxTween:FlxTween)
 				{
-					callLua(onComplete, ["camera"]);
+					if (onComplete != '' && onComplete != null)
+					{
+						callLua(onComplete, ["camera"]);
+					}
 				}
-			}});
+			});
 		});
 
 		Lua_helper.add_callback(lua, "tweenHudAngleIn", function(toAngle:Float, time:Float, onComplete:String)
 		{
-			FlxTween.tween(PlayState.instance.camHUD, {angle: toAngle}, time, {ease: FlxEase.cubeIn, onComplete: function(flxTween:FlxTween)
-			{
-				if (onComplete != '' && onComplete != null)
+			FlxTween.tween(PlayState.instance.camHUD, {angle: toAngle}, time, {
+				ease: FlxEase.cubeIn,
+				onComplete: function(flxTween:FlxTween)
 				{
-					callLua(onComplete, ["camera"]);
+					if (onComplete != '' && onComplete != null)
+					{
+						callLua(onComplete, ["camera"]);
+					}
 				}
-			}});
+			});
 		});
 
 		Lua_helper.add_callback(lua, "tweenHudZoomIn", function(toZoom:Float, time:Float, onComplete:String)
 		{
-			FlxTween.tween(PlayState.instance.camHUD, {zoom: toZoom}, time, {ease: FlxEase.cubeIn, onComplete: function(flxTween:FlxTween)
-			{
-				if (onComplete != '' && onComplete != null)
+			FlxTween.tween(PlayState.instance.camHUD, {zoom: toZoom}, time, {
+				ease: FlxEase.cubeIn,
+				onComplete: function(flxTween:FlxTween)
 				{
-					callLua(onComplete, ["camera"]);
+					if (onComplete != '' && onComplete != null)
+					{
+						callLua(onComplete, ["camera"]);
+					}
 				}
-			}});
+			});
 		});
 
 		Lua_helper.add_callback(lua, "tweenPosIn", function(id:String, toX:Int, toY:Int, time:Float, onComplete:String)
 		{
-			FlxTween.tween(getActorByName(id), {x: toX, y: toY}, time, {ease: FlxEase.cubeIn, onComplete: function(flxTween:FlxTween)
-			{
-				if (onComplete != '' && onComplete != null)
+			FlxTween.tween(getActorByName(id), {x: toX, y: toY}, time, {
+				ease: FlxEase.cubeIn,
+				onComplete: function(flxTween:FlxTween)
 				{
-					callLua(onComplete, [id]);
+					if (onComplete != '' && onComplete != null)
+					{
+						callLua(onComplete, [id]);
+					}
 				}
-			}});
+			});
 		});
 
 		Lua_helper.add_callback(lua, "tweenPosXAngleIn", function(id:String, toX:Int, toAngle:Float, time:Float, onComplete:String)
 		{
-			FlxTween.tween(getActorByName(id), {x: toX, angle: toAngle}, time, {ease: FlxEase.cubeIn, onComplete: function(flxTween:FlxTween)
-			{
-				if (onComplete != '' && onComplete != null)
+			FlxTween.tween(getActorByName(id), {x: toX, angle: toAngle}, time, {
+				ease: FlxEase.cubeIn,
+				onComplete: function(flxTween:FlxTween)
 				{
-					callLua(onComplete, [id]);
+					if (onComplete != '' && onComplete != null)
+					{
+						callLua(onComplete, [id]);
+					}
 				}
-			}});
+			});
 		});
 
 		Lua_helper.add_callback(lua, "tweenPosYAngleIn", function(id:String, toY:Int, toAngle:Float, time:Float, onComplete:String)
 		{
-			FlxTween.tween(getActorByName(id), {y: toY, angle: toAngle}, time, {ease: FlxEase.cubeIn, onComplete: function(flxTween:FlxTween)
-			{
-				if (onComplete != '' && onComplete != null)
+			FlxTween.tween(getActorByName(id), {y: toY, angle: toAngle}, time, {
+				ease: FlxEase.cubeIn,
+				onComplete: function(flxTween:FlxTween)
 				{
-					callLua(onComplete, [id]);
+					if (onComplete != '' && onComplete != null)
+					{
+						callLua(onComplete, [id]);
+					}
 				}
-			}});
+			});
 		});
 
 		Lua_helper.add_callback(lua, "tweenAngleIn", function(id:String, toAngle:Int, time:Float, onComplete:String)
 		{
-			FlxTween.tween(getActorByName(id), {angle: toAngle}, time, {ease: FlxEase.cubeIn, onComplete: function(flxTween:FlxTween)
-			{
-				if (onComplete != '' && onComplete != null)
+			FlxTween.tween(getActorByName(id), {angle: toAngle}, time, {
+				ease: FlxEase.cubeIn,
+				onComplete: function(flxTween:FlxTween)
 				{
-					callLua(onComplete, [id]);
+					if (onComplete != '' && onComplete != null)
+					{
+						callLua(onComplete, [id]);
+					}
 				}
-			}});
+			});
 		});
 
 		Lua_helper.add_callback(lua, "tweenFadeIn", function(id:String, toAlpha:Float, time:Float, onComplete:String)
 		{
-			FlxTween.tween(getActorByName(id), {alpha: toAlpha}, time, {ease: FlxEase.circIn, onComplete: function(flxTween:FlxTween)
-			{
-				if (onComplete != '' && onComplete != null)
+			FlxTween.tween(getActorByName(id), {alpha: toAlpha}, time, {
+				ease: FlxEase.circIn,
+				onComplete: function(flxTween:FlxTween)
 				{
-					callLua(onComplete, [id]);
+					if (onComplete != '' && onComplete != null)
+					{
+						callLua(onComplete, [id]);
+					}
 				}
-			}});
+			});
 		});
 
 		Lua_helper.add_callback(lua, "tweenFadeOut", function(id:String, toAlpha:Float, time:Float, onComplete:String)
 		{
-			FlxTween.tween(getActorByName(id), {alpha: toAlpha}, time, {ease: FlxEase.circOut, onComplete: function(flxTween:FlxTween)
-			{
-				if (onComplete != '' && onComplete != null)
+			FlxTween.tween(getActorByName(id), {alpha: toAlpha}, time, {
+				ease: FlxEase.circOut,
+				onComplete: function(flxTween:FlxTween)
 				{
-					callLua(onComplete, [id]);
+					if (onComplete != '' && onComplete != null)
+					{
+						callLua(onComplete, [id]);
+					}
 				}
-			}});
+			});
 		});
 
 		// forgot and accidentally commit to master branch
