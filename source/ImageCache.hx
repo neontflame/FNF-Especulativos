@@ -25,4 +25,9 @@ class ImageCache
 	{
 		return cache.exists(path);
 	}
+	
+	public static function remove(path:String):Void
+	{
+		cache.remove(path);
+	}
 }

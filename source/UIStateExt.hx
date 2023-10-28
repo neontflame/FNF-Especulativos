@@ -30,6 +30,16 @@ class UIStateExt extends FlxUIState
 
 	override function create()
 	{
+		if (!FlxG.save.data.charPreload2)
+		{
+			// trace(key + " is in the cache");
+			ImageCache.remove(Paths.file('especula/dave', "images", "png"));
+			ImageCache.remove(Paths.file('especula/blu', "images", "png"));
+			ImageCache.remove(Paths.file('especula/hawnt', "images", "png"));
+			ImageCache.remove(Paths.file('especula/sketcher', "images", "png"));
+			trace('DR (dude removing)');
+		}
+		
 		var someShits:Bool = !(Std.string(Type.getClass(FlxG.state)) == 'PlayState');
 		CoolUtil.clearCache(someShits, someShits, someShits, true);
 

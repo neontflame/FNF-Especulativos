@@ -266,7 +266,8 @@ class Character extends FlxSprite
 
 				stepsUntilRelease = 6.1;
 				iconName = "dad";
-
+			
+				//// WEEK ESPE
 			case 'espe':
 				// omg espe from especulativos do cramunhao!!!
 				frames = Paths.getSparrowAtlas("especula/espe");
@@ -289,6 +290,88 @@ class Character extends FlxSprite
 				iconName = "espe";
 				charOffsetArray = [0, 110];
 				cameraOffsetArray = [250, 25];
+				
+			case 'dave':
+				// o dude primordial
+				frames = Paths.getSparrowAtlas("especula/dave");
+				animation.addByPrefix('idle', 'dave idle', 24, false);
+				animation.addByPrefix('singUP', 'dave up', 24, false);
+				animation.addByPrefix('singRIGHT', 'dave right', 24, false);
+				animation.addByPrefix('singDOWN', 'dave down', 24, false);
+				animation.addByPrefix('singLEFT', 'dave left', 24, false);
+
+				addOffset('idle');
+				addOffset("singUP", 3, 28);
+				addOffset("singRIGHT", -22, -10);
+				addOffset("singLEFT", 66, -2);
+				addOffset("singDOWN", -12, -16);
+
+				playAnim('idle');
+
+				iconName = "dave";
+				charOffsetArray = [194, 163];
+				
+			case 'blu':
+				// o dude flamejante azul
+				frames = Paths.getSparrowAtlas("especula/blu");
+				animation.addByPrefix('idle', 'blu idle', 24, false);
+				animation.addByPrefix('singUP', 'blu up', 24, false);
+				animation.addByPrefix('singRIGHT', 'blu right', 24, false);
+				animation.addByPrefix('singDOWN', 'blu down', 24, false);
+				animation.addByPrefix('singLEFT', 'blu left', 24, false);
+
+				addOffset('idle');
+				addOffset("singUP", 12, 113);
+				addOffset("singRIGHT", 60, 1);
+				addOffset("singLEFT", 121, -4);
+				addOffset("singDOWN", 91, -27);
+
+				playAnim('idle');
+
+				iconName = "blu";
+				charOffsetArray = [150, 337];
+				
+			case 'sketcher':
+				// o dude Redux
+				frames = Paths.getSparrowAtlas("especula/sketcher");
+				animation.addByPrefix('idle', 'sketcher idle', 24, false);
+				animation.addByPrefix('singUP', 'sketcher up', 24, false);
+				animation.addByPrefix('singRIGHT', 'sketcher right', 24, false);
+				animation.addByPrefix('singDOWN', 'sketcher down', 24, false);
+				animation.addByPrefix('singLEFT', 'sketcher left', 24, false);
+
+				addOffset('idle');
+				addOffset("singUP", -42, 27);
+				addOffset("singRIGHT", -74, -17);
+				addOffset("singLEFT", 5, -13);
+				addOffset("singDOWN", -33, -38);
+
+				playAnim('idle');
+
+				iconName = "sketcher";
+				charOffsetArray = [109, 140];
+				
+			case 'hawnt':
+				// o dude Guitarrero
+				frames = Paths.getSparrowAtlas("especula/hawnt");
+				animation.addByPrefix('idle', 'hawnt idle', 24, false);
+				animation.addByPrefix('singUP', 'hawnt up', 24, false);
+				animation.addByPrefix('singRIGHT', 'hawnt right', 24, false);
+				animation.addByPrefix('singDOWN', 'hawnt down', 24, false);
+				animation.addByPrefix('singLEFT', 'hawnt left', 24, false);
+
+				addOffset('idle');
+				addOffset("singUP", 65, -39);
+				addOffset("singRIGHT", 10, -128);
+				addOffset("singLEFT", 126, -137);
+				addOffset("singDOWN", 28, -195);
+
+				playAnim('idle');
+
+				iconName = "hawnt";
+				charOffsetArray = [186, 183];
+				cameraOffsetArray = [150, 25];
+				
 			case 'scdm':
 				// tambem conhecido como esc na gringa
 				frames = Paths.getSparrowAtlas("scdm/scdm");
@@ -332,7 +415,7 @@ class Character extends FlxSprite
 
 				iconName = "yotsuba";
 				charOffsetArray = [0, 315];
-				cameraOffsetArray = [150, -90];
+				cameraOffsetArray = [150, -60];
 
 			case 'yotsuba-stick':
 				// yotsuba so q dessa vez com uma vara
@@ -361,7 +444,7 @@ class Character extends FlxSprite
 
 				iconName = "yotsuba";
 				charOffsetArray = [0, 315];
-				cameraOffsetArray = [150, -90];
+				cameraOffsetArray = [150, -60];
 				
 			case 'narigao':
 				// nariz man

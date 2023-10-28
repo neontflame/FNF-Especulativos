@@ -330,7 +330,17 @@ class PlayState extends MusicBeatState
 			}
 			*/
 		}
-
+		
+		if (!FlxG.save.data.charPreload2) {
+			if (SONG.song.toLowerCase() ==  'dragons') {
+				ImageCache.add(Paths.file('especula/dave', "images", "png"));
+				ImageCache.add(Paths.file('especula/blu', "images", "png"));
+				ImageCache.add(Paths.file('especula/hawnt', "images", "png"));
+				ImageCache.add(Paths.file('especula/sketcher', "images", "png"));
+				trace("DP (dude preloading)");
+			}
+		}
+		
 		eventList.sort(sortByEventStuff);
 
 		inCutscene = false;
@@ -1240,6 +1250,8 @@ class PlayState extends MusicBeatState
 
 	function scratchStart(?cutsceneThing:String):Void
 	{
+		FlxG.mouse.visible = true;
+		
 		var startProj:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('ui/scratchUI/startProj'));
 		startProj.scrollFactor.set();
 		add(startProj);
@@ -1254,6 +1266,7 @@ class PlayState extends MusicBeatState
 
 			if (mousePressed)
 			{
+				FlxG.mouse.visible = false;
 				remove(startProj);
 
 				if (cutsceneThing != null)
@@ -3387,6 +3400,13 @@ class PlayState extends MusicBeatState
 		{
 			if (SONG.notes[Math.floor(curStep / 16)].changeBPM)
 			{
+				#if EXPERIMENTAL_LUA
+				if (executeModchart && luaModchart != null)
+				{
+					luaModchart.setVar("bpm", SONG.notes[Math.floor(curStep / 16)].bpm);
+				}
+				#end
+				
 				Conductor.changeBPM(SONG.notes[Math.floor(curStep / 16)].bpm);
 				FlxG.log.add('CHANGED BPM!');
 			}

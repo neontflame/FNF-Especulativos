@@ -1339,7 +1339,7 @@ class ChartingState extends MusicBeatState
 		{
 			if (!FlxG.sound.music.playing
 				&& FlxG.mouse.screenX >= lilBf.x
-				&& FlxG.mouse.screenX <= lilBf.x + lilBf.width
+				&& FlxG.mouse.screenX <= lilBf.x + lilBf.width - 50
 				&& FlxG.mouse.screenY >= lilBf.y
 				&& FlxG.mouse.screenY <= lilBf.y + lilBf.height
 				&& FlxG.mouse.justPressed)

@@ -51,7 +51,7 @@ class ConfigMenu extends UIStateExt
 	static var healthDrainValue:Int;
 	static var comboValue:Int;
 
-	final comboTypes:Array<String> = ["world", "hud", "off"];
+	final comboTypes:Array<String> = ["world", "hud", "none"];
 
 	static var downValue:Bool;
 	static var glowValue:Bool;
@@ -64,7 +64,7 @@ class ConfigMenu extends UIStateExt
 	static var dimValue:Int;
 	static var noteSplashValue:Int;
 
-	final noteSplashTypes:Array<String> = ["off", "sick only", "always"];
+	final noteSplashTypes:Array<String> = ["none", "sick only", "always"];
 
 	static var centeredValue:Bool;
 	static var scrollSpeedValue:Int;

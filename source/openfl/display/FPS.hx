@@ -26,7 +26,7 @@ class FPS extends TextField
 	/**
 		The current frame rate, expressed using frames-per-second
 	**/
-	// private var memPeak:Float = 0;
+	private var memPeak:Float = 0;
 	public var currentFPS(default, null):Int;
 
 	@:noCompletion private var cacheCount:Int;
@@ -75,12 +75,13 @@ class FPS extends TextField
 		currentFPS = Math.round((currentCount + cacheCount) / 2);
 
 		var mem:Float = Math.round(System.totalMemory / 1024 / 1024 * 100) / 100;
-		// if (mem > memPeak) memPeak = mem;
+		if (mem > memPeak) memPeak = mem;
 
 		if (currentCount != cacheCount /*&& visible*/)
 		{
 			// text = "FPS: " + currentFPS + "\nMEM: " + mem + " MB\nMEM peak: " + memPeak + " MB";
-			text = "FPS: " + currentFPS + "\nMEM: " + mem + " MB";
+			text = currentFPS + " FPS\n" + // [fps] FPS
+			mem + " MB" + " / " + memPeak + " MB"; // [mem] MB / [memPeak] MB
 
 			#if (gl_stats && !disable_cffi && (!html5 || !canvas))
 			text += "\ntotalDC: " + Context3DStats.totalDrawCalls();

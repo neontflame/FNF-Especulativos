@@ -15,8 +15,6 @@ class AlertSubState extends MusicBeatSubstate
 	{
 		super();
 
-		openfl.Lib.current.stage.frameRate = 144;
-
 		FlxTween.globalManager.active = false;
 
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF666666);
@@ -63,18 +61,10 @@ class AlertSubState extends MusicBeatSubstate
 		if (accepted && timeLeftToCool < 0.1)
 		{
 			FlxTween.globalManager.active = true;
-
-			unpause();
+			close();
 		}
 	}
-
-	function unpause()
-	{
-		if (Config.noFpsCap)
-			openfl.Lib.current.stage.frameRate = 999;
-		close();
-	}
-
+	
 	override function destroy()
 	{
 		super.destroy();

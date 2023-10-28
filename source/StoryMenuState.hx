@@ -32,6 +32,8 @@ class StoryMenuState extends MusicBeatState
 	public static var weekCharacters:Array<Dynamic>;
 
 	public static var weekNames:Array<String>;
+	
+	public static var weekNums:Array<Int>;
 
 	var txtWeekTitle:FlxText;
 
@@ -75,6 +77,8 @@ class StoryMenuState extends MusicBeatState
 			['espe', 'bf', 'gf']
 		];
 
+		weekNums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+		
 		weekNames = CoolUtil.coolTextFile(Paths.text("weekNames"));
 
 		// eliminate all the weeks that dont exist in files lel
@@ -87,6 +91,7 @@ class StoryMenuState extends MusicBeatState
 				weekData.splice(i, 1);
 				weekCharacters.splice(i, 1);
 				weekNames.splice(i, 1);
+				weekNums.splice(i, 1);
 			}
 			else
 			{
@@ -141,7 +146,7 @@ class StoryMenuState extends MusicBeatState
 
 		for (i in 0...weekData.length)
 		{
-			var weekThing:MenuItem = new MenuItem(143, 228, i);
+			var weekThing:MenuItem = new MenuItem(143, 228, weekNums[i]);
 			weekThing.y += (188 * i);
 			weekThing.targetY = i;
 			grpWeekText.add(weekThing);
@@ -296,11 +301,17 @@ class StoryMenuState extends MusicBeatState
 	{
 		curDifficulty += change;
 
-		if (curDifficulty < 0)
-			curDifficulty = 2;
-		if (curDifficulty > 2)
-			curDifficulty = 0;
-
+		if (weekNums[curWeek] != 8) {
+			if (curDifficulty < 0)
+				curDifficulty = 2;
+			if (curDifficulty > 2)
+				curDifficulty = 0;
+			sprDifficulty.alpha = 1;
+		} else {
+			curDifficulty = 1;
+			sprDifficulty.alpha = 0.5;
+		}
+		
 		sprDifficulty.offset.x = 0;
 
 		switch (curDifficulty)

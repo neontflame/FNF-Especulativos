@@ -32,7 +32,7 @@ class Config
 		FlxG.save.data.comboType = 0;
 		FlxG.save.data.downscroll = false;
 		FlxG.save.data.noteGlow = false;
-		FlxG.save.data.ghostTapType = 0;
+		FlxG.save.data.ghostTapType = 1;
 		FlxG.save.data.noFpsCap = true;
 		FlxG.save.data.controllerScheme = 0;
 		FlxG.save.data.bgDim = 0;
@@ -107,7 +107,7 @@ class Config
 		if (FlxG.save.data.noteGlow == null)
 			FlxG.save.data.noteGlow = true;
 		if (FlxG.save.data.ghostTapType == null)
-			FlxG.save.data.ghostTapType = 0;
+			FlxG.save.data.ghostTapType = 1;
 		if (FlxG.save.data.noFpsCap == null)
 			FlxG.save.data.noFpsCap = true;
 		if (FlxG.save.data.controllerScheme == null)

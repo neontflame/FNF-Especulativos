@@ -73,7 +73,7 @@ class FreeplayState extends MusicBeatState
 
 		// eu quero ver quem q vai ser o louco q vai deixar o mod absolutamente vazio sem Nada
 		if (CoolUtil.exists("assets/images/especula"))
-			addWeek(['Hihi', 'Tres-Bofetadas'], 8, ['espe']);
+			addWeek(['Hihi', 'Tres-Bofetadas', 'Dragons'], 8, ['espe', 'espe', 'dave']);
 
 		if (CoolUtil.exists("assets/images/scdm"))
 			addWeek(['Do-Mal'], 9, ['scdm']);

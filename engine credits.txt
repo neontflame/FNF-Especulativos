@@ -1,4 +1,4 @@
-Things taken from other engines
+Things taken from other FNF engines
 
-Kade Engine - Lua modchart support
-Nova Engine - Asset cache clearing
+Kade Engine (KadeDev) - Lua modchart support
+Nova Engine (swordcube) - Asset cache clearing

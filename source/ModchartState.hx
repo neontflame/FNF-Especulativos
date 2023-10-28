@@ -350,19 +350,21 @@ class ModchartState
 		{
 			if (drawBehind)
 			{
-				PlayState.instance.removeObject(PlayState.instance.gf);
 				PlayState.instance.removeObject(PlayState.instance.dad);
+				PlayState.instance.removeObject(PlayState.instance.gf);
 				PlayState.instance.removeObject(PlayState.instance.boyfriend);
 
 				if (Config.comboType == 0)
 					@:privateAccess
 					PlayState.instance.removeObject(PlayState.instance.comboUI);
 			}
+			
 			PlayState.instance.addObject(sprite);
+			
 			if (drawBehind)
 			{
-				PlayState.instance.addObject(PlayState.instance.gf);
 				PlayState.instance.addObject(PlayState.instance.dad);
+				PlayState.instance.addObject(PlayState.instance.gf);
 				PlayState.instance.addObject(PlayState.instance.boyfriend);
 
 				if (Config.comboType == 0)
@@ -454,9 +456,8 @@ class ModchartState
 		Lua_helper.add_callback(lua, "changeDadCharacter", changeDadCharacter);
 		Lua_helper.add_callback(lua, "changeBoyfriendCharacter", changeBoyfriendCharacter);
 		Lua_helper.add_callback(lua, "getProperty", getPropertyByName);
-
-		// Lua_helper.add_callback(lua,"makeAnimatedSprite", makeAnimatedLuaSprite);
 		// this one is still in development
+		Lua_helper.add_callback(lua, "makeAnimatedSprite", makeAnimatedLuaSprite);
 
 		Lua_helper.add_callback(lua, "destroySprite", function(id:String)
 		{

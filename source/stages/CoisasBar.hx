@@ -8,7 +8,8 @@ import stages.elements.*;
 class CoisasBar extends BasicStage
 {
 	var coisas:FlxSprite;
-
+	var meuManoSush:FlxSprite;
+	
 	public override function init()
 	{
 		var mainPath:String = "especula/stage/";
@@ -33,7 +34,10 @@ class CoisasBar extends BasicStage
 		barMesa.scrollFactor.set(0.9325, 0.9325);
 		barMesa.active = false;
 
-		var meuManoSush:FlxSprite = new FlxSprite(187, 645).loadGraphic(Paths.image(mainPath + "sushiCaidoTodoFodido"));
+		if (PlayState.SONG.song.toLowerCase() == 'dragons')
+			meuManoSush = new FlxSprite(165, 645).loadGraphic(Paths.image(mainPath + "sushiUmPoucoMenosFodido"));
+		else
+			meuManoSush = new FlxSprite(187, 645).loadGraphic(Paths.image(mainPath + "sushiCaidoTodoFodido"));		
 		meuManoSush.antialiasing = true;
 		meuManoSush.scrollFactor.set(0.921, 0.921);
 		meuManoSush.active = false;

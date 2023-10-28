@@ -1,0 +1,24 @@
+{
+	"events": {
+		"events": [
+			[
+				25,
+				46111.1111111111,
+				0,
+				"dadAnimLockToggle"
+			],
+			[
+				32,
+				57222.2222222223,
+				0,
+				"dadAnimLockToggle"
+			],
+			[
+				26,
+				46222.2222222222,
+				0,
+				"playAnim;dad;wtf"
+			]
+		]
+	}
+}

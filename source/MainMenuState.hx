@@ -115,7 +115,7 @@ class MainMenuState extends MusicBeatState
 		footer.updateHitbox();
 		add(footer);
 
-		versionText = new FlxText(5, FlxG.height - 21, 0, "Vs. Espe: v1.0 (Inicial) / FPS Plus: v4.1.0-YF", 16);
+		versionText = new FlxText(5, FlxG.height - 21, 0, "Vs. Espe (Versão Inicial) / FPS Plus: v4.1.0-YF", 16);
 		versionText.scrollFactor.set();
 		versionText.setFormat("Arial", 16, 0xFF343434, LEFT);
 		add(versionText);

@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="sketcher.png">
+	<!-- Created with Adobe Animate version 19.0.0.326 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="sketcher down0000" x="0" y="0" width="334" height="572" frameX="0" frameY="-12" frameWidth="339" frameHeight="584"/>
+	<SubTexture name="sketcher down0001" x="0" y="0" width="334" height="572" frameX="0" frameY="-12" frameWidth="339" frameHeight="584"/>
+	<SubTexture name="sketcher down0002" x="334" y="0" width="338" height="584" frameX="-1" frameY="0" frameWidth="339" frameHeight="584"/>
+	<SubTexture name="sketcher down0003" x="334" y="0" width="338" height="584" frameX="-1" frameY="0" frameWidth="339" frameHeight="584"/>
+	<SubTexture name="sketcher down0004" x="334" y="0" width="338" height="584" frameX="-1" frameY="0" frameWidth="339" frameHeight="584"/>
+	<SubTexture name="sketcher down0005" x="334" y="0" width="338" height="584" frameX="-1" frameY="0" frameWidth="339" frameHeight="584"/>
+	<SubTexture name="sketcher down0006" x="334" y="0" width="338" height="584" frameX="-1" frameY="0" frameWidth="339" frameHeight="584"/>
+	<SubTexture name="sketcher down0007" x="334" y="0" width="338" height="584" frameX="-1" frameY="0" frameWidth="339" frameHeight="584"/>
+	<SubTexture name="sketcher down0008" x="334" y="0" width="338" height="584" frameX="-1" frameY="0" frameWidth="339" frameHeight="584"/>
+	<SubTexture name="sketcher down0009" x="334" y="0" width="338" height="584" frameX="-1" frameY="0" frameWidth="339" frameHeight="584"/>
+	<SubTexture name="sketcher down0010" x="334" y="0" width="338" height="584" frameX="-1" frameY="0" frameWidth="339" frameHeight="584"/>
+	<SubTexture name="sketcher down0011" x="334" y="0" width="338" height="584" frameX="-1" frameY="0" frameWidth="339" frameHeight="584"/>
+	<SubTexture name="sketcher down0012" x="334" y="0" width="338" height="584" frameX="-1" frameY="0" frameWidth="339" frameHeight="584"/>
+	<SubTexture name="sketcher down0013" x="334" y="0" width="338" height="584" frameX="-1" frameY="0" frameWidth="339" frameHeight="584"/>
+	<SubTexture name="sketcher idle0000" x="672" y="0" width="352" height="603" frameX="-1" frameY="-18" frameWidth="353" frameHeight="621"/>
+	<SubTexture name="sketcher idle0001" x="672" y="0" width="352" height="603" frameX="-1" frameY="-18" frameWidth="353" frameHeight="621"/>
+	<SubTexture name="sketcher idle0002" x="1024" y="0" width="352" height="607" frameX="-1" frameY="-14" frameWidth="353" frameHeight="621"/>
+	<SubTexture name="sketcher idle0003" x="1024" y="0" width="352" height="607" frameX="-1" frameY="-14" frameWidth="353" frameHeight="621"/>
+	<SubTexture name="sketcher idle0004" x="1376" y="0" width="351" height="617" frameX="0" frameY="-4" frameWidth="353" frameHeight="621"/>
+	<SubTexture name="sketcher idle0005" x="1376" y="0" width="351" height="617" frameX="0" frameY="-4" frameWidth="353" frameHeight="621"/>
+	<SubTexture name="sketcher idle0006" x="0" y="617" width="349" height="620" frameX="0" frameY="-1" frameWidth="353" frameHeight="621"/>
+	<SubTexture name="sketcher idle0007" x="0" y="617" width="349" height="620" frameX="0" frameY="-1" frameWidth="353" frameHeight="621"/>
+	<SubTexture name="sketcher idle0008" x="349" y="617" width="349" height="621" frameX="0" frameY="0" frameWidth="353" frameHeight="621"/>
+	<SubTexture name="sketcher idle0009" x="349" y="617" width="349" height="621" frameX="0" frameY="0" frameWidth="353" frameHeight="621"/>
+	<SubTexture name="sketcher idle0010" x="349" y="617" width="349" height="621" frameX="0" frameY="0" frameWidth="353" frameHeight="621"/>
+	<SubTexture name="sketcher idle0011" x="349" y="617" width="349" height="621" frameX="0" frameY="0" frameWidth="353" frameHeight="621"/>
+	<SubTexture name="sketcher idle0012" x="349" y="617" width="349" height="621" frameX="0" frameY="0" frameWidth="353" frameHeight="621"/>
+	<SubTexture name="sketcher idle0013" x="349" y="617" width="349" height="621" frameX="0" frameY="0" frameWidth="353" frameHeight="621"/>
+	<SubTexture name="sketcher left0000" x="698" y="617" width="353" height="602" frameX="0" frameY="-6" frameWidth="353" frameHeight="608"/>
+	<SubTexture name="sketcher left0001" x="698" y="617" width="353" height="602" frameX="0" frameY="-6" frameWidth="353" frameHeight="608"/>
+	<SubTexture name="sketcher left0002" x="1051" y="617" width="342" height="608" frameX="-11" frameY="0" frameWidth="353" frameHeight="608"/>
+	<SubTexture name="sketcher left0003" x="1051" y="617" width="342" height="608" frameX="-11" frameY="0" frameWidth="353" frameHeight="608"/>
+	<SubTexture name="sketcher left0004" x="1051" y="617" width="342" height="608" frameX="-11" frameY="0" frameWidth="353" frameHeight="608"/>
+	<SubTexture name="sketcher left0005" x="1051" y="617" width="342" height="608" frameX="-11" frameY="0" frameWidth="353" frameHeight="608"/>
+	<SubTexture name="sketcher left0006" x="1051" y="617" width="342" height="608" frameX="-11" frameY="0" frameWidth="353" frameHeight="608"/>
+	<SubTexture name="sketcher left0007" x="1051" y="617" width="342" height="608" frameX="-11" frameY="0" frameWidth="353" frameHeight="608"/>
+	<SubTexture name="sketcher left0008" x="1051" y="617" width="342" height="608" frameX="-11" frameY="0" frameWidth="353" frameHeight="608"/>
+	<SubTexture name="sketcher left0009" x="1051" y="617" width="342" height="608" frameX="-11" frameY="0" frameWidth="353" frameHeight="608"/>
+	<SubTexture name="sketcher left0010" x="1051" y="617" width="342" height="608" frameX="-11" frameY="0" frameWidth="353" frameHeight="608"/>
+	<SubTexture name="sketcher left0011" x="1051" y="617" width="342" height="608" frameX="-11" frameY="0" frameWidth="353" frameHeight="608"/>
+	<SubTexture name="sketcher left0012" x="1051" y="617" width="342" height="608" frameX="-11" frameY="0" frameWidth="353" frameHeight="608"/>
+	<SubTexture name="sketcher left0013" x="1051" y="617" width="342" height="608" frameX="-11" frameY="0" frameWidth="353" frameHeight="608"/>
+	<SubTexture name="sketcher right0000" x="1393" y="617" width="346" height="605"/>
+	<SubTexture name="sketcher right0001" x="1393" y="617" width="346" height="605"/>
+	<SubTexture name="sketcher right0002" x="0" y="1238" width="337" height="600" frameX="0" frameY="-5" frameWidth="346" frameHeight="605"/>
+	<SubTexture name="sketcher right0003" x="0" y="1238" width="337" height="600" frameX="0" frameY="-5" frameWidth="346" frameHeight="605"/>
+	<SubTexture name="sketcher right0004" x="0" y="1238" width="337" height="600" frameX="0" frameY="-5" frameWidth="346" frameHeight="605"/>
+	<SubTexture name="sketcher right0005" x="0" y="1238" width="337" height="600" frameX="0" frameY="-5" frameWidth="346" frameHeight="605"/>
+	<SubTexture name="sketcher right0006" x="0" y="1238" width="337" height="600" frameX="0" frameY="-5" frameWidth="346" frameHeight="605"/>
+	<SubTexture name="sketcher right0007" x="0" y="1238" width="337" height="600" frameX="0" frameY="-5" frameWidth="346" frameHeight="605"/>
+	<SubTexture name="sketcher right0008" x="0" y="1238" width="337" height="600" frameX="0" frameY="-5" frameWidth="346" frameHeight="605"/>
+	<SubTexture name="sketcher right0009" x="0" y="1238" width="337" height="600" frameX="0" frameY="-5" frameWidth="346" frameHeight="605"/>
+	<SubTexture name="sketcher right0010" x="0" y="1238" width="337" height="600" frameX="0" frameY="-5" frameWidth="346" frameHeight="605"/>
+	<SubTexture name="sketcher right0011" x="0" y="1238" width="337" height="600" frameX="0" frameY="-5" frameWidth="346" frameHeight="605"/>
+	<SubTexture name="sketcher right0012" x="0" y="1238" width="337" height="600" frameX="0" frameY="-5" frameWidth="346" frameHeight="605"/>
+	<SubTexture name="sketcher right0013" x="0" y="1238" width="337" height="600" frameX="0" frameY="-5" frameWidth="346" frameHeight="605"/>
+	<SubTexture name="sketcher up0000" x="337" y="1238" width="292" height="648" frameX="0" frameY="0" frameWidth="300" frameHeight="648"/>
+	<SubTexture name="sketcher up0001" x="337" y="1238" width="292" height="648" frameX="0" frameY="0" frameWidth="300" frameHeight="648"/>
+	<SubTexture name="sketcher up0002" x="629" y="1238" width="295" height="640" frameX="-5" frameY="-7" frameWidth="300" frameHeight="648"/>
+	<SubTexture name="sketcher up0003" x="629" y="1238" width="295" height="640" frameX="-5" frameY="-7" frameWidth="300" frameHeight="648"/>
+	<SubTexture name="sketcher up0004" x="629" y="1238" width="295" height="640" frameX="-5" frameY="-7" frameWidth="300" frameHeight="648"/>
+	<SubTexture name="sketcher up0005" x="629" y="1238" width="295" height="640" frameX="-5" frameY="-7" frameWidth="300" frameHeight="648"/>
+	<SubTexture name="sketcher up0006" x="629" y="1238" width="295" height="640" frameX="-5" frameY="-7" frameWidth="300" frameHeight="648"/>
+	<SubTexture name="sketcher up0007" x="629" y="1238" width="295" height="640" frameX="-5" frameY="-7" frameWidth="300" frameHeight="648"/>
+	<SubTexture name="sketcher up0008" x="629" y="1238" width="295" height="640" frameX="-5" frameY="-7" frameWidth="300" frameHeight="648"/>
+	<SubTexture name="sketcher up0009" x="629" y="1238" width="295" height="640" frameX="-5" frameY="-7" frameWidth="300" frameHeight="648"/>
+	<SubTexture name="sketcher up0010" x="629" y="1238" width="295" height="640" frameX="-5" frameY="-7" frameWidth="300" frameHeight="648"/>
+	<SubTexture name="sketcher up0011" x="629" y="1238" width="295" height="640" frameX="-5" frameY="-7" frameWidth="300" frameHeight="648"/>
+	<SubTexture name="sketcher up0012" x="629" y="1238" width="295" height="640" frameX="-5" frameY="-7" frameWidth="300" frameHeight="648"/>
+	<SubTexture name="sketcher up0013" x="629" y="1238" width="295" height="640" frameX="-5" frameY="-7" frameWidth="300" frameHeight="648"/>
+</TextureAtlas>
