@@ -28,7 +28,7 @@ class FPS extends TextField
 	**/
 	private var memPeak:Float = 0;
 	public var currentFPS(default, null):Int;
-
+	
 	@:noCompletion private var cacheCount:Int;
 	@:noCompletion private var currentTime:Float;
 	@:noCompletion private var times:Array<Float>;
@@ -45,7 +45,8 @@ class FPS extends TextField
 		mouseEnabled = false;
 		defaultTextFormat = new TextFormat("_sans", 12, color);
 		text = "FPS: ";
-
+		autoSize = LEFT;
+		
 		cacheCount = 0;
 		currentTime = 0;
 		times = [];
@@ -81,7 +82,7 @@ class FPS extends TextField
 		{
 			// text = "FPS: " + currentFPS + "\nMEM: " + mem + " MB\nMEM peak: " + memPeak + " MB";
 			text = currentFPS + " FPS\n" + // [fps] FPS
-			mem + " MB" + " / " + memPeak + " MB"; // [mem] MB / [memPeak] MB
+			mem + " MB / " + memPeak + " MB"; // [mem] MB / [memPeak] MB
 
 			#if (gl_stats && !disable_cffi && (!html5 || !canvas))
 			text += "\ntotalDC: " + Context3DStats.totalDrawCalls();

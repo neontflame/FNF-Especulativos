@@ -70,7 +70,8 @@ class ConfigMenu extends UIStateExt
 	static var scrollSpeedValue:Int;
 	static var showComboBreaksValue:Bool;
 	static var showFPSValue:Bool;
-
+	static var camMovementValue:Bool;
+	
 	override function create()
 	{
 		openfl.Lib.current.stage.frameRate = 144;
@@ -870,6 +871,17 @@ class ConfigMenu extends UIStateExt
 			showComboBreaks.setting = ": " + genericOnOff[showComboBreaksValue ? 0 : 1];
 		}
 
+		var camMovement = new ConfigOption("Camera movement by note", ": " + genericOnOff[camMovementValue ? 0 : 1], "Moves the camera according to what note is currently being hit.");
+		camMovement.optionUpdate = function()
+		{
+			if (controls.RIGHT_P || controls.LEFT_P || controls.ACCEPT)
+			{
+				FlxG.sound.play(Paths.sound('scrollMenu'));
+				camMovementValue = !camMovementValue;
+			}
+			camMovement.setting = ": " + genericOnOff[camMovementValue ? 0 : 1];
+		}
+		
 		configOptions = [
 			[fpsCap, noteSplash, noteGlow, bgDim, showFPS],
 			[noteOffset, downscroll, centeredNotes, ghostTap, controllerBinds, keyBinds],
@@ -880,7 +892,8 @@ class ConfigMenu extends UIStateExt
 				scrollSpeed,
 				hpGain,
 				hpDrain,
-				cacheSettings
+				camMovement,
+				cacheSettings,
 			]
 		];
 	}
@@ -888,7 +901,7 @@ class ConfigMenu extends UIStateExt
 	function writeToConfig()
 	{
 		Config.write(offsetValue, accuracyType, healthValue / 10.0, healthDrainValue / 10.0, comboValue, downValue, glowValue, randomTapValue, noCapValue,
-			scheme, dimValue, noteSplashValue, centeredValue, scrollSpeedValue / 10.0, showComboBreaksValue, showFPSValue);
+			scheme, dimValue, noteSplashValue, centeredValue, scrollSpeedValue / 10.0, showComboBreaksValue, showFPSValue, camMovementValue);
 	}
 }
 

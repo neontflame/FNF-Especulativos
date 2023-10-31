@@ -99,19 +99,12 @@ class Paths
 
 	inline static public function getSparrowAtlas(key:String)
 	{
-		// if (CoolUtil.exists(image(key)) && CoolUtil.exists(xml(key)))
 		return FlxAtlasFrames.fromSparrow(image(key), xml(key));
-		// else
-		// 	return FlxAtlasFrames.fromSparrow(image(file("missingFileSparrow", "placeholders", "png")), xml("missingFileSparrow", "placeholders"));
 	}
 
 	inline static public function getPackerAtlas(key:String)
 	{
-		// if (CoolUtil.exists(image(key)) && CoolUtil.exists(text(key, "images")))
 		return FlxAtlasFrames.fromSpriteSheetPacker(image(key), text(key, "images"));
-		// else
-		//	return FlxAtlasFrames.fromSpriteSheetPacker(image(file("missingFilePacker/spritemap", "placeholders", "png")),
-		// 		text(file("missingFileSparrow/spritemap", "placeholders", "json")));
 	}
 
 	inline static public function video(key:String)

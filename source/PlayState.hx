@@ -126,7 +126,8 @@ class PlayState extends MusicBeatState
 	private var autoCam:Bool = true;
 	private var autoZoom:Bool = true;
 	private var autoUi:Bool = true;
-
+	public var offsetFunny:Array<Int> = [0, 0];
+				
 	private var bopSpeed:Int = 1;
 
 	private var sectionHasOppNotes:Bool = false;
@@ -977,8 +978,24 @@ class PlayState extends MusicBeatState
 					});
 
 				case "hihi":
-					scratchStart();
+					scratchStart("weekEspe/cut1");
 
+				case "dragons":
+					videoCutscene(Paths.video("weekEspe/cut2"), function()
+					{
+						camMove(camFollow.x, camFollow.y + 100, 0, null);
+						FlxG.camera.zoom = defaultCamZoom * 1.2;
+						if (PlayState.SONG.notes[0].mustHitSection)
+						{
+							camFocusBF();
+						}
+						else
+						{
+							camFocusOpponent();
+						}
+						FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, ((Conductor.crochet / 1000) * 5) - 0.1, {ease: FlxEase.quadOut});
+					});
+					
 				default:
 					startCountdown();
 			}
@@ -2246,19 +2263,51 @@ class PlayState extends MusicBeatState
 
 		if (generatedMusic && PlayState.SONG.notes[Std.int(curStep / 16)] != null)
 		{
+			var coolOffset:Int = 15;
+			
 			if (curBeat % 4 == 0)
 			{
 				// trace(PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection);
 			}
 
-			if (camFocus != "dad" && !PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection && autoCam)
+			if (!PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection && autoCam)
 			{
-				camFocusOpponent();
+				if (Config.camMovement) {
+					if (dad.animation.name.contains("sing")){
+						if (dad.animation.name.contains("LEFT"))
+							offsetFunny = [0 - coolOffset, 0];
+						if (dad.animation.name.contains("DOWN"))
+							offsetFunny = [0, coolOffset];
+						if (dad.animation.name.contains("UP"))
+							offsetFunny = [0, 0 - coolOffset];
+						if (dad.animation.name.contains("RIGHT"))
+							offsetFunny = [coolOffset, 0];
+					} else {
+						offsetFunny = [0, 0];
+					}
+				}
+					
+				camFocusOpponent(offsetFunny[0], offsetFunny[1]);
 			}
 
-			if (camFocus != "bf" && PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection && autoCam)
+			if (PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection && autoCam)
 			{
-				camFocusBF();
+				if (Config.camMovement) {
+					if (boyfriend.animation.name.contains("sing")){
+						if (boyfriend.animation.name.contains("LEFT"))
+							offsetFunny = [0 - coolOffset, 0];
+						if (boyfriend.animation.name.contains("DOWN"))
+							offsetFunny = [0, coolOffset];
+						if (boyfriend.animation.name.contains("UP"))
+							offsetFunny = [0, 0 - coolOffset];
+						if (boyfriend.animation.name.contains("RIGHT"))
+							offsetFunny = [coolOffset, 0];
+					} else {
+						offsetFunny = [0, 0];
+					}
+				}
+					
+				camFocusBF(offsetFunny[0], offsetFunny[1]);
 			}
 		}
 
@@ -2580,7 +2629,6 @@ class PlayState extends MusicBeatState
 
 			if (storyPlaylist.length <= 0)
 			{
-				FlxG.sound.playMusic(Paths.music("coolMenu"), 1);
 
 				PlayerSettings.menuControls();
 
@@ -2591,8 +2639,15 @@ class PlayState extends MusicBeatState
 					luaModchart = null;
 				}
 				#end
-
-				switchState(new StoryMenuState());
+				
+				if (SONG.song.toLowerCase() == "dragons") {
+					CutsceneState.vid = (misses > 10 || comboBreaks > 10 ? "weekEspe/badEnding" : "weekEspe/goodEnding");
+					switchState(new CutsceneState());
+				} else {
+					FlxG.sound.playMusic(Paths.music("coolMenu"), 1);
+					switchState(new StoryMenuState());
+				}
+				
 				sectionStart = false;
 
 				// if ()
@@ -3629,7 +3684,7 @@ class PlayState extends MusicBeatState
 		return false;
 	}
 
-	function camFocusOpponent()
+	function camFocusOpponent(?xOffset:Int, ?yOffset:Int)
 	{
 		var followX = dad.getMidpoint().x + dad.cameraOffsetArray[0]
 		#if EXPERIMENTAL_LUA + (luaModchart != null ? luaModchart.getVar("followXOffset", "float") : 0) #end;
@@ -3667,10 +3722,10 @@ class PlayState extends MusicBeatState
 				camChangeZoom(1.3, (Conductor.stepCrochet * 4 / 1000), FlxEase.elasticInOut);
 		}*/
 
-		camMove(followX, followY, 1.9, FlxEase.quintOut, "dad");
+		camMove(followX + xOffset, followY + yOffset, 1.9, FlxEase.quintOut, "dad");
 	}
 
-	function camFocusBF()
+	function camFocusBF(?xOffset:Int, ?yOffset:Int)
 	{
 		var followX = boyfriend.getMidpoint().x - 100
 		#if EXPERIMENTAL_LUA + (luaModchart != null ? luaModchart.getVar("followXOffset", "float") : 0) #end;
@@ -3681,7 +3736,7 @@ class PlayState extends MusicBeatState
 		if (luaModchart != null)
 			luaModchart.executeState('playerOneTurn', []);
 		#end
-
+		
 		if (SONG.player1 == 'bf-qen')
 		{
 			followX = boyfriend.getMidpoint().x - 400
@@ -3710,8 +3765,8 @@ class PlayState extends MusicBeatState
 		{
 			camChangeZoom(1, (Conductor.stepCrochet * 4 / 1000), FlxEase.elasticInOut);
 		}
-
-		camMove(followX, followY, 1.9, FlxEase.quintOut, "bf");
+		
+		camMove(followX + xOffset, followY + yOffset, 1.9, FlxEase.quintOut, "bf");
 	}
 
 	function camMove(_x:Float, _y:Float, _time:Float, _ease:Null<flixel.tweens.EaseFunction>, ?_focus:String = "", ?_onComplete:Null<TweenCallback> = null):Void

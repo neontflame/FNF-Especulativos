@@ -22,6 +22,7 @@ class Config
 	public static var scrollSpeedOverride:Float;
 	public static var showComboBreaks:Bool;
 	public static var showFPS:Bool;
+	public static var camMovement:Bool;
 
 	public static function resetSettings():Void
 	{
@@ -41,6 +42,7 @@ class Config
 		FlxG.save.data.scrollSpeedOverride = -1;
 		FlxG.save.data.showComboBreaks = false;
 		FlxG.save.data.showFPS = false;
+		FlxG.save.data.camMovement = false;
 		reload();
 	}
 
@@ -62,11 +64,12 @@ class Config
 		scrollSpeedOverride = FlxG.save.data.scrollSpeedOverride;
 		showComboBreaks = FlxG.save.data.showComboBreaks;
 		showFPS = FlxG.save.data.showFPS;
+		camMovement = FlxG.save.data.camMovement;
 	}
 
 	public static function write(offsetW:Float, accuracyW:String, healthMultiplierW:Float, healthDrainMultiplierW:Float, comboTypeW:Int, downscrollW:Bool,
 			noteGlowW:Bool, ghostTapTypeW:Int, noFpsCapW:Bool, controllerSchemeW:Int, bgDimW:Int, noteSplashTypeW:Int, centeredNotesW:Bool,
-			scrollSpeedOverrideW:Float, showComboBreaksW:Bool, showFPSW:Bool):Void
+			scrollSpeedOverrideW:Float, showComboBreaksW:Bool, showFPSW:Bool, camMovementW:Bool):Void
 	{
 		FlxG.save.data.offset = offsetW;
 		FlxG.save.data.accuracy = accuracyW;
@@ -84,6 +87,7 @@ class Config
 		FlxG.save.data.scrollSpeedOverride = scrollSpeedOverrideW;
 		FlxG.save.data.showComboBreaks = showComboBreaksW;
 		FlxG.save.data.showFPS = showFPSW;
+		FlxG.save.data.camMovement = camMovementW;
 
 		FlxG.save.flush();
 
@@ -124,7 +128,9 @@ class Config
 			FlxG.save.data.showComboBreaks = false;
 		if (FlxG.save.data.showFPS == null)
 			FlxG.save.data.showFPS = false;
-
+		if (FlxG.save.data.camMovement == null)
+			FlxG.save.data.camMovement = false;
+			
 		if (FlxG.save.data.ee1 == null)
 			FlxG.save.data.ee1 = false;
 		if (FlxG.save.data.ee2 == null)

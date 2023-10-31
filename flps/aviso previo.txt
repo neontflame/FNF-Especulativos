@@ -8,5 +8,5 @@ VSTs usadas:
 - Serum
 - OTT
 
-Também tem essa soundfont que eu não consegui incluir por motivos de limitação de tamanho do GitHub:
+Também tem essa soundfont que eu não consegui incluir por conta da limitação de tamanho do GitHub:
 - SGM-V2.01

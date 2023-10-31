@@ -10,7 +10,7 @@ class Street extends BasicStage
 	public override function init()
 	{
 		name = 'street';
-		startingZoom = 0.9;
+		startingZoom = 0.935;
 
 		var bg:FlxSprite = new FlxSprite(-514, -156).loadGraphic(Paths.image("yotsu/stage/bg"));
 		bg.antialiasing = true;
