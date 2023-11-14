@@ -111,18 +111,8 @@ class BasicStage
 	{
 	}
 
-	inline function boyfriend()
-	{
-		return PlayState.instance.boyfriend;
-	}
-
-	inline function gf()
-	{
-		return PlayState.instance.gf;
-	}
-
-	inline function dad()
-	{
-		return PlayState.instance.dad;
-	}
+    inline function boyfriend()     { return PlayState.instance.boyfriend; }
+    inline function gf()            { return PlayState.instance.gf; }
+    inline function dad()           { return PlayState.instance.dad; }
+    inline function playstate()     { return PlayState.instance; }
 }

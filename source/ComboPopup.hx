@@ -34,7 +34,7 @@ class ComboPopup extends FlxSpriteGroup
 	@:noCompletion public static final X = 0;
 	@:noCompletion public static final Y = 1;
 
-	@:noCompletion public static final ratingList = ["sick", "good", "bad", "shit"];
+	@:noCompletion public static final ratingList = ["swag", "sick", "good", "bad", "shit"];
 
 	/**
 		The info arrays should be filled with [FlxGraphicAsset, Frame Width, Frame Height, Antialiasing]
@@ -144,7 +144,7 @@ class ComboPopup extends FlxSpriteGroup
 
 		add(ratingSprite);
 
-		var currentTimingShown:FlxText = new FlxText(numberPosition[X] + (392 * numberScale), numberPosition[Y] - (10 * numberScale), 0, "0ms");
+		var currentTimingShown:FlxText = new FlxText(numberPosition[X] + (392 * 0.5), numberPosition[Y] - (10 * 0.5), 0, "0ms");
 		currentTimingShown.borderStyle = OUTLINE;
 		currentTimingShown.borderSize = 1;
 		currentTimingShown.borderColor = FlxColor.BLACK;
@@ -157,7 +157,7 @@ class ComboPopup extends FlxSpriteGroup
 				currentTimingShown.color = FlxColor.GRAY;
 			case 'good':
 				currentTimingShown.color = FlxColor.LIME;
-			case 'sick':
+			case 'sick' | 'swag':
 				currentTimingShown.color = FlxColor.CYAN;
 		}
 

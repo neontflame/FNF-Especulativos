@@ -19,6 +19,7 @@ class Config
 	public static var bgDim:Int;
 	public static var noteSplashType:Int;
 	public static var centeredNotes:Bool;
+	public static var swagRating:Bool;
 	public static var scrollSpeedOverride:Float;
 	public static var showComboBreaks:Bool;
 	public static var showFPS:Bool;
@@ -43,6 +44,7 @@ class Config
 		FlxG.save.data.showComboBreaks = false;
 		FlxG.save.data.showFPS = false;
 		FlxG.save.data.camMovement = false;
+		FlxG.save.data.swagRating = false;
 		reload();
 	}
 
@@ -65,11 +67,12 @@ class Config
 		showComboBreaks = FlxG.save.data.showComboBreaks;
 		showFPS = FlxG.save.data.showFPS;
 		camMovement = FlxG.save.data.camMovement;
+		swagRating = FlxG.save.data.swagRating;
 	}
 
 	public static function write(offsetW:Float, accuracyW:String, healthMultiplierW:Float, healthDrainMultiplierW:Float, comboTypeW:Int, downscrollW:Bool,
 			noteGlowW:Bool, ghostTapTypeW:Int, noFpsCapW:Bool, controllerSchemeW:Int, bgDimW:Int, noteSplashTypeW:Int, centeredNotesW:Bool,
-			scrollSpeedOverrideW:Float, showComboBreaksW:Bool, showFPSW:Bool, camMovementW:Bool):Void
+			scrollSpeedOverrideW:Float, showComboBreaksW:Bool, showFPSW:Bool, camMovementW:Bool, swagRatingW:Bool):Void
 	{
 		FlxG.save.data.offset = offsetW;
 		FlxG.save.data.accuracy = accuracyW;
@@ -88,6 +91,7 @@ class Config
 		FlxG.save.data.showComboBreaks = showComboBreaksW;
 		FlxG.save.data.showFPS = showFPSW;
 		FlxG.save.data.camMovement = camMovementW;
+		FlxG.save.data.swagRating = swagRatingW;
 
 		FlxG.save.flush();
 
@@ -99,7 +103,7 @@ class Config
 		if (FlxG.save.data.offset == null)
 			FlxG.save.data.offset = 0.0;
 		if (FlxG.save.data.accuracy == null)
-			FlxG.save.data.accuracy = "simple";
+			FlxG.save.data.accuracy = "complex";
 		if (FlxG.save.data.healthMultiplier == null)
 			FlxG.save.data.healthMultiplier = 1.0;
 		if (FlxG.save.data.healthDrainMultiplier == null)
@@ -122,6 +126,8 @@ class Config
 			FlxG.save.data.noteSplashType = 1;
 		if (FlxG.save.data.centeredNotes == null)
 			FlxG.save.data.centeredNotes = false;
+		if (FlxG.save.data.swagRating == null)
+			FlxG.save.data.swagRating = false;
 		if (FlxG.save.data.scrollSpeedOverride == null)
 			FlxG.save.data.scrollSpeedOverride = -1;
 		if (FlxG.save.data.showComboBreaks == null)

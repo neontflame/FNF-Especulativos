@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="hawntSalsicha.png">
+	<!-- Created with Adobe Animate version 19.0.0.326 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="hawnt ketchup down0000" x="0" y="0" width="413" height="348"/>
+	<SubTexture name="hawnt ketchup idle0000" x="413" y="0" width="413" height="348"/>
+	<SubTexture name="hawnt ketchup left0000" x="826" y="0" width="413" height="348"/>
+	<SubTexture name="hawnt ketchup right0000" x="1239" y="0" width="413" height="348"/>
+	<SubTexture name="hawnt ketchup up0000" x="0" y="348" width="413" height="348"/>
+	<SubTexture name="hawnt salsicha cobrindo0000" x="413" y="348" width="413" height="392" frameX="0" frameY="-11" frameWidth="413" frameHeight="403"/>
+	<SubTexture name="hawnt salsicha cobrindo0001" x="826" y="348" width="413" height="391" frameX="0" frameY="-12" frameWidth="413" frameHeight="403"/>
+	<SubTexture name="hawnt salsicha cobrindo0002" x="1239" y="348" width="413" height="401" frameX="0" frameY="-2" frameWidth="413" frameHeight="403"/>
+	<SubTexture name="hawnt salsicha cobrindo0003" x="0" y="749" width="413" height="401" frameX="0" frameY="-2" frameWidth="413" frameHeight="403"/>
+	<SubTexture name="hawnt salsicha cobrindo0004" x="413" y="749" width="413" height="403"/>
+	<SubTexture name="hawnt salsicha cobrindo0005" x="413" y="749" width="413" height="403"/>
+	<SubTexture name="hawnt salsicha cobrindo0006" x="413" y="749" width="413" height="403"/>
+	<SubTexture name="hawnt salsicha cobrindo0007" x="413" y="749" width="413" height="403"/>
+	<SubTexture name="hawnt salsicha cobrindo0008" x="413" y="749" width="413" height="403"/>
+	<SubTexture name="hawnt salsicha cobrindo0009" x="413" y="749" width="413" height="403"/>
+	<SubTexture name="hawnt salsicha cobrindo0010" x="413" y="749" width="413" height="403"/>
+	<SubTexture name="hawnt salsicha cobrindo0011" x="413" y="749" width="413" height="403"/>
+	<SubTexture name="hawnt salsicha cobrindo0012" x="826" y="749" width="413" height="348" frameX="0" frameY="-55" frameWidth="413" frameHeight="403"/>
+	<SubTexture name="hawnt salsicha cobrindo0013" x="1239" y="749" width="413" height="348" frameX="0" frameY="-55" frameWidth="413" frameHeight="403"/>
+	<SubTexture name="hawnt salsicha cobrindo0014" x="1239" y="749" width="413" height="348" frameX="0" frameY="-55" frameWidth="413" frameHeight="403"/>
+	<SubTexture name="hawnt salsicha down0000" x="0" y="1152" width="413" height="348"/>
+	<SubTexture name="hawnt salsicha idle0000" x="413" y="1152" width="413" height="348"/>
+	<SubTexture name="hawnt salsicha left0000" x="826" y="1152" width="413" height="348"/>
+	<SubTexture name="hawnt salsicha right0000" x="1239" y="1152" width="413" height="348"/>
+	<SubTexture name="hawnt salsicha up0000" x="0" y="1500" width="413" height="348"/>
+</TextureAtlas>

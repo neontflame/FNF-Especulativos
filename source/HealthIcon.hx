@@ -4,6 +4,8 @@ import lime.utils.Assets;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.FlxSprite;
+import flixel.graphics.FlxGraphic;
+import openfl.display.BitmapData;
 
 class HealthIcon extends FlxSprite
 {
@@ -66,7 +68,7 @@ class HealthIcon extends FlxSprite
 
 	public function setIconCharacter(character:String)
 	{
-		loadGraphic(Paths.image("ui/healthIcons/" + character), true, 150, 150);
+		loadGraphic(Paths.image('ui/healthIcons/' + character), true, 150, 150);
 		animation.add("icon", [0, 1, 2], 0, false, isPlayer);
 		animation.play("icon");
 

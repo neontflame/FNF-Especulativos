@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bfMorrendo.png">
+	<!-- Created with Adobe Animate version 19.0.0.326 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="morreu0000" x="0" y="0" width="399" height="402" frameX="-809" frameY="-80" frameWidth="1964" frameHeight="528"/>
+	<SubTexture name="morreu0001" x="399" y="0" width="399" height="402" frameX="-809" frameY="-80" frameWidth="1964" frameHeight="528"/>
+	<SubTexture name="morreu0002" x="798" y="0" width="396" height="400" frameX="-812" frameY="-82" frameWidth="1964" frameHeight="528"/>
+	<SubTexture name="morreu0003" x="798" y="0" width="396" height="400" frameX="-812" frameY="-82" frameWidth="1964" frameHeight="528"/>
+	<SubTexture name="morreu0004" x="1194" y="0" width="398" height="406" frameX="-821" frameY="-76" frameWidth="1964" frameHeight="528"/>
+	<SubTexture name="morreu0005" x="1592" y="0" width="398" height="406" frameX="-821" frameY="-76" frameWidth="1964" frameHeight="528"/>
+	<SubTexture name="morreu0006" x="1990" y="0" width="391" height="422" frameX="-848" frameY="-61" frameWidth="1964" frameHeight="528"/>
+	<SubTexture name="morreu0007" x="1990" y="0" width="391" height="422" frameX="-848" frameY="-61" frameWidth="1964" frameHeight="528"/>
+	<SubTexture name="morreu0008" x="2381" y="0" width="393" height="422" frameX="-848" frameY="-61" frameWidth="1964" frameHeight="528"/>
+	<SubTexture name="morreu0009" x="2774" y="0" width="393" height="422" frameX="-848" frameY="-61" frameWidth="1964" frameHeight="528"/>
+	<SubTexture name="morreu0010" x="2774" y="0" width="393" height="422" frameX="-848" frameY="-61" frameWidth="1964" frameHeight="528"/>
+	<SubTexture name="morreu0011" x="2774" y="0" width="393" height="422" frameX="-848" frameY="-61" frameWidth="1964" frameHeight="528"/>
+	<SubTexture name="morreu0012" x="2774" y="0" width="393" height="422" frameX="-848" frameY="-61" frameWidth="1964" frameHeight="528"/>
+	<SubTexture name="morreu0013" x="2774" y="0" width="393" height="422" frameX="-848" frameY="-61" frameWidth="1964" frameHeight="528"/>
+	<SubTexture name="morreu0014" x="2774" y="0" width="393" height="422" frameX="-848" frameY="-61" frameWidth="1964" frameHeight="528"/>
+	<SubTexture name="morreu0015" x="2774" y="0" width="393" height="422" frameX="-848" frameY="-61" frameWidth="1964" frameHeight="528"/>
+	<SubTexture name="morreu0016" x="0" y="422" width="1964" height="522" frameX="0" frameY="-3" frameWidth="1964" frameHeight="528"/>
+	<SubTexture name="morreu0017" x="1964" y="422" width="1964" height="528"/>
+	<SubTexture name="morreu0018" x="0" y="950" width="1964" height="522" frameX="0" frameY="-3" frameWidth="1964" frameHeight="528"/>
+	<SubTexture name="morreu0019" x="1964" y="950" width="1964" height="528"/>
+	<SubTexture name="morreu0020" x="0" y="1478" width="1964" height="522" frameX="0" frameY="-3" frameWidth="1964" frameHeight="528"/>
+	<SubTexture name="morreu0021" x="1964" y="1478" width="1964" height="528"/>
+	<SubTexture name="morreu0022" x="0" y="2006" width="1964" height="102" frameX="0" frameY="-225" frameWidth="1964" frameHeight="528"/>
+	<SubTexture name="morreu0023" x="1964" y="2006" width="65" height="85" frameX="-1081" frameY="-246" frameWidth="1964" frameHeight="528"/>
+	<SubTexture name="morreu0024" x="1964" y="2006" width="65" height="85" frameX="-1081" frameY="-246" frameWidth="1964" frameHeight="528"/>
+	<SubTexture name="morreu0025" x="2029" y="2006" width="111" height="55" frameX="-1060" frameY="-256" frameWidth="1964" frameHeight="528"/>
+	<SubTexture name="morreu0026" x="2029" y="2006" width="111" height="55" frameX="-1060" frameY="-256" frameWidth="1964" frameHeight="528"/>
+	<SubTexture name="morreu0027" x="2140" y="2006" width="241" height="42" frameX="-973" frameY="-263" frameWidth="1964" frameHeight="528"/>
+	<SubTexture name="morreu0028" x="2140" y="2006" width="241" height="42" frameX="-973" frameY="-263" frameWidth="1964" frameHeight="528"/>
+	<SubTexture name="morreu0029" x="2411" y="2140" width="229" height="62" frameX="-979" frameY="-255" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morreu0030" x="2411" y="2140" width="229" height="62" frameX="-979" frameY="-255" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morreu0031" x="2640" y="2140" width="213" height="70" frameX="-987" frameY="-251" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morreu0032" x="2640" y="2140" width="213" height="70" frameX="-987" frameY="-251" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morreu0033" x="2853" y="2140" width="206" height="73" frameX="-991" frameY="-249" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morreu0034" x="2853" y="2140" width="206" height="73" frameX="-991" frameY="-249" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morreu0035" x="2853" y="2140" width="206" height="73" frameX="-991" frameY="-249" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morreu0036" x="2853" y="2140" width="206" height="73" frameX="-991" frameY="-249" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morreu0037" x="2853" y="2140" width="206" height="73" frameX="-991" frameY="-249" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morreu0038" x="2853" y="2140" width="206" height="73" frameX="-991" frameY="-249" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morreu0039" x="2853" y="2140" width="206" height="73" frameX="-991" frameY="-249" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morreu0040" x="2853" y="2140" width="206" height="73" frameX="-991" frameY="-249" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morreu0041" x="2853" y="2140" width="206" height="73" frameX="-991" frameY="-249" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morreu0042" x="2853" y="2140" width="206" height="73" frameX="-991" frameY="-249" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morreu0043" x="2853" y="2140" width="206" height="73" frameX="-991" frameY="-249" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morreu0044" x="2853" y="2140" width="206" height="73" frameX="-991" frameY="-249" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morreu0045" x="2853" y="2140" width="206" height="73" frameX="-991" frameY="-249" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morreu0046" x="2853" y="2140" width="206" height="73" frameX="-991" frameY="-249" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morteOk0000" x="2411" y="2140" width="229" height="62" frameX="0" frameY="-47" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morteOk0001" x="2411" y="2140" width="229" height="62" frameX="0" frameY="-47" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morteOk0002" x="2381" y="2006" width="195" height="77" frameX="-21" frameY="-38" frameWidth="231" frameHeight="134"/>
+	<SubTexture name="morteOk0003" x="2381" y="2006" width="195" height="77" frameX="-21" frameY="-38" frameWidth="231" frameHeight="134"/>
+	<SubTexture name="morteOk0004" x="2576" y="2006" width="102" height="101" frameX="-63" frameY="-20" frameWidth="231" frameHeight="134"/>
+	<SubTexture name="morteOk0005" x="2576" y="2006" width="102" height="101" frameX="-63" frameY="-20" frameWidth="231" frameHeight="134"/>
+	<SubTexture name="morteOk0006" x="2678" y="2006" width="149" height="134" frameX="-48" frameY="0" frameWidth="231" frameHeight="134"/>
+	<SubTexture name="morteOk0007" x="2827" y="2006" width="149" height="134" frameX="-48" frameY="0" frameWidth="231" frameHeight="134"/>
+	<SubTexture name="morteOk0008" x="2976" y="2006" width="149" height="134" frameX="-48" frameY="0" frameWidth="231" frameHeight="134"/>
+	<SubTexture name="morteOk0009" x="3125" y="2006" width="151" height="132" frameX="-47" frameY="-1" frameWidth="231" frameHeight="134"/>
+	<SubTexture name="morteOk0010" x="3276" y="2006" width="153" height="132" frameX="-46" frameY="-1" frameWidth="231" frameHeight="134"/>
+	<SubTexture name="morteOk0011" x="3429" y="2006" width="157" height="130" frameX="-44" frameY="-2" frameWidth="231" frameHeight="134"/>
+	<SubTexture name="morteOk0012" x="3586" y="2006" width="161" height="128" frameX="-42" frameY="-3" frameWidth="231" frameHeight="134"/>
+	<SubTexture name="morteOk0013" x="3747" y="2006" width="165" height="126" frameX="-40" frameY="-4" frameWidth="231" frameHeight="134"/>
+	<SubTexture name="morteOk0014" x="3912" y="2006" width="169" height="124" frameX="-38" frameY="-5" frameWidth="231" frameHeight="134"/>
+	<SubTexture name="morteOk0015" x="0" y="2140" width="171" height="122" frameX="-37" frameY="-6" frameWidth="231" frameHeight="134"/>
+	<SubTexture name="morteOk0016" x="171" y="2140" width="173" height="121" frameX="-36" frameY="-6" frameWidth="231" frameHeight="134"/>
+	<SubTexture name="morteOk0017" x="344" y="2140" width="175" height="120" frameX="-35" frameY="-7" frameWidth="231" frameHeight="134"/>
+	<SubTexture name="morteOk0018" x="519" y="2140" width="177" height="120" frameX="-34" frameY="-7" frameWidth="231" frameHeight="134"/>
+	<SubTexture name="morteOk0019" x="696" y="2140" width="179" height="119" frameX="-33" frameY="-7" frameWidth="231" frameHeight="134"/>
+	<SubTexture name="morteOk0020" x="875" y="2140" width="179" height="118" frameX="-33" frameY="-8" frameWidth="231" frameHeight="134"/>
+	<SubTexture name="morteOk0021" x="1054" y="2140" width="181" height="117" frameX="-32" frameY="-8" frameWidth="231" frameHeight="134"/>
+	<SubTexture name="morteOk0022" x="1235" y="2140" width="185" height="116" frameX="-30" frameY="-9" frameWidth="231" frameHeight="134"/>
+	<SubTexture name="morteOk0023" x="1420" y="2140" width="187" height="114" frameX="-29" frameY="-10" frameWidth="231" frameHeight="134"/>
+	<SubTexture name="morteOk0024" x="1607" y="2140" width="191" height="112" frameX="-27" frameY="-11" frameWidth="231" frameHeight="134"/>
+	<SubTexture name="morteOk0025" x="1798" y="2140" width="195" height="110" frameX="-25" frameY="-12" frameWidth="231" frameHeight="134"/>
+	<SubTexture name="morteOk0026" x="1993" y="2140" width="201" height="106" frameX="-22" frameY="-14" frameWidth="231" frameHeight="134"/>
+	<SubTexture name="morteOk0027" x="2194" y="2140" width="217" height="98" frameX="-14" frameY="-18" frameWidth="231" frameHeight="134"/>
+	<SubTexture name="morteRetry0000" x="2411" y="2140" width="229" height="62" frameX="0" frameY="-6" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morteRetry0001" x="2411" y="2140" width="229" height="62" frameX="0" frameY="-6" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morteRetry0002" x="2640" y="2140" width="213" height="70" frameX="-8" frameY="-2" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morteRetry0003" x="2640" y="2140" width="213" height="70" frameX="-8" frameY="-2" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morteRetry0004" x="2853" y="2140" width="206" height="73" frameX="-12" frameY="0" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morteRetry0005" x="2853" y="2140" width="206" height="73" frameX="-12" frameY="0" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morteRetry0006" x="3059" y="2140" width="206" height="74" frameX="-12" frameY="0" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morteRetry0007" x="3059" y="2140" width="206" height="74" frameX="-12" frameY="0" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morteRetry0008" x="3059" y="2140" width="206" height="74" frameX="-12" frameY="0" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morteRetry0009" x="3059" y="2140" width="206" height="74" frameX="-12" frameY="0" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morteRetry0010" x="3059" y="2140" width="206" height="74" frameX="-12" frameY="0" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morteRetry0011" x="3059" y="2140" width="206" height="74" frameX="-12" frameY="0" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morteRetry0012" x="3059" y="2140" width="206" height="74" frameX="-12" frameY="0" frameWidth="229" frameHeight="74"/>
+	<SubTexture name="morteRetry0013" x="3059" y="2140" width="206" height="74" frameX="-12" frameY="0" frameWidth="229" frameHeight="74"/>
+</TextureAtlas>

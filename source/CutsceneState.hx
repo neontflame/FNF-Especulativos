@@ -47,9 +47,12 @@ class CutsceneState extends FlxState
 	{
 		super.update(elapsed);
 	}
-
+	
 	function next():Void
 	{
+		FlxG.sound.music.stop();
+		FlxG.sound.music.volume = 100;
+		FlxG.sound.playMusic(Paths.music("coolMenu"), 1);
 		FlxG.switchState(new StoryMenuState());
 	}
 }

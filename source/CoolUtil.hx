@@ -69,7 +69,7 @@ class CoolUtil
 	 */
 	public static function exists(path:String):Bool
 	{
-		#if desktop
+		#if sys
 		return FileSystem.exists(path);
 		#else
 		return Assets.exists(path);
@@ -79,7 +79,7 @@ class CoolUtil
 	// Same as above but for getting text from a file.
 	public static function getText(path:String):String
 	{
-		#if desktop
+		#if sys
 		return File.getContent(path);
 		#else
 		return Assets.getText(path);
@@ -116,9 +116,7 @@ class CoolUtil
 			case 1:
 				weekCheck = [
 					"week1/DADDY_DEAREST",
-					"week1/stageback",
-					"week1/stagefront",
-					"week1/stagecurtains"
+					"week1/stageback", "week1/stagefront", "week1/stagecurtains"
 				];
 
 			case 2:
@@ -130,48 +128,23 @@ class CoolUtil
 				];
 			case 4:
 				weekCheck = [
-					"week4/gfCar",
-					"week4/bfCar",
-					"week4/momCar",
-					"week4/limo/bgLimo",
-					"week4/limo/fastCarLol",
-					"week4/limo/limoDancer",
-					"week4/limo/limoDrive",
-					"week4/limo/limoSunset"
+					"week4/gfCar", "week4/bfCar", "week4/momCar",
+					"week4/limo/bgLimo", "week4/limo/fastCarLol", "week4/limo/limoDancer", "week4/limo/limoDrive", "week4/limo/limoSunset"
 				];
 			case 5:
 				weekCheck = [
-					"week5/gfChristmas",
-					"week5/bfChristmas",
-					"week5/mom_dad_christmas_assets",
-					"week5/monsterChristmas",
-					"week5/christmas/bgWalls",
-					"week5/christmas/upperBop",
-					"week5/christmas/bgEscalator",
-					"week5/christmas/christmasTree",
-					"week5/christmas/bottomBop",
-					"week5/christmas/fgSnow",
-					"week5/christmas/santa",
-					"week5/christmas/evilBG",
-					"week5/christmas/evilTree",
-					"week5/christmas/evilSnow"
+					"week5/gfChristmas", "week5/bfChristmas", "week5/mom_dad_christmas_assets", "week5/monsterChristmas",
+					"week5/christmas/upperBop", "week5/christmas/santa",
+					"week5/christmas/bgWalls", "week5/christmas/bgEscalator", "week5/christmas/christmasTree", "week5/christmas/bottomBop", "week5/christmas/fgSnow",
+					"week5/christmas/evilBG", "week5/christmas/evilTree", "week5/christmas/evilSnow"
 				];
 			case 6:
 				weekCheck = [
-					"week6/gfPixel",
-					"week6/bfPixel",
-					"week6/bfPixelsDEAD",
-					"week6/senpai",
-					"week6/spirit",
-					"week6/weeb/weebSky",
-					"week6/weeb/weebSchool",
-					"week6/weeb/weebStreet",
-					"week6/weeb/weebTreesBack",
-					"week6/weeb/weebTrees",
-					"week6/weeb/petals",
+					"week6/gfPixel", "week6/bfPixel", "week6/bfPixelsDEAD", "week6/senpai", "week6/spirit",
+					"week6/weeb/weebSky", "week6/weeb/weebSchool","week6/weeb/weebStreet",
+					"week6/weeb/weebTreesBack", "week6/weeb/weebTrees", "week6/weeb/petals",
 					"week6/weeb/bgFreaks",
-					"week6/weeb/animatedEvilSchool",
-					"week6/weeb/senpaiCrazy"
+					"week6/weeb/animatedEvilSchool", "week6/weeb/senpaiCrazy"
 				];
 			case 7:
 				weekCheck = [
@@ -182,13 +155,31 @@ class CoolUtil
 				];
 
 			case 8: // ESPE
-				weekCheck = ["especula/espe"];
+				weekCheck = [
+					"especula/espe", "especula/dave", "especula/blu", "especula/hawnt", "especula/sketcher", "especula/girlfriendBar", 
+					"especula/stage/adegaFunny", "especula/stage/barMesa", "especula/stage/bgTijolos", "especula/stage/cadeiras", "especula/stage/chao", "especula/stage/escarradeira", 
+					"especula/stage/coisas",
+					"especula/stage/sushiCaidoTodoFodido", "especula/stage/sushiUmPoucoMenosFodido"
+				];
 			case 9: // SCDM
 				weekCheck = [
 					"scdm/scdm",
-					"scdm/stage/ceuBrabo",
-					"scdm/stage/fundoBrabo",
-					"scdm/stage/ruaBraba"
+					"scdm/stage/ceuBrabo", "scdm/stage/fundoBrabo", "scdm/stage/ruaBraba"
+				];
+			case 10: // YOTSUBA
+				weekCheck = [
+					"yotsu/yotuba",
+					"yotsu/stage/bg", "yotsu/stage/floorCool", "yotsu/stage/gateAndWall", "yotsu/stage/grass"
+				];
+			case 11: // QUEIXANO E NARIGANO
+				weekCheck = [
+					"qen/narigao", "qen/bf", "qen/gf",
+					"qen/stage/chao", "qen/stage/sofa"
+				];
+			case 12: // hawtn sasicha
+				weekCheck = [
+					"salsicha/hawntSalsicha",
+					"salsicha/stage/bawnt", "salsicha/stage/lol"
 				];
 			default:
 				weekCheck = ["week1/stageback", "week1/stagefront", "week1/stagecurtains"];

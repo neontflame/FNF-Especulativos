@@ -1,0 +1,1 @@
+so ta aqui pelo funny msm. vou tentar fazer algo com isso eventualmente

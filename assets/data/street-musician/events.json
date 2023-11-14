@@ -24,6 +24,54 @@
 				54072.5806451613,
 				0,
 				"dadAnimLockToggle"
+			],
+			[
+				7,
+				15000,
+				0,
+				"playAnim;bf;hey"
+			],
+			[
+				7,
+				14879.0322580645,
+				0,
+				"bfAnimLockToggle"
+			],
+			[
+				7,
+				15362.9032258065,
+				0,
+				"bfAnimLockToggle"
+			],
+			[
+				15,
+				30362.9032258065,
+				0,
+				"bfAnimLockToggle"
+			],
+			[
+				15,
+				30846.7741935484,
+				0,
+				"bfAnimLockToggle"
+			],
+			[
+				15,
+				30483.8709677419,
+				0,
+				"playAnim;bf;hey"
+			],
+			[
+				76,
+				148427.419354839,
+				0,
+				"bfAnimLockToggle"
+			],
+			[
+				76,
+				148548.387096774,
+				0,
+				"playAnim;bf;hey"
 			]
 		]
 	}

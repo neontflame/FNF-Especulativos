@@ -3,6 +3,8 @@ package;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.graphics.FlxGraphic;
+import openfl.display.BitmapData;
 import flixel.animation.FlxBaseAnimation;
 import flixel.graphics.frames.FlxAtlasFrames;
 import stages.elements.*;
@@ -247,6 +249,23 @@ class Character extends FlxSprite
 				iconName = "bf";
 				charOffsetArray = [0, 350];
 
+			case 'bf-especula-dead':
+				frames = Paths.getSparrowAtlas('especula/bfMorrendo');
+				animation.addByPrefix('firstDeath', "morreu", 24, false);
+				animation.addByPrefix('deathLoop', "morteRetry", 24, true);
+				animation.addByPrefix('deathConfirm', "morteOk", 24, false);
+				animation.play('firstDeath');
+
+				addOffset('firstDeath', 827, 70);
+				addOffset('deathLoop', -181, -171);
+				addOffset('deathConfirm', -178, -132);
+				playAnim('firstDeath');
+
+				facesLeft = true;
+
+				iconName = "bf";
+				charOffsetArray = [0, 350];
+
 			case 'dad':
 				// DAD ANIMATION LOADING CODE
 				frames = Paths.getSparrowAtlas("week1/DADDY_DEAREST");
@@ -266,7 +285,8 @@ class Character extends FlxSprite
 
 				stepsUntilRelease = 6.1;
 				iconName = "dad";
-			
+				
+				////// VS ESPE CHARS
 				//// WEEK ESPE
 			case 'espe':
 				// omg espe from especulativos do cramunhao!!!
@@ -393,7 +413,7 @@ class Character extends FlxSprite
 				charOffsetArray = [0, 308];
 
 			case 'yotsuba':
-				// enfim a mais recente mascote do servidor
+				// enfim a mais recente mascote do especulativos
 				frames = Paths.getSparrowAtlas("yotsu/yotuba");
 				animation.addByPrefix('idle', 'yotsu idle', 24, false);
 				animation.addByPrefix('singLEFT', 'yotsu left', 24, false);
@@ -467,7 +487,66 @@ class Character extends FlxSprite
 
 				iconName = "narigao";
 				charOffsetArray = [-24, 290];
+			
+			case 'velhote':
+				// o velho
+				frames = Paths.getSparrowAtlas("weekOld/velhote");
+				
+				// eu so fiz isso pra experimentar btw
+				loadAnims('weekOld/velhoteAnims');
+				loadOffsetFile('weekOld/velhoteOffsets');
+				
+				playAnim('idle');
 
+				iconName = "velhote";
+				charOffsetArray = [0, 349];
+				
+			// hawnts salsicha
+			case 'hawnt-salsicha':
+				// ele e so um cara
+				frames = Paths.getSparrowAtlas("salsicha/hawntSalsicha");
+				
+				animation.addByPrefix('idle', 'hawnt salsicha idle', 24, false);
+				animation.addByPrefix('singUP', 'hawnt salsicha up', 24, false);
+				animation.addByPrefix('singRIGHT', 'hawnt salsicha right', 24, false);
+				animation.addByPrefix('singDOWN', 'hawnt salsicha down', 24, false);
+				animation.addByPrefix('singLEFT', 'hawnt salsicha left', 24, false);
+				animation.addByPrefix('cobrindo', 'hawnt salsicha cobrindo', 24, false);
+				
+				addOffset('idle');
+				addOffset("singDOWN");
+				addOffset("singRIGHT");
+				addOffset("singUP");
+				addOffset("singLEFT");
+				addOffset('cobrindo', 0, 55);
+				
+				playAnim('idle');
+
+				iconName = "hawnt-salsicha";
+				charOffsetArray = [0, 405];
+			case 'hawnt-salsicha-ketchup':
+				// ele e so um cara
+				frames = Paths.getSparrowAtlas("salsicha/hawntSalsicha");
+				
+				animation.addByPrefix('idle', 'hawnt ketchup idle', 24, false);
+				animation.addByPrefix('singUP', 'hawnt ketchup up', 24, false);
+				animation.addByPrefix('singRIGHT', 'hawnt ketchup right', 24, false);
+				animation.addByPrefix('singDOWN', 'hawnt ketchup down', 24, false);
+				animation.addByPrefix('singLEFT', 'hawnt ketchup left', 24, false);
+				animation.addByPrefix('cobrindo', 'hawnt salsicha cobrindo', 24, false);
+				
+				addOffset('idle');
+				addOffset("singDOWN");
+				addOffset("singRIGHT");
+				addOffset("singUP");
+				addOffset("singLEFT");
+				addOffset('cobrindo', 0, 55);
+				
+				playAnim('idle');
+
+				iconName = "hawnt-salsicha";
+				charOffsetArray = [0, 405];
+			////// BASE GAME CHARS
 			case 'spooky':
 				frames = Paths.getSparrowAtlas("week2/spooky_kids_assets");
 				animation.addByPrefix('singUP', 'spooky UP NOTE', 24, false);
@@ -607,7 +686,8 @@ class Character extends FlxSprite
 				iconName = "pico";
 				charOffsetArray = [-280, 300];
 				cameraOffsetArray = [430, -100];
-
+			
+			//// all my friends boyed...
 			case 'bf':
 				frames = Paths.getSparrowAtlas("BOYFRIEND");
 				animation.addByPrefix('idle', 'BF idle dance', 24, false);
@@ -1279,6 +1359,56 @@ class Character extends FlxSprite
 		animOffsets[name] = [x, y];
 	}
 
+	// e agora uns bagulho q eu adicionei enquanto eu esperava o sket fazer as cutscene pq eu nao tinha nada melhor pra fazer
+	// personagens softcoded (UPDATE:  NAO DEU CERTO!!! aff ¬¬)
+	/*
+	private function loadCharInfo(infoPath:String)
+	{
+		var daFile:Array<String> = CoolUtil.coolTextFile(Sys.getCwd() + "assets/images/" + infoPath + ".txt");
+
+		for (i in daFile)
+		{	
+			var splitWords:Array<String> = i.split(";");
+			// spritesheet path, icon name, char offset [X, Y], camera offset [X, Y], antialiasing, deathchar, does it face left
+			var data:BitmapData = BitmapData.fromFile(Sys.getCwd() + "assets/images/" + splitWords[0] + ".png");
+			
+			frames = FlxAtlasFrames.fromSparrow(FlxGraphic.fromBitmapData(data), Sys.getCwd() + "assets/images/" + splitWords[0] + ".xml");
+			iconName = splitWords[1];
+			charOffsetArray = [Std.parseInt(splitWords[2]), Std.parseInt(splitWords[3])];
+			cameraOffsetArray = [Std.parseInt(splitWords[4]), Std.parseInt(splitWords[5])];
+			antialiasing = (splitWords[6] == 'true' ? true : false);
+			deathCharacter = splitWords[7];
+			facesLeft = (splitWords[8] == 'true' ? true : false);
+		}
+	} */
+	
+	private function loadOffsetFile(offsetPath:String)
+	{
+		var daFile:Array<String> = CoolUtil.coolTextFile(Sys.getCwd() + "assets/images/" + offsetPath + ".txt");
+
+		for (i in daFile)
+		{
+			var splitWords:Array<String> = i.split(";");
+			addOffset(splitWords[0], Std.parseInt(splitWords[1]), Std.parseInt(splitWords[2]));
+			
+			if (splitWords[0] == 'idle' || splitWords[0] == 'danceRight')
+				playAnim(splitWords[0]);
+		}
+	}
+
+	private function loadAnims(animsPath:String)
+	{
+		var daFile:Array<String> = CoolUtil.coolTextFile(Sys.getCwd() + "assets/images/" + animsPath + ".txt");
+
+		for (i in daFile)
+		{
+			var splitWords:Array<String> = i.split(";");
+			// anim name, prefix, fps, does it loop
+			animation.addByPrefix(splitWords[0], splitWords[1], Std.parseInt(splitWords[2]), (splitWords[3] == 'true' ? true : false));
+		}
+	}
+	// cabo os personagem softcoded xd
+	
 	function animationEnd(name:String)
 	{
 		danceLockout = false;

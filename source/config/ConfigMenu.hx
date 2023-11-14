@@ -45,7 +45,7 @@ class ConfigMenu extends UIStateExt
 	static var accuracyType:String;
 	static var accuracyTypeInt:Int;
 
-	final accuracyTypes:Array<String> = ["none", "simple", "complex"];
+	final accuracyTypes:Array<String> = ["none", "simple", "complex", "millisecond"];
 
 	static var healthValue:Int;
 	static var healthDrainValue:Int;
@@ -67,6 +67,7 @@ class ConfigMenu extends UIStateExt
 	final noteSplashTypes:Array<String> = ["none", "sick only", "always"];
 
 	static var centeredValue:Bool;
+	static var swagValue:Bool;
 	static var scrollSpeedValue:Int;
 	static var showComboBreaksValue:Bool;
 	static var showFPSValue:Bool;
@@ -354,6 +355,8 @@ class ConfigMenu extends UIStateExt
 		scrollSpeedValue = Std.int(Config.scrollSpeedOverride * 10);
 		showComboBreaksValue = Config.showComboBreaks;
 		showFPSValue = Config.showFPS;
+		camMovementValue = Config.camMovement;
+		swagValue = Config.swagRating;
 
 		// VIDEO
 
@@ -518,6 +521,18 @@ class ConfigMenu extends UIStateExt
 			centeredNotes.setting = ": " + genericOnOff[centeredValue ? 0 : 1];
 		}
 
+		var swagRating = new ConfigOption("Swag rating", ": " + genericOnOff[swagValue ? 0 : 1],
+			"Adds an additional 'Swag' rating'. Basically a 'Marvelous' rating, but for Funkin'.");
+		swagRating.optionUpdate = function()
+		{
+			if (controls.RIGHT_P || controls.LEFT_P || controls.ACCEPT)
+			{
+				FlxG.sound.play(Paths.sound('scrollMenu'));
+				swagValue = !swagValue;
+			}
+			swagRating.setting = ": " + genericOnOff[swagValue ? 0 : 1];
+		}
+		
 		var ghostTap = new ConfigOption("Allow ghost tapping", ": " + randomTapTypes[randomTapValue], "");
 		ghostTap.extraData[0] = "Any key press that isn't for a valid note will cause you to miss.";
 		ghostTap.extraData[1] = "You can only miss while you need to sing.";
@@ -615,7 +630,7 @@ class ConfigMenu extends UIStateExt
 		// MISC
 
 		var accuracyDisplay = new ConfigOption("Accuracy display", ": " + accuracyType,
-			"What type of accuracy calculation you want to use. \nSimple is just notes hit / total notes. \nComplex also factors in how early or late a note was.");
+			"What type of accuracy calculation you want to use. \nSimple is just notes hit / total notes. \nComplex factors in how early or late a note was, based on rating. \n'Millisecond' factors in how early or late a note was, based on ms.");
 		accuracyDisplay.optionUpdate = function()
 		{
 			if (controls.RIGHT_P)
@@ -630,10 +645,10 @@ class ConfigMenu extends UIStateExt
 				accuracyTypeInt -= 1;
 			}
 
-			if (accuracyTypeInt > 2)
+			if (accuracyTypeInt > 3)
 				accuracyTypeInt = 0;
 			if (accuracyTypeInt < 0)
-				accuracyTypeInt = 2;
+				accuracyTypeInt = 3;
 
 			accuracyType = accuracyTypes[accuracyTypeInt];
 
@@ -884,7 +899,7 @@ class ConfigMenu extends UIStateExt
 		
 		configOptions = [
 			[fpsCap, noteSplash, noteGlow, bgDim, showFPS],
-			[noteOffset, downscroll, centeredNotes, ghostTap, controllerBinds, keyBinds],
+			[noteOffset, downscroll, centeredNotes, ghostTap, swagRating, controllerBinds, keyBinds],
 			[
 				accuracyDisplay,
 				showComboBreaks,
@@ -901,7 +916,7 @@ class ConfigMenu extends UIStateExt
 	function writeToConfig()
 	{
 		Config.write(offsetValue, accuracyType, healthValue / 10.0, healthDrainValue / 10.0, comboValue, downValue, glowValue, randomTapValue, noCapValue,
-			scheme, dimValue, noteSplashValue, centeredValue, scrollSpeedValue / 10.0, showComboBreaksValue, showFPSValue, camMovementValue);
+			scheme, dimValue, noteSplashValue, centeredValue, scrollSpeedValue / 10.0, showComboBreaksValue, showFPSValue, camMovementValue, swagValue);
 	}
 }
 

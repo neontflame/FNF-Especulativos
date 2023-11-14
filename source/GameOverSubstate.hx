@@ -34,14 +34,21 @@ class GameOverSubstate extends MusicBeatSubstate
 		bf = new Character(x, y, daBf, true);
 		add(bf);
 
+		if (daBf == "bf-especula-dead")
+			camX -= 400;
+			
 		camFollow = new FlxObject(camX, camY, 1, 1);
 		add(camFollow);
 		FlxTween.tween(camFollow, {x: bf.getGraphicMidpoint().x, y: bf.getGraphicMidpoint().y}, 3, {ease: FlxEase.quintOut, startDelay: 0.5});
 		
-		if (daBf == "bf-qen")
-			FlxG.sound.play(Paths.sound('qen/qen_loss_sfx' + stageSuffix));
-		else
-			FlxG.sound.play(Paths.sound('fnf_loss_sfx' + stageSuffix));
+		switch (daBf) {
+			case "bf-qen":
+				FlxG.sound.play(Paths.sound('qen/qen_loss_sfx' + stageSuffix));
+			case "bf-especula-dead": 
+				FlxG.sound.play(Paths.sound('s3_laser_death' + stageSuffix));
+			default: 
+				FlxG.sound.play(Paths.sound('fnf_loss_sfx' + stageSuffix));
+		}
 			
 		Conductor.changeBPM(100);
 

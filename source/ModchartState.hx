@@ -1,10 +1,11 @@
 // this file is for modchart things, this is to declutter playstate.hx
 // Lua
 import flixel.graphics.FlxGraphic;
+import flixel.animation.FlxBaseAnimation;
 import flixel.graphics.frames.FlxAtlasFrames;
 #if EXPERIMENTAL_LUA
 import flixel.tweens.FlxEase;
-import openfl.filters.ShaderFilter;
+// import openfl.filters.ShaderFilter;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import openfl.geom.Matrix;
@@ -287,11 +288,10 @@ class ModchartState
 		PlayState.instance.executeEvent("changeChar;boyfriend;" + id);
 	}
 
-	function makeAnimatedLuaSprite(spritePath:String, names:Array<String>, prefixes:Array<String>, startAnim:String, id:String)
+	function makeAnimatedLuaSprite(spritePath:String, names:Array<String>, prefixes:Array<String>, startAnim:String, id:String, drawBehind:Bool)
 	{
 		#if sys
 		var data:BitmapData = BitmapData.fromFile(Sys.getCwd() + "assets/data/" + PlayState.SONG.song.toLowerCase() + '/' + spritePath + ".png");
-
 		var sprite:FlxSprite = new FlxSprite(0, 0);
 
 		sprite.frames = FlxAtlasFrames.fromSparrow(FlxGraphic.fromBitmapData(data),
@@ -313,8 +313,31 @@ class ModchartState
 
 		luaSprites.set(id, sprite);
 
+		// and once again: shitty layering but it works!
+		if (drawBehind)
+		{
+			PlayState.instance.removeObject(PlayState.instance.dadGroup);
+			PlayState.instance.removeObject(PlayState.instance.gfGroup);
+			PlayState.instance.removeObject(PlayState.instance.bfGroup);
+
+			if (Config.comboType == 0)
+				@:privateAccess
+				PlayState.instance.removeObject(PlayState.instance.comboUI);
+		}
+			
 		PlayState.instance.addObject(sprite);
 
+		if (drawBehind)
+		{
+			PlayState.instance.addObject(PlayState.instance.dadGroup);
+			PlayState.instance.addObject(PlayState.instance.gfGroup);
+			PlayState.instance.addObject(PlayState.instance.bfGroup);
+
+			if (Config.comboType == 0)
+				@:privateAccess
+				PlayState.instance.addObject(PlayState.instance.comboUI);
+		}
+		
 		sprite.animation.play(startAnim);
 		return id;
 		#end
@@ -350,9 +373,9 @@ class ModchartState
 		{
 			if (drawBehind)
 			{
-				PlayState.instance.removeObject(PlayState.instance.dad);
-				PlayState.instance.removeObject(PlayState.instance.gf);
-				PlayState.instance.removeObject(PlayState.instance.boyfriend);
+				PlayState.instance.removeObject(PlayState.instance.dadGroup);
+				PlayState.instance.removeObject(PlayState.instance.gfGroup);
+				PlayState.instance.removeObject(PlayState.instance.bfGroup);
 
 				if (Config.comboType == 0)
 					@:privateAccess
@@ -363,9 +386,9 @@ class ModchartState
 			
 			if (drawBehind)
 			{
-				PlayState.instance.addObject(PlayState.instance.dad);
-				PlayState.instance.addObject(PlayState.instance.gf);
-				PlayState.instance.addObject(PlayState.instance.boyfriend);
+				PlayState.instance.addObject(PlayState.instance.dadGroup);
+				PlayState.instance.addObject(PlayState.instance.gfGroup);
+				PlayState.instance.addObject(PlayState.instance.bfGroup);
 
 				if (Config.comboType == 0)
 					@:privateAccess
@@ -467,6 +490,15 @@ class ModchartState
 			PlayState.instance.removeObject(sprite);
 			return true;
 		});
+		
+		Lua_helper.add_callback(lua, "spritePlayAnim", function(id:String, anim:String)
+		{
+			var sprite = luaSprites.get(id);
+			if (sprite == null)
+				return false;
+			sprite.animation.play(anim);
+			return true;
+		});
 
 		// hud/camera
 
@@ -516,11 +548,13 @@ class ModchartState
 		Lua_helper.add_callback(lua, "setCamZoom", function(zoomAmount:Float)
 		{
 			FlxG.camera.zoom = zoomAmount;
+			PlayState.instance.camGameModified = true;
 		});
 
 		Lua_helper.add_callback(lua, "setHudZoom", function(zoomAmount:Float)
 		{
 			PlayState.instance.camHUD.zoom = zoomAmount;
+			PlayState.instance.camHUDModified = true;
 		});
 
 		// strumline
@@ -846,6 +880,7 @@ class ModchartState
 
 		Lua_helper.add_callback(lua, "tweenCameraZoom", function(toZoom:Float, time:Float, onComplete:String)
 		{
+			PlayState.instance.camGameModified = true;
 			FlxTween.tween(FlxG.camera, {zoom: toZoom}, time, {
 				ease: FlxEase.linear,
 				onComplete: function(flxTween:FlxTween)
@@ -888,6 +923,7 @@ class ModchartState
 
 		Lua_helper.add_callback(lua, "tweenHudZoom", function(toZoom:Float, time:Float, onComplete:String)
 		{
+			PlayState.instance.camHUDModified = true;
 			FlxTween.tween(PlayState.instance.camHUD, {zoom: toZoom}, time, {
 				ease: FlxEase.linear,
 				onComplete: function(flxTween:FlxTween)
@@ -1302,6 +1338,8 @@ class ModchartState
 			setVar("defaultStrum" + i + "Angle", Math.floor(member.angle));
 			trace("Adding strum" + i);
 		}
+		
+		trace("working dir is " + Sys.getCwd());
 	}
 
 	public function executeState(name, args:Array<Dynamic>)

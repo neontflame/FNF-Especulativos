@@ -32,7 +32,8 @@ class FreeplayState extends MusicBeatState
 	public static var curLimit:Int = 0;
 
 	var missingShit:Bool = false;
-
+	var playStateAnyways:Bool = false;
+	
 	var scoreText:FlxText;
 	var lerpScore:Int = 0;
 	var intendedScore:Int = 0;
@@ -40,6 +41,8 @@ class FreeplayState extends MusicBeatState
 	private var grpSongs:FlxTypedGroup<ProjectSprite>;
 	private var curPlaying:Bool = false;
 
+	private final songsWithNoDiff:Array<String> = ["Hihi", "Tres-Bofetadas", "Dragons", "Do-Mal", "Street-Musician", "fnfolas", "so-um-cara"];
+	
 	override function create()
 	{
 		openfl.Lib.current.stage.frameRate = 144;
@@ -49,9 +52,10 @@ class FreeplayState extends MusicBeatState
 		if (curSelected == 0)
 			curLimit = 0;
 
-		if (CoolUtil.exists("assets/images/week1"))
+		if (CoolUtil.exists("assets/images/week1")) {
 			addWeek(['Tutorial'], 1, ['gf-menu']);
-		addWeek(['Bopeebo', 'Fresh', 'Dadbattle'], 1, ['dad']);
+			addWeek(['Bopeebo', 'Fresh', 'Dadbattle'], 1, ['dad']);
+		}
 
 		if (CoolUtil.exists("assets/images/week2"))
 			addWeek(['Spookeez', 'South', 'Monster'], 2, ['spooky', 'spooky', "monster"]);
@@ -90,6 +94,9 @@ class FreeplayState extends MusicBeatState
 		if (FlxG.save.data.qenUnlock && Startup.hasQeN && CoolUtil.exists("assets/images/qen"))
 			addWeek(['fnfolas'], 11, ['qen']);
 
+		if (Main.salsicha && CoolUtil.exists("assets/images/salsicha"))
+			addWeek(['so-um-cara'], 12, ['hawnt-salsicha']);
+			
 		// LOAD CHARACTERS
 
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menu/scratchBG'));
@@ -187,10 +194,15 @@ class FreeplayState extends MusicBeatState
 		if (Math.abs(lerpScore - intendedScore) <= 10)
 			lerpScore = intendedScore;
 
-		scoreText.text = "MELHOR PONTUAÇÃO: "
-			+ lerpScore
-			+ "   //   Dificuldade: "
-			+ (curDifficulty == 0 ? 'Fácil' : curDifficulty == 2 ? 'Difícil' : 'Normal');
+		if (songsWithNoDiff.contains(songs[curSelected].songName)) {
+			scoreText.text = "Melhor pontuação: " + lerpScore;
+		} else {
+			scoreText.text = "Melhor pontuação: "
+				+ lerpScore
+				+ "   //   Dificuldade: "
+				+ (curDifficulty == 0 ? 'Fácil' : curDifficulty == 2 ? 'Difícil' : 'Normal');
+		}
+		
 		scoreText.screenCenter(X);
 
 		if (headerSelected.width != scoreText.width + 32)
@@ -247,8 +259,6 @@ class FreeplayState extends MusicBeatState
 
 		if (accepted)
 		{
-			if (CoolUtil.weekGfxWork(songs[curSelected].week))
-			{
 				if (CoolUtil.chartExists(songs[curSelected].songName.toLowerCase(), curDifficulty))
 				{
 					// hell yeah lets song
@@ -263,10 +273,15 @@ class FreeplayState extends MusicBeatState
 					PlayState.storyWeek = songs[curSelected].week;
 					trace('CUR WEEK' + PlayState.storyWeek);
 
-					switchState(new PlayState());
-
-					if (FlxG.sound.music != null)
+					if (CoolUtil.weekGfxWork(songs[curSelected].week)) {
+						switchState(new PlayState());
+						
+						if (FlxG.sound.music != null)
 						FlxG.sound.music.stop();
+					} else {
+						playStateAnyways = true;
+						openAlert();
+					}
 				}
 				else
 				{
@@ -274,11 +289,6 @@ class FreeplayState extends MusicBeatState
 					openAlert("vaiNoNormalFdp");
 				}
 			}
-			else
-			{
-				openAlert();
-			}
-		}
 	}
 
 	function changeDiff(change:Int = 0)
@@ -289,10 +299,15 @@ class FreeplayState extends MusicBeatState
 			curDifficulty = 2;
 		if (curDifficulty > 2)
 			curDifficulty = 0;
-
+		
 		if (songs[curSelected].songName == "Lil-Buddies")
 		{
 			curDifficulty = 2;
+		}
+		
+		if (songsWithNoDiff.contains(songs[curSelected].songName))
+		{
+			curDifficulty = 1;
 		}
 
 		#if !switch
@@ -424,6 +439,13 @@ class FreeplayState extends MusicBeatState
 	{
 		missingShit = false;
 		super.closeSubState();
+		
+		if (playStateAnyways) {
+			switchState(new PlayState());
+						
+			if (FlxG.sound.music != null)
+			FlxG.sound.music.stop();
+		}
 	}
 }
 

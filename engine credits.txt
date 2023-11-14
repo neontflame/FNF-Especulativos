@@ -2,3 +2,5 @@ Things taken from other FNF engines
 
 Kade Engine (KadeDev) - Lua modchart support
 Nova Engine (swordcube) - Asset cache clearing
+Psych Engine (ShadowMario) - Character hotswap system
+Forever Engine (Yoshubs) - Crash logging

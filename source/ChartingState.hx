@@ -1663,18 +1663,20 @@ class ChartingState extends MusicBeatState
 
 			if (section == curSec + secOffset)
 			{
+				var tagSplit = tag.split(";");
+				
 				var eventSymbol = new EventSprite();
 				var customIcon:Bool = false;
 
 				#if sys
-				if (sys.FileSystem.exists("assets/images/chartEditor/event/" + tag + ".png"))
+				if (sys.FileSystem.exists("assets/images/chartEditor/event/" + tagSplit[0] + ".png"))
 				{
-					if (!eventCache.exists("assets/images/chartEditor/event/" + tag + ".png"))
+					if (!eventCache.exists("assets/images/chartEditor/event/" + tagSplit[0] + ".png"))
 					{
-						eventCache.set("assets/images/chartEditor/event/" + tag + ".png",
-							BitmapData.fromFile("assets/images/chartEditor/event/" + tag + ".png"));
+						eventCache.set("assets/images/chartEditor/event/" + tagSplit[0] + ".png",
+							BitmapData.fromFile("assets/images/chartEditor/event/" + tagSplit[0] + ".png"));
 					}
-					eventSymbol.loadGraphic(FlxGraphic.fromBitmapData(eventCache.get("assets/images/chartEditor/event/" + tag + ".png")));
+					eventSymbol.loadGraphic(FlxGraphic.fromBitmapData(eventCache.get("assets/images/chartEditor/event/" + tagSplit[0] + ".png")));
 					customIcon = true;
 				}
 				else

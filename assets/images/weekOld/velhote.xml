@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="velhote.png">
+	<!-- Created with Adobe Animate version 19.0.0.326 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="velhote down0000" x="0" y="0" width="426" height="340" frameX="-5" frameY="-15" frameWidth="437" frameHeight="355"/>
+	<SubTexture name="velhote down0001" x="426" y="0" width="426" height="340" frameX="-5" frameY="-15" frameWidth="437" frameHeight="355"/>
+	<SubTexture name="velhote down0002" x="852" y="0" width="437" height="355"/>
+	<SubTexture name="velhote down0003" x="1289" y="0" width="437" height="355"/>
+	<SubTexture name="velhote down0004" x="852" y="0" width="437" height="355"/>
+	<SubTexture name="velhote down0005" x="1289" y="0" width="437" height="355"/>
+	<SubTexture name="velhote down0006" x="852" y="0" width="437" height="355"/>
+	<SubTexture name="velhote down0007" x="1289" y="0" width="437" height="355"/>
+	<SubTexture name="velhote idle0000" x="0" y="355" width="375" height="392" frameX="-48" frameY="0" frameWidth="456" frameHeight="393"/>
+	<SubTexture name="velhote idle0001" x="375" y="355" width="375" height="392" frameX="-48" frameY="0" frameWidth="456" frameHeight="393"/>
+	<SubTexture name="velhote idle0002" x="750" y="355" width="378" height="389" frameX="-46" frameY="-3" frameWidth="456" frameHeight="393"/>
+	<SubTexture name="velhote idle0003" x="1128" y="355" width="378" height="389" frameX="-46" frameY="-3" frameWidth="456" frameHeight="393"/>
+	<SubTexture name="velhote idle0004" x="750" y="355" width="378" height="389" frameX="-46" frameY="-3" frameWidth="456" frameHeight="393"/>
+	<SubTexture name="velhote idle0005" x="1506" y="355" width="456" height="355" frameX="0" frameY="-37" frameWidth="456" frameHeight="393"/>
+	<SubTexture name="velhote idle0006" x="0" y="747" width="456" height="355" frameX="0" frameY="-37" frameWidth="456" frameHeight="393"/>
+	<SubTexture name="velhote idle0007" x="456" y="747" width="455" height="360" frameX="-1" frameY="-33" frameWidth="456" frameHeight="393"/>
+	<SubTexture name="velhote idle0008" x="911" y="747" width="455" height="360" frameX="-1" frameY="-33" frameWidth="456" frameHeight="393"/>
+	<SubTexture name="velhote idle0009" x="456" y="747" width="455" height="360" frameX="-1" frameY="-33" frameWidth="456" frameHeight="393"/>
+	<SubTexture name="velhote left0000" x="1366" y="747" width="375" height="390" frameX="0" frameY="-6" frameWidth="382" frameHeight="396"/>
+	<SubTexture name="velhote left0001" x="0" y="1137" width="375" height="390" frameX="0" frameY="-6" frameWidth="382" frameHeight="396"/>
+	<SubTexture name="velhote left0002" x="375" y="1137" width="367" height="396" frameX="-15" frameY="0" frameWidth="382" frameHeight="396"/>
+	<SubTexture name="velhote left0003" x="742" y="1137" width="367" height="396" frameX="-15" frameY="0" frameWidth="382" frameHeight="396"/>
+	<SubTexture name="velhote left0004" x="375" y="1137" width="367" height="396" frameX="-15" frameY="0" frameWidth="382" frameHeight="396"/>
+	<SubTexture name="velhote left0005" x="742" y="1137" width="367" height="396" frameX="-15" frameY="0" frameWidth="382" frameHeight="396"/>
+	<SubTexture name="velhote left0006" x="375" y="1137" width="367" height="396" frameX="-15" frameY="0" frameWidth="382" frameHeight="396"/>
+	<SubTexture name="velhote left0007" x="742" y="1137" width="367" height="396" frameX="-15" frameY="0" frameWidth="382" frameHeight="396"/>
+	<SubTexture name="velhote right0000" x="1109" y="1137" width="443" height="382" frameX="-2" frameY="-5" frameWidth="445" frameHeight="387"/>
+	<SubTexture name="velhote right0001" x="1552" y="1137" width="443" height="382" frameX="-2" frameY="-5" frameWidth="445" frameHeight="387"/>
+	<SubTexture name="velhote right0002" x="0" y="1533" width="430" height="387" frameX="0" frameY="0" frameWidth="445" frameHeight="387"/>
+	<SubTexture name="velhote right0003" x="430" y="1533" width="430" height="387" frameX="0" frameY="0" frameWidth="445" frameHeight="387"/>
+	<SubTexture name="velhote right0004" x="0" y="1533" width="430" height="387" frameX="0" frameY="0" frameWidth="445" frameHeight="387"/>
+	<SubTexture name="velhote right0005" x="430" y="1533" width="430" height="387" frameX="0" frameY="0" frameWidth="445" frameHeight="387"/>
+	<SubTexture name="velhote right0006" x="0" y="1533" width="430" height="387" frameX="0" frameY="0" frameWidth="445" frameHeight="387"/>
+	<SubTexture name="velhote right0007" x="430" y="1533" width="430" height="387" frameX="0" frameY="0" frameWidth="445" frameHeight="387"/>
+	<SubTexture name="velhote up0000" x="860" y="1533" width="466" height="448" frameX="-12" frameY="0" frameWidth="478" frameHeight="448"/>
+	<SubTexture name="velhote up0001" x="1326" y="1533" width="466" height="448" frameX="-12" frameY="0" frameWidth="478" frameHeight="448"/>
+	<SubTexture name="velhote up0002" x="0" y="1981" width="477" height="434" frameX="0" frameY="-13" frameWidth="478" frameHeight="448"/>
+	<SubTexture name="velhote up0003" x="477" y="1981" width="477" height="434" frameX="0" frameY="-13" frameWidth="478" frameHeight="448"/>
+	<SubTexture name="velhote up0004" x="0" y="1981" width="477" height="434" frameX="0" frameY="-13" frameWidth="478" frameHeight="448"/>
+	<SubTexture name="velhote up0005" x="477" y="1981" width="477" height="434" frameX="0" frameY="-13" frameWidth="478" frameHeight="448"/>
+	<SubTexture name="velhote up0006" x="0" y="1981" width="477" height="434" frameX="0" frameY="-13" frameWidth="478" frameHeight="448"/>
+	<SubTexture name="velhote up0007" x="477" y="1981" width="477" height="434" frameX="0" frameY="-13" frameWidth="478" frameHeight="448"/>
+</TextureAtlas>

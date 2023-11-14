@@ -17,11 +17,10 @@ atualizações-cool:
 		warhead (Marcoball)
 	FREEPLAY:
 		nao-acesse (Fupi vs. Leo || O mundo de leo: Scratchventura)
-		especularumble (Espe, SCDM, QeN, Yotsuba)
 
 --- AS VERSÕES ABAIXO TALVEZ NÃO ACONTEÇAM DEVIDO A MT MT BLOAT AGH ---
 
-atualizações-cool (mais uns coiso):
+mais uns coiso da atualizações-cool:
 	FREEPLAY:
 		especularumble (Espe, SCDM, QeN, Yotsuba)
 

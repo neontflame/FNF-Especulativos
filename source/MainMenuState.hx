@@ -320,26 +320,55 @@ class MainMenuState extends MusicBeatState
 				trace('epico deu certo');
 				openAlert();
 				selectedSomethin = false;
+				
 			case "FINALBUILD":
 				trace('PARA de tentar OLHAR leaks do FNF: The Full Ass Game');
 				openAlert('deskinned');
 				selectedSomethin = false;
+				
 			case "ENJOYEVERYTHING":
 				// pra quem tiver lendo esse comentario leia yotsuba&!
 				// assinado, neon
 				trace('leia yotsubato');
 				openAlert('yotsubaAlert');
 				selectedSomethin = false;
+				
 			case "JOLITAAS":
 				// queixones e narigoles
 				trace('fnfolas e real');
 				openAlert('qenAlert');
 				selectedSomethin = false;
+				
 			case "595313131313131":
 				// lmfao
 				trace('ufs referencia detected');
 				openAlert('ultUnlock');
 				selectedSomethin = false;
+				
+			// SOPA CLICKERS
+			// sopa clicker 1
+			case "SOPACLICKER":
+				trace('soup time');
+				SopaClickerState.versao = 1;
+				SopaClickerState.trolagem = false;
+				switchState(new SopaClickerState());
+				selectedSomethin = true;
+			
+			// sopa clicker 2 (fake)
+			case "SOPACLICKER2":
+				trace('soup time 2 fake');
+				SopaClickerState.versao = 2;
+				SopaClickerState.trolagem = true;
+				switchState(new SopaClickerState());
+				selectedSomethin = true;
+				
+			// sopa clicker 2 dlc tom
+			case "SOPACLICKER2DLCTOM":
+				trace('soup time 2 real');
+				SopaClickerState.versao = 2;
+				SopaClickerState.trolagem = false;
+				switchState(new SopaClickerState());
+				selectedSomethin = true;
 			default:
 				trace('cade');
 				selectedSomethin = false;

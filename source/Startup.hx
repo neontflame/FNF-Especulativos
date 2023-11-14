@@ -196,7 +196,7 @@ class Startup extends FlxState
 
         new FlxTimer().start(1.1, function(tmr:FlxTimer)
         {
-            FlxG.sound.play(Paths.sound("splashSound"));   
+            // FlxG.sound.play(Paths.sound("splashSound"));   
         });
 
         super.create();

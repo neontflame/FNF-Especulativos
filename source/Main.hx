@@ -12,7 +12,8 @@ class Main extends Sprite
 
 	public static var novid:Bool = false;
 	public static var flippymode:Bool = false;
-
+	public static var salsicha:Bool = false;
+	
 	public function new()
 	{
 		super();
@@ -20,6 +21,7 @@ class Main extends Sprite
 		#if sys
 		novid = Sys.args().contains("-novid");
 		flippymode = Sys.args().contains("-flippymode");
+		salsicha = Sys.args().contains("-salsicha");
 		#end
 
 		fpsDisplay = new FPS(10, 3, 0xFFFFFF);
@@ -33,8 +35,9 @@ class Main extends Sprite
 		VideoHandler.MAX_FPS = 30;
 		#end
 
-		trace("-=Args=-");
+		trace("-= Args =-");
 		trace("novid: " + novid);
 		trace("flippymode: " + flippymode);
+		trace("salsicha: " + salsicha);
 	}
 }

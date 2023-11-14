@@ -1,0 +1,5 @@
+idle;velhote idle;24;true
+singLEFT;velhote left;24;false
+singDOWN;velhote down;24;false
+singUP;velhote up;24;false
+singRIGHT;velhote right;24;false

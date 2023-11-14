@@ -3,6 +3,8 @@ CoisasBar
 AdicioneVoce
 QeNCasa
 Street
+Gramado
+BigHawnt
 Spooky
 Philly
 Limo
