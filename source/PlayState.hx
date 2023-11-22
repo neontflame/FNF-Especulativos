@@ -2,6 +2,7 @@ package;
 
 #if sys
 import sys.FileSystem;
+import openfl.system.System;
 #end
 #if EXPERIMENTAL_LUA
 import openfl.geom.Matrix;
@@ -17,9 +18,6 @@ import flixel.math.FlxAngle;
 import flixel.group.FlxGroup;
 import lime.utils.Assets;
 import flixel.math.FlxRect;
-#if sys
-import openfl.system.System;
-#end
 import openfl.ui.KeyLocation;
 import flixel.input.keyboard.FlxKey;
 import openfl.ui.Keyboard;
@@ -284,7 +282,14 @@ class PlayState extends MusicBeatState
 	public static var sectionStartTime:Float = 0;
 
 	private var meta:SongMetaTags;
+	
+	private static final NOTE_HIT_HEAL:Float = 0.015; 
+	private static final HOLD_HIT_HEAL:Float = 0.0075; 
 
+	private static final NOTE_MISS_DAMAGE:Float = 0.055; 
+	private static final HOLD_RELEASE_STEP_DAMAGE:Float = 0.0425;
+	private static final WRONG_TAP_DAMAGE:Float = 0.0475; 
+	
 	private var executeModchart = false;
 
 	#if EXPERIMENTAL_LUA
@@ -448,7 +453,7 @@ class PlayState extends MusicBeatState
 		if (SONG.song.toLowerCase() == "street-musician")
 		{
 			hudFont = "augie";
-			hudSize = 18;
+			hudSize = 20;
 		}
 
 		var gfCheck:String = 'gf';
@@ -2362,11 +2367,11 @@ class PlayState extends MusicBeatState
 					{
 						case "":
 							vocals.volume = 0;
-							noteMiss(daNote.noteData, daNote.type, 0.055, false, true);
+							noteMiss(daNote.noteData, daNote.type, NOTE_MISS_DAMAGE, false, true);
 						case "BULLET":
 							vocals.volume = 0;
 							marcoHealth = 10;
-							noteMiss(daNote.noteData, daNote.type, 0.35, false, true);
+							noteMiss(daNote.noteData, daNote.type, NOTE_MISS_DAMAGE * 6.36, false, true);
 					}
 
 					daNote.alpha = 0.3;
@@ -2809,32 +2814,61 @@ class PlayState extends MusicBeatState
 			{
 				for (note in possibleNotes)
 				{
-					if (note.noteWidth == 1)
-					{
-						if (controlArray[note.noteData] && !directionsAccounted[note.noteData])
-						{
-							goodNoteHit(note);
-							directionsAccounted[note.noteData] = true;
-						}
-					}
+					// held inputs
+					var firstInputHeld = controlArrayHold[note.noteData] && !directionsAccounted[note.noteData];
+					var secondInputHeld = controlArrayHold[note.noteData + 1] && !directionsAccounted[note.noteData + 1];
+					var thirdInputHeld = controlArrayHold[note.noteData + 2] && !directionsAccounted[note.noteData + 2];
+					var fourthInputHeld = controlArrayHold[note.noteData + 3] && !directionsAccounted[note.noteData + 3];
+					// pressed inputs
+					var firstInputPressed = controlArray[note.noteData] && !directionsAccounted[note.noteData];
+					var secondInputPressed = controlArray[note.noteData + 1] && !directionsAccounted[note.noteData + 1];
+					var thirdInputPressed = controlArray[note.noteData + 2] && !directionsAccounted[note.noteData + 2];
+					var fourthInputPressed = controlArray[note.noteData + 3] && !directionsAccounted[note.noteData + 3];
 
-					// shit code ughhhhhhh
-					if (note.noteWidth == 2)
-					{
-						var firstInputHeld = controlArrayHold[note.noteData] && !directionsAccounted[note.noteData];
-						var secondInputHeld = controlArrayHold[note.noteData + 1] && !directionsAccounted[note.noteData + 1];
-						var firstInputPressed = controlArray[note.noteData] && !directionsAccounted[note.noteData];
-						var secondInputPressed = controlArray[note.noteData + 1] && !directionsAccounted[note.noteData + 1];
-
-						if (
-						(secondInputHeld && firstInputPressed) || 
-						(firstInputHeld && secondInputPressed)
-						)
-						{
-							goodNoteHit(note);
-							directionsAccounted[note.noteData] = true;
-							directionsAccounted[note.noteData + 1] = true;
-						}
+					//////// note width coisos! lmao!
+					switch (note.noteWidth) {
+						case 1:
+							if (firstInputPressed)
+							{
+								goodNoteHit(note);
+								directionsAccounted[note.noteData] = true;
+							}
+						case 2:
+							if (
+							(firstInputPressed && secondInputHeld) || 
+							(firstInputHeld && secondInputPressed)
+							)
+							{
+								goodNoteHit(note);
+								directionsAccounted[note.noteData] = true;
+								directionsAccounted[note.noteData + 1] = true;
+							}
+						case 3:
+							if (
+							(firstInputPressed && secondInputHeld && thirdInputHeld) || 
+							(firstInputHeld && secondInputPressed && thirdInputHeld) || 
+							(firstInputHeld && secondInputHeld && thirdInputPressed)
+							)
+							{
+								goodNoteHit(note);
+								directionsAccounted[note.noteData] = true;
+								directionsAccounted[note.noteData + 1] = true;
+								directionsAccounted[note.noteData + 2] = true;
+							}
+						case 4:
+							if (
+							(firstInputPressed && secondInputHeld && thirdInputHeld && fourthInputHeld) || 
+							(firstInputHeld && secondInputPressed && thirdInputHeld && fourthInputHeld) || 
+							(firstInputHeld && secondInputHeld && thirdInputPressed && fourthInputHeld) ||
+							(firstInputHeld && secondInputHeld && thirdInputHeld && fourthInputPressed)
+							)
+							{
+								goodNoteHit(note);
+								directionsAccounted[note.noteData] = true;
+								directionsAccounted[note.noteData + 1] = true;
+								directionsAccounted[note.noteData + 2] = true;
+								directionsAccounted[note.noteData + 3] = true;
+							}
 					}
 				}
 				for (i in 0...4)
@@ -2887,7 +2921,7 @@ class PlayState extends MusicBeatState
 					daNote.tooLate = true;
 					daNote.destroy();
 					updateAccuracy((Config.accuracy == 'millisecond' ? true : false));
-					noteMiss(daNote.noteData, daNote.type, 0.0425, false, true, false, false);
+					noteMiss(daNote.noteData, daNote.type, HOLD_RELEASE_STEP_DAMAGE, false, true, false, false);
 				}
 
 				// This is for the first released note.
@@ -2896,21 +2930,10 @@ class PlayState extends MusicBeatState
 					var doTheMiss:Bool = false;
 
 					doTheMiss = releaseTimes[daNote.noteData] >= releaseBufferTime;
-
-					/* switch(daNote.noteData){
-						case 0:
-							doTheMiss = leftRelease;
-						case 1:
-							doTheMiss = downRelease;
-						case 2:
-							doTheMiss = upRelease;
-						case 3:
-							doTheMiss = rightRelease;
-					}*/
-
+					
 					if (doTheMiss)
 					{
-						noteMiss(daNote.noteData, daNote.type, 0.055, true, true, false, true);
+						noteMiss(daNote.noteData, daNote.type, NOTE_MISS_DAMAGE, true, true, false, true);
 						vocals.volume = 0;
 						daNote.tooLate = true;
 						daNote.destroy();
@@ -3124,9 +3147,9 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	inline function noteMissWrongPress(direction:Int = 1, ?healthLoss:Float = 0.0475):Void
+	inline function noteMissWrongPress(direction:Int = 1):Void
 	{
-		noteMiss(direction, "", healthLoss, true, false, false, false, 4, 25);
+		noteMiss(direction, "", WRONG_TAP_DAMAGE, true, false, false, false, 4, 25);
 	}
 
 	function badNoteCheck(direction:Int = -1)
@@ -3181,7 +3204,7 @@ class PlayState extends MusicBeatState
 		// This is to make sure that if hold notes are hit out of order they are destroyed. Should not be possible though.
 		if (note.isSustainNote && !note.prevNote.wasGoodHit)
 		{
-			noteMiss(note.noteData, note.type, 0.055, true, true, false);
+			noteMiss(note.noteData, note.type, NOTE_MISS_DAMAGE, true, true, false);
 			vocals.volume = 0;
 			note.prevNote.tooLate = true;
 			note.prevNote.destroy();
@@ -3210,19 +3233,18 @@ class PlayState extends MusicBeatState
 					{
 						if (!note.isSustainNote)
 						{
-							health += 0.015 * Config.healthMultiplier;
+							health += NOTE_HIT_HEAL * Config.healthMultiplier;
 						}
 						else
 						{
-							health += 0.0075 * Config.healthMultiplier;
+							health += HOLD_HIT_HEAL * Config.healthMultiplier;
 						}
-						health += 0.015 * Config.healthMultiplier;
 					}
 			}
 
 			if (boyfriend.canAutoAnim
 				&& (Character.LOOP_ANIM_ON_HOLD ? (note.isSustainNote ? (Character.HOLD_LOOP_WAIT ? (!boyfriend.animation.name.contains("sing")
-					|| (boyfriend.animation.curAnim.curFrame >= 3
+					|| (boyfriend.animation.curAnim.curFrame >= 1
 						|| boyfriend.animation.curAnim.finished)) : true) : true) : !note.isSustainNote))
 			{
 				if (note.type == "BULLET")
@@ -3808,7 +3830,7 @@ class PlayState extends MusicBeatState
 		switch (Config.accuracy)
 		{
 			case "none":
-				scoreTxt.text = "Score:" + songScore + (textRating != "Clear" ? " | " + textRating : "");
+				scoreTxt.text = "Score: " + songScore + (textRating != "Clear" ? " | " + textRating : "");
 				ratingScratchTxt.text = textRating;
 				
 				if (Config.showComboBreaks)
@@ -3824,12 +3846,12 @@ class PlayState extends MusicBeatState
 
 				if (Config.showComboBreaks)
 				{
-					scoreTxt.text = "Score:" + songScore + " | Combo Breaks:" + comboBreaks + " | Accuracy:" + truncateFloat(accuracy, 2) + "%" + (textRating != "Clear" ? " | " + textRating : "");
+					scoreTxt.text = "Score: " + songScore + " | Combo Breaks: " + comboBreaks + " | Accuracy: " + truncateFloat(accuracy, 2) + "%" + (textRating != "Clear" ? " | " + textRating : "");
 					missesScratchTxt.text = Std.string(comboBreaks);
 				}
 				else
 				{
-					scoreTxt.text = "Score:" + songScore + " | Misses:" + misses + " | Accuracy:" + truncateFloat(accuracy, 2) + "%" + (textRating != "Clear" ? " | " + textRating : "");
+					scoreTxt.text = "Score: " + songScore + " | Misses: " + misses + " | Accuracy: " + truncateFloat(accuracy, 2) + "%" + (textRating != "Clear" ? " | " + textRating : "");
 					missesScratchTxt.text = Std.string(misses);
 				}
 		}

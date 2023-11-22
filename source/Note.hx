@@ -16,8 +16,10 @@ class Note extends FlxSprite
 	public var tooLate:Bool = false;
 	public var wasGoodHit:Bool = false;
 	public var prevNote:Note;
+	
+	// note differentiator shiz
 	public var type:String = "";
-	public var noteWidth:Int = 1;
+	public var noteWidth:Int = 1; // goes up to 4
 
 	public var sustainLength:Float = 0;
 	public var isSustainNote:Bool = false;
@@ -34,10 +36,11 @@ class Note extends FlxSprite
 	public var yOffset:Float = 0;
 
 	public static var swagWidth:Float = 160 * 0.7;
-	public static final PURP_NOTE:Int = 0;
-	public static final GREEN_NOTE:Int = 2;
-	public static final BLUE_NOTE:Int = 1;
-	public static final RED_NOTE:Int = 3;
+	
+	inline public static final PURP_NOTE:Int = 0;
+	inline public static final GREEN_NOTE:Int = 2;
+	inline public static final BLUE_NOTE:Int = 1;
+	inline public static final RED_NOTE:Int = 3;
 
 	public var modifiedByLua:Bool = false;
 
@@ -120,7 +123,7 @@ class Note extends FlxSprite
 				if (_type != null)
 				{
 					if (CoolUtil.exists('assets/images/ui/customNotes/' + type + '.png')
-						|| CoolUtil.exists('assets/images/ui/customNotes/' + type + '.xml'))
+					|| CoolUtil.exists('assets/images/ui/customNotes/' + type + '.xml'))
 					{
 						frames = Paths.getSparrowAtlas('ui/customNotes/' + type);
 						// trace ('heres your note');
@@ -140,39 +143,37 @@ class Note extends FlxSprite
 					frames = Paths.getSparrowAtlas('ui/' + (isQen ? 'qenUI/' : '' ) + 'NOTE_assets');
 				}
 
-				if (_type == 'BULLET')
-				{
-					animation.addByPrefix('greenScroll', 'bulletnote');
-					animation.addByPrefix('redScroll', 'bulletnote');
-					animation.addByPrefix('blueScroll', 'bulletnote');
-					animation.addByPrefix('purpleScroll', 'bulletnote');
+				switch (_type) {
+					case 'BULLET':
+						animation.addByPrefix('greenScroll', 'bulletnote');
+						animation.addByPrefix('redScroll', 'bulletnote');
+						animation.addByPrefix('blueScroll', 'bulletnote');
+						animation.addByPrefix('purpleScroll', 'bulletnote');
 
-					animation.addByPrefix('purpleholdend', 'bullet end hold');
-					animation.addByPrefix('greenholdend', 'bullet end hold');
-					animation.addByPrefix('redholdend', 'bullet end hold');
-					animation.addByPrefix('blueholdend', 'bullet end hold');
+						animation.addByPrefix('purpleholdend', 'bullet end hold');
+						animation.addByPrefix('greenholdend', 'bullet end hold');
+						animation.addByPrefix('redholdend', 'bullet end hold');
+						animation.addByPrefix('blueholdend', 'bullet end hold');
 
-					animation.addByPrefix('purplehold', 'bullet hold piece');
-					animation.addByPrefix('greenhold', 'bullet hold piece');
-					animation.addByPrefix('redhold', 'bullet hold piece');
-					animation.addByPrefix('bluehold', 'bullet hold piece');
-				}
-				else
-				{
-					animation.addByPrefix('greenScroll', 'green0');
-					animation.addByPrefix('redScroll', 'red0');
-					animation.addByPrefix('blueScroll', 'blue0');
-					animation.addByPrefix('purpleScroll', 'purple0');
+						animation.addByPrefix('purplehold', 'bullet hold piece');
+						animation.addByPrefix('greenhold', 'bullet hold piece');
+						animation.addByPrefix('redhold', 'bullet hold piece');
+						animation.addByPrefix('bluehold', 'bullet hold piece');
+					default:
+						animation.addByPrefix('greenScroll', 'green0');
+						animation.addByPrefix('redScroll', 'red0');
+						animation.addByPrefix('blueScroll', 'blue0');
+						animation.addByPrefix('purpleScroll', 'purple0');
 
-					animation.addByPrefix('purpleholdend', 'pruple end hold');
-					animation.addByPrefix('greenholdend', 'green hold end');
-					animation.addByPrefix('redholdend', 'red hold end');
-					animation.addByPrefix('blueholdend', 'blue hold end');
+						animation.addByPrefix('purpleholdend', 'pruple end hold');
+						animation.addByPrefix('greenholdend', 'green hold end');
+						animation.addByPrefix('redholdend', 'red hold end');
+						animation.addByPrefix('blueholdend', 'blue hold end');
 
-					animation.addByPrefix('purplehold', 'purple hold piece');
-					animation.addByPrefix('greenhold', 'green hold piece');
-					animation.addByPrefix('redhold', 'red hold piece');
-					animation.addByPrefix('bluehold', 'blue hold piece');
+						animation.addByPrefix('purplehold', 'purple hold piece');
+						animation.addByPrefix('greenhold', 'green hold piece');
+						animation.addByPrefix('redhold', 'red hold piece');
+						animation.addByPrefix('bluehold', 'blue hold piece');
 				}
 
 				if (_type != null)
@@ -190,13 +191,13 @@ class Note extends FlxSprite
 
 		switch (noteData)
 		{
-			case 0:
+			case PURP_NOTE:
 				animation.play('purpleScroll');
-			case 1:
+			case BLUE_NOTE:
 				animation.play('blueScroll');
-			case 2:
+			case GREEN_NOTE:
 				animation.play('greenScroll');
-			case 3:
+			case RED_NOTE:
 				animation.play('redScroll');
 		}
 
@@ -205,20 +206,18 @@ class Note extends FlxSprite
 		if (isSustainNote && prevNote != null)
 		{
 			alpha = 0.6;
-
 			xOffset += width / 2;
-
 			flipY = Config.downscroll;
 
 			switch (noteData)
 			{
-				case 2:
+				case GREEN_NOTE:
 					animation.play('greenholdend');
-				case 3:
+				case RED_NOTE:
 					animation.play('redholdend');
-				case 1:
+				case BLUE_NOTE:
 					animation.play('blueholdend');
-				case 0:
+				case PURP_NOTE:
 					animation.play('purpleholdend');
 			}
 
@@ -233,13 +232,13 @@ class Note extends FlxSprite
 			{
 				switch (prevNote.noteData)
 				{
-					case 2:
+					case GREEN_NOTE:
 						prevNote.animation.play('greenhold');
-					case 3:
+					case RED_NOTE:
 						prevNote.animation.play('redhold');
-					case 1:
+					case BLUE_NOTE:
 						prevNote.animation.play('bluehold');
-					case 0:
+					case PURP_NOTE:
 						prevNote.animation.play('purplehold');
 				}
 
@@ -290,35 +289,28 @@ class Note extends FlxSprite
 			canBeHit = false;
 
 			if (strumTime <= Conductor.songPosition)
-			{
 				canBeHit = true;
-			}
 		}
 
 		// Glow note stuff.
-
 		if (canBeHit && Config.noteGlow && !isSustainNote && !editor && animation.curAnim.name.contains("Scroll"))
-		{
 			glow();
-		}
 
 		if (tooLate && !isSustainNote && !editor && !animation.curAnim.name.contains("Scroll"))
-		{
 			idle();
-		}
 	}
 
 	public function glow()
 	{
 		switch (noteData)
 		{
-			case 2:
+			case GREEN_NOTE:
 				animation.play('green glow');
-			case 3:
+			case RED_NOTE:
 				animation.play('red glow');
-			case 1:
+			case BLUE_NOTE:
 				animation.play('blue glow');
-			case 0:
+			case PURP_NOTE:
 				animation.play('purple glow');
 		}
 	}
@@ -327,13 +319,13 @@ class Note extends FlxSprite
 	{
 		switch (noteData)
 		{
-			case 2:
+			case GREEN_NOTE:
 				animation.play('greenScroll');
-			case 3:
+			case RED_NOTE:
 				animation.play('redScroll');
-			case 1:
+			case BLUE_NOTE:
 				animation.play('blueScroll');
-			case 0:
+			case PURP_NOTE:
 				animation.play('purpleScroll');
 		}
 	}

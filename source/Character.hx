@@ -14,9 +14,9 @@ using StringTools;
 class Character extends FlxSprite
 {
 	// Global character properties.
-	public static var LOOP_ANIM_ON_HOLD:Bool = true; // Determines whether hold notes will loop the sing animation. Default is true.
-	public static var HOLD_LOOP_WAIT:Bool = false; // Determines whether hold notes will only loop the sing animation if 4 frames of animation have passed. Default is false.
-	public static var USE_IDLE_END:Bool = true; // Determines whether you will go back to the start of the idle or the end of the idle when letting go of a note. Default is true for FPS Plus, false for base game.
+	public static final LOOP_ANIM_ON_HOLD:Bool = true; // Determines whether hold notes will loop the sing animation. Default is true.
+	public static final HOLD_LOOP_WAIT:Bool = true; // Determines whether hold notes will only loop the sing animation if 2 frames of animation have passed. Default is false.
+	public static final USE_IDLE_END:Bool = true; // Determines whether you will go back to the start of the idle or the end of the idle when letting go of a note. Default is true for FPS Plus, false for base game.
 
 	public var animOffsets:Map<String, Array<Dynamic>>;
 	public var debugMode:Bool = false;
@@ -427,7 +427,7 @@ class Character extends FlxSprite
 				addOffset('singLEFT', 58, -8);
 				addOffset('singDOWN', -30, -61);
 				addOffset('singUP', -22, 38);
-				addOffset('singRIGHT', -36, -21);
+				addOffset('singRIGHT', -32, -28);
 				addOffset('hey', -36, 4);
 				addOffset('grabStick', 66, 3);
 				
@@ -454,11 +454,11 @@ class Character extends FlxSprite
 				addOffset('singLEFT', 191, -8);
 				addOffset('singDOWN', 52, -61);
 				addOffset('singUP', 2, 38);
-				addOffset('singRIGHT', -42, -21);
+				addOffset('singRIGHT', -38, -27);
 
 				addOffset('singLEFT-alt', 126, 64);
 				addOffset('singUP-alt', 39, 150);
-				addOffset('singRIGHT-alt', -50, 64);
+				addOffset('singRIGHT-alt', -49, 61);
 				
 				playAnim('idle');
 
