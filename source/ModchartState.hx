@@ -268,39 +268,25 @@ class ModchartState
 
 	function changeDadCharacter(id:String)
 	{
-		/* var olddadx = PlayState.instance.dad.x;
-			var olddady = PlayState.instance.dad.y;
-			PlayState.instance.removeObject(PlayState.instance.dad);
-			PlayState.instance.dad = new Character(olddadx, olddady, id);
-			PlayState.instance.addObject(PlayState.instance.dad);
-			PlayState.instance.iconP2.animation.play(id); */
+
 		PlayState.instance.executeEvent("changeChar;dad;" + id);
 	}
 
 	function changeBoyfriendCharacter(id:String)
 	{
-		/* var oldboyfriendx = PlayState.instance.boyfriend.x;
-			var oldboyfriendy = PlayState.instance.boyfriend.y;
-			PlayState.instance.removeObject(PlayState.instance.boyfriend);
-			PlayState.instance.boyfriend = new Boyfriend(oldboyfriendx, oldboyfriendy, id);
-			PlayState.instance.addObject(PlayState.instance.boyfriend);
-			PlayState.instance.iconP2.animation.play(id); */
 		PlayState.instance.executeEvent("changeChar;boyfriend;" + id);
 	}
 
 	function makeAnimatedLuaSprite(spritePath:String, names:Array<String>, prefixes:Array<String>, startAnim:String, id:String, drawBehind:Bool)
 	{
 		#if sys
+		// TODO: Make this use OpenFlAssets.
 		var data:BitmapData = BitmapData.fromFile(Sys.getCwd() + "assets/data/" + PlayState.SONG.song.toLowerCase() + '/' + spritePath + ".png");
+
 		var sprite:FlxSprite = new FlxSprite(0, 0);
 
 		sprite.frames = FlxAtlasFrames.fromSparrow(FlxGraphic.fromBitmapData(data),
-			Sys.getCwd()
-			+ "assets/data/"
-			+ PlayState.SONG.song.toLowerCase()
-			+ "/"
-			+ spritePath
-			+ ".xml");
+			Sys.getCwd() + "assets/data/songs/" + PlayState.SONG.songId + "/" + spritePath + ".xml");
 
 		trace(sprite.frames.frames.length);
 
@@ -313,7 +299,6 @@ class ModchartState
 
 		luaSprites.set(id, sprite);
 
-		// and once again: shitty layering but it works!
 		if (drawBehind)
 		{
 			PlayState.instance.removeObject(PlayState.instance.dadGroup);
@@ -326,7 +311,7 @@ class ModchartState
 		}
 			
 		PlayState.instance.addObject(sprite);
-
+			
 		if (drawBehind)
 		{
 			PlayState.instance.addObject(PlayState.instance.dadGroup);
@@ -337,7 +322,7 @@ class ModchartState
 				@:privateAccess
 				PlayState.instance.addObject(PlayState.instance.comboUI);
 		}
-		
+
 		sprite.animation.play(startAnim);
 		return id;
 		#end
@@ -557,6 +542,18 @@ class ModchartState
 			PlayState.instance.camHUDModified = true;
 		});
 
+		Lua_helper.add_callback(lua, "resetCamZoom", function(zoomAmount:Float)
+		{
+			FlxG.camera.zoom = PlayState.instance.defaultCamZoom;
+			PlayState.instance.camGameModified = false;
+		});
+
+		Lua_helper.add_callback(lua, "resetHudZoom", function(zoomAmount:Float)
+		{
+			PlayState.instance.camHUD.zoom = zoomAmount;
+			PlayState.instance.camHUDModified = false;
+		});
+		
 		// strumline
 
 		Lua_helper.add_callback(lua, "setStrumlineY", function(y:Float)
@@ -633,6 +630,14 @@ class ModchartState
 			return PlayState.instance.notes.members[id].scale.x;
 		});
 
+		Lua_helper.add_callback(lua, "resetRenderedNotePos", function(x:Float, y:Float, id:Int)
+		{
+			if (PlayState.instance.notes.members[id] == null)
+				throw('error! you cannot reset a rendered notes position when it doesnt exist! ID: ' + id);
+			else
+				PlayState.instance.notes.members[id].modifiedByLua = false;
+		});
+		
 		Lua_helper.add_callback(lua, "setRenderedNotePos", function(x:Float, y:Float, id:Int)
 		{
 			if (PlayState.instance.notes.members[id] == null)
@@ -807,6 +812,8 @@ class ModchartState
 			getActorByName(id).modAngle = angle;
 		});
 
+		// window shiz
+		
 		Lua_helper.add_callback(lua, "setWindowPos", function(x:Int, y:Int)
 		{
 			Application.current.window.x = x;

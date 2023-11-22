@@ -142,8 +142,6 @@ class PlayState extends MusicBeatState
 	public var gf:Character;
 	public var boyfriend:Character;
 	
-	private var changesCharLater:Bool = false;
-	
 	// psych coisos!!!
 	public var gfGroup:FlxTypedGroup<Character> = null;	
 	public var bfGroup:FlxTypedGroup<Character> = null;
@@ -267,8 +265,7 @@ class PlayState extends MusicBeatState
 	// end UIs
 	public static var campaignScore:Int = 0;
 
-	var defaultCamZoom:Float = 1.05;
-
+	public var defaultCamZoom:Float = 1.05;
 	// how big to stretch the pixel art assets
 	public static var daPixelZoom:Float = 6;
 
@@ -359,18 +356,7 @@ class PlayState extends MusicBeatState
 		{
 			trace(i[1] + ' | ' + i[3]);
 			eventList.push([i[1], i[3]]);
-			preloadEventVars(i[3]);
 		}
-		
-		/* if (changesCharLater) {
-			if (SONG.gf != null)
-				eventList.push([10, 'changeChar;gf;' + SONG.gf]);
-			eventList.push([11, 'changeChar;bf;' + SONG.player1]);
-			eventList.push([12, 'changeChar;dad;' + SONG.player2]);
-		} 
-		
-		// JUST IN CASE!!!!
-		*/
 		
 		eventList.sort(sortByEventStuff);
 
@@ -2477,19 +2463,15 @@ class PlayState extends MusicBeatState
 		canPause = false;
 		FlxG.sound.music.volume = 0;
 		vocals.volume = 0;
+		
 		if (SONG.validScore && !usedAutoplay)
-		{
-			#if !switch
 			Highscore.saveScore(SONG.song, songScore, storyDifficulty);
-			#end
-		}
 
 		if (isStoryMode)
 		{
 			campaignScore += songScore;
-
 			storyPlaylist.remove(storyPlaylist[0]);
-
+			
 			if (storyPlaylist.length <= 0)
 			{
 
@@ -2517,9 +2499,7 @@ class PlayState extends MusicBeatState
 				StoryMenuState.weekUnlocked[Std.int(Math.min(storyWeek + 1, StoryMenuState.weekUnlocked.length - 1))] = true;
 
 				if (SONG.validScore)
-				{
 					Highscore.saveWeekScore(storyWeek, campaignScore, storyDifficulty);
-				}
 
 				FlxG.save.data.weekUnlocked = StoryMenuState.weekUnlocked;
 				FlxG.save.flush();
@@ -2582,7 +2562,7 @@ class PlayState extends MusicBeatState
 		var noteDiff:Float = Math.abs(strumtime - Conductor.songPosition);
 		var score:Int = Conductor.timingScores[0];
 		var daRating:String = "swag";
-		var extremeAccuracy:Float = ((180 - noteDiff) / (180 - 22.5)); // so pra ter certeza de q os swags sao 100%
+		var extremeAccuracy:Float = ((180 - noteDiff) / (180 - 5)); // accuracy DIFIIIICIL e quase impossivel pegar um 100% se tu nao tryhardar
 		
 		// if (!Config.swagRating)
 		//	extremeAccuracy = ((180 - noteDiff) / 135); // sick
@@ -2728,40 +2708,24 @@ class PlayState extends MusicBeatState
 		rightHold = rightTime > 0;
 
 		if (leftRelease)
-		{
 			releaseTimes[0] = 0;
-		}
 		else if (leftPress)
-		{
 			releaseTimes[0] = -1;
-		}
 
 		if (downRelease)
-		{
 			releaseTimes[1] = 0;
-		}
 		else if (downPress)
-		{
 			releaseTimes[1] = -1;
-		}
 
 		if (upRelease)
-		{
 			releaseTimes[2] = 0;
-		}
 		else if (upPress)
-		{
 			releaseTimes[2] = -1;
-		}
 
 		if (rightRelease)
-		{
 			releaseTimes[3] = 0;
-		}
 		else if (rightPress)
-		{
 			releaseTimes[3] = -1;
-		}
 
 		/*THE FUNNY 4AM CODE! [bro what was i doin????]
 			trace((leftHold?(leftPress?"^":"|"):(leftRelease?"^":" "))+(downHold?(downPress?"^":"|"):(downRelease?"^":" "))+(upHold?(upPress?"^":"|"):(upRelease?"^":" "))+(rightHold?(rightPress?"^":"|"):(rightRelease?"^":" ")));
@@ -3497,14 +3461,7 @@ class PlayState extends MusicBeatState
 				}
 		}
 	}
-	
-	public function preloadEventVars(tag:String):Void
-	{
-		if (tag.startsWith("changeChar;"))
-		{
-			changesCharLater = true;
-		}
-	}
+
 	
 	public function preloadEvent(tag:String):Void
 	{
