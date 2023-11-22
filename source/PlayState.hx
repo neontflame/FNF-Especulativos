@@ -3208,7 +3208,7 @@ class PlayState extends MusicBeatState
 
 			if (boyfriend.canAutoAnim
 				&& (Character.LOOP_ANIM_ON_HOLD ? (note.isSustainNote ? (Character.HOLD_LOOP_WAIT ? (!boyfriend.animation.name.contains("sing")
-					|| (boyfriend.animation.curAnim.curFrame >= 1
+					|| (boyfriend.animation.curAnim.curFrame >= 3
 						|| boyfriend.animation.curAnim.finished)) : true) : true) : !note.isSustainNote))
 			{
 				if (note.type == "BULLET")

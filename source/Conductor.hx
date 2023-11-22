@@ -39,8 +39,8 @@ class Conductor
 	btw 180ms e o limite maximo
 		- neon */
 	public static var timings:Array<Float> = [22.5, 45, 90, 135, 180];
-	public static var timingAccuracies:Array<Float> = [1, 0.875, 0.75, 0.5, 0.25];
-	public static var timingScores:Array<Int> = [350, 305, 200, 100, 50];
+	public static var timingAccuracies:Array<Float> = [1, 1, 0.75, 0.5, 0.25];
+	public static var timingScores:Array<Int> = [350, 350, 200, 100, 50];
 
 	public static var bpmChangeMap:Array<BPMChangeEvent> = [];
 
