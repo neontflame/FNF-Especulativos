@@ -65,6 +65,10 @@ import usefulshits.SwagStrum;
 // import openfl.display.BlendMode;
 // import openfl.display.StageQuality;
 // import openfl.filters.ShaderFilter;
+#if EXPERIMENTAL_MODDING
+import openfl.utils.Assets as OpenFlAssets;
+#end
+
 using StringTools;
 
 class PlayState extends MusicBeatState
@@ -118,8 +122,8 @@ class PlayState extends MusicBeatState
 
 	private var camFocus:String = "";
 	private var camTween:FlxTween;
-	private var camZoomTween:FlxTween;
-	private var uiZoomTween:FlxTween;
+	public var camZoomTween:FlxTween;
+	public var uiZoomTween:FlxTween;
 	private var camFollow:FlxObject;
 	private var autoCam:Bool = true;
 	private var autoZoom:Bool = true;
@@ -362,9 +366,17 @@ class PlayState extends MusicBeatState
 
 		inCutscene = false;
 
+		#if EXPERIMENTAL_MODDING
+		if (OpenFlAssets.exists(Paths.inst(SONG.song), SOUND) || OpenFlAssets.exists(Paths.inst(SONG.song), MUSIC))
+			OpenFlAssets.getSound(Paths.inst(SONG.song), true);
+
+		if (OpenFlAssets.exists(Paths.voices(SONG.song), SOUND) || OpenFlAssets.exists(Paths.voices(SONG.song), MUSIC))
+			OpenFlAssets.getSound(Paths.voices(SONG.song), true);
+		#else
 		FlxG.sound.cache(Paths.inst(SONG.song));
 		FlxG.sound.cache(Paths.voices(SONG.song));
-
+		#end
+		
 		if (Config.noFpsCap)
 			openfl.Lib.current.stage.frameRate = 999;
 		else

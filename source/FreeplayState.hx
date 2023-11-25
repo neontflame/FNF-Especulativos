@@ -10,6 +10,7 @@ import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import lime.utils.Assets;
+import openfl.utils.Assets as OpenFlAssets;
 import CoolUtil;
 import usefulshits.ProjectSprite;
 
@@ -97,8 +98,21 @@ class FreeplayState extends MusicBeatState
 		if (Main.salsicha && CoolUtil.exists("assets/images/salsicha"))
 			addWeek(['so-um-cara'], 12, ['hawnt-salsicha']);
 			
-		// LOAD CHARACTERS
-
+		#if EXPERIMENTAL_MODDING
+		var freeplaySongtxt:String = CoolUtil.getText(Paths.text("freeplaySonglist"));
+		var freeplaySonglist:Array<String> = freeplaySongtxt.split(';');
+		var extraShitWeek:Array<String> = [];
+		
+		for (song in freeplaySonglist)
+		{
+				extraShitWeek.push(song);
+		}
+		trace(extraShitWeek);
+		
+		addWeek(extraShitWeek, 13, ['face']);
+		#end
+			
+		// bagulhos de UI coisa xd!!
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menu/scratchBG'));
 		add(bg);
 
@@ -164,7 +178,7 @@ class FreeplayState extends MusicBeatState
 
 	public function addSong(songName:String, weekNum:Int, songCharacter:String)
 	{
-		if (CoolUtil.exists("assets/data/" + songName))
+		if (CoolUtil.exists("assets/data/" + songName) || OpenFlAssets.exists("assets/data/" + songName))
 		{
 			songs.push(new SongMetadata(songName, weekNum, songCharacter));
 		}

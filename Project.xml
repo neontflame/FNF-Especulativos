@@ -2,7 +2,7 @@
 <project>
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Friday Night Funkin' Vs. Espe" file="VsEspe" main="Main" version="0.1" company="neontflame" />
+	<app title="Friday Night Funkin' Vs. Espe" file="VsEspe" main="Main" version="1.0" company="neontflame" />
 
 	<!--Switch Export with Unique ApplicationID and Icon-->
 	<set name="APP_ID" value="0x0100f6c013bbc000" />
@@ -40,16 +40,10 @@
 	<set name="BUILD_DIR" value="export/release" unless="debug" />
 	<set name="BUILD_DIR" value="export/32bit" if="32bit" />
 
-	<classpath name="source" />
-
+	<source name="source" />
+	
 	<assets path="assets" />
-	
-	<assets path="assets/fonts" />
-	<assets path="assets/images"/>
-	<assets path="assets/data" />
-	<assets path="assets/videos" />
-	<!-- <template path='mods' /> -->
-	
+
 	<assets path="plugins/" rename='' if="windows"/>
 	<assets path="dlls/" rename='' if="windows"/>
 	
@@ -59,14 +53,10 @@
 	<assets path="assets/sounds" include="*.ogg"/>
 	<assets path="assets/songs"/>
 
-	<!-- comment out the override define to disable overrides>
-	<define name="override" if="desktop"/>
-	<assets path="override/" if="override"/-->
-
 	<!--assets path="CHANGELOG.md"/-->
 	<!-- <define name="PRELOAD_ALL" /> -->
 	
-	<define name="PRELOAD_ALL" unless="web" />
+	<!-- <define name="PRELOAD_ALL" unless="web" />
 	<define name="NO_PRELOAD_ALL" unless="PRELOAD_ALL"/>
 
 	<section if="PRELOAD_ALL">
@@ -83,13 +73,14 @@
 		<library name="music" 	preload="false" />
 		<library name="images"  preload="false" />
 		<library name="videos"  preload="false" />
-	</section>
+	</section> -->
 
 	<!-- NOTE FOR FUTURE SELF SINCE FONTS ARE ALWAYS FUCKY 
 		TO FIX ONE OF THEM, I CONVERTED IT TO OTF. DUNNO IF YOU NEED TO
 		THEN UHHH I USED THE NAME OF THE FONT WITH SETFORMAT() ON THE TEXT!!!
 		NOT USING A DIRECT THING TO THE ASSET!!!
 	-->
+	<assets path='example_mods' rename='mods' embed='false'/>
 	<assets path="assets/fonts" embed='true'/>
 	<!-- _______________________________ Libraries ______________________________ -->
 
@@ -104,14 +95,10 @@
 	<haxelib name="flixel-ui" />
 	<haxelib name="faxe" if='switch'/>
 	<haxelib name="linc_luajit"/>
-	<!--haxelib name="polymod"/-->
-	<!--haxelib name="extension-webm" if="desktop"/-->
 
-	<!--In case you want to use nape with flixel-->
-	<!--<haxelib name="nape-haxe4" />-->
-
+	<haxelib name="polymod" />
 	<!-- ______________________________ Haxedefines _____________________________ -->
-
+	
 	<!--Enable the Flixel core recording system-->
 	<!--<haxedef name="FLX_RECORD" />-->
 
@@ -131,10 +118,17 @@
 
 	<!--Disable the Flixel core debugger. Automatically gets set whenever you compile in release mode!-->
 	<haxedef name="FLX_NO_DEBUG" unless="debug" />
-
+	
 	<!--Enable this for Nape release builds for a serious peformance improvement-->
 	<haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
 
+	<!-- _____________________________ Engine Coisos ____________________________ -->
+
+	<!-- modcharting da kade engine - ate o momento so vai ate a 1.6 eu acho (shoutouts 2 kade) -->
+	<define name="EXPERIMENTAL_LUA" />
+	
+	<!-- polymod coisos - EXTREMAMENTE EXPERIMENTAL!!!! -->
+	<define name="EXPERIMENTAL_MODDING" />
 	<!-- _________________________________ Custom _______________________________ -->
 
 	<!--Place custom nodes like icons here (higher priority to override the HaxeFlixel icon)-->
@@ -143,14 +137,7 @@
 	<icon path="art/icon32.png" size='32'/>
 	<icon path="art/icon64.png" size='64'/>
 
-
 	<!-- <haxedef name="SKIP_TO_PLAYSTATE" if="debug" /> -->
 	<!--haxedef name="NG_LOGIN" if="newgrounds" /-->
 	
-	<!-- modcharting da kade engine! ate o momento so vai ate a 1.6 eu acho.
-		faço nem ideia na real tudo q eu sei e q funciona bem
-	
-		creditos pro kadedev pelo codigo eu so peguei e
-		joguei na fps plus do jeito mais porco possivel -->
-	<define name="EXPERIMENTAL_LUA" />
 </project>

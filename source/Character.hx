@@ -1111,6 +1111,13 @@ class Character extends FlxSprite
 				antialiasing = false;
 
 				iconName = "face-lil";
+			default:
+				// eu fiz isso pra experimentar btw
+				loadCharInfo('generic/' + curCharacter);
+				loadAnims('generic/' + curCharacter + 'Anims');
+				loadOffsetFile('generic/' + curCharacter + 'Offsets');
+				
+				playAnim('idle');
 		}
 
 		dance();
@@ -1360,19 +1367,20 @@ class Character extends FlxSprite
 	}
 
 	// e agora uns bagulho q eu adicionei enquanto eu esperava o sket fazer as cutscene pq eu nao tinha nada melhor pra fazer
-	// personagens softcoded (UPDATE:  NAO DEU CERTO!!! aff ¬¬)
-	/*
+	// personagens softcoded
+	// ta na hora de botar polymod nessa merda
+	// FOI
 	private function loadCharInfo(infoPath:String)
 	{
-		var daFile:Array<String> = CoolUtil.coolTextFile(Sys.getCwd() + "assets/images/" + infoPath + ".txt");
+		var daFile:Array<String> = CoolUtil.coolTextFile("assets/images/" + infoPath + ".txt");
 
 		for (i in daFile)
 		{	
 			var splitWords:Array<String> = i.split(";");
 			// spritesheet path, icon name, char offset [X, Y], camera offset [X, Y], antialiasing, deathchar, does it face left
-			var data:BitmapData = BitmapData.fromFile(Sys.getCwd() + "assets/images/" + splitWords[0] + ".png");
 			
-			frames = FlxAtlasFrames.fromSparrow(FlxGraphic.fromBitmapData(data), Sys.getCwd() + "assets/images/" + splitWords[0] + ".xml");
+			// frames = FlxAtlasFrames.fromSparrow(data, xmlCool);
+			frames = Paths.getSparrowAtlas(splitWords[0]);
 			iconName = splitWords[1];
 			charOffsetArray = [Std.parseInt(splitWords[2]), Std.parseInt(splitWords[3])];
 			cameraOffsetArray = [Std.parseInt(splitWords[4]), Std.parseInt(splitWords[5])];
@@ -1380,11 +1388,11 @@ class Character extends FlxSprite
 			deathCharacter = splitWords[7];
 			facesLeft = (splitWords[8] == 'true' ? true : false);
 		}
-	} */
+	}
 	
 	private function loadOffsetFile(offsetPath:String)
 	{
-		var daFile:Array<String> = CoolUtil.coolTextFile(Sys.getCwd() + "assets/images/" + offsetPath + ".txt");
+		var daFile:Array<String> = CoolUtil.coolTextFile("assets/images/" + offsetPath + ".txt");
 
 		for (i in daFile)
 		{
@@ -1398,7 +1406,7 @@ class Character extends FlxSprite
 
 	private function loadAnims(animsPath:String)
 	{
-		var daFile:Array<String> = CoolUtil.coolTextFile(Sys.getCwd() + "assets/images/" + animsPath + ".txt");
+		var daFile:Array<String> = CoolUtil.coolTextFile("assets/images/" + animsPath + ".txt");
 
 		for (i in daFile)
 		{

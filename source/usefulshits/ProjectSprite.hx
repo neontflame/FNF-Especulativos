@@ -13,16 +13,10 @@ class ProjectSprite extends FlxSprite
 	public function new(x:Float, y:Float, image:String = "")
 	{
 		super(x, y);
-		// trace(image + ' is a ' + CoolUtil.exists(Paths.image(image)));
-
-		if (CoolUtil.exists(Paths.image(image)))
-		{
+		if (CoolUtil.exists(Paths.file(image, "images", "png")))
 			loadGraphic(Paths.image(image));
-		}
 		else
-		{
 			loadGraphic(Paths.image('menu/freeplay/songs/placeholder'));
-		}
 	}
 
 	override function update(elapsed:Float)

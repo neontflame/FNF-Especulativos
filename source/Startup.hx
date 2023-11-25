@@ -100,9 +100,28 @@ class Startup extends FlxState
     public static var hasYotsu:Bool;
     public static var hasQeN:Bool;
 	
+	public static function reloadMods()
+	{
+		#if EXPERIMENTAL_MODDING
+		var modListTxt:String = CoolUtil.getText('mods/modList.txt');
+		var modList:Array<String> = modListTxt.split('\n');
+		
+		// yo shoutouts to funkin multikey
+		polymod.Polymod.init({
+			modRoot:"mods",
+			dirs: modList,
+			framework: OPENFL,
+			errorCallback: function(error:polymod.Polymod.PolymodError){ 
+			trace(error.message); 
+			}
+		});
+		#else
+		trace('que mane modding o que');
+		#end
+	} 
+	
 	override function create()
 	{
-
         FlxG.mouse.visible = false;
         FlxG.sound.muteKeys = null;
 
@@ -167,6 +186,10 @@ class Startup extends FlxState
 		if (FlxG.random.int(0, 85) == 85) 
 			lmfaoTrolled = true;
 			
+		reloadMods();
+		
+		super.create();
+		
 		var bg:FlxSprite = new FlxSprite();
 		bg.makeGraphic(FlxG.width, FlxG.height, 0xFF959595);
 		add(bg);
@@ -198,8 +221,6 @@ class Startup extends FlxState
         {
             // FlxG.sound.play(Paths.sound("splashSound"));   
         });
-
-        super.create();
 
     }
 

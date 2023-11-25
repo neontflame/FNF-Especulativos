@@ -70,7 +70,8 @@ class CoolUtil
 	public static function exists(path:String):Bool
 	{
 		#if sys
-		return FileSystem.exists(path);
+		var existence:Bool = (FileSystem.exists(path) || OpenFLAssets.exists(path));
+		return existence;
 		#else
 		return Assets.exists(path);
 		#end
@@ -80,7 +81,7 @@ class CoolUtil
 	public static function getText(path:String):String
 	{
 		#if sys
-		return File.getContent(path);
+		return OpenFLAssets.getText(path);
 		#else
 		return Assets.getText(path);
 		#end

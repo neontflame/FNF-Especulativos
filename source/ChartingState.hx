@@ -427,7 +427,7 @@ class ChartingState extends MusicBeatState
 		var stepperBPM:FlxUINumericStepper = new FlxUINumericStepper(10, 50, 1, 1, 1, 999, 2);
 		stepperBPM.value = Conductor.bpm;
 		stepperBPM.name = 'song_bpm';
-
+		
 		var characters:Array<String> = CoolUtil.coolTextFile(Paths.text("characterList"));
 		var gfs:Array<String> = CoolUtil.coolTextFile(Paths.text("gfList"));
 		var stages:Array<String> = CoolUtil.coolTextFile(Paths.text("stageList"));

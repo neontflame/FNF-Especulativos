@@ -254,7 +254,7 @@ class ModchartState
 		{
 			if (Std.parseInt(id) == null)
 				return Reflect.getProperty(PlayState.instance, id);
-			return PlayState.PlayState.strumLineNotes.members[Std.parseInt(id)];
+			return PlayState.strumLineNotes.members[Std.parseInt(id)];
 		}
 		return luaSprites.get(id);
 	}
@@ -286,7 +286,7 @@ class ModchartState
 		var sprite:FlxSprite = new FlxSprite(0, 0);
 
 		sprite.frames = FlxAtlasFrames.fromSparrow(FlxGraphic.fromBitmapData(data),
-			Sys.getCwd() + "assets/data/songs/" + PlayState.SONG.songId + "/" + spritePath + ".xml");
+			Sys.getCwd() + "assets/data/songs/" + PlayState.SONG.song.toLowerCase() + "/" + spritePath + ".xml");
 
 		trace(sprite.frames.frames.length);
 
@@ -532,12 +532,14 @@ class ModchartState
 
 		Lua_helper.add_callback(lua, "setCamZoom", function(zoomAmount:Float)
 		{
+			PlayState.instance.camZoomTween.cancel();
 			FlxG.camera.zoom = zoomAmount;
 			PlayState.instance.camGameModified = true;
 		});
 
 		Lua_helper.add_callback(lua, "setHudZoom", function(zoomAmount:Float)
 		{
+			PlayState.instance.uiZoomTween.cancel();
 			PlayState.instance.camHUD.zoom = zoomAmount;
 			PlayState.instance.camHUDModified = true;
 		});
@@ -887,6 +889,7 @@ class ModchartState
 
 		Lua_helper.add_callback(lua, "tweenCameraZoom", function(toZoom:Float, time:Float, onComplete:String)
 		{
+			PlayState.instance.camZoomTween.cancel();
 			PlayState.instance.camGameModified = true;
 			FlxTween.tween(FlxG.camera, {zoom: toZoom}, time, {
 				ease: FlxEase.linear,
@@ -930,6 +933,7 @@ class ModchartState
 
 		Lua_helper.add_callback(lua, "tweenHudZoom", function(toZoom:Float, time:Float, onComplete:String)
 		{
+			PlayState.instance.uiZoomTween.cancel();
 			PlayState.instance.camHUDModified = true;
 			FlxTween.tween(PlayState.instance.camHUD, {zoom: toZoom}, time, {
 				ease: FlxEase.linear,

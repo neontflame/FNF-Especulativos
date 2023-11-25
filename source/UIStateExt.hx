@@ -6,9 +6,15 @@ import transition.data.*;
 import cpp.vm.Gc;
 import openfl.system.System;
 #end
+
+#if EXPERIMENTAL_MODDING
+import polymod.Polymod;
+#end
+
 import flixel.FlxG;
 import flixel.FlxState;
 import flixel.addons.ui.FlxUIState;
+import flixel.sound.FlxSound;
 
 class UIStateExt extends FlxUIState
 {
@@ -30,9 +36,20 @@ class UIStateExt extends FlxUIState
 
 	override function create()
 	{	
-		var someShits:Bool = !(Std.string(Type.getClass(FlxG.state)) == 'PlayState');
+		var someShits:Bool = !(Std.string(Type.getClass(FlxG.state)) == 'PlayState' || Std.string(Type.getClass(FlxG.state)) == 'ChartingState');
 		CoolUtil.clearCache(someShits, someShits, someShits, true);
-
+		
+		#if EXPERIMENTAL_MODDING
+		Polymod.clearCache();
+		#end
+		
+		FlxG.sound.list.forEachDead(function(sound:FlxSound) {
+			FlxG.sound.list.remove(sound, true);
+			sound.stop();
+			sound.kill();
+			sound.destroy();
+		});
+		
 		if (customTransIn != null)
 		{
 			CustomTransition.transition(customTransIn, null);

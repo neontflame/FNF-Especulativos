@@ -2,15 +2,19 @@ package;
 
 #if sys
 import sys.FileSystem;
+import sys.io.File;
+import openfl.utils.Assets as OpenFlAssets;
 #end
 import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.graphics.FlxGraphic;
+import openfl.display.BitmapData;
 import CoolUtil;
 
 class Paths
 {
 	static final audioExtension:String = "ogg";
 
-	inline static public function file(key:String, location:String, extension:String):String
+	inline static public function file(key:String, location:String, extension:String, ?openfl:Bool = false):String
 	{
 		var data:String = 'assets/$location/$key.$extension';
 		/*#if override
@@ -19,7 +23,17 @@ class Paths
 				//trace("OVERRIDE FOR " + key + " FOUND!");
 			}
 			#end */
-		return data;
+			
+		if (openfl && OpenFlAssets.exists(data))
+			return OpenFlAssets.getPath(data);
+		else
+			return data;
+	}
+
+	inline static public function txtFile(key:String, location:String, extension:String):String
+	{
+		var data:String = 'assets/$location/$key.$extension';
+		return OpenFlAssets.getText(data);
 	}
 
 	inline static public function image(key:String, ?forceLoadFromDisk:Bool = false):Dynamic
@@ -35,6 +49,7 @@ class Paths
 		{
 			// trace(key + " loading from file");
 			return data;
+			// return FlxGraphic.fromBitmapData(OpenFlAssets.getBitmapData(data));
 		}
 	}
 
@@ -52,7 +67,7 @@ class Paths
 	// lua stuff
 	inline static public function lua(key:String, ?location:String = "data")
 	{
-		return file(key, location, "lua");
+		return file(key, location, "lua", true);
 	}
 
 	inline static public function luaImage(key:String, ?location:String = "data", forceLoadFromDisk:Bool = false):Dynamic
