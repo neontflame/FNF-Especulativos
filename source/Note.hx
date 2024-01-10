@@ -42,6 +42,14 @@ class Note extends FlxSprite
 	inline public static final BLUE_NOTE:Int = 1;
 	inline public static final RED_NOTE:Int = 3;
 
+	public var isParent:Bool = false;
+	public var parent:Note = null;
+	public var spotInLine:Int = 0;
+
+	public var children:Array<Note> = [];
+	
+	public var modAngle:Float = 0;
+	
 	public var modifiedByLua:Bool = false;
 
 	public function new(_strumTime:Float, _noteData:Int, _type:String, ?_editor = false, ?_prevNote:Note, ?_sustainNote:Bool = false)

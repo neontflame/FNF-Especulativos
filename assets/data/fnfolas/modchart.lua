@@ -17,7 +17,7 @@ function beatHit(beat)
     end
 	
     if curBeat == 128 or curBeat == 288 then
-		tweenCameraZoom(0.7, 0.3)
+		tweenCameraZoom(0.7, 0.5, 'cubeOut')
     end
 end
 

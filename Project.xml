@@ -54,26 +54,6 @@
 	<assets path="assets/songs"/>
 
 	<!--assets path="CHANGELOG.md"/-->
-	<!-- <define name="PRELOAD_ALL" /> -->
-	
-	<!-- <define name="PRELOAD_ALL" unless="web" />
-	<define name="NO_PRELOAD_ALL" unless="PRELOAD_ALL"/>
-
-	<section if="PRELOAD_ALL">
-		<library name="data"    preload="true" />
-		<library name="sounds"  preload="true" />
-		<library name="music" 	preload="true" />
-		<library name="images"  preload="true" />
-		<library name="videos"  preload="true" />
-	</section>
-	
-	<section if="NO_PRELOAD_ALL">
-		<library name="data"    preload="false" />
-		<library name="sounds"  preload="false" />
-		<library name="music" 	preload="false" />
-		<library name="images"  preload="false" />
-		<library name="videos"  preload="false" />
-	</section> -->
 
 	<!-- NOTE FOR FUTURE SELF SINCE FONTS ARE ALWAYS FUCKY 
 		TO FIX ONE OF THEM, I CONVERTED IT TO OTF. DUNNO IF YOU NEED TO
@@ -95,6 +75,7 @@
 	<haxelib name="flixel-ui" />
 	<haxelib name="faxe" if='switch'/>
 	<haxelib name="linc_luajit"/>
+	<haxelib name="hxvm-luajit" if="windows"/>
 
 	<haxelib name="polymod" />
 	<!-- ______________________________ Haxedefines _____________________________ -->

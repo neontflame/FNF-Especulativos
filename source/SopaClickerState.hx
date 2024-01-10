@@ -3,6 +3,7 @@ package;
 import flixel.FlxG;
 import flixel.FlxState;
 import flixel.FlxSprite;
+import flixel.FlxCamera;
 import flixel.text.FlxText;
 import flixel.util.FlxTimer;
 
@@ -11,6 +12,9 @@ class SopaClickerState extends UIStateExt
 	// tecnicalidades!!!!
 	public static var instance:SopaClickerState = null;
 	var mouseCoiso:FlxSprite;
+	
+	private var camHUD:FlxCamera;
+	private var camGame:FlxCamera;
 		
 	// o verdadeiro foda
 	var pontos:Int = 0;
@@ -34,6 +38,16 @@ class SopaClickerState extends UIStateExt
 		
 		FlxG.mouse.visible = true;
 		FlxG.sound.music.stop();
+		
+		// cameras
+		camGame = new FlxCamera();
+		
+		camHUD = new FlxCamera();
+		camHUD.bgColor.alpha = 0;
+
+		FlxG.cameras.reset(camGame);
+		FlxG.cameras.add(camHUD, false);
+		FlxG.cameras.setDefaultDrawTarget(camGame, true);
 		
 		var bgBranco:FlxSprite = new FlxSprite(0, 0).makeGraphic(1280, 720, 0xFFFFFFFF);
 		bgBranco.updateHitbox();
@@ -61,6 +75,10 @@ class SopaClickerState extends UIStateExt
 		pontosTexto = new FlxText(146, 35, 104, "teeeeest", 25);
 		pontosTexto.setFormat(Paths.font("arialbd"), 25, 0xFFFFFFFF, CENTER);
 		add(pontosTexto);
+		
+		encostador.cameras = [camHUD];
+		pontosCounter.cameras = [camHUD];
+		pontosTexto.cameras = [camHUD];
 		
 		super.create();
 	}

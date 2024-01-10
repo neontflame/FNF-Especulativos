@@ -308,7 +308,8 @@ class ChartingState extends MusicBeatState
 		}
 
 		FlxG.mouse.visible = true;
-		FlxG.save.bind(_song.song.replace(" ", "-"), "Chart-Editor-Autosaves");
+		//FlxG.save.bind(_song.song.replace(" ", "-"), "Rozebud/FPSPlus/Chart-Editor-Autosaves");
+		SaveManager.chartAutosave(_song.song.replace(" ", "-"));
 
 		tempBpm = _song.bpm;
 
@@ -1039,7 +1040,7 @@ class ChartingState extends MusicBeatState
 			FlxG.sound.music.stop();
 			vocals.stop();
 
-			FlxG.save.bind('data');
+			SaveManager.global();
 
 			PlayState.sectionStart = false;
 			if (FlxG.keys.pressed.CONTROL && curSection > 0)
@@ -1286,10 +1287,9 @@ class ChartingState extends MusicBeatState
 		if (Startup.hasEe2 && FlxG.keys.justPressed.B && FlxG.keys.pressed.SHIFT)
 		{
 			ee2Check = false;
-			FlxG.save.bind('data');
+			SaveManager.global();
 			FlxG.save.data.ee2 = false;
-			FlxG.save.flush();
-			FlxG.save.bind(_song.song.replace(" ", "-"), "Chart-Editor-Autosaves");
+			SaveManager.chartAutosave(_song.song.replace(" ", "-"));
 		}
 
 		if (Startup.hasEe2 && lilBuddiesBox.checked)
@@ -1304,9 +1304,9 @@ class ChartingState extends MusicBeatState
 			{
 				autosaveSong();
 
-				FlxG.save.bind('data');
+				SaveManager.global();
 				FlxG.save.data.ee2 = true;
-				FlxG.save.flush();
+				SaveManager.flush();
 
 				PlayState.fromChartEditor = true;
 				screenshotBitmap = FlxScreenGrab.grab(null, false, true);

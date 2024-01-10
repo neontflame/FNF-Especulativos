@@ -42,14 +42,14 @@ function downArrowFunny(yeah)
 		tweenPosXAngle(2, ((notePos[2] + notePos[3])/2), 0, 0.1, 'boblas')
 		
 		tweenPosXAngle(1, ((notePos[2] + notePos[3])/2), 0, 0.1, 'boablas')
-		tweenFadeOut(1, 0, 0.1, 'boals')
+		tweenFade(1, 0, 0.1, 'boals', 'cubeOut')
 	end
 	
 	if yeah == 'restore' then
 		tweenPosXAngle(2, notePos[3], 0, 0.1, 'boalas')
 		
 		tweenPosXAngle(1, notePos[2], 0, 0.1, 'boalas2')
-		tweenFadeOut(1, 1, 0.1, 'blobas2')
+		tweenFade(1, 1, 0.1, 'blobas2', 'cubeOut')
 	end
 end
 

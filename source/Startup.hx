@@ -104,7 +104,7 @@ class Startup extends FlxState
 	{
 		#if EXPERIMENTAL_MODDING
 		var modListTxt:String = CoolUtil.getText('mods/modList.txt');
-		var modList:Array<String> = modListTxt.split('\n');
+		var modList:Array<String> = modListTxt.split(';');
 		
 		// yo shoutouts to funkin multikey
 		polymod.Polymod.init({
@@ -125,8 +125,9 @@ class Startup extends FlxState
         FlxG.mouse.visible = false;
         FlxG.sound.muteKeys = null;
 
-        FlxG.save.bind('data');
+        // FlxG.save.bind('data');
 		Highscore.load();
+		SaveManager.global();
 		KeyBinds.keyCheck();
 		PlayerSettings.init();
 

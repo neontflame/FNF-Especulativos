@@ -27,6 +27,8 @@ class Config
 
 	public static function resetSettings():Void
 	{
+		SaveManager.global();
+		
 		FlxG.save.data.offset = 0.0;
 		FlxG.save.data.accuracy = "simple";
 		FlxG.save.data.healthMultiplier = 1.0;
@@ -45,11 +47,14 @@ class Config
 		FlxG.save.data.showFPS = false;
 		FlxG.save.data.camMovement = false;
 		FlxG.save.data.swagRating = false;
+		
 		reload();
 	}
 
 	public static function reload():Void
 	{
+		SaveManager.global();
+		
 		offset = FlxG.save.data.offset;
 		accuracy = FlxG.save.data.accuracy;
 		healthMultiplier = FlxG.save.data.healthMultiplier;
@@ -74,6 +79,8 @@ class Config
 			noteGlowW:Bool, ghostTapTypeW:Int, noFpsCapW:Bool, controllerSchemeW:Int, bgDimW:Int, noteSplashTypeW:Int, centeredNotesW:Bool,
 			scrollSpeedOverrideW:Float, showComboBreaksW:Bool, showFPSW:Bool, camMovementW:Bool, swagRatingW:Bool):Void
 	{
+		SaveManager.global();
+		
 		FlxG.save.data.offset = offsetW;
 		FlxG.save.data.accuracy = accuracyW;
 		FlxG.save.data.healthMultiplier = healthMultiplierW;
@@ -93,13 +100,15 @@ class Config
 		FlxG.save.data.camMovement = camMovementW;
 		FlxG.save.data.swagRating = swagRatingW;
 
-		FlxG.save.flush();
+		SaveManager.flush();
 
 		reload();
 	}
 
 	public static function configCheck():Void
 	{
+		SaveManager.global();
+		
 		if (FlxG.save.data.offset == null)
 			FlxG.save.data.offset = 0.0;
 		if (FlxG.save.data.accuracy == null)

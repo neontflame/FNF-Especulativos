@@ -42,7 +42,7 @@ class FreeplayState extends MusicBeatState
 	private var grpSongs:FlxTypedGroup<ProjectSprite>;
 	private var curPlaying:Bool = false;
 
-	private final songsWithNoDiff:Array<String> = ["Hihi", "Tres-Bofetadas", "Dragons", "Do-Mal", "Street-Musician", "fnfolas", "so-um-cara"];
+	public static final songsWithNoDiff:Array<String> = ["Hihi", "Tres-Bofetadas", "Dragons", "Do-Mal", "Street-Musician", "fnfolas", "so-um-cara"];
 	
 	override function create()
 	{

@@ -28,24 +28,24 @@ class AlertSubState extends MusicBeatSubstate
 
 		if (alert == "yotsubaAlert" && !FlxG.save.data.yotsubaUnlock)
 		{
-			FlxG.save.bind('data');
+			SaveManager.global();
 			FlxG.save.data.yotsubaUnlock = true;
-			FlxG.save.flush();
+			SaveManager.flush();
 		}
 
 		if (alert == "qenAlert" && !FlxG.save.data.qenUnlock)
 		{
-			FlxG.save.bind('data');
+			SaveManager.global();
 			FlxG.save.data.qenUnlock = true;
-			FlxG.save.flush();
+			SaveManager.flush();
 		}
 
 		if (alert == "ultUnlock")
 		{
-			FlxG.save.bind('data');
+			SaveManager.global();
 			FlxG.save.data.qenUnlock = true;
 			FlxG.save.data.yotsubaUnlock = true;
-			FlxG.save.flush();
+			SaveManager.flush();
 		}
 	}
 
