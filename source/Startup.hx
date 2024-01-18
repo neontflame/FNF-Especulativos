@@ -11,6 +11,7 @@ import config.*;
 import transition.data.*;
 
 import flixel.FlxState;
+import flixelExtensions.FlxUIStateExt;
 import lime.utils.Assets;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -148,10 +149,10 @@ class Startup extends FlxState
             {asset: diamond, width: 32, height: 32}, new FlxRect(-200, -200, FlxG.width * 1.4, FlxG.height * 1.4));
         */
 
-        UIStateExt.defaultTransIn = ScreenWipeIn;
-        UIStateExt.defaultTransInArgs = [1.2];
-        UIStateExt.defaultTransOut = ScreenWipeOut;
-        UIStateExt.defaultTransOutArgs = [0.6];
+        FlxUIStateExt.defaultTransIn = ScreenWipeIn;
+        FlxUIStateExt.defaultTransInArgs = [1.2];
+        FlxUIStateExt.defaultTransOut = ScreenWipeOut;
+        FlxUIStateExt.defaultTransOutArgs = [0.6];
 
         if (FlxG.save.data.weekUnlocked != null)
 		{

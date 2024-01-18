@@ -5,6 +5,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import transition.data.*;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixelExtensions.FlxUIStateExt;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
@@ -12,7 +13,7 @@ import flixel.text.FlxText;
 
 using StringTools;
 
-class ConfigMenu extends UIStateExt
+class ConfigMenu extends FlxUIStateExt
 {
 	public static var exitTo:Class<Dynamic>;
 	public static var startInSubMenu:Int = -1;

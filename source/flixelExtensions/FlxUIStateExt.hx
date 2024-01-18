@@ -1,4 +1,4 @@
-package;
+package flixelExtensions;
 
 import transition.*;
 import transition.data.*;
@@ -16,7 +16,7 @@ import flixel.FlxState;
 import flixel.addons.ui.FlxUIState;
 import flixel.sound.FlxSound;
 
-class UIStateExt extends FlxUIState
+class FlxUIStateExt extends FlxUIState
 {
 	private var useDefaultTransIn:Bool = true;
 	private var useDefaultTransOut:Bool = true;

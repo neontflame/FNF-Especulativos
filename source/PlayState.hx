@@ -59,6 +59,7 @@ import flixel.util.FlxSort;
 // import flixel.util.FlxStringUtil;
 import flixel.util.FlxTimer;
 import usefulshits.SwagStrum;
+import usefulshits.ModchartState;
 
 // import haxe.Json;
 // import lime.utils.Assets;
@@ -368,13 +369,9 @@ class PlayState extends MusicBeatState
 		inCutscene = false;
 
 		#if EXPERIMENTAL_MODDING
-		/* if (OpenFlAssets.exists(Paths.inst(SONG.song), MUSIC))
-			OpenFlAssets.getMusic(Paths.inst(SONG.song), true);
-			
-			OpenFlAssets.getMusic(Paths.voices(SONG.song), true);*/
 		FlxG.sound.cache(OpenFlAssets.getPath(Paths.inst(SONG.song)));
 		
-		if (OpenFlAssets.exists(Paths.voices(SONG.song), MUSIC))
+		if (OpenFlAssets.exists(Paths.voices(SONG.song), SOUND))
 			FlxG.sound.cache(OpenFlAssets.getPath(Paths.voices(SONG.song)));
 		#else
 		FlxG.sound.cache(Paths.inst(SONG.song));
@@ -1498,14 +1495,12 @@ class PlayState extends MusicBeatState
 		curSong = songData.song;
 
 		if (SONG.needsVoices)
-		{
 			vocals = new FlxSound().loadEmbedded(Paths.voices(curSong));
-		}
 		else
 			vocals = new FlxSound();
 
 		FlxG.sound.list.add(vocals);
-
+		
 		notes = new FlxTypedGroup<Note>();
 		add(notes);
 
@@ -1991,10 +1986,12 @@ class PlayState extends MusicBeatState
 		}
 
 		var iconOffset:Int = 26;
-
-		iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01) - iconOffset);
-		iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (iconP2.width - iconOffset);
-
+		
+		if (healthBar.angle == 0) {
+			iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01) - iconOffset);
+			iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (iconP2.width - iconOffset);
+		}
+		
 		if (health > 2)
 		{
 			health = 2;

@@ -1,3 +1,4 @@
+package usefulshits;
 // this file is for modchart things, this is to declutter playstate.hx
 // Lua
 import flixel.graphics.FlxGraphic;
@@ -1055,34 +1056,6 @@ class ModchartState
 		Lua_helper.add_callback(lua, "tweenPos", function(id:String, toX:Int, toY:Int, time:Float, ease:String, onComplete:String)
 		{
 			FlxTween.tween(getActorByName(id), {x: toX, y: toY}, time, {
-				ease: stringToEase(ease),
-				onComplete: function(flxTween:FlxTween)
-				{
-					if (onComplete != '' && onComplete != null)
-					{
-						callLua(onComplete, [id]);
-					}
-				}
-			});
-		});
-
-		Lua_helper.add_callback(lua, "tweenPosXAngle", function(id:String, toX:Int, toAngle:Float, time:Float, ease:String, onComplete:String)
-		{
-			FlxTween.tween(getActorByName(id), {x: toX, angle: toAngle}, time, {
-				ease: stringToEase(ease),
-				onComplete: function(flxTween:FlxTween)
-				{
-					if (onComplete != '' && onComplete != null)
-					{
-						callLua(onComplete, [id]);
-					}
-				}
-			});
-		});
-
-		Lua_helper.add_callback(lua, "tweenPosYAngle", function(id:String, toY:Int, toAngle:Float, time:Float, ease:String, onComplete:String)
-		{
-			FlxTween.tween(getActorByName(id), {y: toY, angle: toAngle}, time, {
 				ease: stringToEase(ease),
 				onComplete: function(flxTween:FlxTween)
 				{

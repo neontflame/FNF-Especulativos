@@ -2,12 +2,13 @@ package;
 
 import flixel.FlxG;
 import flixel.FlxState;
+import flixelExtensions.FlxUIStateExt;
 import flixel.FlxSprite;
 import flixel.FlxCamera;
 import flixel.text.FlxText;
 import flixel.util.FlxTimer;
 
-class SopaClickerState extends UIStateExt
+class SopaClickerState extends FlxUIStateExt
 {
 	// tecnicalidades!!!!
 	public static var instance:SopaClickerState = null;
