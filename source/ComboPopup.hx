@@ -123,7 +123,7 @@ class ComboPopup extends FlxSpriteGroup
 	/**
 		Causes a note rating to pop up with the specified rating. Returns without effect if the rating isn't in `ratingList`.
 	**/
-	public function ratingPopup(_rating:String, _msTiming:Float):Void
+	public function ratingPopup(_rating:String, ?_msTiming:Float):Void
 	{
 		var rating = ratingList.indexOf(_rating);
 		if (rating == -1)
@@ -144,6 +144,14 @@ class ComboPopup extends FlxSpriteGroup
 
 		add(ratingSprite);
 
+		FlxTween.tween(ratingSprite, {alpha: 0}, 0.2, {
+			onComplete: function(tween:FlxTween)
+			{
+				ratingSprite.destroy();
+			},
+			startDelay: Conductor.crochet * 0.00075
+		});
+		/*
 		var currentTimingShown:FlxText = new FlxText(numberPosition[X] + (392 * 0.5), numberPosition[Y] - (10 * 0.5), 0, "0ms");
 		currentTimingShown.borderStyle = OUTLINE;
 		currentTimingShown.borderSize = 1;
@@ -162,15 +170,7 @@ class ComboPopup extends FlxSpriteGroup
 		}
 
 		add(currentTimingShown);
-
-		FlxTween.tween(ratingSprite, {alpha: 0}, 0.2, {
-			onComplete: function(tween:FlxTween)
-			{
-				ratingSprite.destroy();
-			},
-			startDelay: Conductor.crochet * 0.00075
-		});
-
+		
 		FlxTween.tween(currentTimingShown, {alpha: 0}, 0.2, {
 			onComplete: function(tween:FlxTween)
 			{
@@ -178,7 +178,7 @@ class ComboPopup extends FlxSpriteGroup
 			},
 			startDelay: 0.1
 		});
-
+		*/
 		return;
 	}
 

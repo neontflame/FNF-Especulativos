@@ -62,6 +62,15 @@
 	-->
 	<assets path='example_mods' rename='mods' embed='false'/>
 	<assets path="assets/fonts" embed='true'/>
+	
+	<!-- _____________________________ Engine Coisos ____________________________ -->
+
+	<!-- modcharting da kade engine mas eu mudei algumas coisas -->
+	<define name="EXPERIMENTAL_LUA" if="desktop" />
+	
+	<!-- polymod coisos - EXTREMAMENTE EXPERIMENTAL!!!! -->
+	<define name="EXPERIMENTAL_MODDING" if="desktop" />
+	
 	<!-- _______________________________ Libraries ______________________________ -->
 
 	<haxelib name="flixel" />
@@ -74,10 +83,9 @@
 	<!--In case you want to use the ui package-->
 	<haxelib name="flixel-ui" />
 	<haxelib name="faxe" if='switch'/>
-	<haxelib name="linc_luajit"/>
-	<haxelib name="hxvm-luajit" if="windows"/>
+	<haxelib name="linc_luajit" if="EXPERIMENTAL_LUA"/>
 
-	<haxelib name="polymod" />
+	<haxelib name="polymod" if="EXPERIMENTAL_MODDING"/>
 	<!-- ______________________________ Haxedefines _____________________________ -->
 	
 	<!--Enable the Flixel core recording system-->
@@ -102,14 +110,7 @@
 	
 	<!--Enable this for Nape release builds for a serious peformance improvement-->
 	<haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
-
-	<!-- _____________________________ Engine Coisos ____________________________ -->
-
-	<!-- modcharting da kade engine - ate o momento so vai ate a 1.6 eu acho (shoutouts 2 kade) -->
-	<define name="EXPERIMENTAL_LUA" />
 	
-	<!-- polymod coisos - EXTREMAMENTE EXPERIMENTAL!!!! -->
-	<define name="EXPERIMENTAL_MODDING" />
 	<!-- _________________________________ Custom _______________________________ -->
 
 	<!--Place custom nodes like icons here (higher priority to override the HaxeFlixel icon)-->

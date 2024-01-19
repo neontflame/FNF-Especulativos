@@ -2671,7 +2671,7 @@ class PlayState extends MusicBeatState
 		// trace('hit ' + daRating);
 
 		songScore += score;
-		comboUI.ratingPopup(daRating, noteDiff);
+		comboUI.ratingPopup(daRating);
 
 		// if (combo >= minCombo)
 		comboUI.comboPopup(combo);
@@ -2789,6 +2789,7 @@ class PlayState extends MusicBeatState
 					var fourthInputPressed = controlArray[note.noteData + 3] && !directionsAccounted[note.noteData + 3];
 
 					//////// note width coisos! lmao!
+					// irmao o que caralhos eu tava cozinhando aqui
 					switch (note.noteWidth) {
 						case 1:
 							if (firstInputPressed)
