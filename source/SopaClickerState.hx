@@ -4,6 +4,7 @@ import flixel.FlxG;
 import flixel.FlxState;
 import flixelExtensions.FlxUIStateExt;
 import flixel.FlxSprite;
+import flixel.util.FlxCollision;
 import flixel.FlxCamera;
 import flixel.text.FlxText;
 import flixel.util.FlxTimer;
@@ -93,7 +94,7 @@ class SopaClickerState extends FlxUIStateExt
 		
 		pontosTexto.text = '' + pontos; //pq o bag tinha bugado
 			
-		if (FlxG.mouse.justPressed && FlxG.overlap(mouseCoiso, sprite1))
+		if (FlxG.mouse.justPressed && FlxCollision.pixelPerfectCheck(mouseCoiso, sprite1, 50))
 		{
 			if (versao == 1)
 				FlxG.sound.play(Paths.sound('sopaClicker/Meow'));
@@ -106,7 +107,7 @@ class SopaClickerState extends FlxUIStateExt
 		}
 
 		if (versao == 2) {
-			if (FlxG.mouse.justPressed && FlxG.overlap(mouseCoiso, encostador) && !encostadorTomAtivado && pontos >= 6)
+			if (FlxG.mouse.justPressed && FlxCollision.pixelPerfectCheck(mouseCoiso, encostador, 50) && !encostadorTomAtivado && pontos >= 6)
 			{
 				encostadorTomAtivado = true;
 				encostador.visible = false;

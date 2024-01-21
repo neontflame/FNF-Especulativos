@@ -654,14 +654,14 @@ class PlayState extends MusicBeatState
 
 			 if (!Config.downscroll)
 				{
-					comboUI.ratingPosition = [700, 510];
-					comboUI.numberPosition = [320, 480];
+					comboUI.ratingPosition = [949, 580];
+					comboUI.numberPosition = [97, 603];
 					comboUI.breakPosition = [690, 465];
 				}
 				else
 				{
-					comboUI.ratingPosition = [700, 80];
-					comboUI.numberPosition = [320, 100];
+					comboUI.ratingPosition = [949, 2];
+					comboUI.numberPosition = [97, 23];
 					comboUI.breakPosition = [690, 85];
 			}
 			
