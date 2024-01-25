@@ -331,6 +331,20 @@ class PlayState extends MusicBeatState
 					customTransOut = new ScreenWipeOut(0.6);
 			}
 		}
+
+		#if EXPERIMENTAL_MODDING
+		FlxG.sound.cache(OpenFlAssets.getPath(Paths.inst(SONG.song)));
+		
+		if (OpenFlAssets.exists(Paths.voices(SONG.song), SOUND))
+			FlxG.sound.cache(OpenFlAssets.getPath(Paths.voices(SONG.song)));
+		
+		trace('INST: ' + OpenFlAssets.getPath(Paths.inst(SONG.song)));
+		trace('VOICES: ' + OpenFlAssets.getPath(Paths.voices(SONG.song)));
+		
+		#else
+		FlxG.sound.cache(Paths.inst(SONG.song));
+		FlxG.sound.cache(Paths.voices(SONG.song));
+		#end
 		
 		#if sys
 		executeModchart = FileSystem.exists(Paths.lua(PlayState.SONG.song.toLowerCase() + "/modchart"));
@@ -367,16 +381,6 @@ class PlayState extends MusicBeatState
 		eventList.sort(sortByEventStuff);
 
 		inCutscene = false;
-
-		#if EXPERIMENTAL_MODDING
-		FlxG.sound.cache(OpenFlAssets.getPath(Paths.inst(SONG.song)));
-		
-		if (OpenFlAssets.exists(Paths.voices(SONG.song), SOUND))
-			FlxG.sound.cache(OpenFlAssets.getPath(Paths.voices(SONG.song)));
-		#else
-		FlxG.sound.cache(Paths.inst(SONG.song));
-		FlxG.sound.cache(Paths.voices(SONG.song));
-		#end
 		
 		if (Config.noFpsCap)
 			openfl.Lib.current.stage.frameRate = 999;

@@ -608,7 +608,11 @@ class ModchartState
 		
 		Lua_helper.add_callback(lua, "returnAssetsPath", function()
 		{
+			#if EXPERIMENTAL_MODDING
 			return OpenFlAssets.getPath("assets/");
+			#else
+			return "./assets/";
+			#end
 		});
 		
 		// hud/camera

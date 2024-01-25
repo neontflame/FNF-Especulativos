@@ -69,7 +69,7 @@
 	<define name="EXPERIMENTAL_LUA" if="desktop" />
 	
 	<!-- polymod coisos - EXTREMAMENTE EXPERIMENTAL!!!! -->
-	<define name="EXPERIMENTAL_MODDING" if="desktop" />
+	<!-- <define name="EXPERIMENTAL_MODDING" if="desktop" />
 	
 	<!-- _______________________________ Libraries ______________________________ -->
 
