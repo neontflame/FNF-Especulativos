@@ -39,16 +39,16 @@ end
   
 function downArrowFunny(yeah)
 	if yeah == 'remove' then
-		tweenPosXAngle(2, ((notePos[2] + notePos[3])/2), 0, 0.1, 'boblas')
+		tweenPos(2, ((notePos[2] + notePos[3])/2), getActorY(2), 0.1, 'boblas')
 		
-		tweenPosXAngle(1, ((notePos[2] + notePos[3])/2), 0, 0.1, 'boablas')
+		tweenPos(1, ((notePos[2] + notePos[3])/2), getActorY(1), 0.1, 'boablas')
 		tweenFade(1, 0, 0.1, 'boals', 'cubeOut')
 	end
 	
 	if yeah == 'restore' then
-		tweenPosXAngle(2, notePos[3], 0, 0.1, 'boalas')
+		tweenPos(2, notePos[3], getActorY(2), 0.1, 'boalas')
 		
-		tweenPosXAngle(1, notePos[2], 0, 0.1, 'boalas2')
+		tweenPos(1, notePos[2], getActorY(1), 0.1, 'boalas2')
 		tweenFade(1, 1, 0.1, 'blobas2', 'cubeOut')
 	end
 end

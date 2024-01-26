@@ -249,7 +249,7 @@ class PlayState extends MusicBeatState
 	//var kadeEngineWatermark:FlxText;
 	var autoplayText:FlxText;
 	var hudFont:String = "vcr";
-	var hudSize:Int = 16;
+	var hudSize:Int = 18;
 
 	// scratch UI
 	/* de agora em diante eu peço minhas 
@@ -452,7 +452,7 @@ class PlayState extends MusicBeatState
 		// song-specific font
 		if (qenSongs.contains(SONG.song.toLowerCase())) {
 			hudFont = "calibrib";
-			hudSize = 18;
+			hudSize = 20;
 			scoreInfoTxt = ["pontos: ", "burrices: ", "combo burrices: ", "exatidao: "];
 		}
 		
@@ -659,13 +659,13 @@ class PlayState extends MusicBeatState
 			 if (!Config.downscroll)
 				{
 					comboUI.ratingPosition = [949, 580];
-					comboUI.numberPosition = [97, 603];
+					comboUI.numberPosition = [13, 603];
 					comboUI.breakPosition = [690, 465];
 				}
 				else
 				{
 					comboUI.ratingPosition = [949, 2];
-					comboUI.numberPosition = [97, 23];
+					comboUI.numberPosition = [13, 23];
 					comboUI.breakPosition = [690, 85];
 			}
 			
@@ -782,7 +782,7 @@ class PlayState extends MusicBeatState
 		kadeEngineWatermark.setFormat(Paths.font(hudFont), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, 0xAF000000);
 		kadeEngineWatermark.scrollFactor.set(); */
 
-		scoreTxt = new FlxText(0, healthBarBG.y + (50 - (2.5 * (hudSize - 16))), FlxG.width, "", hudSize);
+		scoreTxt = new FlxText(0, healthBarBG.y + (40 - (2.5 * (hudSize - 18))), FlxG.width, "", hudSize);
 		scoreTxt.setFormat(Paths.font(hudFont), hudSize, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE, 0xAF000000);
 		scoreTxt.antialiasing = false;
 		scoreTxt.scrollFactor.set();
