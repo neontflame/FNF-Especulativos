@@ -39,10 +39,10 @@ class BasicTransition extends FlxSpriteGroup
 	**/
 	public function end()
 	{
+		System.gc();
 		if (state != null)
 		{
 			FlxG.switchState(state);
-			System.gc();
 		}
 		else
 		{

@@ -152,9 +152,11 @@ class Config
 			FlxG.save.data.ee2 = false;
 
 		// musicas bonus
+		/*
 		if (FlxG.save.data.yotsubaUnlock == null)
 			FlxG.save.data.yotsubaUnlock = false;
 		if (FlxG.save.data.qenUnlock == null)
 			FlxG.save.data.qenUnlock = false;
+			*/
 	}
 }

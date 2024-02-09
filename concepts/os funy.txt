@@ -7,7 +7,7 @@ versão inicial (VAI TER!!!!):
 		do-mal (Scratch-Cat-Do-Mal)
 	SECRET:
 		fnfolas (Queixão e Narigão)
-		enjoyment (Yotsuba)
+		street-musician (Yotsuba)
 	REAL POREM DESABILITADO NO CODIGO FONTE:
 		so-um-cara (Hawnt Salsicha) >> hawnt salsicha
 
@@ -16,7 +16,9 @@ atualizações-cool:
 		dessert (Velhote) 
 		warhead (Marcoball)
 	FREEPLAY:
-		nao-acesse (Fupi vs. Leo || O mundo de leo: Scratchventura)
+		soy (Mangle Cringe)
+		sonic-addiction (Caça-Maujoa)
+		puppeteer (Rudinny)
 
 --- AS VERSÕES ABAIXO TALVEZ NÃO ACONTEÇAM DEVIDO A MT MT BLOAT AGH ---
 
@@ -28,13 +30,15 @@ viloes edition:
 	EXPANSION INTO A WEEK (extremamente maldoso huauhuahu!!!!1 (Vs. SCDM)):
 		do-mal
 		malefico
+		irritante
 	FREEPLAY:	
 		delinquent (Argon)
 		psychosis (Taurus)
 		busao (Piruca)
-		puppeteer (Rudinny)
+		
 
 a la mofo (scratch 2.0 muito foda!):
+	nao-acesse (Fupi vs. Leo || O mundo de Leo: Scratchventura)
 	novo-amigo (Firokan vs. Neon || As Aventuras de Neon ep 4)
 	skyscraper (Fupi vs. Jario vs. Neon vs. Jackson || https://scratch.mit.edu/projects/107244082/)
 	aventureiros (Jack / Miou4 / Leo / Maujoa)
