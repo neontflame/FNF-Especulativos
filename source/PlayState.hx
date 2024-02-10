@@ -311,6 +311,8 @@ class PlayState extends MusicBeatState
 	#end
 	override public function create()
 	{
+		SaveManager.global();
+		
 		instance = this;
 		FlxG.mouse.visible = false;
 		PlayerSettings.gameControls();

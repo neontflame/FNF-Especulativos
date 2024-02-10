@@ -88,13 +88,16 @@ class FreeplayState extends MusicBeatState
 				addWeek(['Lil-Buddies'], 1, ['face-lil']);
 			} 
 		 */
-
+		SaveManager.modSpecific();
+		
 		if (FlxG.save.data.yotsubaUnlock && Startup.hasYotsu && CoolUtil.exists("assets/images/yotsu"))
 			addWeek(['Street-Musician'], 10, ['yotsuba']);
 
 		if (FlxG.save.data.qenUnlock && Startup.hasQeN && CoolUtil.exists("assets/images/qen"))
 			addWeek(['fnfolas'], 11, ['qen']);
-
+		
+		SaveManager.close();
+		
 		if (Main.salsicha && CoolUtil.exists("assets/images/salsicha"))
 			addWeek(['so-um-cara'], 12, ['hawnt-salsicha']);
 			
