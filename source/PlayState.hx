@@ -2006,13 +2006,6 @@ class PlayState extends MusicBeatState
 		if (healthLerp != health)
 		{
 			healthLerp = CoolUtil.fpsAdjsutedLerp(healthLerp, health, 0.7);
-			
-			#if EXPERIMENTAL_LUA
-			if (executeModchart && luaModchart != null)
-			{
-				luaModchart.setVar('health', health);
-			}
-			#end
 		}
 		
 		if (inRange(healthLerp, 2, 0.001))
@@ -2423,7 +2416,7 @@ class PlayState extends MusicBeatState
 
 				#if EXPERIMENTAL_LUA
 				if (luaModchart != null)
-					luaModchart.executeState('playerTwoSing', [Math.abs(daNote.noteData), Conductor.songPosition]);
+					luaModchart.executeState('playerTwoSing', [Math.abs(daNote.noteData), Conductor.songPosition, daNote.type]);
 				#end
 
 				enemyStrums.forEach(function(spr:SwagStrum)
@@ -3084,28 +3077,27 @@ class PlayState extends MusicBeatState
 
 			if (boyfriend.canAutoAnim)
 			{
-				if (type == "BULLET")
+				switch (type)
 				{
-					boyfriend.playAnim('damage', true);
-				}
-				else
-				{
-					switch (direction)
-					{
-						case 2:
-							boyfriend.playAnim('singUPmiss', true);
-						case 3:
-							boyfriend.playAnim('singRIGHTmiss', true);
-						case 1:
-							boyfriend.playAnim('singDOWNmiss', true);
-						case 0:
-							boyfriend.playAnim('singLEFTmiss', true);
-					}
+					case "BULLET":
+						boyfriend.playAnim('damage', true);
+					default:
+						switch (direction)
+						{
+							case 2:
+								boyfriend.playAnim('singUPmiss', true);
+							case 3:
+								boyfriend.playAnim('singRIGHTmiss', true);
+							case 1:
+								boyfriend.playAnim('singDOWNmiss', true);
+							case 0:
+								boyfriend.playAnim('singLEFTmiss', true);
+						}
 				}
 
 				#if EXPERIMENTAL_LUA
 				if (luaModchart != null)
-					luaModchart.executeState('playerOneMiss', [direction, Conductor.songPosition]);
+					luaModchart.executeState('playerOneMiss', [direction, Conductor.songPosition, type]);
 				#end
 			}
 
@@ -3217,29 +3209,28 @@ class PlayState extends MusicBeatState
 					|| (boyfriend.animation.curAnim.curFrame >= 3
 						|| boyfriend.animation.curAnim.finished)) : true) : true) : !note.isSustainNote))
 			{
-				if (note.type == "BULLET")
+				switch (note.type)
 				{
-					boyfriend.playAnim('dodge', true);
-				}
-				else
-				{
-					switch (note.noteData)
-					{
-						case 2:
-							boyfriend.playAnim('singUP', true);
-						case 3:
-							boyfriend.playAnim('singRIGHT', true);
-						case 1:
-							boyfriend.playAnim('singDOWN', true);
-						case 0:
-							boyfriend.playAnim('singLEFT', true);
-					}
+					case "BULLET":
+						boyfriend.playAnim('dodge', true);
+					default:
+						switch (note.noteData)
+						{
+							case 2:
+								boyfriend.playAnim('singUP', true);
+							case 3:
+								boyfriend.playAnim('singRIGHT', true);
+							case 1:
+								boyfriend.playAnim('singDOWN', true);
+							case 0:
+								boyfriend.playAnim('singLEFT', true);
+						}
 				}
 			}
 
 			#if EXPERIMENTAL_LUA
 			if (luaModchart != null)
-				luaModchart.executeState('playerOneSing', [note.noteData, Conductor.songPosition]);
+				luaModchart.executeState('playerOneSing', [note.noteData, Conductor.songPosition, note.type]);
 			#end
 
 			if (!note.isSustainNote)
@@ -3484,6 +3475,23 @@ class PlayState extends MusicBeatState
 	
 	public function executeEvent(tag:String):Void
 	{
+		// call lua
+		if (tag.startsWith("callLua;"))
+		{
+			var tagSplit = tag.split(";");
+			trace(tagSplit);
+			
+			var slicedArray:Array<String> = tagSplit.slice(1);
+			trace('PARAMS:' + slicedArray.slice(1));
+			
+			#if EXPERIMENTAL_LUA
+			if (luaModchart != null)
+				luaModchart.executeState(slicedArray[1], slicedArray.slice(1));
+			#else
+			trace('sorry no lua lmfao');
+			#end
+		}
+		
 		// playanim
 		if (tag.startsWith("playAnim;"))
 		{
