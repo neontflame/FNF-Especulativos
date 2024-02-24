@@ -43,7 +43,30 @@
 	<source name="source" />
 	
 	<assets path="assets" />
+	<!-- _____________________________ Engine Coisos ____________________________ -->
 
+	<!-- embedar assets secretos Uiui... -->
+	<define name="EXE_EMBEDDING"/>
+	<!-- modcharting da kade engine mas eu mudei algumas coisas -->
+	<define name="EXPERIMENTAL_LUA" if="desktop" />
+	
+	<!-- polymod coisos - EXTREMAMENTE EXPERIMENTAL!!!!
+	<define name="EXPERIMENTAL_MODDING" if="desktop" /> 
+	-->
+	
+	<assets path="assets/secret/images" rename= "assets/images" embed="true" if="EXE_EMBEDDING"/>
+	<assets path="assets/secret/data" rename= "assets/data" embed="true" if="EXE_EMBEDDING"/>
+	<assets path="assets/secret/songs" rename= "assets/songs" embed="true" if="EXE_EMBEDDING"/>
+	<assets path="assets/secret/music" rename= "assets/music" embed="true" if="EXE_EMBEDDING"/>
+	<assets path="assets/secret/sounds" rename= "assets/sounds" embed="true" if="EXE_EMBEDDING"/>
+
+	<assets path="assets/secret/images" rename= "assets/images" embed="false" unless="EXE_EMBEDDING"/>
+	<assets path="assets/secret/data" rename= "assets/data" embed="false" unless="EXE_EMBEDDING"/>
+	<assets path="assets/secret/songs" rename= "assets/songs" embed="false" unless="EXE_EMBEDDING"/>
+	<assets path="assets/secret/music" rename= "assets/music" embed="false" unless="EXE_EMBEDDING"/>
+	<assets path="assets/secret/sounds" rename= "assets/sounds" embed="false" unless="EXE_EMBEDDING"/>
+	
+	
 	<assets path="plugins/" rename='' if="windows"/>
 	<assets path="dlls/" rename='' if="windows"/>
 	
@@ -62,14 +85,6 @@
 	-->
 	<assets path='example_mods' rename='mods' embed='false'/>
 	<assets path="assets/fonts" embed='true'/>
-	
-	<!-- _____________________________ Engine Coisos ____________________________ -->
-
-	<!-- modcharting da kade engine mas eu mudei algumas coisas -->
-	<define name="EXPERIMENTAL_LUA" if="desktop" />
-	
-	<!-- polymod coisos - EXTREMAMENTE EXPERIMENTAL!!!! -->
-	<!-- <define name="EXPERIMENTAL_MODDING" if="desktop" />
 	
 	<!-- _______________________________ Libraries ______________________________ -->
 

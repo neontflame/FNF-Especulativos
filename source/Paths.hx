@@ -104,11 +104,13 @@ class Paths
 
 	inline static public function voices(key:String)
 	{
+		// return file("$key/Voices", "songs", "ogg");
 		return 'assets/songs/$key/Voices.ogg';
 	}
 
 	inline static public function inst(key:String)
 	{
+		// return file("$key/Inst", "songs", "ogg");
 		return 'assets/songs/$key/Inst.ogg';
 	}
 
