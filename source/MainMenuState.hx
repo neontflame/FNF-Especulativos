@@ -316,6 +316,10 @@ class MainMenuState extends MusicBeatState
 
 		switch (combo)
 		{
+			case "COMIC":
+				trace('epico deu certo');
+				openComic();
+				selectedSomethin = false;
 			case "BLU":
 				trace('epico deu certo');
 				openAlert();
@@ -381,6 +385,15 @@ class MainMenuState extends MusicBeatState
 		{
 			alertOpened = true;
 			openSubState(new AlertSubState(0, 0, alert));
+		}
+	}
+
+	function openComic(comic:String = 'cut1', pages:Int = 2)
+	{
+		if (!alertOpened)
+		{
+			alertOpened = true;
+			openSubState(new ComicSubState(0, 0, comic, pages));
 		}
 	}
 

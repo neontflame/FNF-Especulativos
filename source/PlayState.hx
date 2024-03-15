@@ -276,6 +276,7 @@ class PlayState extends MusicBeatState
 	public static var daPixelZoom:Float = 6;
 
 	public static var inCutscene:Bool = false;
+	public static var inComic:Bool = false;
 
 	var dadBeats:Array<Int> = [0, 2];
 	var bfBeats:Array<Int> = [1, 3];
@@ -348,6 +349,9 @@ class PlayState extends MusicBeatState
 		FlxG.sound.cache(Paths.voices(SONG.song));
 		#end
 		
+		// aha funnie miss notes
+		for (i in 1...4) FlxG.sound.cache(Paths.sound('missnote' + i));
+		
 		#if sys
 		executeModchart = FileSystem.exists(Paths.lua(PlayState.SONG.song.toLowerCase() + "/modchart"));
 		#end
@@ -383,6 +387,7 @@ class PlayState extends MusicBeatState
 		eventList.sort(sortByEventStuff);
 
 		inCutscene = false;
+		inComic = false;
 		
 		if (Config.noFpsCap)
 			openfl.Lib.current.stage.frameRate = 999;
@@ -777,12 +782,14 @@ class PlayState extends MusicBeatState
 		//// DEFAULT UI
 		
 		// Add Kade Engine watermark
-		/* kadeEngineWatermark = new FlxText(12,(FlxG.height * 0.9) + 50,0, "songname - FPS+ YF", 16);
+		/* 
+		kadeEngineWatermark = new FlxText(12,(FlxG.height * 0.9) + 50,0, "songname - FPS+ YF", 16);
 		kadeEngineWatermark.text = curSong 
 		+ (!FreeplayState.songsWithNoDiff.contains(curSong) ? " (" + (storyDifficulty == 2 ? "Hard" : storyDifficulty == 1 ? "Normal" : "Easy") + ")" : "" )
 		+ " - FPS+ YF";
 		kadeEngineWatermark.setFormat(Paths.font(hudFont), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, 0xAF000000);
-		kadeEngineWatermark.scrollFactor.set(); */
+		kadeEngineWatermark.scrollFactor.set(); 
+		*/
 
 		scoreTxt = new FlxText(0, healthBarBG.y + (40 - (2.5 * (hudSize - 18))), FlxG.width, "", hudSize);
 		scoreTxt.setFormat(Paths.font(hudFont), hudSize, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE, 0xAF000000);
@@ -944,7 +951,7 @@ class PlayState extends MusicBeatState
 					});
 
 				case "hihi":
-					scratchStart("weekEspe/cut1");
+					scratchStart("comic", "cut1", 2);
 
 				case "dragons":
 					videoCutscene(Paths.video("weekEspe/cut2"), function()
@@ -1206,8 +1213,21 @@ class PlayState extends MusicBeatState
 			startFunc();
 		}
 	}
+	
+	function comicCutscene(cut:String, pages:Int)
+	{
+		inComic = true;
 
-	function scratchStart(?cutsceneThing:String):Void
+		persistentUpdate = false;
+		persistentDraw = true;
+		paused = true;
+
+		openSubState(new ComicSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y, cut, pages));
+
+		FlxG.camera.zoom = defaultCamZoom;
+	}
+
+	function scratchStart(?cutsceneType:String, ?cutsceneThing:String, ?cutscenePages:Int):Void
 	{
 		FlxG.mouse.visible = true;
 		
@@ -1228,12 +1248,14 @@ class PlayState extends MusicBeatState
 				FlxG.mouse.visible = false;
 				remove(startProj);
 
-				if (cutsceneThing != null)
-				{
-					videoCutscene(Paths.video(cutsceneThing));
+				switch (cutsceneType) {
+					case "video":
+						videoCutscene(Paths.video(cutsceneThing));
+					case "comic":
+						comicCutscene(cutsceneThing, cutscenePages);
+					default:
+						startCountdown();
 				}
-				else
-					startCountdown();
 			}
 		});
 	}
@@ -1303,7 +1325,8 @@ class PlayState extends MusicBeatState
 	function startCountdown():Void
 	{	
 		inCutscene = false;
-
+		inComic = false;
+		
 		healthBar.visible = true;
 		healthBarBG.visible = true;
 		iconP1.visible = true;
@@ -1485,6 +1508,7 @@ class PlayState extends MusicBeatState
 			FlxG.sound.music.time = sectionStartTime;
 			Conductor.songPosition = sectionStartTime;
 			vocals.time = sectionStartTime;
+			curSection = sectionStartPoint;
 		}
 		 
 		#if EXPERIMENTAL_LUA
@@ -1804,7 +1828,10 @@ class PlayState extends MusicBeatState
 		}
 
 		setBoyfriendInvuln(1 / 60);
-
+		
+		if (inComic)
+			startCountdown();
+			
 		super.closeSubState();
 	}
 
@@ -1978,6 +2005,9 @@ class PlayState extends MusicBeatState
 
 		if (FlxG.keys.justPressed.SEVEN)
 		{
+			if(!FlxG.keys.pressed.SHIFT)
+				ChartingState.startSection = curSection;
+
 			PlayerSettings.menuControls();
 			switchState(new ChartingState());
 
@@ -2555,9 +2585,7 @@ class PlayState extends MusicBeatState
 
 	private function popUpScore(note:Note):Void
 	{
-		var strumtime = note.strumTime;
-
-		var noteDiff:Float = Math.abs(strumtime - Conductor.songPosition);
+		var noteDiff:Float = Math.abs(note.strumTime - Conductor.songPosition);
 		var score:Int = Conductor.timingScores[0];
 		var daRating:String = "swag";
 		var extremeAccuracy:Float = ((180 - noteDiff) / (180 - 5)); // accuracy DIFIIIICIL e quase impossivel pegar um 100% se tu nao tryhardar
@@ -3282,7 +3310,10 @@ class PlayState extends MusicBeatState
 			{
 				// dad.dance();
 		}*/
-
+		if(curStep > 0 && curStep % 16 == 0){
+			curSection++;
+		}
+		
 		stage.step(curStep);
 
 		super.stepHit();

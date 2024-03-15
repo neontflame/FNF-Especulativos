@@ -45,6 +45,7 @@ using StringTools;
 class ChartingState extends MusicBeatState
 {
 	public static var screenshotBitmap:Bitmap = null;
+	public static var startSection:Int = 0;
 
 	var _file:FileReference;
 
@@ -367,6 +368,12 @@ class ChartingState extends MusicBeatState
 		}
 
 		super.create();
+
+		if(startSection > 0){
+			changeSection(startSection);
+		}
+
+		startSection = 0;
 	}
 
 	function addSongUI():Void
