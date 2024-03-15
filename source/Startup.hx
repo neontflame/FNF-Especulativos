@@ -35,7 +35,9 @@ class Startup extends FlxState
     var currentLoaded:Int = 0;
     var loadTotal:Int = 1;
 	var lmfaoTrolled:Bool = false;
-	
+
+	public static var songsCacheActive:Bool = false;
+		
     var songsCached:Bool;
     public static final songs:Array<String> =   ["Tutorial", 
                                 "Bopeebo", "Fresh", "Dadbattle", 
@@ -77,7 +79,7 @@ class Startup extends FlxState
     public static final graphics:Array<String> =    [
 									"alphabet", "ui/NOTE_assets", "ui/noteSplashes",
 									"titleEnter", "fpsPlus/title/espeDj", "fpsPlus/title/logoBump",
-									"menu/headerStuffs", "menu/footer", "menu/scratchBG", "menu/fnfScratch", "menu/freeplay/longerMenuThing", 
+									"menu/headerStuffs", "menu/footer", "menu/scratchBG", "menu/fnfScratch", "menu/freeplay/longerMenuThing", // menu shits end here
                                     "week1/stageback", "week1/stagefront", "week1/stagecurtains",
                                     "week2/halloween_bg",
                                     "week3/philly/sky", "week3/philly/city", "week3/philly/behindTrain", "week3/philly/train", "week3/philly/street", "week3/philly/win0", "week3/philly/win1", "week3/philly/win2", "week3/philly/win3", "week3/philly/win4",
@@ -189,6 +191,8 @@ class Startup extends FlxState
 			lmfaoTrolled = true;
 			
 		reloadMods();
+
+		songsCacheActive = FlxG.save.data.musicPreload2;
 		
 		super.create();
 		

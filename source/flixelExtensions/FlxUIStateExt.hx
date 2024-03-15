@@ -37,18 +37,23 @@ class FlxUIStateExt extends FlxUIState
 	override function create()
 	{	
 		var someShits:Bool = !(Std.string(Type.getClass(FlxG.state)) == 'PlayState' || Std.string(Type.getClass(FlxG.state)) == 'ChartingState');
-		CoolUtil.clearCache(someShits, someShits, someShits, true);
+		CoolUtil.clearCache(someShits,
+							someShits, 
+							(!Startup.songsCacheActive ? someShits : false), 
+							true);
 		
 		#if EXPERIMENTAL_MODDING
 		Polymod.clearCache();
 		#end
 		
-		FlxG.sound.list.forEachDead(function(sound:FlxSound) {
-			FlxG.sound.list.remove(sound, true);
-			sound.stop();
-			sound.kill();
-			sound.destroy();
-		});
+		if (!Startup.songsCacheActive) {
+			FlxG.sound.list.forEachDead(function(sound:FlxSound) {
+				FlxG.sound.list.remove(sound, true);
+				sound.stop();
+				sound.kill();
+				sound.destroy();
+			});
+		}
 		
 		if (customTransIn != null)
 		{

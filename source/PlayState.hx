@@ -249,7 +249,7 @@ class PlayState extends MusicBeatState
 	//var kadeEngineWatermark:FlxText;
 	var autoplayText:FlxText;
 	var hudFont:String = "vcr";
-	var hudSize:Int = 18;
+	var hudSize:Int = 16;
 
 	// scratch UI
 	/* de agora em diante eu peço minhas 
@@ -267,7 +267,7 @@ class PlayState extends MusicBeatState
 	var missesScratchBG:FlxSprite;
 	var ratingScratchBG:FlxSprite;
 
-	var scoreInfoTxt = ["Score: ", "Misses: ", "Combo Breaks: ", "Accuracy: "];
+	var scoreInfoTxt = ["Score:", "Misses:", "Combo Breaks:", "Accuracy:"];
 	// end UIs
 	public static var campaignScore:Int = 0;
 
@@ -457,15 +457,19 @@ class PlayState extends MusicBeatState
 		}
 
 		// song-specific font
+		// hud qen
 		if (qenSongs.contains(SONG.song.toLowerCase())) {
 			hudFont = "calibrib";
 			hudSize = 20;
 			scoreInfoTxt = ["pontos: ", "burrices: ", "combo burrices: ", "exatidao: "];
 		}
 		
-		if (SONG.song.toLowerCase() == "street-musician")
+		// hud yotsu
+		if (SONG.song.toLowerCase() == "street-musician") {
 			hudFont = "augie";
-
+			hudSize = 18;
+		}
+		
 		var gfCheck:String = 'gf';
 
 		if (SONG.gf == null)
@@ -507,6 +511,7 @@ class PlayState extends MusicBeatState
 		boyfriend = new Character(770, 100, bfChar, true);
 
 		var stageCheck:String = 'Stage';
+		
 		if (SONG.stage == null)
 		{
 			if (spookySongs.contains(SONG.song.toLowerCase()))			{	stageCheck = 'Spooky';	}
@@ -791,7 +796,7 @@ class PlayState extends MusicBeatState
 		kadeEngineWatermark.scrollFactor.set(); 
 		*/
 
-		scoreTxt = new FlxText(0, healthBarBG.y + (40 - (2.5 * (hudSize - 18))), FlxG.width, "", hudSize);
+		scoreTxt = new FlxText(0, healthBarBG.y + (50 - (3.5 * (hudSize - 16))), FlxG.width, "", hudSize);
 		scoreTxt.setFormat(Paths.font(hudFont), hudSize, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE, 0xAF000000);
 		scoreTxt.antialiasing = false;
 		scoreTxt.scrollFactor.set();
@@ -1943,14 +1948,8 @@ class PlayState extends MusicBeatState
 
 		if (!inCutscene)
 		{
-			if (!autoplay)
-			{
-				keyShit();
-			}
-			else
-			{
-				keyShitAuto();
-			}
+			if (!autoplay)	{	keyShit();	}
+			else	{	keyShitAuto();	}
 		}
 
 		if (FlxG.keys.pressed.SHIFT && FlxG.keys.justPressed.TAB && !isStoryMode)
@@ -2062,6 +2061,7 @@ class PlayState extends MusicBeatState
 		}
 
 		// marco bosta
+		// eu devia fazer isso softcodeavel mas eu to com preguiiiiiiiiiiiiiiiiça
 		var marcoBar:Bool = true;
 
 		if (marcoballGimmickSongs.contains(SONG.song.toLowerCase()))
@@ -3855,9 +3855,9 @@ class PlayState extends MusicBeatState
 				if (Config.showComboBreaks)
 				{
 					scoreTxt.text = scoreInfoTxt[0] + songScore 
-					+ " - " + scoreInfoTxt[2] + comboBreaks 
-					+ " - " + scoreInfoTxt[3] + truncateFloat(accuracy, 2) + "%" 
-					// + (textRating != "Clear" || textRating != "?" ? " [" + textRating  + "]": "")
+					+ " | " + scoreInfoTxt[2] + comboBreaks 
+					+ " | " + scoreInfoTxt[3] + truncateFloat(accuracy, 2) + "%" 
+					+ (textRating != "Clear" || textRating != "?" ? " | " + textRating : "")
 					;
 					
 					missesScratchTxt.text = Std.string(comboBreaks);
@@ -3865,9 +3865,9 @@ class PlayState extends MusicBeatState
 				else
 				{
 					scoreTxt.text = scoreInfoTxt[0] + songScore 
-					+ " - " + scoreInfoTxt[1] + misses 
-					+ " - " + scoreInfoTxt[3] + truncateFloat(accuracy, 2) + "%" 
-					// + (textRating != "Clear" || textRating != "?" ? " [" + textRating  + "]": "")
+					+ " | " + scoreInfoTxt[1] + misses 
+					+ " | " + scoreInfoTxt[3] + truncateFloat(accuracy, 2) + "%" 
+					+ (textRating != "Clear" || textRating != "?" ? " | " + textRating : "")
 					;
 					
 					missesScratchTxt.text = Std.string(misses);
