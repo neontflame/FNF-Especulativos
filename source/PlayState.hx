@@ -202,6 +202,7 @@ class PlayState extends MusicBeatState
 	private var health:Float = 1;
 	private var healthLerp:Float = 1;
 
+	private var scrollSpeedForMaths:Float = 1;
 	private var combo:Int = 0;
 	private var misses:Int = 0;
 	private var comboBreaks:Int = 0;
@@ -225,7 +226,7 @@ class PlayState extends MusicBeatState
 	private var iconP2:HealthIcon;
 	
 	public var camHUD:FlxCamera;
-	private var camGame:FlxCamera;
+	public var camGame:FlxCamera;
 	private var camOverlay:FlxCamera;
 	
 	private var eventList:Array<Dynamic> = [];
@@ -298,15 +299,9 @@ class PlayState extends MusicBeatState
 
 	#if EXPERIMENTAL_LUA
 	//////// API SHIT
-	public function addObject(object:FlxBasic)
-	{
-		add(object);
-	}
+	public function addObject(object:FlxBasic)	{	add(object);	}
 
-	public function removeObject(object:FlxBasic)
-	{
-		remove(object);
-	}
+	public function removeObject(object:FlxBasic)	{	remove(object);	}
 
 	//////// END API SHIT
 	#end
@@ -335,6 +330,7 @@ class PlayState extends MusicBeatState
 			}
 		}
 
+		// song cacheing whatevers
 		#if EXPERIMENTAL_MODDING
 		FlxG.sound.cache(OpenFlAssets.getPath(Paths.inst(SONG.song)));
 		
@@ -343,7 +339,6 @@ class PlayState extends MusicBeatState
 		
 		trace('INST: ' + OpenFlAssets.getPath(Paths.inst(SONG.song)));
 		trace('VOICES: ' + OpenFlAssets.getPath(Paths.voices(SONG.song)));
-		
 		#else
 		FlxG.sound.cache(Paths.inst(SONG.song));
 		FlxG.sound.cache(Paths.voices(SONG.song));
@@ -354,12 +349,11 @@ class PlayState extends MusicBeatState
 		
 		#if sys
 		executeModchart = FileSystem.exists(Paths.lua(PlayState.SONG.song.toLowerCase() + "/modchart"));
+		trace('Mod chart: ' + executeModchart + " - " + Paths.lua(PlayState.SONG.song.toLowerCase() + "/modchart"));
 		#end
 		#if !cpp
 		executeModchart = false; // FORCE disable for non cpp targets
 		#end
-
-		trace('Mod chart: ' + executeModchart + " - " + Paths.lua(PlayState.SONG.song.toLowerCase() + "/modchart"));
 
 		if (loadEvents)
 		{
@@ -447,13 +441,10 @@ class PlayState extends MusicBeatState
 
 		if (CoolUtil.exists(Paths.text(SONG.song.toLowerCase() + "/" + SONG.song.toLowerCase() + "Dialogue")))
 		{
-			try
-			{
+			try	{
 				dialogue = CoolUtil.coolTextFile(Paths.text(SONG.song.toLowerCase() + "/" + SONG.song.toLowerCase() + "Dialogue"));
 			}
-			catch (e)
-			{
-			}
+			catch (e){}
 		}
 
 		// song-specific font
@@ -472,6 +463,7 @@ class PlayState extends MusicBeatState
 		
 		var gfCheck:String = 'gf';
 
+		// hardcodismo q eu provavelmente devia tirar
 		if (SONG.gf == null)
 		{
 			switch (storyWeek)
@@ -512,6 +504,7 @@ class PlayState extends MusicBeatState
 
 		var stageCheck:String = 'Stage';
 		
+		// outro hardcodismo que eu devia tirar
 		if (SONG.stage == null)
 		{
 			if (spookySongs.contains(SONG.song.toLowerCase()))			{	stageCheck = 'Spooky';	}
@@ -668,17 +661,15 @@ class PlayState extends MusicBeatState
 			comboUI.accelScale = 0.2;
 			comboUI.velocityScale = 0.2;
 
-			 if (!Config.downscroll)
-				{
-					comboUI.ratingPosition = [949, 580];
-					comboUI.numberPosition = [13, 603];
-					comboUI.breakPosition = [690, 465];
-				}
-				else
-				{
-					comboUI.ratingPosition = [949, 2];
-					comboUI.numberPosition = [13, 23];
-					comboUI.breakPosition = [690, 85];
+			if (!Config.downscroll){
+				comboUI.ratingPosition = [700, 510];
+				comboUI.numberPosition = [320, 480];
+				comboUI.breakPosition = [690, 465];
+			}
+			else {
+				comboUI.ratingPosition = [700, 80];
+				comboUI.numberPosition = [320, 100];
+				comboUI.breakPosition = [690, 85];
 			}
 			
 			/*
@@ -1541,8 +1532,6 @@ class PlayState extends MusicBeatState
 
 		var noteData:Array<SwagSection>;
 
-		var scrollSpeedForMaths:Float = 1;
-
 		if (Config.scrollSpeedOverride > 0)
 			scrollSpeedForMaths = Config.scrollSpeedOverride;
 		else
@@ -1868,7 +1857,7 @@ class PlayState extends MusicBeatState
 
 	var currentLuaIndex = 0;
 
-	override public function update(elapsed:Float)
+	public function luaUpdate(elapsed:Float)
 	{
 		#if EXPERIMENTAL_LUA
 		//////// YET EVEN MORE LUA SHIT
@@ -1914,6 +1903,21 @@ class PlayState extends MusicBeatState
 		}
 		//////// CEASE LUA SHIT YET AGAIN
 		#end
+	}
+	
+	public function luaKill() 
+	{
+		#if EXPERIMENTAL_LUA
+		if (luaModchart != null)
+		{
+			luaModchart.die();
+			luaModchart = null;
+		}
+		#end
+	}
+	override public function update(elapsed:Float)
+	{
+		luaUpdate(elapsed);
 
 		if (invulnTime > 0)
 		{
@@ -1970,9 +1974,7 @@ class PlayState extends MusicBeatState
 		}*/
 		
 		super.update(elapsed);
-		
 		stage.update(elapsed);
-		
 		updateAccuracyText();
 		
 		if (!startingSong)
@@ -2010,13 +2012,8 @@ class PlayState extends MusicBeatState
 			PlayerSettings.menuControls();
 			switchState(new ChartingState());
 
-			#if EXPERIMENTAL_LUA
-			if (luaModchart != null)
-			{
-				luaModchart.die();
-				luaModchart = null;
-			}
-			#end
+			luaKill();
+			
 			sectionStart = false;
 		}
 
@@ -2143,6 +2140,10 @@ class PlayState extends MusicBeatState
 			if (curBeat % 4 == 0)
 			{
 				// trace(PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection);
+				#if EXPERIMENTAL_LUA
+				if (executeModchart && luaModchart != null)
+					luaModchart.setVar("mustHit", PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection);
+				#end
 			}
 
 			// camera movement!!! yeah!!!!
@@ -2295,15 +2296,13 @@ class PlayState extends MusicBeatState
 				targetSpeed = enemyStrums.members[Math.floor(Math.abs(daNote.noteData))].modSpeed;
 			}
 
-			if (Config.scrollSpeedOverride > 0)
-			{
+			if (Config.scrollSpeedOverride > 0) {
 				scrollSpeed = Config.scrollSpeedOverride;
+			} else {
+				// scrollSpeed = FlxMath.roundDecimal(PlayState.SONG.speed, 2);
+				scrollSpeed = scrollSpeedForMaths;
 			}
-			else
-			{
-				scrollSpeed = FlxMath.roundDecimal(PlayState.SONG.speed, 2);
-			}
-
+			
 			var sinShit:Float = Math.sin((targetModAngle) * FlxAngle.TO_RAD);
 			var cosShit:Float = Math.cos((targetModAngle) * FlxAngle.TO_RAD);
 
@@ -2480,13 +2479,7 @@ class PlayState extends MusicBeatState
 
 	public function endSong():Void
 	{
-		#if EXPERIMENTAL_LUA
-		if (luaModchart != null)
-		{
-			luaModchart.die();
-			luaModchart = null;
-		}
-		#end
+		luaKill();
 
 		canPause = false;
 		FlxG.sound.music.volume = 0;
@@ -2502,16 +2495,7 @@ class PlayState extends MusicBeatState
 			
 			if (storyPlaylist.length <= 0)
 			{
-
 				PlayerSettings.menuControls();
-
-				#if EXPERIMENTAL_LUA
-				if (luaModchart != null)
-				{
-					luaModchart.die();
-					luaModchart = null;
-				}
-				#end
 				
 				if (SONG.song.toLowerCase() == "dragons") {
 					CutsceneState.vid = (misses > 10 ? "weekEspe/badEnding" : "weekEspe/goodEnding");
@@ -3256,16 +3240,16 @@ class PlayState extends MusicBeatState
 				}
 			}
 
-			#if EXPERIMENTAL_LUA
-			if (luaModchart != null)
-				luaModchart.executeState('playerOneSing', [note.noteData, Conductor.songPosition, note.type]);
-			#end
-
 			if (!note.isSustainNote)
 			{
 				setBoyfriendInvuln(2.5 / 60);
 			}
 
+			#if EXPERIMENTAL_LUA
+			if (luaModchart != null)
+				luaModchart.executeState('playerOneSing', [note.noteData, Conductor.songPosition, note.type]);
+			#end
+			
 			playerStrums.forEach(function(spr:SwagStrum)
 			{
 				for (i in 0...note.noteWidth)
@@ -3352,9 +3336,7 @@ class PlayState extends MusicBeatState
 			{
 				#if EXPERIMENTAL_LUA
 				if (executeModchart && luaModchart != null)
-				{
 					luaModchart.setVar("bpm", SONG.notes[Math.floor(curStep / 16)].bpm);
-				}
 				#end
 				
 				Conductor.changeBPM(SONG.notes[Math.floor(curStep / 16)].bpm);
@@ -3396,17 +3378,13 @@ class PlayState extends MusicBeatState
 		}
 
 		if (bfBeats.contains(curBeat % 4) && boyfriend.canAutoAnim && !boyfriend.animation.curAnim.name.startsWith('sing'))
-		{
 			boyfriend.dance();
-		}
 
 		switch (curSong.toLowerCase())
 		{
 			case "bopeebo":
 				if (curBeat % 8 == 7 && curSong == 'Bopeebo')
-				{
 					boyfriend.playAnim('hey', true);
-				}
 
 			case "fresh":
 				switch (curBeat)
@@ -3518,13 +3496,15 @@ class PlayState extends MusicBeatState
 			#if EXPERIMENTAL_LUA
 			if (luaModchart != null)
 				luaModchart.executeState(slicedArray[1], slicedArray.slice(1));
+			else
+				trace('sorry no lua lmfao');
 			#else
 			trace('sorry no lua lmfao');
 			#end
 		}
 		
 		// playanim
-		if (tag.startsWith("playAnim;"))
+		else if (tag.startsWith("playAnim;"))
 		{
 			var tagSplit = tag.split(";");
 			trace(tagSplit);
@@ -3542,7 +3522,7 @@ class PlayState extends MusicBeatState
 			}
 		}
 		// change char!!
-		else if (tag.startsWith("changeChar;"))
+		if (tag.startsWith("changeChar;"))
 		{
 			var tagSplit = tag.split(";");
 			trace(tagSplit);
@@ -3615,16 +3595,12 @@ class PlayState extends MusicBeatState
 			if (mustHit)
 			{
 				if (x[1] < 4)
-				{
 					return true;
-				}
 			}
 			else
 			{
 				if (x[1] > 3)
-				{
 					return true;
-				}
 			}
 		}
 
@@ -3641,16 +3617,12 @@ class PlayState extends MusicBeatState
 			if (mustHit)
 			{
 				if (x[1] > 3)
-				{
 					return true;
-				}
 			}
 			else
 			{
 				if (x[1] < 4)
-				{
 					return true;
-				}
 			}
 		}
 
@@ -3747,9 +3719,7 @@ class PlayState extends MusicBeatState
 	{
 		if (_onComplete == null)
 		{
-			_onComplete = function(tween:FlxTween)
-			{
-			};
+			_onComplete = function(tween:FlxTween){};
 		}
 
 		if (_time > 0)
@@ -3770,9 +3740,7 @@ class PlayState extends MusicBeatState
 	{
 		if (_onComplete == null)
 		{
-			_onComplete = function(tween:FlxTween)
-			{
-			};
+			_onComplete = function(tween:FlxTween){};
 		}
 
 		if (_time > 0)
@@ -3791,9 +3759,7 @@ class PlayState extends MusicBeatState
 	{
 		if (_onComplete == null)
 		{
-			_onComplete = function(tween:FlxTween)
-			{
-			};
+			_onComplete = function(tween:FlxTween){};
 		}
 
 		if (_time > 0)
@@ -3910,9 +3876,7 @@ class PlayState extends MusicBeatState
 	function sortNotes()
 	{
 		if (generatedMusic)
-		{
 			notes.sort(noteSortThing, FlxSort.DESCENDING);
-		}
 	}
 
 	public static inline function noteSortThing(Order:Int, Obj1:Note, Obj2:Note):Int

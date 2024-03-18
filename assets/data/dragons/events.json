@@ -2,28 +2,16 @@
 	"events": {
 		"events": [
 			[
-				36,
-				45473.6842105263,
+				56,
+				72814.7659854977,
 				0,
-				"changeChar;dad;blu"
+				"changeChar;dad;hektor"
 			],
 			[
-				72,
-				90947.3684210525,
+				88,
+				121296.276607056,
 				0,
 				"changeChar;dad;hawnt"
-			],
-			[
-				136,
-				174035.087719298,
-				0,
-				"changeChar;dad;dave"
-			],
-			[
-				104,
-				131368.421052631,
-				0,
-				"changeChar;dad;sketcher"
 			]
 		]
 	}

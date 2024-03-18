@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="hektor.png">
+	<!-- Created with Adobe Animate version 19.0.0.326 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="hektor down0000" x="0" y="0" width="442" height="673" pivotX="247.85" pivotY="325.75" frameX="0" frameY="-4" frameWidth="442" frameHeight="678"/>
+	<SubTexture name="hektor down0001" x="0" y="0" width="442" height="673" frameX="0" frameY="-4" frameWidth="442" frameHeight="678"/>
+	<SubTexture name="hektor down0002" x="442" y="0" width="438" height="678" frameX="0" frameY="0" frameWidth="442" frameHeight="678"/>
+	<SubTexture name="hektor down0003" x="442" y="0" width="438" height="678" frameX="0" frameY="0" frameWidth="442" frameHeight="678"/>
+	<SubTexture name="hektor down0004" x="442" y="0" width="438" height="678" frameX="0" frameY="0" frameWidth="442" frameHeight="678"/>
+	<SubTexture name="hektor down0005" x="442" y="0" width="438" height="678" frameX="0" frameY="0" frameWidth="442" frameHeight="678"/>
+	<SubTexture name="hektor down0006" x="442" y="0" width="438" height="678" frameX="0" frameY="0" frameWidth="442" frameHeight="678"/>
+	<SubTexture name="hektor down0007" x="442" y="0" width="438" height="678" frameX="0" frameY="0" frameWidth="442" frameHeight="678"/>
+	<SubTexture name="hektor down0008" x="442" y="0" width="438" height="678" frameX="0" frameY="0" frameWidth="442" frameHeight="678"/>
+	<SubTexture name="hektor down0009" x="442" y="0" width="438" height="678" frameX="0" frameY="0" frameWidth="442" frameHeight="678"/>
+	<SubTexture name="hektor down0010" x="442" y="0" width="438" height="678" frameX="0" frameY="0" frameWidth="442" frameHeight="678"/>
+	<SubTexture name="hektor down0011" x="442" y="0" width="438" height="678" frameX="0" frameY="0" frameWidth="442" frameHeight="678"/>
+	<SubTexture name="hektor down0012" x="442" y="0" width="438" height="678" frameX="0" frameY="0" frameWidth="442" frameHeight="678"/>
+	<SubTexture name="hektor down0013" x="442" y="0" width="438" height="678" frameX="0" frameY="0" frameWidth="442" frameHeight="678"/>
+	<SubTexture name="hektor idle0000" x="880" y="0" width="427" height="715" pivotX="221.85" pivotY="358.75" frameX="-8" frameY="-1" frameWidth="435" frameHeight="716"/>
+	<SubTexture name="hektor idle0001" x="880" y="0" width="427" height="715" frameX="-8" frameY="-1" frameWidth="435" frameHeight="716"/>
+	<SubTexture name="hektor idle0002" x="1307" y="0" width="428" height="713" frameX="-7" frameY="-2" frameWidth="435" frameHeight="716"/>
+	<SubTexture name="hektor idle0003" x="1307" y="0" width="428" height="713" frameX="-7" frameY="-2" frameWidth="435" frameHeight="716"/>
+	<SubTexture name="hektor idle0004" x="0" y="715" width="432" height="714" frameX="0" frameY="0" frameWidth="435" frameHeight="716"/>
+	<SubTexture name="hektor idle0005" x="0" y="715" width="432" height="714" frameX="0" frameY="0" frameWidth="435" frameHeight="716"/>
+	<SubTexture name="hektor idle0006" x="432" y="715" width="432" height="713" frameX="-2" frameY="-1" frameWidth="435" frameHeight="716"/>
+	<SubTexture name="hektor idle0007" x="432" y="715" width="432" height="713" frameX="-2" frameY="-1" frameWidth="435" frameHeight="716"/>
+	<SubTexture name="hektor idle0008" x="432" y="715" width="432" height="713" frameX="-2" frameY="-1" frameWidth="435" frameHeight="716"/>
+	<SubTexture name="hektor idle0009" x="432" y="715" width="432" height="713" frameX="-2" frameY="-1" frameWidth="435" frameHeight="716"/>
+	<SubTexture name="hektor idle0010" x="432" y="715" width="432" height="713" frameX="-2" frameY="-1" frameWidth="435" frameHeight="716"/>
+	<SubTexture name="hektor idle0011" x="432" y="715" width="432" height="713" frameX="-2" frameY="-1" frameWidth="435" frameHeight="716"/>
+	<SubTexture name="hektor idle0012" x="864" y="715" width="430" height="712" frameX="-4" frameY="-2" frameWidth="435" frameHeight="716"/>
+	<SubTexture name="hektor idle0013" x="864" y="715" width="430" height="712" frameX="-4" frameY="-2" frameWidth="435" frameHeight="716"/>
+	<SubTexture name="hektor left0000" x="1294" y="715" width="494" height="717" pivotX="300.2" pivotY="362.45" frameX="0" frameY="0" frameWidth="499" frameHeight="717"/>
+	<SubTexture name="hektor left0001" x="1294" y="715" width="494" height="717" frameX="0" frameY="0" frameWidth="499" frameHeight="717"/>
+	<SubTexture name="hektor left0002" x="0" y="1432" width="489" height="716" frameX="-10" frameY="-1" frameWidth="499" frameHeight="717"/>
+	<SubTexture name="hektor left0003" x="0" y="1432" width="489" height="716" frameX="-10" frameY="-1" frameWidth="499" frameHeight="717"/>
+	<SubTexture name="hektor left0004" x="0" y="1432" width="489" height="716" frameX="-10" frameY="-1" frameWidth="499" frameHeight="717"/>
+	<SubTexture name="hektor left0005" x="0" y="1432" width="489" height="716" frameX="-10" frameY="-1" frameWidth="499" frameHeight="717"/>
+	<SubTexture name="hektor left0006" x="0" y="1432" width="489" height="716" frameX="-10" frameY="-1" frameWidth="499" frameHeight="717"/>
+	<SubTexture name="hektor left0007" x="0" y="1432" width="489" height="716" frameX="-10" frameY="-1" frameWidth="499" frameHeight="717"/>
+	<SubTexture name="hektor left0008" x="0" y="1432" width="489" height="716" frameX="-10" frameY="-1" frameWidth="499" frameHeight="717"/>
+	<SubTexture name="hektor left0009" x="0" y="1432" width="489" height="716" frameX="-10" frameY="-1" frameWidth="499" frameHeight="717"/>
+	<SubTexture name="hektor left0010" x="0" y="1432" width="489" height="716" frameX="-10" frameY="-1" frameWidth="499" frameHeight="717"/>
+	<SubTexture name="hektor left0011" x="0" y="1432" width="489" height="716" frameX="-10" frameY="-1" frameWidth="499" frameHeight="717"/>
+	<SubTexture name="hektor left0012" x="0" y="1432" width="489" height="716" frameX="-10" frameY="-1" frameWidth="499" frameHeight="717"/>
+	<SubTexture name="hektor left0013" x="0" y="1432" width="489" height="716" frameX="-10" frameY="-1" frameWidth="499" frameHeight="717"/>
+	<SubTexture name="hektor right0000" x="489" y="1432" width="452" height="691" pivotX="193.25" pivotY="343.65" frameX="-6" frameY="-8" frameWidth="458" frameHeight="700"/>
+	<SubTexture name="hektor right0001" x="489" y="1432" width="452" height="691" frameX="-6" frameY="-8" frameWidth="458" frameHeight="700"/>
+	<SubTexture name="hektor right0002" x="941" y="1432" width="446" height="700" frameX="0" frameY="0" frameWidth="458" frameHeight="700"/>
+	<SubTexture name="hektor right0003" x="941" y="1432" width="446" height="700" frameX="0" frameY="0" frameWidth="458" frameHeight="700"/>
+	<SubTexture name="hektor right0004" x="941" y="1432" width="446" height="700" frameX="0" frameY="0" frameWidth="458" frameHeight="700"/>
+	<SubTexture name="hektor right0005" x="941" y="1432" width="446" height="700" frameX="0" frameY="0" frameWidth="458" frameHeight="700"/>
+	<SubTexture name="hektor right0006" x="941" y="1432" width="446" height="700" frameX="0" frameY="0" frameWidth="458" frameHeight="700"/>
+	<SubTexture name="hektor right0007" x="941" y="1432" width="446" height="700" frameX="0" frameY="0" frameWidth="458" frameHeight="700"/>
+	<SubTexture name="hektor right0008" x="941" y="1432" width="446" height="700" frameX="0" frameY="0" frameWidth="458" frameHeight="700"/>
+	<SubTexture name="hektor right0009" x="941" y="1432" width="446" height="700" frameX="0" frameY="0" frameWidth="458" frameHeight="700"/>
+	<SubTexture name="hektor right0010" x="941" y="1432" width="446" height="700" frameX="0" frameY="0" frameWidth="458" frameHeight="700"/>
+	<SubTexture name="hektor right0011" x="941" y="1432" width="446" height="700" frameX="0" frameY="0" frameWidth="458" frameHeight="700"/>
+	<SubTexture name="hektor right0012" x="941" y="1432" width="446" height="700" frameX="0" frameY="0" frameWidth="458" frameHeight="700"/>
+	<SubTexture name="hektor right0013" x="941" y="1432" width="446" height="700" frameX="0" frameY="0" frameWidth="458" frameHeight="700"/>
+	<SubTexture name="hektor up0000" x="1387" y="1432" width="537" height="814" pivotX="263.95" pivotY="465.95" frameX="-6" frameY="0" frameWidth="545" frameHeight="814"/>
+	<SubTexture name="hektor up0001" x="1387" y="1432" width="537" height="814" frameX="-6" frameY="0" frameWidth="545" frameHeight="814"/>
+	<SubTexture name="hektor up0002" x="0" y="2246" width="545" height="806" frameX="0" frameY="-8" frameWidth="545" frameHeight="814"/>
+	<SubTexture name="hektor up0003" x="0" y="2246" width="545" height="806" frameX="0" frameY="-8" frameWidth="545" frameHeight="814"/>
+	<SubTexture name="hektor up0004" x="0" y="2246" width="545" height="806" frameX="0" frameY="-8" frameWidth="545" frameHeight="814"/>
+	<SubTexture name="hektor up0005" x="0" y="2246" width="545" height="806" frameX="0" frameY="-8" frameWidth="545" frameHeight="814"/>
+	<SubTexture name="hektor up0006" x="0" y="2246" width="545" height="806" frameX="0" frameY="-8" frameWidth="545" frameHeight="814"/>
+	<SubTexture name="hektor up0007" x="0" y="2246" width="545" height="806" frameX="0" frameY="-8" frameWidth="545" frameHeight="814"/>
+	<SubTexture name="hektor up0008" x="0" y="2246" width="545" height="806" frameX="0" frameY="-8" frameWidth="545" frameHeight="814"/>
+	<SubTexture name="hektor up0009" x="0" y="2246" width="545" height="806" frameX="0" frameY="-8" frameWidth="545" frameHeight="814"/>
+	<SubTexture name="hektor up0010" x="0" y="2246" width="545" height="806" frameX="0" frameY="-8" frameWidth="545" frameHeight="814"/>
+	<SubTexture name="hektor up0011" x="0" y="2246" width="545" height="806" frameX="0" frameY="-8" frameWidth="545" frameHeight="814"/>
+	<SubTexture name="hektor up0012" x="0" y="2246" width="545" height="806" frameX="0" frameY="-8" frameWidth="545" frameHeight="814"/>
+	<SubTexture name="hektor up0013" x="0" y="2246" width="545" height="806" frameX="0" frameY="-8" frameWidth="545" frameHeight="814"/>
+</TextureAtlas>

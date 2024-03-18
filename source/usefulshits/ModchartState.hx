@@ -342,6 +342,7 @@ class ModchartState
 				@:privateAccess
 				return Reflect.getProperty(PlayState.instance, id);
 			}
+			@:privateAccess
 			return PlayState.strumLineNotes.members[Std.parseInt(id)];
 		}
 		return luaSprites.get(id);
@@ -349,7 +350,8 @@ class ModchartState
 
 	function getPropertyByName(id:String)
 	{
-		return Reflect.field(PlayState.instance, id);
+		@:privateAccess
+		return Reflect.getProperty(PlayState.instance, id);
 	}
 
 	public static var luaSprites:Map<String, FlxSprite> = [];
@@ -654,6 +656,22 @@ class ModchartState
 			return FlxG.camera.y;
 		});
 
+		Lua_helper.add_callback(lua, "getCamGameInfo", function(what:String)
+		{
+			switch (what) {
+				case "x":
+					return PlayState.instance.camGame.x;
+				case "y":
+					return PlayState.instance.camGame.y;
+				case "scrollx":
+					return PlayState.instance.camGame.scroll.x;
+				case "scrolly":
+					return PlayState.instance.camGame.scroll.y;
+				default:
+					return 0;
+			}
+		});
+		
 		Lua_helper.add_callback(lua, "setCamZoom", function(zoomAmount:Float)
 		{
 			PlayState.instance.camZoomTween.cancel();
@@ -806,7 +824,7 @@ class ModchartState
 			PlayState.instance.notes.members[id].setGraphicSize(Std.int(PlayState.instance.notes.members[id].width * scale));
 		});
 
-		Lua_helper.add_callback(lua, "setRenderedNoteScale", function(scaleX:Int, scaleY:Int, id:Int)
+		Lua_helper.add_callback(lua, "setRenderedNoteScaleXY", function(scaleX:Int, scaleY:Int, id:Int)
 		{
 			PlayState.instance.notes.members[id].modifiedByLua = true;
 			PlayState.instance.notes.members[id].setGraphicSize(scaleX, scaleY);

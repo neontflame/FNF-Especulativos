@@ -332,7 +332,7 @@ class Character extends FlxSprite
 				charOffsetArray = [194, 163];
 				
 			case 'blu':
-				// o dude flamejante azul
+				// o dude flamejante azul (nao usado mais lmfao)
 				frames = Paths.getSparrowAtlas("especula/blu");
 				animation.addByPrefix('idle', 'blu idle', 24, false);
 				animation.addByPrefix('singUP', 'blu up', 24, false);
@@ -350,6 +350,26 @@ class Character extends FlxSprite
 
 				iconName = "blu";
 				charOffsetArray = [150, 337];
+				
+			case 'hektor':
+				// o dude Grande e Azul
+				frames = Paths.getSparrowAtlas("especula/hektor");
+				animation.addByPrefix('idle', 'hektor idle', 24, false);
+				animation.addByPrefix('singLEFT', 'hektor left', 24, false);
+				animation.addByPrefix('singDOWN', 'hektor down', 24, false);
+				animation.addByPrefix('singUP', 'hektor up', 24, false);
+				animation.addByPrefix('singRIGHT', 'hektor right', 24, false);
+				
+				addOffset('idle', 0, 0);
+				addOffset('singLEFT', 77, 4);
+				addOffset('singDOWN', 24, -33);
+				addOffset('singUP', 39, 103);
+				addOffset('singRIGHT', -27, -15);
+				
+				playAnim('idle');
+				
+				iconName = "hektor";
+				charOffsetArray = [0, 80];
 				
 			case 'sketcher':
 				// o dude Redux

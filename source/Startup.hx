@@ -26,15 +26,14 @@ using StringTools;
 
 class Startup extends FlxState
 {
-
     var nextState:FlxState = new TitleHaxeSplash();
-
+	
     var loadingBar:FlxBar;
     var loadingText:FlxText;
 
     var currentLoaded:Int = 0;
     var loadTotal:Int = 1;
-	var lmfaoTrolled:Bool = false;
+	var lmfaoTrolled:String = "nah";
 
 	public static var songsCacheActive:Bool = false;
 		
@@ -187,8 +186,11 @@ class Startup extends FlxState
         hasYotsu = CoolUtil.exists(Paths.inst("Street-Musician"));
         hasQeN = CoolUtil.exists(Paths.inst("fnfolas"));
 		
-		if (FlxG.random.int(0, 85) == 85) 
-			lmfaoTrolled = true;
+		if (FlxG.random.int(0, 86) == 85) 
+			lmfaoTrolled = "noload";
+
+		if (FlxG.random.int(0, 86) == 86) 
+			lmfaoTrolled = "scratchCat";
 			
 		reloadMods();
 
@@ -273,8 +275,13 @@ class Startup extends FlxState
 			new FlxTimer().start(0.5, function(tmr:FlxTimer)
 			{
 				#if sys System.gc(); #end
-				if (!lmfaoTrolled) {
-					FlxG.switchState(nextState); 
+				switch (lmfaoTrolled) {
+					case "noload":
+						// nada acontece
+					case "scratchCat":
+						FlxG.switchState(new ScratchCatState()); 
+					default:
+						FlxG.switchState(nextState); 
 				}
 			});
         }
