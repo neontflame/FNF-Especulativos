@@ -12,6 +12,30 @@
 				121296.276607056,
 				0,
 				"changeChar;dad;hawnt"
+			],
+			[
+				122,
+				167924.848035627,
+				0,
+				"changeChar;dad;sketcher"
+			],
+			[
+				170,
+				223136.878110815,
+				0,
+				"changeChar;dad;dave"
+			],
+			[
+				235,
+				310136.878110814,
+				0,
+				"playAnim;bf;hey"
+			],
+			[
+				235,
+				310053.544777481,
+				0,
+				"bfAnimLockToggle"
 			]
 		]
 	}

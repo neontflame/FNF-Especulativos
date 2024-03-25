@@ -29,20 +29,14 @@ class HealthIcon extends FlxSprite
 		isPlayer = _isPlayer;
 
 		if (CoolUtil.exists(Paths.file("ui/healthIcons/" + _character, "images", "png")))
-		{
 			character = _character;
-		}
 		else
-		{
 			trace("No icon exists at ui/healthIcons/" + _character + ".png, defaulting to face.");
-		}
 
 		setIconCharacter(character);
-
 		iconSize = width;
-
 		id = _id;
-
+		
 		scrollFactor.set();
 
 		tween = FlxTween.tween(this, {}, 0);
@@ -54,10 +48,7 @@ class HealthIcon extends FlxSprite
 		setGraphicSize(Std.int(iconSize * iconScale));
 		updateHitbox();
 
-		if (sprTracker != null)
-		{
-			setPosition(sprTracker.x + sprTracker.width + 10, sprTracker.y - 30);
-		}
+		if (sprTracker != null)	{	setPosition(sprTracker.x + sprTracker.width + 10, sprTracker.y - 30);	}
 	}
 
 	public function tweenToDefaultScale(_time:Float, _ease:Null<flixel.tweens.EaseFunction>)
@@ -68,16 +59,10 @@ class HealthIcon extends FlxSprite
 
 	public function setIconCharacter(character:String)
 	{
-		var iconPx:Int = 150;
+		// automatic icon size coolswag taken from forever engine!
+		var iconGraphic:FlxGraphic = FlxGraphic.fromAssetKey(Paths.image('ui/healthIcons/' + character));
 		
-		switch (character) {
-			case "hektor":
-				iconPx = 166;
-			default:
-				iconPx = 150;
-		}
-		
-		loadGraphic(Paths.image('ui/healthIcons/' + character), true, iconPx, iconPx);
+		loadGraphic(iconGraphic, true, Std.int(iconGraphic.width / 3), iconGraphic.height);
 		animation.add("icon", [0, 1, 2], 0, false, isPlayer);
 		animation.play("icon");
 

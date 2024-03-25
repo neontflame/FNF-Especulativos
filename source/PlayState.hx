@@ -331,18 +331,8 @@ class PlayState extends MusicBeatState
 		}
 
 		// song cacheing whatevers
-		#if EXPERIMENTAL_MODDING
-		FlxG.sound.cache(OpenFlAssets.getPath(Paths.inst(SONG.song)));
-		
-		if (OpenFlAssets.exists(Paths.voices(SONG.song), SOUND))
-			FlxG.sound.cache(OpenFlAssets.getPath(Paths.voices(SONG.song)));
-		
-		trace('INST: ' + OpenFlAssets.getPath(Paths.inst(SONG.song)));
-		trace('VOICES: ' + OpenFlAssets.getPath(Paths.voices(SONG.song)));
-		#else
 		FlxG.sound.cache(Paths.inst(SONG.song));
 		FlxG.sound.cache(Paths.voices(SONG.song));
-		#end
 		
 		// aha funnie miss notes
 		for (i in 1...4) FlxG.sound.cache(Paths.sound('missnote' + i));

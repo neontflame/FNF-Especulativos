@@ -43,7 +43,7 @@ class FlxUIStateExt extends FlxUIState
 							true);
 		
 		#if EXPERIMENTAL_MODDING
-		Polymod.clearCache();
+		// Polymod.clearCache();
 		#end
 		
 		if (!Startup.songsCacheActive) {
