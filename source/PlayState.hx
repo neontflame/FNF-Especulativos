@@ -278,7 +278,8 @@ class PlayState extends MusicBeatState
 
 	public static var inCutscene:Bool = false;
 	public static var inComic:Bool = false;
-
+	public static var inEnd:Bool = false;
+	
 	var dadBeats:Array<Int> = [0, 2];
 	var bfBeats:Array<Int> = [1, 3];
 
@@ -322,7 +323,11 @@ class PlayState extends MusicBeatState
 
 				case 'tres-bofetadas':
 					customTransIn = new BasicTransition();
-					customTransOut = new ScreenWipeOut(0.6);
+					customTransOut = new BasicTransition();
+					
+				case 'dragons':
+					customTransIn = new BasicTransition();
+					customTransOut = new BasicTransition();
 					
 				default:
 					customTransIn = new ScreenWipeIn(1.2);
@@ -937,10 +942,10 @@ class PlayState extends MusicBeatState
 					});
 
 				case "hihi":
-					scratchStart("comic", "cut1", 2);
+					scratchStart("comic", "cut1", 4);
 
 				case "dragons":
-					videoCutscene(Paths.video("weekEspe/cut2"), function()
+					/* videoCutscene(Paths.video("weekEspe/cut2"), function()
 					{
 						camMove(camFollow.x, camFollow.y + 100, 0, null);
 						FlxG.camera.zoom = defaultCamZoom * 1.2;
@@ -953,7 +958,8 @@ class PlayState extends MusicBeatState
 							camFocusOpponent();
 						}
 						FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, ((Conductor.crochet / 1000) * 5) - 0.1, {ease: FlxEase.quadOut});
-					});
+					}); */
+					comicCutscene("cut2", 1);
 					
 				default:
 					startCountdown();
@@ -1200,10 +1206,12 @@ class PlayState extends MusicBeatState
 		}
 	}
 	
-	function comicCutscene(cut:String, pages:Int)
+	function comicCutscene(cut:String, pages:Int, ?end:Bool = false)
 	{
 		inComic = true;
 
+		inEnd = end;
+		
 		persistentUpdate = false;
 		persistentDraw = true;
 		paused = true;
@@ -1486,7 +1494,7 @@ class PlayState extends MusicBeatState
 			FlxG.sound.playMusic(Paths.inst(SONG.song), 1, false);
 		}
 
-		FlxG.sound.music.onComplete = endSong;
+		FlxG.sound.music.onComplete = almostEndSong;
 		vocals.play();
 
 		if (sectionStart)
@@ -1814,7 +1822,10 @@ class PlayState extends MusicBeatState
 		setBoyfriendInvuln(1 / 60);
 		
 		if (inComic)
-			startCountdown();
+			if (inEnd)
+				endSong();
+			else
+				startCountdown();
 			
 		super.closeSubState();
 	}
@@ -2467,6 +2478,22 @@ class PlayState extends MusicBeatState
 		});
 	}
 
+	public function almostEndSong():Void
+	{
+		if (isStoryMode) {
+			switch (SONG.song.toLowerCase()) {
+				case "dragons":
+					// CutsceneState.vid = (misses > 10 ? "weekEspe/badEnding" : "weekEspe/goodEnding");
+					// switchState(new CutsceneState());
+					comicCutscene((misses > 10 ? "badEnding" : "goodEnding"), 3, true);
+				default:
+					endSong();
+			}
+		} else {
+			endSong();
+		}
+				
+	}
 	public function endSong():Void
 	{
 		luaKill();
@@ -2487,14 +2514,9 @@ class PlayState extends MusicBeatState
 			{
 				PlayerSettings.menuControls();
 				
-				if (SONG.song.toLowerCase() == "dragons") {
-					CutsceneState.vid = (misses > 10 ? "weekEspe/badEnding" : "weekEspe/goodEnding");
-					switchState(new CutsceneState());
-				} else {
-					FlxG.sound.playMusic(Paths.music("coolMenu"), 1);
-					switchState(new StoryMenuState());
-				}
-				
+				FlxG.sound.playMusic(Paths.music("coolMenu"), 1);
+				switchState(new StoryMenuState());
+						
 				sectionStart = false;
 
 				// if ()
@@ -3339,9 +3361,7 @@ class PlayState extends MusicBeatState
 			if (!sectionHasOppNotes)
 			{
 				if (dadBeats.contains(curBeat % 4) && dad.canAutoAnim && dad.holdTimer == 0)
-				{
 					dad.dance();
-				}
 			}
 		}
 		else
@@ -3553,6 +3573,14 @@ class PlayState extends MusicBeatState
 					// }
 			}
 		}
+		else if (tag.startsWith("scrollSpeed;"))
+		{
+			var tagSplit = tag.split(";");
+			trace(tagSplit);
+			
+			if (Config.scrollSpeedOverride == 0)
+				scrollSpeedForMaths = Std.parseFloat(tagSplit[1]);
+		}
 		else
 		{
 			switch (tag)
@@ -3565,7 +3593,6 @@ class PlayState extends MusicBeatState
 
 				case "gfAnimLockToggle":
 					gf.canAutoAnim = !gf.canAutoAnim;
-
 				default:
 					trace(tag);
 			}

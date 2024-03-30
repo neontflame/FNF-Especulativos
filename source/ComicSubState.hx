@@ -4,6 +4,7 @@ import flixel.tweens.FlxTween;
 import config.*;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.graphics.FlxGraphic;
 import flixel.sound.FlxSound;
 import flixel.util.FlxColor;
 import flixel.group.FlxGroup.FlxTypedGroup;
@@ -11,6 +12,10 @@ import flixel.text.FlxText;
 
 class ComicSubState extends MusicBeatSubstate
 {
+	/* 	levou um tempinho pra eu fazer mas eu consegui regardless
+		pode usar a vontade mas me da credito!
+						-neon
+	*/
     var comicPages:FlxTypedGroup<FlxSprite>;
 	
 	var timeLeftToCool:Float = 2;
@@ -20,6 +25,9 @@ class ComicSubState extends MusicBeatSubstate
 	var currentCut:String = "cut1";
 	
 	var addZoom:Float = 0;
+	
+	var zoomShits:Array<Float> = [];
+	
 	var controlShits:Array<Bool> = [false, false, false, false, // arrow keys
 								false, false, // q/e (zoom)
 								false, false]; // z/x (prosseguir e voltar)
@@ -54,21 +62,30 @@ class ComicSubState extends MusicBeatSubstate
 		
         for (i in 0...count) {
             var comic = new FlxSprite();
+			var comicGraphix:FlxGraphic = FlxGraphic.fromAssetKey(Paths.image('cutscenes/' + currentCut + '/pag' + (i+1)));
 			
 			trace(Paths.image('cutscenes/' + currentCut + '/pag' + (i+1)));
-            comic.loadGraphic(Paths.image('cutscenes/' + currentCut + '/pag' + (i+1)));
+			
+            comic.loadGraphic(comicGraphix);
             comic.ID = (i+1);
 
 			comic.updateHitbox();
 			
-			// trace(0.158);
-			comic.scale.set(0.158, 0.158);
+			trace(640 / comicGraphix.height);
+
+			if (comicGraphix.height > 640) {
+				zoomShits.push(640 / comicGraphix.height);
+				comic.scale.set(640 / comicGraphix.height, 640 / comicGraphix.height);
+			} else {
+				zoomShits.push(1);
+			}
 			
 			comic.screenCenter(XY);
 			comic.antialiasing = true;
             comicPages.add(comic);
         }
 		
+		trace(zoomShits);
 		changeSel();
 		
 		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
@@ -82,7 +99,7 @@ class ComicSubState extends MusicBeatSubstate
 		for (comic in comicPages) {
 			comic.updateHitbox();
 			
-			comic.scale.set(0.158, 0.158);
+			comic.scale.set(zoomShits[comic.ID - 1], zoomShits[comic.ID - 1]);
 			comic.screenCenter(XY);
             comic.alpha = (comic.ID == curPage) ? 1 : 0;
 		}
