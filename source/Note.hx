@@ -92,7 +92,7 @@ class Note extends FlxSprite
 			noteData = _noteData;
 
 		var uiType:String = PlayState.curUiType;
-		var isQen:Bool = PlayState.qenSongs.contains(PlayState.SONG.song.toLowerCase());
+		var uiFolder:String = PlayState.uiFolder;
 		
 		switch (uiType)
 		{
@@ -138,7 +138,7 @@ class Note extends FlxSprite
 					}
 					else
 					{
-						frames = Paths.getSparrowAtlas('ui/' + (isQen ? 'qenUI/' : '' ) + 'NOTE_assets');
+						frames = Paths.getSparrowAtlas('ui/' + uiFolder + 'NOTE_assets');
 						/* trace('get defaulted lmao png is a ' 
 							+ CoolUtil.exists('assets/images/ui/customNotes/' + type + '.png') 
 							+ ' and the xml is a ' 
@@ -148,7 +148,7 @@ class Note extends FlxSprite
 				}
 				else
 				{
-					frames = Paths.getSparrowAtlas('ui/' + (isQen ? 'qenUI/' : '' ) + 'NOTE_assets');
+					frames = Paths.getSparrowAtlas('ui/' + uiFolder + 'NOTE_assets');
 				}
 
 				switch (_type) {

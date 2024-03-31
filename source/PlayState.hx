@@ -251,7 +251,8 @@ class PlayState extends MusicBeatState
 	var autoplayText:FlxText;
 	var hudFont:String = "vcr";
 	var hudSize:Int = 16;
-
+	public static var uiFolder:String = "";
+	
 	// scratch UI
 	/* de agora em diante eu peço minhas 
 		mais sinceras desculpas por qualquer 
@@ -442,12 +443,15 @@ class PlayState extends MusicBeatState
 			catch (e){}
 		}
 
+		// god damn public static vars
+		uiFolder = "";
 		// song-specific font
 		// hud qen
 		if (qenSongs.contains(SONG.song.toLowerCase())) {
 			hudFont = "calibrib";
 			hudSize = 20;
 			scoreInfoTxt = ["pontos: ", "burrices: ", "combo burrices: ", "exatidao: "];
+			uiFolder = "qenUI/";
 		}
 		
 		// hud yotsu
@@ -624,16 +628,9 @@ class PlayState extends MusicBeatState
 
 		if (!pixelSongs.contains(SONG.song.toLowerCase()))
 		{
-			if (qenSongs.contains(SONG.song.toLowerCase()))
-			{
-			comboUI = new ComboPopup(boyfriend.x - 250, boyfriend.y - 75, [Paths.image("ui/qenUI/ratings"), 403, 163, true],
-				[Paths.image("ui/qenUI/numbers"), 100, 120, true], [Paths.image("ui/qenUI/comboBreak"), 348, 211, true]);
-			NoteSplash.splashPath = "ui/qenUI/noteSplashes";
-			} else {
-			comboUI = new ComboPopup(boyfriend.x - 250, boyfriend.y - 75, [Paths.image("ui/ratings"), 403, 163, true],
-				[Paths.image("ui/numbers"), 100, 120, true], [Paths.image("ui/comboBreak"), 348, 211, true]);
-			NoteSplash.splashPath = "ui/noteSplashes";			
-			}
+			comboUI = new ComboPopup(boyfriend.x - 250, boyfriend.y - 75, [Paths.image("ui/" + uiFolder + "ratings"), 403, 163, true],
+				[Paths.image("ui/" + uiFolder + "numbers"), 100, 120, true], [Paths.image("ui/" + uiFolder + "comboBreak"), 348, 211, true]);
+			NoteSplash.splashPath = "ui/" + uiFolder + "noteSplashes";	
 		}
 		else
 		{
@@ -753,9 +750,7 @@ class PlayState extends MusicBeatState
 			add(meta);
 		}
 
-		healthBarBG = new FlxSprite(0, Config.downscroll ? FlxG.height * 0.1 : FlxG.height * 0.9).loadGraphic(
-		(qenSongs.contains(SONG.song.toLowerCase()) ? Paths.image("ui/qenUI/healthBar") : Paths.image("ui/healthBar"))
-		);
+		healthBarBG = new FlxSprite(0, Config.downscroll ? FlxG.height * 0.1 : FlxG.height * 0.9).loadGraphic(Paths.image("ui/" + uiFolder + "healthBar"));
 		
 		healthBarBG.screenCenter(X);
 		healthBarBG.scrollFactor.set();
@@ -1354,10 +1349,8 @@ class PlayState extends MusicBeatState
 		var swagCounter:Int = 0;
 
 		var introAssets:Map<String, Array<String>> = new Map<String, Array<String>>();
-		if (qenSongs.contains(SONG.song.toLowerCase()))
-			introAssets.set('default', ['ui/qenUI/ready', "ui/qenUI/set", "ui/qenUI/go", ""]);
-		else
-			introAssets.set('default', ['ui/ready', "ui/set", "ui/go", ""]);
+		
+		introAssets.set('default', ['ui/' + uiFolder + 'ready', "ui/" + uiFolder + "set", "ui/" + uiFolder + "go", ""]);
 		introAssets.set('pixel', [
 			"week6/weeb/pixelUI/ready-pixel",
 			"week6/weeb/pixelUI/set-pixel",
@@ -1693,10 +1686,7 @@ class PlayState extends MusicBeatState
 					}
 
 				default:
-					if (qenSongs.contains(SONG.song.toLowerCase()))
-						babyArrow.frames = Paths.getSparrowAtlas('ui/qenUI/NOTE_assets');
-					else
-						babyArrow.frames = Paths.getSparrowAtlas('ui/NOTE_assets');
+					babyArrow.frames = Paths.getSparrowAtlas('ui/' + uiFolder + 'NOTE_assets');
 					babyArrow.animation.addByPrefix('green', 'arrowUP');
 					babyArrow.animation.addByPrefix('blue', 'arrowDOWN');
 					babyArrow.animation.addByPrefix('purple', 'arrowLEFT');
