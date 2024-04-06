@@ -17,7 +17,10 @@ class Chart extends BasicStage
 		if (PlayState.fromChartEditor)
 		{
 			startingZoom = 1;
-			var chartBg = new FlxSprite().loadGraphic(ChartingState.screenshotBitmap.bitmapData);
+			var chartBg = new FlxSprite();
+			#if sys
+			chartBg.loadGraphic(ChartingState.screenshotBitmap.bitmapData);
+			#end
 			chartBg.antialiasing = true;
 			addToBackground(chartBg);
 

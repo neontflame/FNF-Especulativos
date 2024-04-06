@@ -19,6 +19,7 @@ class Config
 	public static var bgDim:Int;
 	public static var noteSplashType:Int;
 	public static var centeredNotes:Bool;
+	public static var uncenteredNotes:Bool;
 	public static var swagRating:Bool;
 	public static var scrollSpeedOverride:Float;
 	public static var showComboBreaks:Bool;
@@ -42,6 +43,7 @@ class Config
 		FlxG.save.data.bgDim = 0;
 		FlxG.save.data.noteSplashType = 0;
 		FlxG.save.data.centeredNotes = false;
+		FlxG.save.data.uncenteredNotes = false;
 		FlxG.save.data.scrollSpeedOverride = -1;
 		FlxG.save.data.showComboBreaks = false;
 		FlxG.save.data.showFPS = false;
@@ -68,6 +70,7 @@ class Config
 		bgDim = FlxG.save.data.bgDim;
 		noteSplashType = FlxG.save.data.noteSplashType;
 		centeredNotes = FlxG.save.data.centeredNotes;
+		uncenteredNotes = FlxG.save.data.uncenteredNotes;
 		scrollSpeedOverride = FlxG.save.data.scrollSpeedOverride;
 		showComboBreaks = FlxG.save.data.showComboBreaks;
 		showFPS = FlxG.save.data.showFPS;
@@ -76,7 +79,7 @@ class Config
 	}
 
 	public static function write(offsetW:Float, accuracyW:String, healthMultiplierW:Float, healthDrainMultiplierW:Float, comboTypeW:Int, downscrollW:Bool,
-			noteGlowW:Bool, ghostTapTypeW:Int, noFpsCapW:Bool, controllerSchemeW:Int, bgDimW:Int, noteSplashTypeW:Int, centeredNotesW:Bool,
+			noteGlowW:Bool, ghostTapTypeW:Int, noFpsCapW:Bool, controllerSchemeW:Int, bgDimW:Int, noteSplashTypeW:Int, centeredNotesW:Bool, uncenteredNotesW:Bool,
 			scrollSpeedOverrideW:Float, showComboBreaksW:Bool, showFPSW:Bool, camMovementW:Bool, swagRatingW:Bool):Void
 	{
 		SaveManager.global();
@@ -94,6 +97,7 @@ class Config
 		FlxG.save.data.bgDim = bgDimW;
 		FlxG.save.data.noteSplashType = noteSplashTypeW;
 		FlxG.save.data.centeredNotes = centeredNotesW;
+		FlxG.save.data.uncenteredNotes = uncenteredNotesW;
 		FlxG.save.data.scrollSpeedOverride = scrollSpeedOverrideW;
 		FlxG.save.data.showComboBreaks = showComboBreaksW;
 		FlxG.save.data.showFPS = showFPSW;
@@ -135,6 +139,8 @@ class Config
 			FlxG.save.data.noteSplashType = 1;
 		if (FlxG.save.data.centeredNotes == null)
 			FlxG.save.data.centeredNotes = false;
+		if (FlxG.save.data.uncenteredNotes == null)
+			FlxG.save.data.uncenteredNotes = false;
 		if (FlxG.save.data.swagRating == null)
 			FlxG.save.data.swagRating = false;
 		if (FlxG.save.data.scrollSpeedOverride == null)

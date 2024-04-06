@@ -68,6 +68,8 @@ class ConfigMenu extends FlxUIStateExt
 	final noteSplashTypes:Array<String> = ["none", "sick only", "always"];
 
 	static var centeredValue:Bool;
+	static var uncenteredValue:Bool;
+	
 	static var swagValue:Bool;
 	static var scrollSpeedValue:Int;
 	static var showComboBreaksValue:Bool;
@@ -353,6 +355,7 @@ class ConfigMenu extends FlxUIStateExt
 		dimValue = Config.bgDim;
 		noteSplashValue = Config.noteSplashType;
 		centeredValue = Config.centeredNotes;
+		uncenteredValue = Config.uncenteredNotes;
 		scrollSpeedValue = Std.int(Config.scrollSpeedOverride * 10);
 		showComboBreaksValue = Config.showComboBreaks;
 		showFPSValue = Config.showFPS;
@@ -522,6 +525,18 @@ class ConfigMenu extends FlxUIStateExt
 			centeredNotes.setting = ": " + genericOnOff[centeredValue ? 0 : 1];
 		}
 
+		var uncenteredNotes = new ConfigOption("Uncentered strumline", ": " + genericOnOff[uncenteredValue ? 0 : 1],
+			"Repositions the notes to be uncentered, \nbearing more resemblance to the base game. \nWhy would you?");
+		uncenteredNotes.optionUpdate = function()
+		{
+			if (controls.RIGHT_P || controls.LEFT_P || controls.ACCEPT)
+			{
+				FlxG.sound.play(Paths.sound('scrollMenu'));
+				uncenteredValue = !uncenteredValue;
+			}
+			uncenteredNotes.setting = ": " + genericOnOff[uncenteredValue ? 0 : 1];
+		}
+		
 		var swagRating = new ConfigOption("Swag rating", ": " + genericOnOff[swagValue ? 0 : 1],
 			"Adds an additional 'Swag' rating'. Basically a 'Marvelous' rating, but for Funkin'.");
 		swagRating.optionUpdate = function()
@@ -900,7 +915,7 @@ class ConfigMenu extends FlxUIStateExt
 		
 		configOptions = [
 			[fpsCap, noteSplash, noteGlow, bgDim, showFPS],
-			[noteOffset, downscroll, centeredNotes, ghostTap, swagRating, controllerBinds, keyBinds],
+			[noteOffset, downscroll, centeredNotes, uncenteredNotes, ghostTap, swagRating, controllerBinds, keyBinds],
 			[
 				accuracyDisplay,
 				showComboBreaks,
@@ -917,7 +932,7 @@ class ConfigMenu extends FlxUIStateExt
 	function writeToConfig()
 	{
 		Config.write(offsetValue, accuracyType, healthValue / 10.0, healthDrainValue / 10.0, comboValue, downValue, glowValue, randomTapValue, noCapValue,
-			scheme, dimValue, noteSplashValue, centeredValue, scrollSpeedValue / 10.0, showComboBreaksValue, showFPSValue, camMovementValue, swagValue);
+			scheme, dimValue, noteSplashValue, centeredValue, uncenteredValue, scrollSpeedValue / 10.0, showComboBreaksValue, showFPSValue, camMovementValue, swagValue);
 	}
 }
 

@@ -1316,7 +1316,9 @@ class ChartingState extends MusicBeatState
 				SaveManager.flush();
 
 				PlayState.fromChartEditor = true;
+				#if sys
 				screenshotBitmap = FlxScreenGrab.grab(null, false, true);
+				#end
 
 				customTransOut = new BasicTransition();
 
