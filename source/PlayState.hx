@@ -237,8 +237,6 @@ class PlayState extends MusicBeatState
 
 	var stage:Dynamic;
 
-	var foregroundSprites:FlxTypedGroup<BGSprite>;
-
 	var talking:Bool = true;
 	var songScore:Int = 0;
 
@@ -432,8 +430,6 @@ class PlayState extends MusicBeatState
 		gfGroup = new FlxTypedGroup<Character>();
 		bfGroup = new FlxTypedGroup<Character>();
 		dadGroup = new FlxTypedGroup<Character>();
-		
-		foregroundSprites = new FlxTypedGroup<BGSprite>();
 
 		if (CoolUtil.exists(Paths.text(SONG.song.toLowerCase() + "/" + SONG.song.toLowerCase() + "Dialogue")))
 		{
@@ -524,8 +520,8 @@ class PlayState extends MusicBeatState
 				dadBeats = [0, 1, 2, 3];
 		}
 
-		var camPos:FlxPoint = new FlxPoint(dad.getGraphicMidpoint().x + (dad.cameraOffsetArray[0] - 150),
-			dad.getGraphicMidpoint().y + (dad.cameraOffsetArray[1] + 100));
+		var camPos:FlxPoint = new FlxPoint(gf.getGraphicMidpoint().x + (gf.cameraOffsetArray[0]),
+			gf.getGraphicMidpoint().y + (gf.cameraOffsetArray[1]));
 
 		dad.x += dad.charOffsetArray[0];
 		dad.y += dad.charOffsetArray[1];
@@ -586,8 +582,6 @@ class PlayState extends MusicBeatState
 		{
 			add(stage.foregroundElements[i]);
 		}
-
-		// add(foregroundSprites);
 		
 		switch(curUiType){
 			default:
@@ -897,7 +891,7 @@ class PlayState extends MusicBeatState
 						FlxG.camera.zoom = defaultCamZoom * 1.2;
 						if (PlayState.SONG.notes[0].mustHitSection)
 						{
-							camFocusBF();
+							camFocusBf();
 						}
 						else
 						{
@@ -2111,7 +2105,7 @@ class PlayState extends MusicBeatState
 
 			if (camFocus != "bf" && PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection && autoCam)
 			{
-				camFocusBF();
+				camFocusBf();
 			}
 			
 			// camera movement!!! yeah!!!!
@@ -2540,9 +2534,13 @@ class PlayState extends MusicBeatState
 		}
 		else
 		{
+			if (!Startup.songsCacheActive) {
+				FlxG.sound.music.stop();
+				FlxG.sound.playMusic(Paths.music('coolMenu'), 1);
+			}
 			PlayerSettings.menuControls();
 			sectionStart = false;
-
+		
 			changeState(new FreeplayState());
 		}
 	}
@@ -3597,7 +3595,16 @@ class PlayState extends MusicBeatState
 
 				case "camBopBig":
 					uiBop(0.035, 0.06, 0.8);
-
+					
+				case "camFocusDad":
+					camFocusOpponent();
+					
+				case "camFocusBf":
+					camFocusBf();
+					
+				case "camFocusGf":
+					camFocusGf();
+					
 				default:
 					trace(tag);
 			}
@@ -3669,7 +3676,7 @@ class PlayState extends MusicBeatState
 		camMove(followX + xOffset, followY + yOffset, 1.9, FlxEase.quintOut, "dad");
 	}
 
-	public function camFocusBF(?xOffset:Int, ?yOffset:Int)
+	public function camFocusBf(?xOffset:Int, ?yOffset:Int)
 	{
 		if(Config.camMovement){ changeCamOffset(0, 0); }
 	
@@ -3716,6 +3723,24 @@ class PlayState extends MusicBeatState
 		camMove(followX + xOffset, followY + yOffset, 1.9, FlxEase.quintOut, "bf");
 	}
 
+	public function camFocusGf(?xOffset:Int, ?yOffset:Int)
+	{
+		if(Config.camMovement){ changeCamOffset(0, 0); }
+		
+		var followX = gf.getMidpoint().x + gf.cameraOffsetArray[0]
+		#if EXPERIMENTAL_LUA + (luaModchart != null ? luaModchart.getVar("followXOffset", "float") : 0) #end;
+		var followY = gf.getMidpoint().y + gf.cameraOffsetArray[1]
+		#if EXPERIMENTAL_LUA + (luaModchart != null ? luaModchart.getVar("followYOffset", "float") : 0) #end;
+
+		#if EXPERIMENTAL_LUA
+		if (luaModchart != null)
+			luaModchart.executeState('gfTurn', []);
+		#end
+		// camFollow.setPosition(lucky.getMidpoint().x - 120, lucky.getMidpoint().y + 210);
+
+		camMove(followX + xOffset, followY + yOffset, 1.9, FlxEase.quintOut, "gf");
+	}
+	
 	public function camMove(_x:Float, _y:Float, _time:Float, _ease:Null<flixel.tweens.EaseFunction>, ?_focus:String = "", ?_onComplete:Null<TweenCallback> = null):Void
 	{
 		if (_onComplete == null)

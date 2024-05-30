@@ -50,9 +50,8 @@
 	<!-- modcharting da kade engine mas eu mudei algumas coisas -->
 	<define name="EXPERIMENTAL_LUA" if="desktop" />
 	
-	<!-- polymod coisos - EXTREMAMENTE EXPERIMENTAL!!!! -->
+	<!-- polymod coisos - EXTREMAMENTE EXPERIMENTAL!!!! NAO COMPATIVEL COM MODS DO V-SLICE -->
 	<define name="EXPERIMENTAL_MODDING" if="desktop" /> 
-	
 	
 	<assets path="assets/secret/images" rename= "assets/images" embed="true" if="EXE_EMBEDDING"/>
 	<assets path="assets/secret/data" rename= "assets/data" embed="true" if="EXE_EMBEDDING"/>

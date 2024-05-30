@@ -225,7 +225,8 @@ class MainMenuState extends MusicBeatState {
 
 				switch (daChoice) {
 					case 'freeplay':
-						FlxG.sound.music.stop();
+						if (Startup.songsCacheActive)
+							FlxG.sound.music.stop();
 				}
 
 				menuItems.forEach(function(spr:FlxSprite) {

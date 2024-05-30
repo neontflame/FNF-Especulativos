@@ -24,16 +24,22 @@ class Paths
 			}
 			#end */
 			
+		#if sys
 		if (openfl && OpenFlAssets.exists(data))
 			return OpenFlAssets.getPath(data);
 		else
+		#end
 			return data;
 	}
 
 	inline static public function txtFile(key:String, location:String, extension:String):String
 	{
 		var data:String = 'assets/$location/$key.$extension';
+		#if sys
 		return OpenFlAssets.getText(data);
+		#else
+		return data;
+		#end
 	}
 
 	inline static public function image(key:String, ?forceLoadFromDisk:Bool = false):Dynamic

@@ -156,6 +156,10 @@ class FreeplayState extends MusicBeatState
 		changeVerticalSelection();
 		changeDiff();
 
+		if (!FlxG.sound.music.playing && !Startup.songsCacheActive) {
+			FlxG.sound.playMusic(Paths.music('coolMenu'), 1);
+		}
+		
 		// FlxG.sound.playMusic(Paths.music('title'), 0);
 		// FlxG.sound.music.fadeIn(2, 0, 0.8);
 		selector = new FlxText();
@@ -269,7 +273,9 @@ class FreeplayState extends MusicBeatState
 
 		if (controls.BACK)
 		{
+			if (FlxG.sound.music.playing && Startup.songsCacheActive) {
 			FlxG.sound.music.stop();
+			}
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			switchState(new MainMenuState());
 		}
@@ -373,9 +379,11 @@ class FreeplayState extends MusicBeatState
 		// lerpScore = 0;
 		#end
 
-		FlxG.sound.playMusic(Paths.inst(songs[curSelected].songName), 0);
-		FlxG.sound.music.fadeIn(1, 0, 0.8);
-
+		if (Startup.songsCacheActive) {
+			FlxG.sound.playMusic(Paths.inst(songs[curSelected].songName), 0);
+			FlxG.sound.music.fadeIn(1, 0, 0.8);
+		}
+		
 		var bullShit:Int = 0;
 
 		for (item in grpSongs.members)

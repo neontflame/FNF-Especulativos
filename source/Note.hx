@@ -134,16 +134,10 @@ class Note extends FlxSprite
 					|| CoolUtil.exists('assets/images/ui/customNotes/' + type + '.xml'))
 					{
 						frames = Paths.getSparrowAtlas('ui/customNotes/' + type);
-						// trace ('heres your note');
 					}
 					else
 					{
 						frames = Paths.getSparrowAtlas('ui/' + uiFolder + 'NOTE_assets');
-						/* trace('get defaulted lmao png is a ' 
-							+ CoolUtil.exists('assets/images/ui/customNotes/' + type + '.png') 
-							+ ' and the xml is a ' 
-							+ CoolUtil.exists('assets/images/ui/customNotes/' + type + '.xml')
-							); */
 					}
 				}
 				else
@@ -266,9 +260,11 @@ class Note extends FlxSprite
 			}
 		}
 
-		if (type == "transparent")
-		{
-			alpha = 0.35;
+		switch (type) {
+			case "transparent":
+				alpha = 0.35;
+			case "invisible":
+				visible = false;
 		}
 	}
 
