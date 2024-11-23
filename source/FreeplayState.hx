@@ -42,7 +42,7 @@ class FreeplayState extends MusicBeatState
 	private var grpSongs:FlxTypedGroup<ProjectSprite>;
 	private var curPlaying:Bool = false;
 
-	public static final songsWithNoDiff:Array<String> = ["Hihi", "Tres-Bofetadas", "Dragons", "Do-Mal", "Street-Musician", "fnfolas", "so-um-cara"];
+	public static final songsWithNoDiff:Array<String> = ["Hihi", "Tres-Bofetadas", "Dragons", "Do-Mal", "Street-Musician", "fnfolas", "Big-Bus", "so-um-cara"];
 	
 	override function create()
 	{
@@ -94,7 +94,7 @@ class FreeplayState extends MusicBeatState
 			addWeek(['Street-Musician'], 10, ['yotsuba']);
 
 		if (FlxG.save.data.qenUnlock && Startup.hasQeN && CoolUtil.exists("assets/images/qen"))
-			addWeek(['fnfolas'], 11, ['qen']);
+			addWeek(['fnfolas', 'Big-Bus'], 11, ['qen', 'maujoa']);
 		
 		SaveManager.close();
 		

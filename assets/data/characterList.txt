@@ -1,4 +1,5 @@
 bf
+bf-qen
 dad
 gf
 espe
@@ -9,6 +10,7 @@ sketcher
 scdm
 yotsuba
 narigao
+maujoa
 velhote
 hawnt-salsicha
 hawnt-salsicha-ketchup

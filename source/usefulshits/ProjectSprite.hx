@@ -13,6 +13,9 @@ class ProjectSprite extends FlxSprite
 	public function new(x:Float, y:Float, image:String = "")
 	{
 		super(x, y);
+		
+		antialiasing = true;
+		
 		if (CoolUtil.exists(Paths.file(image, "images", "png")))
 			loadGraphic(Paths.image(image));
 		else

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="maujoa.png">
+	<!-- Created with Adobe Animate version 19.0.0.326 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="maujoa down0000" x="0" y="0" width="443" height="369" frameX="0" frameY="-9" frameWidth="450" frameHeight="378"/>
+	<SubTexture name="maujoa down0001" x="0" y="0" width="443" height="369" frameX="0" frameY="-9" frameWidth="450" frameHeight="378"/>
+	<SubTexture name="maujoa down0002" x="443" y="0" width="446" height="371" frameX="-4" frameY="-7" frameWidth="450" frameHeight="378"/>
+	<SubTexture name="maujoa down0003" x="443" y="0" width="446" height="371" frameX="-4" frameY="-7" frameWidth="450" frameHeight="378"/>
+	<SubTexture name="maujoa down0004" x="889" y="0" width="446" height="378" frameX="-4" frameY="0" frameWidth="450" frameHeight="378"/>
+	<SubTexture name="maujoa down0005" x="889" y="0" width="446" height="378" frameX="-4" frameY="0" frameWidth="450" frameHeight="378"/>
+	<SubTexture name="maujoa down0006" x="1335" y="0" width="446" height="366" frameX="-4" frameY="-12" frameWidth="450" frameHeight="378"/>
+	<SubTexture name="maujoa down0007" x="1335" y="0" width="446" height="366" frameX="-4" frameY="-12" frameWidth="450" frameHeight="378"/>
+	<SubTexture name="maujoa idle0000" x="0" y="378" width="405" height="461"/>
+	<SubTexture name="maujoa idle0001" x="0" y="378" width="405" height="461"/>
+	<SubTexture name="maujoa idle0002" x="405" y="378" width="405" height="452" frameX="0" frameY="-9" frameWidth="405" frameHeight="461"/>
+	<SubTexture name="maujoa idle0003" x="405" y="378" width="405" height="452" frameX="0" frameY="-9" frameWidth="405" frameHeight="461"/>
+	<SubTexture name="maujoa idle0004" x="810" y="378" width="405" height="461"/>
+	<SubTexture name="maujoa idle0005" x="810" y="378" width="405" height="461"/>
+	<SubTexture name="maujoa idle0006" x="1215" y="378" width="405" height="448" frameX="0" frameY="-13" frameWidth="405" frameHeight="461"/>
+	<SubTexture name="maujoa idle0007" x="1215" y="378" width="405" height="448" frameX="0" frameY="-13" frameWidth="405" frameHeight="461"/>
+	<SubTexture name="maujoa left0000" x="0" y="839" width="491" height="416" frameX="0" frameY="-11" frameWidth="493" frameHeight="427"/>
+	<SubTexture name="maujoa left0001" x="0" y="839" width="491" height="416" frameX="0" frameY="-11" frameWidth="493" frameHeight="427"/>
+	<SubTexture name="maujoa left0002" x="491" y="839" width="473" height="422" frameX="-20" frameY="-5" frameWidth="493" frameHeight="427"/>
+	<SubTexture name="maujoa left0003" x="491" y="839" width="473" height="422" frameX="-20" frameY="-5" frameWidth="493" frameHeight="427"/>
+	<SubTexture name="maujoa left0004" x="964" y="839" width="473" height="427" frameX="-20" frameY="0" frameWidth="493" frameHeight="427"/>
+	<SubTexture name="maujoa left0005" x="964" y="839" width="473" height="427" frameX="-20" frameY="0" frameWidth="493" frameHeight="427"/>
+	<SubTexture name="maujoa left0006" x="1437" y="839" width="473" height="417" frameX="-20" frameY="-10" frameWidth="493" frameHeight="427"/>
+	<SubTexture name="maujoa left0007" x="1437" y="839" width="473" height="417" frameX="-20" frameY="-10" frameWidth="493" frameHeight="427"/>
+	<SubTexture name="maujoa right0000" x="0" y="1266" width="391" height="539" frameX="0" frameY="0" frameWidth="392" frameHeight="539"/>
+	<SubTexture name="maujoa right0001" x="0" y="1266" width="391" height="539" frameX="0" frameY="0" frameWidth="392" frameHeight="539"/>
+	<SubTexture name="maujoa right0002" x="391" y="1266" width="391" height="517" frameX="0" frameY="-22" frameWidth="392" frameHeight="539"/>
+	<SubTexture name="maujoa right0003" x="391" y="1266" width="391" height="517" frameX="0" frameY="-22" frameWidth="392" frameHeight="539"/>
+	<SubTexture name="maujoa right0004" x="782" y="1266" width="387" height="516" frameX="0" frameY="-23" frameWidth="392" frameHeight="539"/>
+	<SubTexture name="maujoa right0005" x="782" y="1266" width="387" height="516" frameX="0" frameY="-23" frameWidth="392" frameHeight="539"/>
+	<SubTexture name="maujoa right0006" x="1169" y="1266" width="392" height="536" frameX="0" frameY="-3" frameWidth="392" frameHeight="539"/>
+	<SubTexture name="maujoa right0007" x="1169" y="1266" width="392" height="536" frameX="0" frameY="-3" frameWidth="392" frameHeight="539"/>
+	<SubTexture name="maujoa up0000" x="1561" y="1266" width="338" height="660" frameX="-7" frameY="0" frameWidth="352" frameHeight="660"/>
+	<SubTexture name="maujoa up0001" x="1561" y="1266" width="338" height="660" frameX="-7" frameY="0" frameWidth="352" frameHeight="660"/>
+	<SubTexture name="maujoa up0002" x="0" y="1926" width="352" height="619" frameX="0" frameY="-41" frameWidth="352" frameHeight="660"/>
+	<SubTexture name="maujoa up0003" x="0" y="1926" width="352" height="619" frameX="0" frameY="-41" frameWidth="352" frameHeight="660"/>
+	<SubTexture name="maujoa up0004" x="352" y="1926" width="352" height="616" frameX="0" frameY="-44" frameWidth="352" frameHeight="660"/>
+	<SubTexture name="maujoa up0005" x="352" y="1926" width="352" height="616" frameX="0" frameY="-44" frameWidth="352" frameHeight="660"/>
+	<SubTexture name="maujoa up0006" x="704" y="1926" width="352" height="638" frameX="0" frameY="-22" frameWidth="352" frameHeight="660"/>
+	<SubTexture name="maujoa up0007" x="704" y="1926" width="352" height="638" frameX="0" frameY="-22" frameWidth="352" frameHeight="660"/>
+</TextureAtlas>

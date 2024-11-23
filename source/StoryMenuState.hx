@@ -66,9 +66,10 @@ class StoryMenuState extends MusicBeatState
 			['cocoa', 'eggnog', 'winter-horrorland'],
 			['senpai', 'roses', 'thorns'],
 			['ugh', 'guns', 'stress'],
-			['hihi', 'tres-bofetadas', 'dragons']
+			['hihi', 'tres-bofetadas', 'dragons'],
+			['fnfolas', 'big-bus']
 		];
-
+	
 		weekCharacters = [
 			['dad', 'bf', 'gf'],
 			['dad', 'bf', 'gf'],
@@ -78,9 +79,20 @@ class StoryMenuState extends MusicBeatState
 			['parents-christmas', 'bf', 'gf'],
 			['senpai', 'bf', 'gf'],
 			['tankman', 'bf', 'gf'],
-			['espe', 'bf', 'gf']
+			['espe', 'bf', 'gf'],
+			['narigao', 'bf', 'gf']
 		];
+		
+		SaveManager.modSpecific();
 
+		if (!FlxG.save.data.qenUnlock) {
+			trace('no qen');
+			weekData.splice(9, 1);
+			weekCharacters.splice(9, 1);
+		}
+		
+		SaveManager.close();
+		
 		weekNums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 		
 		weekNames = CoolUtil.coolTextFile(Paths.text("weekNames"));
@@ -305,7 +317,7 @@ class StoryMenuState extends MusicBeatState
 	{
 		curDifficulty += change;
 
-		if (weekNums[curWeek] != 8) {
+		if (weekNums[curWeek] < 8) {
 			if (curDifficulty < 0)
 				curDifficulty = 2;
 			if (curDifficulty > 2)

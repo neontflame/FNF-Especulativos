@@ -103,7 +103,7 @@ class PlayState extends MusicBeatState
 	private final releaseBufferTime = (2 / 60);
 	
 	public static final scratchSongs = ["hihi", "tres-bofetadas", "dragons", "do-mal"];
-	public static final qenSongs = ["fnfolas"];
+	public static final qenSongs = ["fnfolas", "big-bus"];
 	
 	// gimmicky shit
 	public static final marcoballGimmickSongs = ["marcoball-gimmick-test"];

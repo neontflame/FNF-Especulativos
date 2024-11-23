@@ -507,7 +507,27 @@ class Character extends FlxSprite
 
 				iconName = "narigao";
 				charOffsetArray = [-24, 290];
-			
+				
+			case 'maujoa':
+				// mauj man
+				frames = Paths.getSparrowAtlas("qen/maujoa");
+				animation.addByPrefix('idle', 'maujoa idle', 24, true);
+				animation.addByPrefix('singUP', 'maujoa up', 24, false);
+				animation.addByPrefix('singRIGHT', 'maujoa right', 24, false);
+				animation.addByPrefix('singDOWN', 'maujoa down', 24, false);
+				animation.addByPrefix('singLEFT', 'maujoa left', 24, false);
+				
+				addOffset('idle');
+				addOffset("singDOWN", 10, -80);
+				addOffset("singRIGHT", -210, 80);
+				addOffset("singUP", -140, 200);
+				addOffset("singLEFT", 105, -20);
+				
+				playAnim('idle');
+
+				iconName = "maujoa";
+				charOffsetArray = [-24, 297];
+						
 			case 'velhote':
 				// o velho
 				frames = Paths.getSparrowAtlas("weekOld/velhote");
