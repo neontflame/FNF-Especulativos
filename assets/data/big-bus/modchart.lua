@@ -213,7 +213,14 @@ function beatHit(beat)
 		end
 	end
 	
+	if beat == 254 then
+		tweenCameraZoom(0.6, 2, 'cubeOut')
+		followYOffset = 100
+	end
+	
 	if beat == 352 then
+		tweenCameraZoom(0.75, 2, 'cubeOut')
 		setActorX(5000, "girlfriend")
+		followYOffset = 0
 	end
 end
