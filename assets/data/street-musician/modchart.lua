@@ -4,6 +4,10 @@ function start(song)
 	for i=0,3 do
 		notePos[i+1] = getActorX(i)
 	end
+	
+	-- would this be incharacter for yotsuba
+	tweenPos(2, notePos[2], getActorY(2), 0.001, 'boalas')
+	tweenPos(1, notePos[3], getActorY(1), 0.001, 'boalas2')
 end
 
 function update (elapsed)
@@ -46,9 +50,9 @@ function downArrowFunny(yeah)
 	end
 	
 	if yeah == 'restore' then
-		tweenPos(2, notePos[3], getActorY(2), 0.1, 'boalas')
+		tweenPos(2, notePos[2], getActorY(2), 0.1, 'boalas')
 		
-		tweenPos(1, notePos[2], getActorY(1), 0.1, 'boalas2')
+		tweenPos(1, notePos[3], getActorY(1), 0.1, 'boalas2')
 		tweenFade(1, 1, 0.1, 'blobas2', 'cubeOut')
 	end
 end
